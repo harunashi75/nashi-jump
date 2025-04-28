@@ -16,6 +16,6 @@ func _on_body_entered(body):
 		victory_sound.play()
 
 		# Appelle stop_timer() depuis Main si disponible
-		var manager = get_node_or_null("/root/Main")
-		if manager:
-			manager.pause_timer()  # ← met juste en pause
+		var game_manager = GameManager
+		if game_manager:
+			game_manager.pause_timer()  # ← met juste en pause

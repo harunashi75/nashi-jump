@@ -14,6 +14,6 @@ func _on_body_entered(body):
 		player.global_position = teleport_position
 
 		# Appelle stop_timer() depuis Main si disponible
-		var game_manager = get_node_or_null("/root/Main")
+		var game_manager = GameManager
 		if game_manager and game_manager.has_method("stop_timer"):
 			game_manager.stop_timer()

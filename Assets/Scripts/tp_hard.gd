@@ -14,6 +14,6 @@ func _on_body_entered(body):
 		body.global_position = teleport_position
 		teleport_sound.play()
 
-		var manager = get_node_or_null("/root/Main")
-		if manager:
-			manager.resume_timer()  # ← reprend le timer là où il était
+		var game_manager = GameManager
+		if game_manager:
+			game_manager.resume_timer()  # ← reprend le timer là où il était

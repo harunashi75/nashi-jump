@@ -7,6 +7,7 @@ var max_jumps = 1
 var jumps_left = 2
 var max_health = 1
 var current_health = max_health
+var health = 3
 
 # Timer pour éviter de switch direct vers "fall"
 var just_jumped = false
@@ -17,6 +18,13 @@ var jump_anim_timer = 0.15  # Durée pendant laquelle on bloque l'animation "fal
 @onready var jump_sound = $JumpSound
 @onready var health_bar = $"/root/Main/Game/UI/HealthBar"
 @onready var hit_sound = $HitSound
+@onready var game_manager = GameManager
+
+func _ready():
+	health = GameManager.player_lives
+	max_health = health
+	current_health = max_health
+	health_bar.value = current_health
 
 func _physics_process(delta):
 	_apply_gravity(delta)
@@ -33,12 +41,12 @@ func _handle_jump():
 	if Input.is_action_just_pressed("jump") and jumps_left > 0:
 		velocity.y = jump_force
 		jump_sound.play()
-		
+
 		if is_on_floor():
 			sprite.play("jump")
 		else:
 			sprite.play("double_jump")
-		
+
 		jumps_left -= 1
 		just_jumped = true
 		jump_anim_timer = 0.15
@@ -75,9 +83,9 @@ func _handle_animations(delta):
 # Pause menu
 func _input(event):
 	if event.is_action_pressed("pause_menu"):
-		var game_manager = get_node("/root/Main")
-		if game_manager:
-			game_manager.toggle_pause()
+		var main = get_node("/root/Main")
+		if main:
+			main.toggle_pause()
 		else:
 			print("Erreur: Main introuvable!")
 
@@ -90,7 +98,7 @@ func take_damage(amount):
 	
 	if not hit_sound.playing:
 		hit_sound.play()
-	
+
 	set_physics_process(false)
 	await get_tree().create_timer(0.3).timeout
 	set_physics_process(true)
@@ -103,8 +111,9 @@ func take_damage(amount):
 # Respawn
 func respawn():
 	print("Respawn du joueur...")
-	current_health = max_health
-	health_bar.value = max_health
+	current_health = GameManager.player_lives  # Assure-toi d'utiliser GameManager
+	max_health = GameManager.player_lives      # Met à jour max_health aussi
+	health_bar.value = current_health
 	global_position = Vector2(0, 0)
 
 # Remettre la vie au max
