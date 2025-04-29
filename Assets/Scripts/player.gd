@@ -1,45 +1,73 @@
 extends CharacterBody2D
 
+# ------------------------
+# Constantes et Variables
+# ------------------------
+
 # Physique
-var gravity = 980
-var jump_force = -350
+const GRAVITY = 980
+const JUMP_FORCE = -350
+const MOVE_SPEED = 200
+const DECELERATION = 20
+
 var max_jumps = 1
 var jumps_left = 2
+
+# Santé
 var max_health = 1
 var current_health = max_health
 var health = 3
 
-# Timer pour éviter de switch direct vers "fall"
+# Animation saut
 var just_jumped = false
-var jump_anim_timer = 0.15  # Durée pendant laquelle on bloque l'animation "fall"
+var jump_anim_timer = 0.15
 
-# Références
+# ------------------------
+# Références aux Nodes
+# ------------------------
 @onready var sprite = $AnimatedSprite2D
 @onready var jump_sound = $JumpSound
-@onready var health_bar = $"/root/Main/Game/UI/HealthBar"
 @onready var hit_sound = $HitSound
-@onready var game_manager = GameManager
+@onready var health_bar = $HealthBar
 
+# ------------------------
+# Ready
+# ------------------------
 func _ready():
-	health = GameManager.player_lives
-	max_health = health
-	current_health = max_health
-	health_bar.value = current_health
+	initialize_health()
 
+# ------------------------
+# Physique principale
+# ------------------------
 func _physics_process(delta):
-	_apply_gravity(delta)
-	_handle_jump()
-	_handle_movement()
-	_handle_animations(delta)
+	apply_gravity(delta)
+	handle_input()
+	handle_animation(delta)
 	move_and_slide()
 
-func _apply_gravity(delta):
+# ------------------------
+# Fonctions Physiques
+# ------------------------
+func apply_gravity(delta):
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		velocity.y += GRAVITY * delta
 
-func _handle_jump():
+func handle_input():
+	handle_movement()
+	handle_jump()
+
+func handle_movement():
+	var direction = Input.get_axis("move_left", "move_right")
+
+	if direction:
+		velocity.x = direction * MOVE_SPEED
+		sprite.flip_h = direction < 0
+	else:
+		velocity.x = move_toward(velocity.x, 0, DECELERATION)
+
+func handle_jump():
 	if Input.is_action_just_pressed("jump") and jumps_left > 0:
-		velocity.y = jump_force
+		velocity.y = JUMP_FORCE
 		jump_sound.play()
 
 		if is_on_floor():
@@ -54,21 +82,15 @@ func _handle_jump():
 	if is_on_floor():
 		jumps_left = max_jumps
 
-func _handle_movement():
-	var direction = Input.get_axis("move_left", "move_right")
-
-	if direction:
-		velocity.x = direction * 200
-		sprite.flip_h = direction < 0
-	else:
-		velocity.x = move_toward(velocity.x, 0, 20)
-
-func _handle_animations(delta):
+# ------------------------
+# Gestion Animation
+# ------------------------
+func handle_animation(delta):
 	if just_jumped:
 		jump_anim_timer -= delta
 		if jump_anim_timer <= 0:
 			just_jumped = false
-		return  # On bloque l'anim ici le temps du saut
+		return
 
 	if not is_on_floor():
 		if velocity.y > 0 and sprite.animation != "fall":
@@ -80,22 +102,22 @@ func _handle_animations(delta):
 		if sprite.animation != "idle":
 			sprite.play("idle")
 
-# Pause menu
-func _input(event):
-	if event.is_action_pressed("pause_menu"):
-		var main = get_node("/root/Main")
-		if main:
-			main.toggle_pause()
-		else:
-			print("Erreur: Main introuvable!")
+# ------------------------
+# Gestion Santé
+# ------------------------
+func initialize_health():
+	health = GameManager.player_lives
+	max_health = health
+	current_health = max_health
+	if health_bar:
+		health_bar.max_value = max_health
+		health_bar.value = current_health
 
-# Gestion des dégâts
 func take_damage(amount):
 	current_health -= amount
 	print("Vies restantes :", current_health)
 
 	sprite.play("hit")
-	
 	if not hit_sound.playing:
 		hit_sound.play()
 
@@ -103,20 +125,23 @@ func take_damage(amount):
 	await get_tree().create_timer(0.3).timeout
 	set_physics_process(true)
 
-	health_bar.value = current_health
+	if health_bar:
+		health_bar.value = current_health
 
 	if current_health <= 0:
 		respawn()
 
-# Respawn
-func respawn():
-	print("Respawn du joueur...")
-	current_health = GameManager.player_lives  # Assure-toi d'utiliser GameManager
-	max_health = GameManager.player_lives      # Met à jour max_health aussi
-	health_bar.value = current_health
-	global_position = Vector2(0, 0)
-
-# Remettre la vie au max
 func reset_health():
 	current_health = max_health
-	health_bar.value = max_health
+
+func respawn():
+	print("Respawn du joueur...")
+	initialize_health()
+	LevelManager.load_level_by_path("res://Assets/Scenes/level_1.tscn")
+
+# ------------------------
+# Pause Menu
+# ------------------------
+func _input(event):
+	if event.is_action_pressed("pause_menu"):
+		GameManager.toggle_pause()

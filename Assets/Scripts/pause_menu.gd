@@ -1,9 +1,9 @@
 extends Control
 
 @onready var pause_menu = $"."  # Référence au menu pause
-@onready var resume_button = $ResumeButton  # Chemin correct vers le bouton Resume
-@onready var quit_button = $QuitButton  # Chemin correct vers le bouton Quit
-@onready var start_menu_button = $StartMenuButton  # Chemin correct vers le bouton Main Menu
+@onready var resume_button = $VBoxContainer/Resume  # Chemin correct vers le bouton Resume
+@onready var quit_button = $VBoxContainer/QuitButton  # Chemin correct vers le bouton Quit
+@onready var start_menu_button = $VBoxContainer/StartMenu  # Chemin correct vers le bouton Main Menu
 @onready var volume_slider = $VolumeSlider
 
 func _ready():

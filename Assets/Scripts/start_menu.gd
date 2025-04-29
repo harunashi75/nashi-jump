@@ -13,15 +13,15 @@ func _ready():
 
 func on_easy_pressed():
 	GameManager.start_game(10)
-	get_tree().change_scene_to_file("res://Assets/Scenes/main.tscn")
+	get_tree().change_scene_to_file("res://Assets/Scenes/level_1.tscn")
 
 func on_normal_pressed():
 	GameManager.start_game(3)
-	get_tree().change_scene_to_file("res://Assets/Scenes/main.tscn")
+	get_tree().change_scene_to_file("res://Assets/Scenes/level_1.tscn")
 
 func on_hard_pressed():
 	GameManager.start_game(1)
-	get_tree().change_scene_to_file("res://Assets/Scenes/main.tscn")
+	get_tree().change_scene_to_file("res://Assets/Scenes/level_1.tscn")
 
 func _on_quit_pressed():
 	print("Quit button pressed!")  # Vérifie si ça s'affiche dans la console

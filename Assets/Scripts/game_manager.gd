@@ -1,45 +1,32 @@
 extends Node
 
-var pause_menu = null
-var timer_label = null
+# ------------------------
+# Variables Globales
+# ------------------------
+var player_lives: int = 3
 
-var game_timer := 0.0
-var timer_active := true
-var timer_paused := false
-var player_lives = 3
+# Pause
+var is_game_paused: bool = false
+var pause_menu: Control = null  # Le menu pause (optionnel)
+
+# ------------------------
+# Fonctions
+# ------------------------
 
 func _ready():
-	pass  # NE PAS charger de nodes ici !
+	pass  # On ne force pas la recherche ici
 
-func _process(delta):
-	if timer_active:
-		game_timer += delta
-		update_timer_display()
-
-func update_timer_display():
-	if timer_label != null:
-		var minutes := int(floor(game_timer / 60))
-		var seconds := int(game_timer) % 60
-		timer_label.text = "%02d:%02d" % [minutes, seconds]
-
+# Gestion des vies
 func start_game(lives: int):
 	player_lives = lives
-	game_timer = 0.0
-	timer_active = true
 	print("Game démarré avec ", lives, " vies.")
 
-func stop_timer():
-	timer_active = false
-	timer_paused = false
-	var minutes := int(floor(game_timer / 60))
-	var seconds := int(game_timer) % 60
-	print("Temps total : %02d:%02d" % [minutes, seconds])
+# Gestion de la Pause
+func toggle_pause():
+	is_game_paused = not is_game_paused
+	get_tree().paused = is_game_paused
 
-func pause_timer():
-	timer_active = false
-	timer_paused = true
-
-func resume_timer():
-	if timer_paused:
-		timer_active = true
-		timer_paused = false
+	# Si un menu pause est défini, on le montre/cache
+	if pause_menu:
+		pause_menu.visible = is_game_paused
+	print("Pause :", is_game_paused)
