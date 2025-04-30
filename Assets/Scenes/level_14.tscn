@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://csf3qstvccstt"]
+[gd_scene load_steps=68 format=4 uid="uid://csf3qstvccstt"]
 
 [ext_resource type="Script" uid="uid://kdedrhh3ty" path="res://Assets/Scripts/level_14.gd" id="1_avipq"]
 [ext_resource type="Texture2D" uid="uid://bapsk16kcq0jx" path="res://Assets/Sprites/Terrain (16x16).png" id="1_tujds"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://ch3wlueq23qak" path="res://Assets/Scripts/water.gd" id="10_pqfwq"]
 [ext_resource type="Texture2D" uid="uid://cgy0bqppr3uvi" path="res://Assets/Sprites/water_b_5 frames.png" id="11_cov1t"]
 [ext_resource type="Script" uid="uid://qq7bin3bq03p" path="res://Assets/Scripts/tp_level_15.gd" id="12_j4bpt"]
+[ext_resource type="AudioStream" uid="uid://bjdkuj7fpxvct" path="res://Assets/Sounds/Fisticuffs and Ale.ogg" id="16_smd6q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mt6am"]
 texture = ExtResource("1_tujds")
@@ -918,3 +919,7 @@ stream = ExtResource("4_e0xo2")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("5_rs4km")]
+
+[node name="LevelSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_smd6q")
+parameters/looping = true

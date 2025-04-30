@@ -12,17 +12,23 @@ func _ready():
 	quit_button.pressed.connect(_on_quit_pressed)
 
 func on_easy_pressed():
-	GameManager.start_game(10)
+	GameManager.difficulty = "easy"
+	GameManager.reset_lives_by_difficulty()
+	GameManager.start_game(GameManager.player_lives)
 	get_tree().change_scene_to_file("res://Assets/Scenes/level_1.tscn")
 
 func on_normal_pressed():
-	GameManager.start_game(3)
+	GameManager.difficulty = "normal"
+	GameManager.reset_lives_by_difficulty()
+	GameManager.start_game(GameManager.player_lives)
 	get_tree().change_scene_to_file("res://Assets/Scenes/level_1.tscn")
 
 func on_hard_pressed():
-	GameManager.start_game(1)
+	GameManager.difficulty = "hard"
+	GameManager.reset_lives_by_difficulty()
+	GameManager.start_game(GameManager.player_lives)
 	get_tree().change_scene_to_file("res://Assets/Scenes/level_1.tscn")
 
 func _on_quit_pressed():
-	print("Quit button pressed!")  # Vérifie si ça s'affiche dans la console
+	print("Quit button pressed!")
 	get_tree().quit()

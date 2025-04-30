@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dycr6wuf1dp2k"]
+[gd_scene load_steps=53 format=3 uid="uid://dycr6wuf1dp2k"]
 
 [ext_resource type="Script" uid="uid://b5haxlxohf1jf" path="res://Assets/Scripts/player.gd" id="1_crp4q"]
 [ext_resource type="Texture2D" uid="uid://cm0yr03lcxdbo" path="res://Assets/Sprites/Main Characters/Virtual Guy/Double Jump (32x32).png" id="2_jp3cw"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://c4o2rnk6f03uf" path="res://Assets/Sprites/Main Characters/Hit_Hurt2.wav" id="8_lerqx"]
 [ext_resource type="Texture2D" uid="uid://bbt4n16kb54d6" path="res://Assets/Sprites/health_bar_decoration.png" id="10_vy5gb"]
 [ext_resource type="Texture2D" uid="uid://bb0xjueas2mio" path="res://Assets/Sprites/health_bar.png" id="11_rsrmw"]
+[ext_resource type="Script" uid="uid://bc4mnu3w6i6fv" path="res://Assets/Scripts/health_bar.gd" id="12_rsrmw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jp3cw"]
 atlas = ExtResource("2_jp3cw")
@@ -349,3 +350,4 @@ max_value = 3.0
 texture_under = ExtResource("10_vy5gb")
 texture_progress = ExtResource("11_rsrmw")
 texture_progress_offset = Vector2(14, 0)
+script = ExtResource("12_rsrmw")

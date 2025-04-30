@@ -9,7 +9,6 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.name == "Player":
-#		if is_inside_tree():
 		call_deferred("_deferred_load_next_level")
 
 func _deferred_load_next_level():

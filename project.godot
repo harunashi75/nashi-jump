@@ -20,7 +20,6 @@ config/icon="uid://c7hswcig67vm8"
 
 GameManager="*res://Assets/Scripts/game_manager.gd"
 LevelManager="*res://Assets/Scripts/LevelManager.gd"
-MusicManager="*res://Assets/Scripts/MusicManager.gd"
 
 [display]
 

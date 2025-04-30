@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://dep876lam2db4"]
+[gd_scene load_steps=39 format=4 uid="uid://dep876lam2db4"]
 
 [ext_resource type="Texture2D" uid="uid://r0lja3wk7m2f" path="res://Assets/Sprites/Maps/Brown.png" id="1_fc2nj"]
 [ext_resource type="Script" uid="uid://dmfkqvh4flah3" path="res://Assets/Scripts/level_victory.gd" id="1_ikbl5"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dl3r1opn436ln" path="res://Assets/Sounds/level-passed-142971.ogg" id="7_d2o0g"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="8_hxurn"]
 [ext_resource type="Script" uid="uid://dsydt7a4y4smc" path="res://Assets/Scripts/tp_level_hard_1.gd" id="10_c4d2k"]
+[ext_resource type="AudioStream" uid="uid://b65200jfv0ngs" path="res://Assets/Sounds/Hall of the King.ogg" id="12_1bigt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gltxq"]
 texture = ExtResource("4_c4d2k")
@@ -534,3 +535,7 @@ stream = ExtResource("7_d2o0g")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("8_hxurn")]
+
+[node name="LevelVictorySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_1bigt")
+parameters/looping = true

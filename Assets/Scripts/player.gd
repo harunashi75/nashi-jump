@@ -34,7 +34,26 @@ var jump_anim_timer = 0.15
 # Ready
 # ------------------------
 func _ready():
-	initialize_health()
+	var current_scene = get_tree().current_scene.scene_file_path
+
+	# Si on est dans le level_victory, reset tout
+	if current_scene == "res://Assets/Scenes/level_victory.tscn":
+		GameManager.reset_lives_by_difficulty()
+		initialize_health()
+		GameManager.has_initialized_health = true
+	else:
+		# Sinon, si pas encore initialisé, on prend les valeurs globales
+		if not GameManager.has_initialized_health:
+			initialize_health()
+			GameManager.has_initialized_health = true
+		else:
+			# Charger les vies sauvegardées
+			max_health = GameManager.player_lives
+			current_health = GameManager.player_current_health
+
+	# Met à jour la HealthBar au lancement
+	if is_instance_valid(health_bar):
+		health_bar.set_health(current_health, max_health)
 
 # ------------------------
 # Physique principale
@@ -125,14 +144,18 @@ func take_damage(amount):
 	await get_tree().create_timer(0.3).timeout
 	set_physics_process(true)
 
-	if health_bar:
-		health_bar.value = current_health
+	if is_instance_valid(health_bar):
+		health_bar.set_health(current_health, max_health)
 
 	if current_health <= 0:
 		respawn()
 
+	GameManager.player_current_health = current_health
+
 func reset_health():
 	current_health = max_health
+	if is_instance_valid(health_bar):
+		health_bar.set_health(current_health, max_health)
 
 func respawn():
 	print("Respawn du joueur...")
