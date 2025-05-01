@@ -4,7 +4,7 @@ extends Area2D
 @export var patrol_distance: int = 50
 @export var damage: int = 1
 
-var direction = 1
+var direction = -1
 var start_position: Vector2
 var target_position: Vector2
 

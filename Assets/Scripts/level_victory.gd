@@ -1,11 +1,31 @@
 extends Node
 
-@onready var music_player = $LevelVictorySound
-
 func _ready():
-	# Lancer la musique du niveau
-	if music_player:
-		music_player.play()
+	var enter_sound = $VictorySound
+	if enter_sound:
+		enter_sound.play()
 
-	# Connecte le menu pause pour ce niveau
+	var music = $LevelVictorySound
+	if music:
+		music.play()
+	
+	var hud = preload("res://Assets/Scenes/hud.tscn").instantiate()
+	add_child(hud)
+
+	if GameManager.difficulty != "":
+		await get_tree().create_timer(0.2).timeout
+		TimerManager.stop_timer()
+		print("Temps total :", TimerManager.get_formatted_time())
+
 	GameManager.pause_menu = $UI/PauseMenu
+
+func _exit_tree():
+	if $VictorySound:
+		$VictorySound.stop()
+		$VictorySound.stream = null
+		$VictorySound.queue_free()
+
+	if $LevelVictorySound:
+		$LevelVictorySound.stop()
+		$LevelVictorySound.stream = null
+		$LevelVictorySound.queue_free()

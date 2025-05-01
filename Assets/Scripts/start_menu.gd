@@ -4,12 +4,22 @@ extends Control
 @onready var normal_button = $VBoxContainer/Normal
 @onready var hard_button = $VBoxContainer/Hard
 @onready var quit_button = $VBoxContainer/Quit
+@onready var music = $StartMusic
 
 func _ready():
 	easy_button.pressed.connect(on_easy_pressed)
 	normal_button.pressed.connect(on_normal_pressed)
 	hard_button.pressed.connect(on_hard_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
+
+	if music and not music.playing:
+		music.play()
+
+func _exit_tree():
+	if music:
+		music.stop()
+		music.stream = null
+		music.queue_free()
 
 func on_easy_pressed():
 	GameManager.difficulty = "easy"

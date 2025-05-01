@@ -1,11 +1,20 @@
 extends Node
 
-@onready var music_player = $LevelSecretSound
-
 func _ready():
-	# Lancer la musique du niveau
-	if music_player:
-		music_player.play()
+	var music = $LevelSecretSound
+	if music:
+		music.play()
 
-	# Connecte le menu pause pour ce niveau
+	var hud = preload("res://Assets/Scenes/hud.tscn").instantiate()
+	add_child(hud)
+
+	if GameManager.difficulty != "":
+		TimerManager.start_timer()
+
 	GameManager.pause_menu = $UI/PauseMenu
+	
+func _exit_tree():
+	if $LevelSecretSound:
+		$LevelSecretSound.stop()
+		$LevelSecretSound.stream = null
+		$LevelSecretSound.queue_free()

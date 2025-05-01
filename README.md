@@ -8,9 +8,6 @@ Atteindre les niveaux sans mourir.
 
 Réagir vite, sauter juste, et surtout... ne jamais abandonner!
 
-🛠️ En cours de développement
-Ce projet est encore en version 1.0.0-beta, de nombreuses fonctionnalités, niveaux et surprises sont à venir!
-
 Développé avec 💚 par Haru Nashi / Nashi Studio
 
 💖 Soutenir le projet

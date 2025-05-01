@@ -142,6 +142,7 @@ func take_damage(amount):
 
 	set_physics_process(false)
 	await get_tree().create_timer(0.3).timeout
+	print("Délai écoulé")
 	set_physics_process(true)
 
 	if is_instance_valid(health_bar):
