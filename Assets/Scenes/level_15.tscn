@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="2_qjqdd"]
 [ext_resource type="Texture2D" uid="uid://d2sj57d4ha6gq" path="res://Assets/Sprites/TerrainHidden (16x16).png" id="3_nam30"]
 [ext_resource type="Texture2D" uid="uid://bidrscbgvxwos" path="res://Assets/Sprites/Levels/15.png" id="3_od1hm"]
-[ext_resource type="Texture2D" uid="uid://b6xic87k8x4b6" path="res://Assets/Sprites/End (Pressed) (64x64).png" id="4_il1pb"]
-[ext_resource type="Script" uid="uid://cbrjv1ab5xrhp" path="res://Assets/Scripts/tp_level_victory.gd" id="5_il1pb"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="6_k8ug8"]
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/mushroom.gd" id="7_q2pkf"]
 [ext_resource type="Texture2D" uid="uid://l326v4pg53ib" path="res://Assets/Sprites/Enemies/Mushroom/Run (32x32).png" id="8_yiqb0"]
@@ -15,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://gva5hnciqupl" path="res://Assets/Sprites/Enemies/Turtle/Idle 1 (44x26).png" id="10_i11qu"]
 [ext_resource type="Script" uid="uid://ch3wlueq23qak" path="res://Assets/Scripts/water.gd" id="11_1d568"]
 [ext_resource type="Texture2D" uid="uid://cgy0bqppr3uvi" path="res://Assets/Sprites/water_b_5 frames.png" id="12_hyhrv"]
+[ext_resource type="Script" uid="uid://cbrjv1ab5xrhp" path="res://Assets/Scripts/tp_level_victory.gd" id="13_od1hm"]
+[ext_resource type="Texture2D" uid="uid://b6xic87k8x4b6" path="res://Assets/Sprites/End (Pressed) (64x64).png" id="14_q2pkf"]
 [ext_resource type="AudioStream" uid="uid://bjdkuj7fpxvct" path="res://Assets/Sounds/Fisticuffs and Ale.ogg" id="17_od1hm"]
 [ext_resource type="AudioStream" uid="uid://dl3r1opn436ln" path="res://Assets/Sounds/level-passed-142971.ogg" id="17_q2pkf"]
 
@@ -741,38 +741,38 @@ animations = [{
 size = Vector2(32, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7tamx"]
-atlas = ExtResource("4_il1pb")
+atlas = ExtResource("14_q2pkf")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_od1hm"]
-atlas = ExtResource("4_il1pb")
+atlas = ExtResource("14_q2pkf")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q2pkf"]
-atlas = ExtResource("4_il1pb")
+atlas = ExtResource("14_q2pkf")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yiqb0"]
-atlas = ExtResource("4_il1pb")
+atlas = ExtResource("14_q2pkf")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vxdyt"]
-atlas = ExtResource("4_il1pb")
+atlas = ExtResource("14_q2pkf")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i11qu"]
-atlas = ExtResource("4_il1pb")
+atlas = ExtResource("14_q2pkf")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1d568"]
-atlas = ExtResource("4_il1pb")
+atlas = ExtResource("14_q2pkf")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hyhrv"]
-atlas = ExtResource("4_il1pb")
+atlas = ExtResource("14_q2pkf")
 region = Rect2(448, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_mwo7l"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_yiqb0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -804,7 +804,7 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ak8e"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxdyt"]
 size = Vector2(32, 38)
 
 [node name="Level_15" type="Node"]
@@ -987,16 +987,16 @@ position = Vector2(-192, 21)
 shape = SubResource("RectangleShape2D_4awtd")
 
 [node name="TP-Victory" type="Area2D" parent="."]
-script = ExtResource("5_il1pb")
+script = ExtResource("13_od1hm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TP-Victory"]
-position = Vector2(-249, -64)
-sprite_frames = SubResource("SpriteFrames_mwo7l")
+position = Vector2(-246, -64)
+sprite_frames = SubResource("SpriteFrames_yiqb0")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Victory"]
-position = Vector2(-249, -51)
-shape = SubResource("RectangleShape2D_8ak8e")
+position = Vector2(-246, -51)
+shape = SubResource("RectangleShape2D_vxdyt")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

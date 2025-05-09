@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2pd5dp4rkc4v"
-path="res://.godot/imported/Hit (38x28).png-0654498279449f55d98eeb8ffb56f46b.ctex"
+uid="uid://c41kq3mflgrl6"
+path="res://.godot/imported/Double Jump (32x32).png-bb0a3b66e884aab4fde2ab55b1baef47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Main Characters/King Pig/Hit (38x28).png"
-dest_files=["res://.godot/imported/Hit (38x28).png-0654498279449f55d98eeb8ffb56f46b.ctex"]
+source_file="res://Assets/Sprites/Main Characters/Ninja Frog/Double Jump (32x32).png"
+dest_files=["res://.godot/imported/Double Jump (32x32).png-bb0a3b66e884aab4fde2ab55b1baef47.ctex"]
 
 [params]
 

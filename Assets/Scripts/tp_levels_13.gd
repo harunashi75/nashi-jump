@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var next_level_path: String = "res://Assets/Scenes/level_hard_6.tscn"
+@export var next_level_path: String = "res://Assets/Scenes/level_14.tscn"
 @onready var anim = $AnimatedSprite2D
 
 func _ready():

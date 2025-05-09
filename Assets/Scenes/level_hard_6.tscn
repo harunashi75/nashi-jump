@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://ca315v7oori72"]
+[gd_scene load_steps=26 format=4 uid="uid://ca315v7oori72"]
 
 [ext_resource type="Texture2D" uid="uid://r0lja3wk7m2f" path="res://Assets/Sprites/Maps/Brown.png" id="1_ik65n"]
 [ext_resource type="Texture2D" uid="uid://bapsk16kcq0jx" path="res://Assets/Sprites/Terrain (16x16).png" id="1_smq3v"]
@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="2_c8rlb"]
 [ext_resource type="Texture2D" uid="uid://bc4ljdqavyty3" path="res://Assets/Sprites/Levels/hard.png" id="2_wqru5"]
 [ext_resource type="Texture2D" uid="uid://d2sj57d4ha6gq" path="res://Assets/Sprites/TerrainHidden (16x16).png" id="3_ik65n"]
-[ext_resource type="Script" uid="uid://dggoy7ybak8j3" path="res://Assets/Scripts/tp_levels_hard_6.gd" id="7_nupcm"]
+[ext_resource type="Script" uid="uid://cbrjv1ab5xrhp" path="res://Assets/Scripts/tp_level_victory.gd" id="7_nupcm"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="7_os8na"]
-[ext_resource type="Texture2D" uid="uid://cxo1smd0qywva" path="res://Assets/Sprites/Checkpoint (Flag Idle)(64x64).png" id="7_wqru5"]
+[ext_resource type="Texture2D" uid="uid://b6xic87k8x4b6" path="res://Assets/Sprites/End (Pressed) (64x64).png" id="8_dybq0"]
 [ext_resource type="AudioStream" uid="uid://dl3r1opn436ln" path="res://Assets/Sounds/level-passed-142971.ogg" id="11_dybq0"]
 [ext_resource type="AudioStream" uid="uid://ckl7ubo4d1u7t" path="res://Assets/Sounds/Heavy Air.ogg" id="11_nupcm"]
 
@@ -456,87 +456,72 @@ texture = ExtResource("3_ik65n")
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_quwqw")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nupcm"]
-atlas = ExtResource("7_wqru5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tamx"]
+atlas = ExtResource("8_dybq0")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dybq0"]
-atlas = ExtResource("7_wqru5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_od1hm"]
+atlas = ExtResource("8_dybq0")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_os8na"]
-atlas = ExtResource("7_wqru5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2pkf"]
+atlas = ExtResource("8_dybq0")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g5ort"]
-atlas = ExtResource("7_wqru5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiqb0"]
+atlas = ExtResource("8_dybq0")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nel3q"]
-atlas = ExtResource("7_wqru5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxdyt"]
+atlas = ExtResource("8_dybq0")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_quwqw"]
-atlas = ExtResource("7_wqru5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_i11qu"]
+atlas = ExtResource("8_dybq0")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h7uij"]
-atlas = ExtResource("7_wqru5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d568"]
+atlas = ExtResource("8_dybq0")
 region = Rect2(384, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x2y0x"]
-atlas = ExtResource("7_wqru5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyhrv"]
+atlas = ExtResource("8_dybq0")
 region = Rect2(448, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ty55"]
-atlas = ExtResource("7_wqru5")
-region = Rect2(512, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n2py1"]
-atlas = ExtResource("7_wqru5")
-region = Rect2(576, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_laoel"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_os8na"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nupcm")
+"texture": SubResource("AtlasTexture_7tamx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dybq0")
+"texture": SubResource("AtlasTexture_od1hm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_os8na")
+"texture": SubResource("AtlasTexture_q2pkf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g5ort")
+"texture": SubResource("AtlasTexture_yiqb0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nel3q")
+"texture": SubResource("AtlasTexture_vxdyt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_quwqw")
+"texture": SubResource("AtlasTexture_i11qu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h7uij")
+"texture": SubResource("AtlasTexture_1d568")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x2y0x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ty55")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n2py1")
+"texture": SubResource("AtlasTexture_hyhrv")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 20.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cg4qv"]
-radius = 3.0
-height = 46.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5ort"]
+size = Vector2(32, 38)
 
 [node name="Level_Hard_6" type="Node"]
 script = ExtResource("1_wqru5")
@@ -570,17 +555,17 @@ position = Vector2(246, 0)
 tile_map_data = PackedByteArray("AADv/+j/AAASAAgAAADv//v/AAASAAgAAADw/+j/AAASAAgAAADw//v/AAASAAgAAADx//H/AAASAAgAAADy//H/AAASAAgAAADz/+X/AAASAAgAAADz/+j/AAATAAgAAAD0/+X/AAASAAgAAAD0//v/AAASAAgAAAD1/+X/AAASAAgAAAD1//v/AAASAAgAAAD2/+X/AAASAAgAAAD2//H/AAASAAgAAAD3/+j/AAAUAAkAAAD3/+n/AAAUAAkAAAD3//H/AAASAAgAAAD4//j/AAAUAAkAAAD4//n/AAAUAAkAAAD9/+//AAAUAAkAAAD9//D/AAAUAAkAAAD9//L/AAAUAAoAAAAAAOL/AAAUAAkAAAAAAOP/AAAUAAkAAAAAAPP/AAAUAAgAAAAAAPb/AAAUAAkAAAAAAPf/AAAUAAkAAAADAPH/AAASAAgAAAAEAPH/AAASAAgAAAAEAPn/AAARAAgAAAAFAOb/AAASAAgAAAAFAPn/AAASAAgAAAAGAOb/AAASAAgAAAAGAO7/AAASAAgAAAAGAPH/AAATAAgAAAAHAOb/AAASAAgAAAAHAO7/AAASAAgAAAAHAPn/AAASAAgAAAAIAPn/AAASAAgAAAAKAPP/AAAUAAgAAAANAPv/AAAUAAkAAAANAPz/AAAUAAkAAAAPAPn/AAASAAgAAAAQAOb/AAASAAgAAAAQAO7/AAASAAgAAAAQAPn/AAASAAgAAAARAOb/AAASAAgAAAARAO7/AAASAAgAAAA=")
 tile_set = SubResource("TileSet_h7uij")
 
-[node name="TP-Levels" type="Area2D" parent="."]
+[node name="TP-Victory" type="Area2D" parent="."]
 script = ExtResource("7_nupcm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TP-Levels"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TP-Victory"]
 position = Vector2(-248, -32)
-sprite_frames = SubResource("SpriteFrames_laoel")
+sprite_frames = SubResource("SpriteFrames_os8na")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels"]
-position = Vector2(-256, -23)
-shape = SubResource("CapsuleShape2D_cg4qv")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Victory"]
+position = Vector2(-248, -19)
+shape = SubResource("RectangleShape2D_g5ort")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

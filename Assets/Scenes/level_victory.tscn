@@ -1,13 +1,15 @@
-[gd_scene load_steps=25 format=4 uid="uid://dep876lam2db4"]
+[gd_scene load_steps=39 format=4 uid="uid://dep876lam2db4"]
 
 [ext_resource type="Texture2D" uid="uid://r0lja3wk7m2f" path="res://Assets/Sprites/Maps/Brown.png" id="1_fc2nj"]
 [ext_resource type="Script" uid="uid://dmfkqvh4flah3" path="res://Assets/Scripts/level_victory.gd" id="1_ikbl5"]
 [ext_resource type="Texture2D" uid="uid://b0qi0ffn8u1mu" path="res://Assets/Sprites/Levels/01.png" id="2_nxqji"]
+[ext_resource type="Texture2D" uid="uid://bc4ljdqavyty3" path="res://Assets/Sprites/Levels/hard.png" id="3_1bigt"]
 [ext_resource type="Texture2D" uid="uid://bapsk16kcq0jx" path="res://Assets/Sprites/Terrain (16x16).png" id="4_c4d2k"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="5_1bigt"]
 [ext_resource type="Texture2D" uid="uid://cxo1smd0qywva" path="res://Assets/Sprites/Checkpoint (Flag Idle)(64x64).png" id="6_qmgju"]
 [ext_resource type="Script" uid="uid://bm1l3end5hfrl" path="res://Assets/Scripts/tp_reset.gd" id="7_c4d2k"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="8_hxurn"]
+[ext_resource type="Script" uid="uid://dggoy7ybak8j3" path="res://Assets/Scripts/tp_levels_15.gd" id="9_qmgju"]
 [ext_resource type="AudioStream" uid="uid://b65200jfv0ngs" path="res://Assets/Sounds/Hall of the King.ogg" id="12_1bigt"]
 [ext_resource type="AudioStream" uid="uid://6hh0jupgi3gx" path="res://Assets/Sounds/Victorious.ogg" id="12_qmgju"]
 
@@ -386,6 +388,88 @@ animations = [{
 radius = 3.0
 height = 46.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2o0g"]
+atlas = ExtResource("6_qmgju")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxurn"]
+atlas = ExtResource("6_qmgju")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gltxq"]
+atlas = ExtResource("6_qmgju")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmkey"]
+atlas = ExtResource("6_qmgju")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymbl2"]
+atlas = ExtResource("6_qmgju")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n5ms"]
+atlas = ExtResource("6_qmgju")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qym61"]
+atlas = ExtResource("6_qmgju")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xgtb"]
+atlas = ExtResource("6_qmgju")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gphmb"]
+atlas = ExtResource("6_qmgju")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmhes"]
+atlas = ExtResource("6_qmgju")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2fmjo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2o0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxurn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gltxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmkey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymbl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3n5ms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qym61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xgtb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gphmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmhes")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 20.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q7lng"]
+radius = 3.0
+height = 46.0
+
 [node name="Level_Victory" type="Node"]
 script = ExtResource("1_ikbl5")
 
@@ -403,8 +487,12 @@ grow_vertical = 2
 texture = ExtResource("1_fc2nj")
 stretch_mode = 1
 
+[node name="Hard" type="Sprite2D" parent="."]
+position = Vector2(-96, -201)
+texture = ExtResource("3_1bigt")
+
 [node name="01_2" type="Sprite2D" parent="."]
-position = Vector2(8, -137)
+position = Vector2(111, -199)
 texture = ExtResource("2_nxqji")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -418,13 +506,25 @@ position = Vector2(0, -304)
 script = ExtResource("7_c4d2k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TP-Levels"]
-position = Vector2(16, -96)
+position = Vector2(120, -160)
 sprite_frames = SubResource("SpriteFrames_ymbl2")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels"]
-position = Vector2(8, -87)
+position = Vector2(112, -151)
 shape = SubResource("CapsuleShape2D_3n5ms")
+
+[node name="TP-Levels2" type="Area2D" parent="."]
+script = ExtResource("9_qmgju")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TP-Levels2"]
+position = Vector2(-88, -160)
+sprite_frames = SubResource("SpriteFrames_2fmjo")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels2"]
+position = Vector2(-96, -151)
+shape = SubResource("CapsuleShape2D_q7lng")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
