@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bwlo767avda77" path="res://Assets/Sprites/Traps/Rock Head/Bottom Hit (42x42).png" id="9_v5dvx"]
 [ext_resource type="Texture2D" uid="uid://cqs7uufq7d8dt" path="res://Assets/Sprites/Traps/Rock Head/Top Hit (42x42).png" id="10_j2sux"]
 [ext_resource type="Texture2D" uid="uid://dyacokdab5vd" path="res://Assets/Sprites/Traps/Rock Head/Blink (42x42).png" id="11_g0ckv"]
-[ext_resource type="Script" uid="uid://bijjw7phbfd23" path="res://Assets/Scripts/tp_levels_8.gd" id="12_8u1gu"]
+[ext_resource type="Script" uid="uid://qq7bin3bq03p" path="res://Assets/Scripts/tp_levels_14.gd" id="13_xcscj"]
 [ext_resource type="AudioStream" uid="uid://bjdkuj7fpxvct" path="res://Assets/Sounds/Fisticuffs and Ale.ogg" id="16_g0ckv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yjjnr"]
@@ -967,7 +967,7 @@ position = Vector2(-16, -144)
 shape = SubResource("RectangleShape2D_5s5me")
 
 [node name="TP-Levels" type="Area2D" parent="."]
-script = ExtResource("12_8u1gu")
+script = ExtResource("13_xcscj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TP-Levels"]
 position = Vector2(166, -416)

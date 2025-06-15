@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cuin5757s5c28" path="res://Assets/Sprites/Enemies/Rocks/Rock1_Run (38x34).png" id="7_urm5r"]
 [ext_resource type="Script" uid="uid://df6ifbl20ici2" path="res://Assets/Scripts/blue_bird.gd" id="8_7dyx5"]
 [ext_resource type="Texture2D" uid="uid://buuxvmbjnpbpv" path="res://Assets/Sprites/Enemies/BlueBird/Flying (32x32).png" id="9_qkfqn"]
-[ext_resource type="Script" uid="uid://b3tjoci81xx36" path="res://Assets/Scripts/tp_levels_9.gd" id="10_civhv"]
 [ext_resource type="Texture2D" uid="uid://cxo1smd0qywva" path="res://Assets/Sprites/Checkpoint (Flag Idle)(64x64).png" id="11_bi0id"]
+[ext_resource type="Script" uid="uid://cog4pdy1phxs2" path="res://Assets/Scripts/tp_levels_7.gd" id="11_cta4b"]
 [ext_resource type="AudioStream" uid="uid://bjdkuj7fpxvct" path="res://Assets/Sounds/Fisticuffs and Ale.ogg" id="14_hi63g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_op548"]
@@ -832,7 +832,7 @@ position = Vector2(56, -173)
 shape = SubResource("CircleShape2D_7rna8")
 
 [node name="TP-Levels" type="Area2D" parent="."]
-script = ExtResource("10_civhv")
+script = ExtResource("11_cta4b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TP-Levels"]
 position = Vector2(-153, -128)

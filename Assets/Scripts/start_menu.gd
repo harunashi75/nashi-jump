@@ -25,19 +25,19 @@ func on_easy_pressed():
 	GameManager.difficulty = "easy"
 	GameManager.reset_lives_by_difficulty()
 	GameManager.start_game(GameManager.player_lives)
-	get_tree().change_scene_to_file("res://Assets/Scenes/level_1.tscn")
+	get_tree().change_scene_to_file("res://Assets/Scenes/level_12.tscn")
 
 func on_normal_pressed():
 	GameManager.difficulty = "normal"
 	GameManager.reset_lives_by_difficulty()
 	GameManager.start_game(GameManager.player_lives)
-	get_tree().change_scene_to_file("res://Assets/Scenes/level_1.tscn")
+	get_tree().change_scene_to_file("res://Assets/Scenes/level_12.tscn")
 
 func on_hard_pressed():
 	GameManager.difficulty = "hard"
 	GameManager.reset_lives_by_difficulty()
 	GameManager.start_game(GameManager.player_lives)
-	get_tree().change_scene_to_file("res://Assets/Scenes/level_1.tscn")
+	get_tree().change_scene_to_file("res://Assets/Scenes/level_12.tscn")
 
 func _on_quit_pressed():
 	print("Quit button pressed!")

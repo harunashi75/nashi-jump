@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bwlo767avda77" path="res://Assets/Sprites/Traps/Rock Head/Bottom Hit (42x42).png" id="8_wm78l"]
 [ext_resource type="Texture2D" uid="uid://cqs7uufq7d8dt" path="res://Assets/Sprites/Traps/Rock Head/Top Hit (42x42).png" id="9_f8x85"]
 [ext_resource type="Texture2D" uid="uid://dyacokdab5vd" path="res://Assets/Sprites/Traps/Rock Head/Blink (42x42).png" id="11_f8x85"]
-[ext_resource type="Script" uid="uid://djq8uh536rl42" path="res://Assets/Scripts/tp_levels_3.gd" id="12_y5qq7"]
+[ext_resource type="Script" uid="uid://dr8kc8pdgid2c" path="res://Assets/Scripts/tp_levels_13.gd" id="13_f8x85"]
 [ext_resource type="Texture2D" uid="uid://cxo1smd0qywva" path="res://Assets/Sprites/Checkpoint (Flag Idle)(64x64).png" id="13_wm78l"]
 [ext_resource type="AudioStream" uid="uid://dl3r1opn436ln" path="res://Assets/Sounds/level-passed-142971.ogg" id="14_f8x85"]
 [ext_resource type="AudioStream" uid="uid://bjdkuj7fpxvct" path="res://Assets/Sounds/Fisticuffs and Ale.ogg" id="16_wm78l"]
@@ -967,7 +967,7 @@ position = Vector2(-251, -312)
 shape = SubResource("RectangleShape2D_63crj")
 
 [node name="TP-Levels" type="Area2D" parent="."]
-script = ExtResource("12_y5qq7")
+script = ExtResource("13_f8x85")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TP-Levels"]
 position = Vector2(-246, -464)

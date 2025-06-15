@@ -37,7 +37,7 @@ func toggle_pause():
 func reset_lives_by_difficulty():
 	match difficulty:
 		"easy":
-			player_lives = 10
+			player_lives = 6
 		"normal":
 			player_lives = 3
 		"hard":

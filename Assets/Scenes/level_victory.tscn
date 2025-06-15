@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cxo1smd0qywva" path="res://Assets/Sprites/Checkpoint (Flag Idle)(64x64).png" id="6_qmgju"]
 [ext_resource type="Script" uid="uid://bm1l3end5hfrl" path="res://Assets/Scripts/tp_reset.gd" id="7_c4d2k"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="8_hxurn"]
-[ext_resource type="Script" uid="uid://dggoy7ybak8j3" path="res://Assets/Scripts/tp_levels_15.gd" id="9_qmgju"]
+[ext_resource type="Script" uid="uid://jn4n3848symy" path="res://Assets/Scripts/tp_levels_hard_1.gd" id="9_1bigt"]
 [ext_resource type="AudioStream" uid="uid://b65200jfv0ngs" path="res://Assets/Sounds/Hall of the King.ogg" id="12_1bigt"]
 [ext_resource type="AudioStream" uid="uid://6hh0jupgi3gx" path="res://Assets/Sounds/Victorious.ogg" id="12_qmgju"]
 
@@ -515,7 +515,7 @@ position = Vector2(112, -151)
 shape = SubResource("CapsuleShape2D_3n5ms")
 
 [node name="TP-Levels2" type="Area2D" parent="."]
-script = ExtResource("9_qmgju")
+script = ExtResource("9_1bigt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TP-Levels2"]
 position = Vector2(-88, -160)
