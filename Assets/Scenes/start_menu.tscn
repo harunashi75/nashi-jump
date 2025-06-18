@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxqaap5dhcl18"]
 
 [ext_resource type="Script" uid="uid://bifmrxcevriyn" path="res://Assets/Scripts/start_menu.gd" id="1_qd4of"]
-[ext_resource type="Texture2D" uid="uid://r0lja3wk7m2f" path="res://Assets/Sprites/Maps/Brown.png" id="2_qd4of"]
+[ext_resource type="Texture2D" uid="uid://b4k5p2x1pwhvb" path="res://Assets/Sprites/Maps/Tech_Start (2).png" id="2_ttvl8"]
 [ext_resource type="FontFile" uid="uid://bclc2bjxfmsa2" path="res://Assets/Sprites/Squares.ttf" id="3_esus2"]
 [ext_resource type="FontFile" uid="uid://b6aleuycxxjyr" path="res://Assets/Sprites/Serati-Regular.otf" id="4_nnfbk"]
 [ext_resource type="AudioStream" uid="uid://bsqrdv6fhv06k" path="res://Assets/Sounds/Waiting.ogg" id="5_ttvl8"]
@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_qd4of")
+texture = ExtResource("2_ttvl8")
 expand_mode = 1
 stretch_mode = 1
 
@@ -79,7 +79,7 @@ offset_right = 1139.0
 offset_bottom = 635.0
 theme_override_fonts/normal_font = ExtResource("4_nnfbk")
 theme_override_font_sizes/normal_font_size = 35
-text = "v1.6.0.alpha1"
+text = "v1.6.0.alpha2"
 
 [node name="StartMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ttvl8")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxsk4gts6vd6f"
-path="res://.godot/imported/Jump (28x28).png-544d3cc06e7bcae300e43b120e36efb3.ctex"
+uid="uid://b4k5p2x1pwhvb"
+path="res://.godot/imported/Tech_Start (2).png-9481987bcd23b94a2966338ae7c90a88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Traps/Trampoline/Jump (28x28).png"
-dest_files=["res://.godot/imported/Jump (28x28).png-544d3cc06e7bcae300e43b120e36efb3.ctex"]
+source_file="res://Assets/Sprites/Maps/Tech_Start (2).png"
+dest_files=["res://.godot/imported/Tech_Start (2).png-9481987bcd23b94a2966338ae7c90a88.ctex"]
 
 [params]
 

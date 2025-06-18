@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j7465vtaxspv"
-path="res://.godot/imported/Fall (32x32).png-019c3cbcd6f2cab94d25b5bd30a04e3d.ctex"
+uid="uid://dmlolbg8cemic"
+path="res://.godot/imported/Rock2_Run (32x28).png-03f9302fdbadad413769f6d91a6e11da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Characters/Pink Man/Fall (32x32).png"
-dest_files=["res://.godot/imported/Fall (32x32).png-019c3cbcd6f2cab94d25b5bd30a04e3d.ctex"]
+source_file="res://Assets/Sprites/Enemies/Rocks/Rock2_Run (32x28).png"
+dest_files=["res://.godot/imported/Rock2_Run (32x28).png-03f9302fdbadad413769f6d91a6e11da.ctex"]
 
 [params]
 

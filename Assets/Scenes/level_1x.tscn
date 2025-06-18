@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://df7wwgf4a3vbu"]
+[gd_scene load_steps=84 format=4 uid="uid://df7wwgf4a3vbu"]
 
 [ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/level_1.gd" id="1_1hl3t"]
 [ext_resource type="Texture2D" uid="uid://dqaa4lvbt0nyb" path="res://Assets/Sprites/Maps/Pink.png" id="5_yjkmt"]
@@ -10,8 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://bjdkuj7fpxvct" path="res://Assets/Sounds/Fisticuffs and Ale.ogg" id="21_r4noj"]
 [ext_resource type="Texture2D" uid="uid://bapsk16kcq0jx" path="res://Assets/Sprites/Terrain (16x16).png" id="23_h0gyi"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="24_o3uql"]
-[ext_resource type="Script" uid="uid://bw7dijg10io0" path="res://Assets/Scripts/tp_levels_secret.gd" id="25_nwlv5"]
-[ext_resource type="Texture2D" uid="uid://b6xic87k8x4b6" path="res://Assets/Sprites/End (Pressed) (64x64).png" id="26_l150y"]
 [ext_resource type="Texture2D" uid="uid://d2sj57d4ha6gq" path="res://Assets/Sprites/TerrainHidden (16x16).png" id="27_8obie"]
 [ext_resource type="Script" uid="uid://e0psf0uys1fr" path="res://Assets/Scripts/turtle.gd" id="28_ruuq8"]
 [ext_resource type="Texture2D" uid="uid://gva5hnciqupl" path="res://Assets/Sprites/Enemies/Turtle/Idle 1 (44x26).png" id="29_6o0x0"]
@@ -319,73 +317,6 @@ physics_layer_0/collision_layer = 2
 custom_data_layer_0/name = "damage_per_second"
 custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_uq7jr")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_odk62"]
-atlas = ExtResource("26_l150y")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0xdd4"]
-atlas = ExtResource("26_l150y")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oqexy"]
-atlas = ExtResource("26_l150y")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rpjvx"]
-atlas = ExtResource("26_l150y")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gbieg"]
-atlas = ExtResource("26_l150y")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8co2v"]
-atlas = ExtResource("26_l150y")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uwvpj"]
-atlas = ExtResource("26_l150y")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ghuny"]
-atlas = ExtResource("26_l150y")
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_32knf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_odk62")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0xdd4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oqexy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rpjvx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gbieg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8co2v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uwvpj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ghuny")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 20.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_40i7d"]
-size = Vector2(15, 17)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s8gfl"]
 texture = ExtResource("27_8obie")
@@ -983,19 +914,6 @@ tile_map_data = PackedByteArray("AAD9/wAAAAAJAAEAAAD9/wEAAAAHAAEAAAD+/wAAAAAHAAA
 tile_set = SubResource("TileSet_8p0ab")
 
 [node name="Player" parent="." instance=ExtResource("24_o3uql")]
-
-[node name="TP-Secret" type="Area2D" parent="."]
-script = ExtResource("25_nwlv5")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TP-Secret"]
-position = Vector2(191.5, 17.5)
-scale = Vector2(0.453125, 0.453125)
-sprite_frames = SubResource("SpriteFrames_32knf")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Secret"]
-position = Vector2(191.5, 23.5)
-shape = SubResource("RectangleShape2D_40i7d")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 z_index = 10
