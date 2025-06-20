@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://spf8x4h5gjwl"
+path="res://.godot/imported/Water Theme - G Major - Jordan Ottesen.ogg-8a0acfb3bdfc8042cca5c2c3d591034c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Water Theme - G Major - Jordan Ottesen.ogg"
+dest_files=["res://.godot/imported/Water Theme - G Major - Jordan Ottesen.ogg-8a0acfb3bdfc8042cca5c2c3d591034c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

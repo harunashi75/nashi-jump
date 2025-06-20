@@ -11,6 +11,8 @@ func _ready():
 	
 	var hud = preload("res://Assets/Scenes/hud.tscn").instantiate()
 	add_child(hud)
+	GameManager.hud = hud
+	hud.update_fruits_display()
 
 	if GameManager.difficulty != "":
 		await get_tree().create_timer(0.2).timeout

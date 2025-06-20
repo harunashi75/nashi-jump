@@ -1,19 +1,20 @@
 extends Node
 
 var levels = [
+	"res://Assets/Scenes/level_1.tscn",
+	"res://Assets/Scenes/level_2.tscn",
 	"res://Assets/Scenes/level_3.tscn",
-	"res://Assets/Scenes/level_8.tscn",
-	"res://Assets/Scenes/level_9.tscn",
-	"res://Assets/Scenes/level_12.tscn",
-	"res://Assets/Scenes/level_14.tscn",
-	"res://Assets/Scenes/level_15.tscn",
-	"res://Assets/Scenes/level_secret.tscn",
+	"res://Assets/Scenes/level_4.tscn",
+	"res://Assets/Scenes/level_5.tscn",
+	"res://Assets/Scenes/level_6.tscn",
+	"res://Assets/Scenes/level_bonus_7.tscn",
+	"res://Assets/Scenes/level_skip.tscn",
 	"res://Assets/Scenes/level_victory.tscn",
+	"res://Assets/Scenes/level_hard_1.tscn",
 	"res://Assets/Scenes/level_hard_2.tscn",
 	"res://Assets/Scenes/level_hard_3.tscn",
 	"res://Assets/Scenes/level_hard_4.tscn",
 	"res://Assets/Scenes/level_hard_5.tscn",
-	"res://Assets/Scenes/level_hard_6.tscn",
 	# ...
 ]
 

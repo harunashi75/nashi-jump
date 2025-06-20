@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Nashi Jump"
-config/version="v1.6.0.alpha2"
+config/version="v1.6.0.rc1"
 run/main_scene="res://Assets/Scenes/start_menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://c7hswcig67vm8"
@@ -133,6 +133,7 @@ tp_6={
 2d_physics/layer_2="tilemap"
 2d_physics/layer_3="teleporter"
 2d_physics/layer_4="enemies"
+2d_physics/layer_5="fruits"
 
 [rendering]
 

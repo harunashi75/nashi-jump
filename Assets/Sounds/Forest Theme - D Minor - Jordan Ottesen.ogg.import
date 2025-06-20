@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://0ik3myf20x0f"
+path="res://.godot/imported/Forest Theme - D Minor - Jordan Ottesen.ogg-c6d25b5492f70b0eb769d7ace0af0271.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/Forest Theme - D Minor - Jordan Ottesen.ogg"
+dest_files=["res://.godot/imported/Forest Theme - D Minor - Jordan Ottesen.ogg-c6d25b5492f70b0eb769d7ace0af0271.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

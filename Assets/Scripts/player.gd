@@ -161,7 +161,10 @@ func reset_health():
 func respawn():
 	print("Respawn du joueur...")
 	initialize_health()
-	LevelManager.load_level_by_path("res://Assets/Scenes/level_12.tscn")
+	if GameManager.victory_checkpoint_enabled:
+		LevelManager.load_level_by_path(GameManager.victory_checkpoint_scene_path)
+	else:
+		LevelManager.load_level_by_path("res://Assets/Scenes/level_1.tscn")
 
 # ------------------------
 # Pause Menu
