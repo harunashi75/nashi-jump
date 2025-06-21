@@ -1,10 +1,11 @@
-[gd_scene load_steps=50 format=4 uid="uid://jo4uxs5pivem"]
+[gd_scene load_steps=52 format=4 uid="uid://jo4uxs5pivem"]
 
 [ext_resource type="Texture2D" uid="uid://ckgbet77pta75" path="res://Assets/Sprites/Maps/Purple.png" id="1_6cs4p"]
 [ext_resource type="Script" uid="uid://wuv4hv17hwf4" path="res://Assets/Scripts/level_hard_3.gd" id="1_8q3ct"]
 [ext_resource type="Texture2D" uid="uid://bapsk16kcq0jx" path="res://Assets/Sprites/Terrain (16x16).png" id="1_se2mn"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="2_2w8nl"]
 [ext_resource type="Texture2D" uid="uid://bc4ljdqavyty3" path="res://Assets/Sprites/Levels/hard.png" id="2_a5t5l"]
+[ext_resource type="Shader" uid="uid://dh625lyb5suje" path="res://Assets/Scenes/level_hard_3.gdshader" id="2_g1jkj"]
 [ext_resource type="Texture2D" uid="uid://cxo1smd0qywva" path="res://Assets/Sprites/Checkpoint (Flag Idle)(64x64).png" id="3_dkdhx"]
 [ext_resource type="AudioStream" uid="uid://dl3r1opn436ln" path="res://Assets/Sounds/level-passed-142971.ogg" id="4_viuwn"]
 [ext_resource type="Script" uid="uid://b8uqg3i6biri6" path="res://Assets/Scripts/fat_bird.gd" id="5_8q3ct"]
@@ -15,6 +16,10 @@
 [ext_resource type="Script" uid="uid://ohav3cmnt1ek" path="res://Assets/Scripts/saw_run_left.gd" id="9_mf2pc"]
 [ext_resource type="Script" uid="uid://brtvrh1tw778t" path="res://Assets/Scripts/tp_levels_hard_3.gd" id="11_15xy5"]
 [ext_resource type="AudioStream" uid="uid://7mpytufiguvd" path="res://Assets/Sounds/Rainbow Lollipop.ogg" id="14_15xy5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1e2m"]
+shader = ExtResource("2_g1jkj")
+shader_parameter/SPEED = 0.5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1yo4q"]
 texture = ExtResource("1_se2mn")
@@ -530,6 +535,7 @@ script = ExtResource("1_8q3ct")
 
 [node name="Purple" type="TextureRect" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_f1e2m")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=111 format=4 uid="uid://chrppt8rr7t14"]
+[gd_scene load_steps=113 format=4 uid="uid://chrppt8rr7t14"]
 
 [ext_resource type="Script" uid="uid://n41fqauf7ruw" path="res://Assets/Scripts/level_2.gd" id="1_efllg"]
 [ext_resource type="Texture2D" uid="uid://bkjii7nadwxay" path="res://Assets/Sprites/Maps/Green.png" id="2_43g7m"]
+[ext_resource type="Shader" uid="uid://de68ao3q1xpho" path="res://Assets/Scenes/level_2.gdshader" id="2_bwmal"]
 [ext_resource type="Texture2D" uid="uid://bapsk16kcq0jx" path="res://Assets/Sprites/Terrain (16x16).png" id="3_lyqok"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="4_ap8cu"]
 [ext_resource type="Texture2D" uid="uid://d2sj57d4ha6gq" path="res://Assets/Sprites/TerrainHidden (16x16).png" id="5_bwmal"]
@@ -19,6 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="14_a6f8o"]
 [ext_resource type="AudioStream" uid="uid://bbj8wct5yr34f" path="res://Assets/Sounds/Delightful Stroll.ogg" id="15_unl7x"]
 [ext_resource type="AudioStream" uid="uid://dl3r1opn436ln" path="res://Assets/Sounds/level-passed-142971.ogg" id="16_mvklg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8buu7"]
+shader = ExtResource("2_bwmal")
+shader_parameter/SPEED = 0.5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_26shm"]
 texture = ExtResource("3_lyqok")
@@ -1103,6 +1108,7 @@ script = ExtResource("1_efllg")
 
 [node name="Green" type="TextureRect" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_8buu7")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1149,15 +1155,47 @@ collision_layer = 16
 script = ExtResource("12_ap8cu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Fruits/Apple2"]
-position = Vector2(-218, -383)
+position = Vector2(-212, -383)
 sprite_frames = SubResource("SpriteFrames_0mgl8")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fruits/Apple2"]
-position = Vector2(-218, -383)
+position = Vector2(-212, -383)
 shape = SubResource("CircleShape2D_phssg")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Fruits/Apple2"]
+stream = ExtResource("14_8buu7")
+
+[node name="Apple3" type="Area2D" parent="Fruits"]
+collision_layer = 16
+script = ExtResource("12_ap8cu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Fruits/Apple3"]
+position = Vector2(202, -429)
+sprite_frames = SubResource("SpriteFrames_0mgl8")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fruits/Apple3"]
+position = Vector2(202, -429)
+shape = SubResource("CircleShape2D_phssg")
+
+[node name="CollectSound" type="AudioStreamPlayer" parent="Fruits/Apple3"]
+stream = ExtResource("14_8buu7")
+
+[node name="Apple4" type="Area2D" parent="Fruits"]
+collision_layer = 16
+script = ExtResource("12_ap8cu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Fruits/Apple4"]
+position = Vector2(-208, -208)
+sprite_frames = SubResource("SpriteFrames_0mgl8")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fruits/Apple4"]
+position = Vector2(-208, -208)
+shape = SubResource("CircleShape2D_phssg")
+
+[node name="CollectSound" type="AudioStreamPlayer" parent="Fruits/Apple4"]
 stream = ExtResource("14_8buu7")
 
 [node name="Enemies" type="Node" parent="."]
@@ -1166,7 +1204,7 @@ stream = ExtResource("14_8buu7")
 process_mode = 3
 collision_layer = 8
 script = ExtResource("6_8buu7")
-speed = 80
+speed = 70
 patrol_distance = 46
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/Bunny"]
@@ -1203,7 +1241,7 @@ shape = SubResource("CircleShape2D_3mnk4")
 process_mode = 3
 collision_layer = 8
 script = ExtResource("6_8buu7")
-speed = 70
+speed = 60
 patrol_distance = 46
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/Bunny3"]
@@ -1221,7 +1259,7 @@ shape = SubResource("CircleShape2D_urxuo")
 process_mode = 3
 collision_layer = 8
 script = ExtResource("6_8buu7")
-speed = 90
+speed = 80
 patrol_distance = 46
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/Bunny4"]

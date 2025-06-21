@@ -1,9 +1,10 @@
-[gd_scene load_steps=71 format=4 uid="uid://bh4onqnf8fc2c"]
+[gd_scene load_steps=73 format=4 uid="uid://bh4onqnf8fc2c"]
 
 [ext_resource type="Script" uid="uid://g64438lmv33w" path="res://Assets/Scripts/level_hard_1.gd" id="1_33c37"]
 [ext_resource type="Texture2D" uid="uid://bapsk16kcq0jx" path="res://Assets/Sprites/Terrain (16x16).png" id="1_q45op"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="2_rbo51"]
 [ext_resource type="Texture2D" uid="uid://q2xv4outexmk" path="res://Assets/Sprites/Maps/Yellow.png" id="2_rkqp6"]
+[ext_resource type="Shader" uid="uid://bc4tqjnl6jjkb" path="res://Assets/Scenes/level_hard_1.gdshader" id="2_wt8yq"]
 [ext_resource type="Texture2D" uid="uid://cxo1smd0qywva" path="res://Assets/Sprites/Checkpoint (Flag Idle)(64x64).png" id="3_33c37"]
 [ext_resource type="Texture2D" uid="uid://bc4ljdqavyty3" path="res://Assets/Sprites/Levels/hard.png" id="3_413h6"]
 [ext_resource type="AudioStream" uid="uid://dl3r1opn436ln" path="res://Assets/Sounds/level-passed-142971.ogg" id="4_jksih"]
@@ -18,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://bbk0wawukka2l" path="res://Assets/Sprites/Traps/Spike Head/Top Hit (54x52).png" id="12_5ufyk"]
 [ext_resource type="Texture2D" uid="uid://v4psfi2ebjb3" path="res://Assets/Sprites/Traps/Spike Head/Blink (54x52).png" id="13_413h6"]
 [ext_resource type="AudioStream" uid="uid://7mpytufiguvd" path="res://Assets/Sounds/Rainbow Lollipop.ogg" id="17_413h6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m4sj5"]
+shader = ExtResource("2_wt8yq")
+shader_parameter/SPEED = 0.5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hadhi"]
 texture = ExtResource("1_q45op")
@@ -664,8 +669,9 @@ height = 46.0
 [node name="Level_Hard_1" type="Node"]
 script = ExtResource("1_33c37")
 
-[node name="Yellow4" type="TextureRect" parent="."]
+[node name="Yellow" type="TextureRect" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_m4sj5")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

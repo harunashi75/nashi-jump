@@ -1,7 +1,8 @@
-[gd_scene load_steps=64 format=4 uid="uid://dep876lam2db4"]
+[gd_scene load_steps=66 format=4 uid="uid://dep876lam2db4"]
 
 [ext_resource type="Texture2D" uid="uid://r0lja3wk7m2f" path="res://Assets/Sprites/Maps/Brown.png" id="1_fc2nj"]
 [ext_resource type="Script" uid="uid://dmfkqvh4flah3" path="res://Assets/Scripts/level_victory.gd" id="1_ikbl5"]
+[ext_resource type="Shader" uid="uid://b0wet0hopx1r7" path="res://Assets/Scenes/level_victory.gdshader" id="2_d2o0g"]
 [ext_resource type="Texture2D" uid="uid://bc4ljdqavyty3" path="res://Assets/Sprites/Levels/hard.png" id="3_1bigt"]
 [ext_resource type="Texture2D" uid="uid://bapsk16kcq0jx" path="res://Assets/Sprites/Terrain (16x16).png" id="4_c4d2k"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="5_1bigt"]
@@ -13,6 +14,10 @@
 [ext_resource type="Script" uid="uid://ls3hl01uvuvl" path="res://Assets/Scripts/tp_levels_4.gd" id="11_hxurn"]
 [ext_resource type="AudioStream" uid="uid://b65200jfv0ngs" path="res://Assets/Sounds/Hall of the King.ogg" id="12_1bigt"]
 [ext_resource type="AudioStream" uid="uid://6hh0jupgi3gx" path="res://Assets/Sounds/Victorious.ogg" id="12_qmgju"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxurn"]
+shader = ExtResource("2_d2o0g")
+shader_parameter/SPEED = 0.5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gltxq"]
 texture = ExtResource("4_c4d2k")
@@ -640,6 +645,7 @@ script = ExtResource("1_ikbl5")
 
 [node name="Brown" type="TextureRect" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_hxurn")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

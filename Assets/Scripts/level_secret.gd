@@ -8,7 +8,7 @@ func _ready():
 	var hud = preload("res://Assets/Scenes/hud.tscn").instantiate()
 	add_child(hud)
 	GameManager.hud = hud
-	GameManager.total_fruits_in_level = 17
+	GameManager.total_fruits_in_level = 36
 	hud.update_fruits_display()
 
 	if GameManager.difficulty != "":
