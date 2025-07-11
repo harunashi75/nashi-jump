@@ -11,10 +11,10 @@ config_version=5
 [application]
 
 config/name="Nashi Jump"
-config/version="v1.6.0"
+config/version="v2.0.0"
 run/main_scene="res://Assets/Scenes/start_menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="uid://c7hswcig67vm8"
+config/icon="uid://dnk7ytxfl3rrv"
 
 [autoload]
 
@@ -138,3 +138,4 @@ tp_6={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

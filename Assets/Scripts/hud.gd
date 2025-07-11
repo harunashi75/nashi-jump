@@ -1,17 +1,16 @@
 extends CanvasLayer
 
 @onready var timer_label = $TimerLabel
-@onready var fruit_label = $FruitLabel
+@onready var coin_label = $CoinLabel
 
 func _process(_delta):
-	if TimerManager.running:
-		timer_label.text = "Time: " + TimerManager.get_formatted_time() + ""
+	timer_label.text = "Time: " + TimerManager.get_formatted_time()
 
-func update_fruits_display():
-	var total = GameManager.total_fruits_in_level
+func update_coins_display():
+	var total = GameManager.total_coins_in_level
 	var collected = 0
 
-	for fruit in GameManager.fruits_collected.values():
-		collected += fruit
+	for coin in GameManager.coins_collected.values():
+		collected += coin
 
-	$FruitLabel.text = "Fruits : %d / %d" % [collected, total]
+	$CoinLabel.text = "Coins: %d/%d" % [collected, total]

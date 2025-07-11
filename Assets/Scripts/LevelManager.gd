@@ -9,7 +9,6 @@ var levels = [
 	"res://Assets/Scenes/level_6.tscn",
 	"res://Assets/Scenes/level_bonus_1.tscn",
 	"res://Assets/Scenes/level_bonus_2.tscn",
-	"res://Assets/Scenes/level_skip.tscn",
 	"res://Assets/Scenes/level_victory.tscn",
 	"res://Assets/Scenes/level_hard_1.tscn",
 	"res://Assets/Scenes/level_hard_2.tscn",

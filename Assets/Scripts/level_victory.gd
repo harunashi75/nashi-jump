@@ -12,12 +12,7 @@ func _ready():
 	var hud = preload("res://Assets/Scenes/hud.tscn").instantiate()
 	add_child(hud)
 	GameManager.hud = hud
-	hud.update_fruits_display()
-
-	if GameManager.difficulty != "":
-		await get_tree().create_timer(0.2).timeout
-		TimerManager.stop_timer()
-		print("Temps total :", TimerManager.get_formatted_time())
+	hud.update_coins_display()
 
 	GameManager.pause_menu = $UI/PauseMenu
 

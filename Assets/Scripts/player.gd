@@ -21,6 +21,7 @@ var health = 3
 # Animation saut
 var just_jumped = false
 var jump_anim_timer = 0.15
+var current_skin := "default"
 
 # ------------------------
 # Références aux Nodes
@@ -34,24 +35,21 @@ var jump_anim_timer = 0.15
 # Ready
 # ------------------------
 func _ready():
-	var current_scene = get_tree().current_scene.scene_file_path
+	current_skin = GameManager.current_skin  # Applique le skin sélectionné
 
-	# Si on est dans le level_victory, reset tout
+	var current_scene = get_tree().current_scene.scene_file_path
 	if current_scene == "res://Assets/Scenes/level_victory.tscn":
 		GameManager.reset_lives_by_difficulty()
 		initialize_health()
 		GameManager.has_initialized_health = true
 	else:
-		# Sinon, si pas encore initialisé, on prend les valeurs globales
 		if not GameManager.has_initialized_health:
 			initialize_health()
 			GameManager.has_initialized_health = true
 		else:
-			# Charger les vies sauvegardées
 			max_health = GameManager.player_lives
 			current_health = GameManager.player_current_health
 
-	# Met à jour la HealthBar au lancement
 	if is_instance_valid(health_bar):
 		health_bar.set_health(current_health, max_health)
 
@@ -90,9 +88,9 @@ func handle_jump():
 		jump_sound.play()
 
 		if is_on_floor():
-			sprite.play("jump")
+			play_skin_anim("jump")
 		else:
-			sprite.play("double_jump")
+			play_skin_anim("double_jump")
 
 		jumps_left -= 1
 		just_jumped = true
@@ -112,14 +110,29 @@ func handle_animation(delta):
 		return
 
 	if not is_on_floor():
-		if velocity.y > 0 and sprite.animation != "fall":
-			sprite.play("fall")
+		if velocity.y > 0 and sprite.animation != get_skin_anim("fall"):
+			play_skin_anim("fall")
 	elif velocity.x != 0:
-		if sprite.animation != "run":
-			sprite.play("run")
+		if sprite.animation != get_skin_anim("run"):
+			play_skin_anim("run")
 	else:
-		if sprite.animation != "idle":
-			sprite.play("idle")
+		if sprite.animation != get_skin_anim("idle"):
+			play_skin_anim("idle")
+
+func get_skin_anim(base: String) -> String:
+	return "%s_%s" % [base, current_skin]
+
+func play_skin_anim(base: String):
+	var anim_name = get_skin_anim(base)
+
+	if sprite.sprite_frames.has_animation(anim_name):
+		sprite.play(anim_name)
+	else:
+		var fallback_anim = "%s_default" % base
+		if sprite.sprite_frames.has_animation(fallback_anim):
+			sprite.play(fallback_anim)
+		else:
+			print("Aucune animation trouvée pour :", anim_name, "ni", fallback_anim)
 
 # ------------------------
 # Gestion Santé
@@ -136,7 +149,7 @@ func take_damage(amount):
 	current_health -= amount
 	print("Vies restantes :", current_health)
 
-	sprite.play("hit")
+	play_skin_anim("hit")
 	if not hit_sound.playing:
 		hit_sound.play()
 
