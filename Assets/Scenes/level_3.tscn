@@ -1258,18 +1258,18 @@ process_mode = 3
 collision_layer = 8
 script = ExtResource("8_f8x85")
 speed = 120
-patrol_distance = 101
+patrol_distance = 98
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/Slime"]
 process_mode = 3
-position = Vector2(-153, -104)
+position = Vector2(-160, -104)
 sprite_frames = SubResource("SpriteFrames_yilh8")
 animation = &"run"
 frame_progress = 0.734123
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Slime"]
 process_mode = 3
-position = Vector2(-153, -102)
+position = Vector2(-160, -102)
 shape = SubResource("CircleShape2D_smd6q")
 
 [node name="Slime2" type="Area2D" parent="Enemies"]
@@ -1281,30 +1281,30 @@ patrol_distance = 44
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/Slime2"]
 process_mode = 3
-position = Vector2(-112, -232)
+position = Vector2(-120, -232)
 sprite_frames = SubResource("SpriteFrames_yilh8")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Slime2"]
 process_mode = 3
-position = Vector2(-112, -230)
+position = Vector2(-120, -230)
 shape = SubResource("CircleShape2D_irnh0")
 
 [node name="Slime3" type="Area2D" parent="Enemies"]
 process_mode = 3
 collision_layer = 8
 script = ExtResource("8_f8x85")
-patrol_distance = 70
+patrol_distance = 74
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/Slime3"]
 process_mode = 3
-position = Vector2(70, -104)
+position = Vector2(72, -104)
 sprite_frames = SubResource("SpriteFrames_yilh8")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Slime3"]
 process_mode = 3
-position = Vector2(70, -102)
+position = Vector2(72, -102)
 shape = SubResource("CircleShape2D_smd6q")
 
 [node name="Traps" type="Node" parent="."]

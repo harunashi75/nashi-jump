@@ -1670,11 +1670,11 @@ volume_db = -10.0
 process_mode = 3
 collision_layer = 8
 script = ExtResource("8_pqe7q")
-patrol_distance = 102
+patrol_distance = 82
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/Slime"]
 process_mode = 3
-position = Vector2(-56, -408)
+position = Vector2(-88, -408)
 sprite_frames = SubResource("SpriteFrames_sundp")
 animation = &"run"
 frame = 2
@@ -1682,7 +1682,7 @@ frame_progress = 0.616858
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Slime"]
 process_mode = 3
-position = Vector2(-56, -406)
+position = Vector2(-88, -406)
 shape = SubResource("CircleShape2D_qhh52")
 
 [node name="Traps" type="Node" parent="."]

@@ -8,10 +8,11 @@ var victory_checkpoint_enabled := false
 var victory_checkpoint_scene_path := ""
 var time_scores := {}
 var game_start_time: int = 0
+var has_died_in_fun_mode := false
 
 # Vies
-var player_lives: int = 3
-var player_current_health = 3
+var player_lives: int = 5
+var player_current_health = 5
 var has_initialized_health := false
 var difficulty := "normal"
 
@@ -32,13 +33,15 @@ var unlocked_skins := {
 	"hard": false,
 	"gold": false,
 	"time": false,
-	"timetwo": false
+	"timetwo": false,
+	"cyber": false
 }
 
 var coins_collected_by_difficulty := {
 	"easy": 0,
 	"normal": 0,
-	"hard": 0
+	"hard": 0,
+	"fun": 0
 }
 const SAVE_PATH = "user://skin_data.save"
 
@@ -68,13 +71,15 @@ func toggle_pause():
 func reset_lives_by_difficulty():
 	match difficulty:
 		"easy":
-			player_lives = 6
+			player_lives = 8
 		"normal":
-			player_lives = 3
+			player_lives = 5
 		"hard":
 			player_lives = 1
+		"fun":
+			player_lives = 500
 		_:
-			player_lives = 3
+			player_lives = 5
 
 	player_current_health = player_lives
 
@@ -142,10 +147,14 @@ func check_unlock_skins():
 
 	if all_done and not unlocked_skins.get("gold", false):
 		unlocked_skins["gold"] = true
-		print("Skin doré débloqué!")
+		print("Skin GOLD débloqué!")
+
+	# Débloque le skin Cyber si 94 coins collectés en mode fun ET au moins une mort
+	if difficulty == "fun" and total >= 94 and has_died_in_fun_mode and not unlocked_skins.get("cyber", false):
+		unlocked_skins["cyber"] = true
+		print("Skin RAINBOW débloqué!")
 
 	check_time_skins()
-	# Sauvegarde après mise à jour
 	save_skin_data()
 
 func save_skin_data():
@@ -168,6 +177,10 @@ func load_skin_data():
 		coins_collected_by_difficulty = data.get("coins_collected_by_difficulty", coins_collected_by_difficulty)
 		time_scores = data.get("time_scores", {})
 		file.close()
+
+		for key in ["easy", "normal", "hard", "gold", "time", "timetwo", "cyber"]:
+			if not unlocked_skins.has(key):
+				unlocked_skins[key] = false
 	else:
 		current_skin = "default"
 		unlocked_skins = {
@@ -176,12 +189,14 @@ func load_skin_data():
 			"hard": false,
 			"gold": false,
 			"time": false,
-			"timetwo": false
+			"timetwo": false,
+			"cyber": false
 		}
 		coins_collected_by_difficulty = {
 			"easy": 0,
 			"normal": 0,
-			"hard": 0
+			"hard": 0,
+			"fun": 0
 		}
 		time_scores = {}
 

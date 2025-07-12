@@ -1109,23 +1109,25 @@ volume_db = -10.0
 process_mode = 3
 collision_layer = 8
 script = ExtResource("8_u7wbk")
-speed = 46
+speed = 60
+patrol_distance = 58
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/Gerbillinae"]
 process_mode = 3
-position = Vector2(217, -8)
+position = Vector2(208, -8)
 sprite_frames = SubResource("SpriteFrames_0s6v7")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Gerbillinae"]
 process_mode = 3
-position = Vector2(217, -6)
+position = Vector2(208, -6)
 shape = SubResource("CircleShape2D_g2kgq")
 
 [node name="Gerbillinae2" type="Area2D" parent="Enemies"]
 process_mode = 3
 collision_layer = 8
 script = ExtResource("8_u7wbk")
+patrol_distance = 48
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/Gerbillinae2"]
 process_mode = 3
@@ -1142,17 +1144,17 @@ shape = SubResource("CircleShape2D_73b26")
 process_mode = 3
 collision_layer = 8
 script = ExtResource("8_u7wbk")
-patrol_distance = 47
+patrol_distance = 62
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/Gerbillinae3"]
 process_mode = 3
-position = Vector2(39, -248)
+position = Vector2(56, -248)
 sprite_frames = SubResource("SpriteFrames_0s6v7")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Gerbillinae3"]
 process_mode = 3
-position = Vector2(39, -246)
+position = Vector2(56, -246)
 shape = SubResource("CircleShape2D_cgigq")
 
 [node name="Traps" type="Node" parent="."]

@@ -3,6 +3,7 @@ extends Control
 @onready var easy_button = $VBoxContainer/Easy
 @onready var normal_button = $VBoxContainer/Normal
 @onready var hard_button = $VBoxContainer/Hard
+@onready var fun_button = $VBoxContainer/Fun
 @onready var quit_button = $VBoxContainer/Quit
 @onready var default_skin_button = $HBoxContainer/DefaultSkin
 @onready var gold_skin_button = $HBoxContainer/GoldSkin
@@ -11,12 +12,16 @@ extends Control
 @onready var hard_skin_button = $HBoxContainer/HardSkin
 @onready var time_skin_button = $HBoxContainer2/TimeSkin
 @onready var time_skin_two_button = $HBoxContainer2/TimeSkinTwo
+@onready var cyber_skin_button = $HBoxContainer2/CyberSkin
+@onready var unlock_info_button = $HBoxContainer2/HowToUnlock
+@onready var unlock_info_panel = $UnlockInfoPanel
 @onready var music = $StartMusic
 
 func _ready():
 	easy_button.pressed.connect(on_easy_pressed)
 	normal_button.pressed.connect(on_normal_pressed)
 	hard_button.pressed.connect(on_hard_pressed)
+	fun_button.pressed.connect(on_fun_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
 	default_skin_button.pressed.connect(_on_default_skin_pressed)
 	gold_skin_button.pressed.connect(_on_gold_skin_pressed)
@@ -25,6 +30,9 @@ func _ready():
 	hard_skin_button.pressed.connect(on_hard_skin_pressed)
 	time_skin_button.pressed.connect(on_time_skin_pressed)
 	time_skin_two_button.pressed.connect(on_time_skin_two_pressed)
+	cyber_skin_button.pressed.connect(on_cyber_skin_pressed)
+	unlock_info_button.pressed.connect(show_unlock_info)
+	unlock_info_panel.hide()
 
 	# Désactiver le bouton Gold si le skin n’est pas encore débloqué
 	gold_skin_button.disabled = not GameManager.unlocked_skins.get("gold", false)
@@ -33,6 +41,7 @@ func _ready():
 	hard_skin_button.disabled = not GameManager.unlocked_skins.get("hard", false)
 	time_skin_button.disabled = not GameManager.unlocked_skins.get("time", false)
 	time_skin_two_button.disabled = not GameManager.unlocked_skins.get("timetwo", false)
+	cyber_skin_button.disabled = not GameManager.unlocked_skins.get("cyber", false)
 
 	if music and not music.playing:
 		music.play()
@@ -67,9 +76,19 @@ func on_hard_pressed():
 	TimerManager.start_timer()
 	get_tree().change_scene_to_file("res://Assets/Scenes/level_1.tscn")
 
+func on_fun_pressed():
+	GameManager.difficulty = "fun"
+	GameManager.reset_lives_by_difficulty()
+	GameManager.reset_coins()
+	GameManager.start_game(GameManager.player_lives)
+	get_tree().change_scene_to_file("res://Assets/Scenes/level_victory.tscn")
+
 func _on_quit_pressed():
 	print("Quit button pressed!")
 	get_tree().quit()
+
+func show_unlock_info():
+	unlock_info_panel.popup_centered()
 
 func _on_default_skin_pressed():
 	GameManager.current_skin = "default"
@@ -104,3 +123,8 @@ func on_time_skin_two_pressed():
 	GameManager.current_skin = "timetwo"
 	GameManager.save_skin_data()
 	print("Skin time two activé.")
+
+func on_cyber_skin_pressed():
+	GameManager.current_skin = "cyber"
+	GameManager.save_skin_data()
+	print("Skin cyber activé.")

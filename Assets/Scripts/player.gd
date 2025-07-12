@@ -162,6 +162,8 @@ func take_damage(amount):
 		health_bar.set_health(current_health, max_health)
 
 	if current_health <= 0:
+		if GameManager.difficulty == "fun":
+			GameManager.has_died_in_fun_mode = true
 		respawn()
 
 	GameManager.player_current_health = current_health

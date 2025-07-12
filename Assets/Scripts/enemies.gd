@@ -16,7 +16,7 @@ func _ready():
 	target_position = start_position + Vector2(patrol_distance, 0)
 	sprite.play("run")
 	connect("body_entered", _on_body_entered)
-	_update_flip()  # initialise le bon sens dès le départ
+	_update_flip()
 
 func _physics_process(delta):
 	var move = direction * speed * delta

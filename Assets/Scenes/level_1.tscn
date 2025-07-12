@@ -1213,7 +1213,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fdrjk"]
-radius = 8.0
+radius = 7.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tb4ya"]
 atlas = ExtResource("15_2kdgr")
@@ -1509,11 +1509,11 @@ process_mode = 3
 collision_layer = 8
 script = ExtResource("8_4l5e6")
 speed = 110
-patrol_distance = 82
+patrol_distance = 88
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/Bomb"]
 process_mode = 3
-position = Vector2(-145, -12)
+position = Vector2(-144, -12)
 sprite_frames = SubResource("SpriteFrames_h1b0q")
 animation = &"run"
 frame = 2
@@ -1521,18 +1521,18 @@ frame_progress = 0.178356
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Bomb"]
 process_mode = 3
-position = Vector2(-145, -8)
+position = Vector2(-144, -7)
 shape = SubResource("CircleShape2D_fdrjk")
 
 [node name="Bomb2" type="Area2D" parent="Enemies"]
 process_mode = 3
 collision_layer = 8
 script = ExtResource("8_4l5e6")
-patrol_distance = 130
+patrol_distance = 116
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/Bomb2"]
 process_mode = 3
-position = Vector2(124, -236)
+position = Vector2(98, -236)
 sprite_frames = SubResource("SpriteFrames_h1b0q")
 animation = &"run"
 frame = 3
@@ -1540,7 +1540,7 @@ frame_progress = 0.605057
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Bomb2"]
 process_mode = 3
-position = Vector2(124, -232)
+position = Vector2(98, -231)
 shape = SubResource("CircleShape2D_fdrjk")
 
 [node name="Traps" type="Node" parent="."]
