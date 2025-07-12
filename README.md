@@ -65,13 +65,7 @@ Système de sauvegarde intégré (progression & skins)
 
 Si tu aimes le jeu et veux encourager son développement, tu peux m’offrir un café ici : https://ko-fi.com/harunashi75
 
-Chaque don aide à :
-
-améliorer le jeu,
-
-ajouter du nouveau contenu (skins, sons, niveaux),
-
-et continuer cette belle aventure avec vous ❤️
+Chaque don aide à : améliorer le jeu, ajouter du nouveau contenu (skins, sons, niveaux), et continuer cette belle aventure avec vous ❤️
 
 
 👤 Développé avec amour par Haru Nashi / Nashi Studio
