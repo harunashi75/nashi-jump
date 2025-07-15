@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://cxddtd7bkxh4a"]
+[gd_scene load_steps=64 format=4 uid="uid://cxddtd7bkxh4a"]
 
 [ext_resource type="Script" uid="uid://jt2arcbujyrv" path="res://Assets/Scripts/level_bonus_1.gd" id="1_4du1w"]
 [ext_resource type="Shader" uid="uid://crkgmd77k1dxq" path="res://Assets/Scenes/level_bonus_1.gdshader" id="2_lyv3w"]
@@ -6,17 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="4_tveg1"]
 [ext_resource type="Texture2D" uid="uid://ds7n0ff6q4r8f" path="res://Assets/Sprites/Plataformpack-byArpion.png" id="5_q28hv"]
 [ext_resource type="Script" uid="uid://bgmj14jugfpqk" path="res://Assets/Scripts/coins.gd" id="5_rphde"]
-[ext_resource type="AudioStream" uid="uid://beb3xi840fcgh" path="res://Assets/Sounds/Pickup_Coin2.wav" id="7_yj1rg"]
+[ext_resource type="AudioStream" uid="uid://d1xnfv5vtjgd2" path="res://Assets/Sounds/coin.wav" id="7_yj1rg"]
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="8_pqe7q"]
 [ext_resource type="Script" uid="uid://ch3wlueq23qak" path="res://Assets/Scripts/traps.gd" id="10_pal2q"]
 [ext_resource type="Texture2D" uid="uid://cdr25525080cy" path="res://Assets/Sprites/Enemies/04.png" id="11_q28hv"]
 [ext_resource type="Texture2D" uid="uid://edyq1wc3bwlp" path="res://Assets/Sprites/Traps/Cactus_2.png" id="13_de7ws"]
 [ext_resource type="Script" uid="uid://rj8bo7ewwsmm" path="res://Assets/Scripts/brickhead.gd" id="14_6j4sn"]
 [ext_resource type="Texture2D" uid="uid://dkbugje2anayf" path="res://Assets/Sprites/Traps/Brickhead_1_2.png" id="17_4du1w"]
+[ext_resource type="AudioStream" uid="uid://3ob7ge3sd6ad" path="res://Assets/Sounds/mixkit-wind-chimes-2014.wav" id="17_yj1rg"]
 [ext_resource type="Script" uid="uid://ls3hl01uvuvl" path="res://Assets/Scripts/tp_levels_4.gd" id="18_rrxjh"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="20_c0jb0"]
-[ext_resource type="AudioStream" uid="uid://bbj8wct5yr34f" path="res://Assets/Sounds/Delightful Stroll.ogg" id="21_v0jyg"]
-[ext_resource type="AudioStream" uid="uid://dl3r1opn436ln" path="res://Assets/Sounds/level-passed-142971.ogg" id="22_uupeo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tveg1"]
 shader = ExtResource("2_lyv3w")
@@ -1543,7 +1542,6 @@ shape = SubResource("CircleShape2D_j3q6s")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin49"]
 stream = ExtResource("7_yj1rg")
-volume_db = -10.0
 
 [node name="Coin50" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1560,7 +1558,6 @@ shape = SubResource("CircleShape2D_j3q6s")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin50"]
 stream = ExtResource("7_yj1rg")
-volume_db = -10.0
 
 [node name="Coin51" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1577,7 +1574,6 @@ shape = SubResource("CircleShape2D_j3q6s")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin51"]
 stream = ExtResource("7_yj1rg")
-volume_db = -10.0
 
 [node name="Coin52" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1594,7 +1590,6 @@ shape = SubResource("CircleShape2D_j3q6s")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin52"]
 stream = ExtResource("7_yj1rg")
-volume_db = -10.0
 
 [node name="Coin53" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1611,7 +1606,6 @@ shape = SubResource("CircleShape2D_j3q6s")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin53"]
 stream = ExtResource("7_yj1rg")
-volume_db = -10.0
 
 [node name="Coin54" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1628,7 +1622,6 @@ shape = SubResource("CircleShape2D_j3q6s")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin54"]
 stream = ExtResource("7_yj1rg")
-volume_db = -10.0
 
 [node name="Coin55" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1645,7 +1638,6 @@ shape = SubResource("CircleShape2D_j3q6s")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin55"]
 stream = ExtResource("7_yj1rg")
-volume_db = -10.0
 
 [node name="Coin56" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1662,7 +1654,6 @@ shape = SubResource("CircleShape2D_j3q6s")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin56"]
 stream = ExtResource("7_yj1rg")
-volume_db = -10.0
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -1951,9 +1942,5 @@ shape = SubResource("CapsuleShape2D_qfbna")
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("20_c0jb0")]
 
-[node name="LevelSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("21_v0jyg")
-parameters/looping = true
-
 [node name="TPSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("22_uupeo")
+stream = ExtResource("17_yj1rg")

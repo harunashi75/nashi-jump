@@ -35,8 +35,10 @@ var current_skin := "default"
 # Ready
 # ------------------------
 func _ready():
-	current_skin = GameManager.current_skin  # Applique le skin sélectionné
-
+	add_to_group("player")
+	set_process_input(false) # Désactiver les entrées au démarrage
+	current_skin = GameManager.current_skin
+	print("Skin actif :", current_skin)
 	var current_scene = get_tree().current_scene.scene_file_path
 	if current_scene == "res://Assets/Scenes/level_victory.tscn":
 		GameManager.reset_lives_by_difficulty()
@@ -49,9 +51,12 @@ func _ready():
 		else:
 			max_health = GameManager.player_lives
 			current_health = GameManager.player_current_health
-
-	if is_instance_valid(health_bar):
+	if is_instance_valid(health_bar) and health_bar.is_inside_tree():
 		health_bar.set_health(current_health, max_health)
+	else:
+		print("Erreur : health_bar n'est pas dans l'arbre ou est null")
+	await get_tree().create_timer(0.1).timeout # Attendre que la scène soit chargée
+	set_process_input(true) # Réactiver les entrées
 
 # ------------------------
 # Physique principale
@@ -103,6 +108,10 @@ func handle_jump():
 # Gestion Animation
 # ------------------------
 func handle_animation(delta):
+	if current_skin != GameManager.current_skin:
+		current_skin = GameManager.current_skin
+		play_skin_anim("idle")
+
 	if just_jumped:
 		jump_anim_timer -= delta
 		if jump_anim_timer <= 0:
@@ -145,6 +154,15 @@ func initialize_health():
 		health_bar.max_value = max_health
 		health_bar.value = current_health
 
+func set_lives(amount: int):
+	current_health = amount
+	max_health = amount
+
+	if is_instance_valid(health_bar):
+		health_bar.set_health(current_health, max_health)
+
+	print("Nouvelles vies définies : %d" % current_health)
+
 func take_damage(amount):
 	current_health -= amount
 	print("Vies restantes :", current_health)
@@ -176,6 +194,11 @@ func reset_health():
 func respawn():
 	print("Respawn du joueur...")
 	initialize_health()
+	set_process_input(false)  # Désactive les inputs pour éviter les appels à _input()
+
+	call_deferred("do_respawn")  # Attend la fin de frame pour changer de scène
+
+func do_respawn():
 	if GameManager.victory_checkpoint_enabled:
 		LevelManager.load_level_by_path(GameManager.victory_checkpoint_scene_path)
 	else:
@@ -185,5 +208,7 @@ func respawn():
 # Pause Menu
 # ------------------------
 func _input(event):
-	if event.is_action_pressed("pause_menu"):
+	if is_inside_tree() and event.is_action_pressed("pause_menu"):
 		GameManager.toggle_pause()
+	elif not is_inside_tree():
+		print("Erreur : Player n'est pas dans l'arbre lors de la gestion de l'entrée")

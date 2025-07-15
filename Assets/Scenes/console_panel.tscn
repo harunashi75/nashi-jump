@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4d1syv0k73pl"]
+
+[ext_resource type="Script" uid="uid://ddkx17ygjy2ib" path="res://Assets/Scripts/console_panel.gd" id="1_irthn"]
+
+[node name="ConsolePanel" type="CanvasLayer"]
+script = ExtResource("1_irthn")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -236.0
+offset_right = 504.0
+offset_bottom = -36.0
+grow_vertical = 0
+
+[node name="LineEdit" type="LineEdit" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -35.0
+offset_right = 504.0
+offset_bottom = -4.0
+grow_vertical = 0

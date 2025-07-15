@@ -3,11 +3,11 @@ extends Node
 var time_elapsed := 0.0
 var running := false
 
-# Nouveaux records par difficulté
 var best_times := {
 	"easy": -1.0,
 	"normal": -1.0,
-	"hard": -1.0
+	"hard": -1.0,
+	"fun": -1.0
 }
 
 const SAVE_PATH = "user://score.save"
@@ -16,8 +16,10 @@ func _ready():
 	load_best_times()
 
 func _process(delta):
-	if running:
+	if is_inside_tree() and running:
 		time_elapsed += delta
+	elif not is_inside_tree():
+		print("Erreur : TimerManager n'est pas dans l'arbre pendant _process")
 
 func start_timer():
 	time_elapsed = 0.0
@@ -57,7 +59,6 @@ func get_formatted_best_time(difficulty: String) -> String:
 	var milliseconds = int((best_time - int(best_time)) * 100)
 	return "%02d:%02d.%02d" % [minutes, seconds, milliseconds]
 
-# Appelé quand le joueur atteint la fin (tp final par exemple)
 func maybe_set_best_time(difficulty: String):
 	var current_time = time_elapsed
 	if best_times.get(difficulty, -1.0) == -1.0 or current_time < best_times[difficulty]:

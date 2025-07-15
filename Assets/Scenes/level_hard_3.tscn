@@ -1,20 +1,19 @@
-[gd_scene load_steps=39 format=4 uid="uid://jo4uxs5pivem"]
+[gd_scene load_steps=40 format=4 uid="uid://jo4uxs5pivem"]
 
 [ext_resource type="Script" uid="uid://wuv4hv17hwf4" path="res://Assets/Scripts/level_hard_3.gd" id="1_8q3ct"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="2_2w8nl"]
 [ext_resource type="Shader" uid="uid://dh625lyb5suje" path="res://Assets/Scenes/level_hard_3.gdshader" id="2_g1jkj"]
 [ext_resource type="Texture2D" uid="uid://ced3pus5bnt42" path="res://Assets/Sprites/Maps/Blue.png" id="3_al36u"]
-[ext_resource type="AudioStream" uid="uid://dl3r1opn436ln" path="res://Assets/Sounds/level-passed-142971.ogg" id="4_viuwn"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="5_pavus"]
 [ext_resource type="Texture2D" uid="uid://ds7n0ff6q4r8f" path="res://Assets/Sprites/Plataformpack-byArpion.png" id="6_g1jkj"]
 [ext_resource type="Script" uid="uid://bgmj14jugfpqk" path="res://Assets/Scripts/coins.gd" id="6_vxuwt"]
 [ext_resource type="Script" uid="uid://bgpt66jvi8fqn" path="res://Assets/Scripts/saw_run_right.gd" id="7_b5ql7"]
-[ext_resource type="AudioStream" uid="uid://beb3xi840fcgh" path="res://Assets/Sounds/Pickup_Coin2.wav" id="7_g1jkj"]
-[ext_resource type="Texture2D" uid="uid://b8opgwfph30di" path="res://Assets/Sprites/Traps/Saw/On (38x38).png" id="8_la1hd"]
+[ext_resource type="AudioStream" uid="uid://d1xnfv5vtjgd2" path="res://Assets/Sounds/coin.wav" id="7_vxuwt"]
 [ext_resource type="Script" uid="uid://ch3wlueq23qak" path="res://Assets/Scripts/traps.gd" id="9_al36u"]
+[ext_resource type="Texture2D" uid="uid://brmdsqxunr587" path="res://Assets/Sprites/Traps/Pixel_Magic_Effects_Animations.png" id="9_kn3xm"]
 [ext_resource type="Script" uid="uid://ohav3cmnt1ek" path="res://Assets/Scripts/saw_run_left.gd" id="9_mf2pc"]
 [ext_resource type="Script" uid="uid://brtvrh1tw778t" path="res://Assets/Scripts/tp_levels_hard_3.gd" id="11_15xy5"]
-[ext_resource type="AudioStream" uid="uid://7mpytufiguvd" path="res://Assets/Sounds/Rainbow Lollipop.ogg" id="14_15xy5"]
+[ext_resource type="AudioStream" uid="uid://3ob7ge3sd6ad" path="res://Assets/Sounds/mixkit-wind-chimes-2014.wav" id="15_vxuwt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f1e2m"]
 shader = ExtResource("2_g1jkj")
@@ -1260,71 +1259,86 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_imurg"]
 radius = 6.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y4bfm"]
-atlas = ExtResource("8_la1hd")
-region = Rect2(0, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxuwt"]
+atlas = ExtResource("9_kn3xm")
+region = Rect2(576, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ajk7f"]
-atlas = ExtResource("8_la1hd")
-region = Rect2(38, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1jkj"]
+atlas = ExtResource("9_kn3xm")
+region = Rect2(576, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_taw00"]
-atlas = ExtResource("8_la1hd")
-region = Rect2(76, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1e2m"]
+atlas = ExtResource("9_kn3xm")
+region = Rect2(576, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0l0in"]
-atlas = ExtResource("8_la1hd")
-region = Rect2(114, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_imurg"]
+atlas = ExtResource("9_kn3xm")
+region = Rect2(576, 192, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mki5f"]
-atlas = ExtResource("8_la1hd")
-region = Rect2(152, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr3tj"]
+atlas = ExtResource("9_kn3xm")
+region = Rect2(576, 256, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jk3eh"]
-atlas = ExtResource("8_la1hd")
-region = Rect2(190, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wwnw"]
+atlas = ExtResource("9_kn3xm")
+region = Rect2(576, 320, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o8ty7"]
-atlas = ExtResource("8_la1hd")
-region = Rect2(228, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hjwy"]
+atlas = ExtResource("9_kn3xm")
+region = Rect2(576, 384, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_moacj"]
-atlas = ExtResource("8_la1hd")
-region = Rect2(266, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2mln"]
+atlas = ExtResource("9_kn3xm")
+region = Rect2(576, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1230"]
+atlas = ExtResource("9_kn3xm")
+region = Rect2(576, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqhcg"]
+atlas = ExtResource("9_kn3xm")
+region = Rect2(576, 576, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_688is"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y4bfm")
+"texture": SubResource("AtlasTexture_vxuwt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ajk7f")
+"texture": SubResource("AtlasTexture_g1jkj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_taw00")
+"texture": SubResource("AtlasTexture_f1e2m")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0l0in")
+"texture": SubResource("AtlasTexture_imurg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mki5f")
+"texture": SubResource("AtlasTexture_pr3tj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jk3eh")
+"texture": SubResource("AtlasTexture_5wwnw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o8ty7")
+"texture": SubResource("AtlasTexture_3hjwy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_moacj")
+"texture": SubResource("AtlasTexture_x2mln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1230")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqhcg")
 }],
 "loop": true,
 "name": &"run",
-"speed": 20.0
+"speed": 7.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_erei5"]
+radius = 9.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_de7ws"]
 atlas = ExtResource("6_g1jkj")
@@ -1396,8 +1410,7 @@ position = Vector2(-264, -343)
 shape = SubResource("CircleShape2D_imurg")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin77"]
-stream = ExtResource("7_g1jkj")
-volume_db = -10.0
+stream = ExtResource("7_vxuwt")
 
 [node name="Coin78" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1413,8 +1426,7 @@ position = Vector2(248, -231)
 shape = SubResource("CircleShape2D_imurg")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin78"]
-stream = ExtResource("7_g1jkj")
-volume_db = -10.0
+stream = ExtResource("7_vxuwt")
 
 [node name="Coin79" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1430,8 +1442,7 @@ position = Vector2(8, -471)
 shape = SubResource("CircleShape2D_imurg")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin79"]
-stream = ExtResource("7_g1jkj")
-volume_db = -10.0
+stream = ExtResource("7_vxuwt")
 
 [node name="Coin80" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1447,8 +1458,7 @@ position = Vector2(-160, -363)
 shape = SubResource("CircleShape2D_imurg")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin80"]
-stream = ExtResource("7_g1jkj")
-volume_db = -10.0
+stream = ExtResource("7_vxuwt")
 
 [node name="Coin81" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1464,8 +1474,7 @@ position = Vector2(176, -362)
 shape = SubResource("CircleShape2D_imurg")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin81"]
-stream = ExtResource("7_g1jkj")
-volume_db = -10.0
+stream = ExtResource("7_vxuwt")
 
 [node name="Coin82" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1481,8 +1490,7 @@ position = Vector2(-48, -139)
 shape = SubResource("CircleShape2D_imurg")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin82"]
-stream = ExtResource("7_g1jkj")
-volume_db = -10.0
+stream = ExtResource("7_vxuwt")
 
 [node name="Traps" type="Node" parent="."]
 
@@ -1495,10 +1503,11 @@ patrol_distance = 340
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/SawRunRight7"]
 process_mode = 3
-position = Vector2(-162, -365)
+position = Vector2(-162, -374)
 scale = Vector2(0.736842, 0.684211)
 sprite_frames = SubResource("SpriteFrames_688is")
 animation = &"run"
+frame_progress = 0.358553
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/SawRunRight7"]
 process_mode = 3
@@ -1514,7 +1523,7 @@ patrol_distance = 340
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/SawRunLeft7"]
 process_mode = 3
-position = Vector2(178, -275)
+position = Vector2(178, -278)
 scale = Vector2(0.736842, 0.684211)
 sprite_frames = SubResource("SpriteFrames_688is")
 animation = &"run"
@@ -1533,7 +1542,8 @@ patrol_distance = 340
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/SawRunRight8"]
 process_mode = 3
-position = Vector2(-162, -131)
+position = Vector2(-162, -122)
+rotation = 3.14159
 scale = Vector2(0.736842, 0.684211)
 sprite_frames = SubResource("SpriteFrames_688is")
 animation = &"run"
@@ -1552,7 +1562,8 @@ patrol_distance = 340
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/SawRunLeft8"]
 process_mode = 3
-position = Vector2(178, -403)
+position = Vector2(178, -394)
+rotation = 3.14159
 scale = Vector2(0.736842, 0.684211)
 sprite_frames = SubResource("SpriteFrames_688is")
 animation = &"run"
@@ -1660,9 +1671,5 @@ shape = SubResource("CapsuleShape2D_xw1em")
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("5_pavus")]
 
-[node name="LevelHardSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_15xy5")
-parameters/looping = true
-
 [node name="TPSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_viuwn")
+stream = ExtResource("15_vxuwt")

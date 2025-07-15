@@ -33,10 +33,7 @@ func _physics_process(delta):
 		_update_flip()
 
 func _update_flip():
-	# Si ton sprite regarde par défaut vers la droite :
 	sprite.flip_h = direction < 0
-	# Si ton sprite regarde par défaut vers la gauche, inverse :
-	# sprite.flip_h = direction > 0
 
 func _on_body_entered(body):
 	if body.has_method("take_damage"):

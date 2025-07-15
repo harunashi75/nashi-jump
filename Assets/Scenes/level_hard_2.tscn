@@ -1,22 +1,21 @@
-[gd_scene load_steps=54 format=4 uid="uid://v8uncne54gfv"]
+[gd_scene load_steps=55 format=4 uid="uid://v8uncne54gfv"]
 
 [ext_resource type="Script" uid="uid://bvkkelova4a0d" path="res://Assets/Scripts/level_hard_2.gd" id="1_imurg"]
 [ext_resource type="Shader" uid="uid://b0cfhc3hcvt4k" path="res://Assets/Scenes/level_hard_2.gdshader" id="2_mlcwn"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="2_mq2yr"]
 [ext_resource type="Texture2D" uid="uid://ckgbet77pta75" path="res://Assets/Sprites/Maps/Purple.png" id="3_mlcwn"]
-[ext_resource type="AudioStream" uid="uid://dl3r1opn436ln" path="res://Assets/Sounds/level-passed-142971.ogg" id="4_mtehy"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="5_5dt6m"]
 [ext_resource type="Texture2D" uid="uid://ds7n0ff6q4r8f" path="res://Assets/Sprites/Plataformpack-byArpion.png" id="6_mnk47"]
 [ext_resource type="Script" uid="uid://bgmj14jugfpqk" path="res://Assets/Scripts/coins.gd" id="6_rkqp6"]
-[ext_resource type="AudioStream" uid="uid://beb3xi840fcgh" path="res://Assets/Sounds/Pickup_Coin2.wav" id="7_413h6"]
+[ext_resource type="AudioStream" uid="uid://d1xnfv5vtjgd2" path="res://Assets/Sounds/coin.wav" id="7_rkqp6"]
 [ext_resource type="Script" uid="uid://ch3wlueq23qak" path="res://Assets/Scripts/traps.gd" id="8_rkqp6"]
 [ext_resource type="Script" uid="uid://rj8bo7ewwsmm" path="res://Assets/Scripts/brickhead.gd" id="9_rkqp6"]
 [ext_resource type="Texture2D" uid="uid://dkbugje2anayf" path="res://Assets/Sprites/Traps/Brickhead_1_2.png" id="11_413h6"]
 [ext_resource type="Script" uid="uid://bgpt66jvi8fqn" path="res://Assets/Scripts/saw_run_right.gd" id="11_kqhcg"]
-[ext_resource type="Texture2D" uid="uid://b8opgwfph30di" path="res://Assets/Sprites/Traps/Saw/On (38x38).png" id="12_hl06h"]
+[ext_resource type="Texture2D" uid="uid://brmdsqxunr587" path="res://Assets/Sprites/Traps/Pixel_Magic_Effects_Animations.png" id="12_qfbp5"]
 [ext_resource type="Script" uid="uid://ohav3cmnt1ek" path="res://Assets/Scripts/saw_run_left.gd" id="13_10f61"]
 [ext_resource type="Script" uid="uid://cd8hi0bt1g3wk" path="res://Assets/Scripts/tp_levels_hard_2.gd" id="15_pr3tj"]
-[ext_resource type="AudioStream" uid="uid://7mpytufiguvd" path="res://Assets/Sounds/Rainbow Lollipop.ogg" id="18_pr3tj"]
+[ext_resource type="AudioStream" uid="uid://3ob7ge3sd6ad" path="res://Assets/Sounds/mixkit-wind-chimes-2014.wav" id="17_rkqp6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mnk47"]
 shader = ExtResource("2_mlcwn")
@@ -889,71 +888,86 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjafq"]
 size = Vector2(32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y4bfm"]
-atlas = ExtResource("12_hl06h")
-region = Rect2(0, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkqp6"]
+atlas = ExtResource("12_qfbp5")
+region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ajk7f"]
-atlas = ExtResource("12_hl06h")
-region = Rect2(38, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_413h6"]
+atlas = ExtResource("12_qfbp5")
+region = Rect2(256, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_taw00"]
-atlas = ExtResource("12_hl06h")
-region = Rect2(76, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryu4i"]
+atlas = ExtResource("12_qfbp5")
+region = Rect2(256, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0l0in"]
-atlas = ExtResource("12_hl06h")
-region = Rect2(114, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qdi2"]
+atlas = ExtResource("12_qfbp5")
+region = Rect2(256, 192, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mki5f"]
-atlas = ExtResource("12_hl06h")
-region = Rect2(152, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8amx"]
+atlas = ExtResource("12_qfbp5")
+region = Rect2(256, 256, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jk3eh"]
-atlas = ExtResource("12_hl06h")
-region = Rect2(190, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2g57"]
+atlas = ExtResource("12_qfbp5")
+region = Rect2(256, 320, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o8ty7"]
-atlas = ExtResource("12_hl06h")
-region = Rect2(228, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_crnyf"]
+atlas = ExtResource("12_qfbp5")
+region = Rect2(256, 384, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_moacj"]
-atlas = ExtResource("12_hl06h")
-region = Rect2(266, 0, 38, 38)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ivuf"]
+atlas = ExtResource("12_qfbp5")
+region = Rect2(256, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdvlc"]
+atlas = ExtResource("12_qfbp5")
+region = Rect2(256, 512, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2pcl"]
+atlas = ExtResource("12_qfbp5")
+region = Rect2(256, 576, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gvn1d"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y4bfm")
+"texture": SubResource("AtlasTexture_rkqp6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ajk7f")
+"texture": SubResource("AtlasTexture_413h6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_taw00")
+"texture": SubResource("AtlasTexture_ryu4i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0l0in")
+"texture": SubResource("AtlasTexture_3qdi2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mki5f")
+"texture": SubResource("AtlasTexture_a8amx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jk3eh")
+"texture": SubResource("AtlasTexture_j2g57")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o8ty7")
+"texture": SubResource("AtlasTexture_crnyf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_moacj")
+"texture": SubResource("AtlasTexture_5ivuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdvlc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2pcl")
 }],
 "loop": true,
 "name": &"run",
-"speed": 20.0
+"speed": 7.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hrhcn"]
+radius = 9.42175
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x2mln"]
 animations = [{
@@ -1009,8 +1023,7 @@ position = Vector2(136, -607)
 shape = SubResource("CircleShape2D_mlcwn")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin71"]
-stream = ExtResource("7_413h6")
-volume_db = -10.0
+stream = ExtResource("7_rkqp6")
 
 [node name="Coin72" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1026,8 +1039,7 @@ position = Vector2(136, -415)
 shape = SubResource("CircleShape2D_mlcwn")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin72"]
-stream = ExtResource("7_413h6")
-volume_db = -10.0
+stream = ExtResource("7_rkqp6")
 
 [node name="Coin73" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1043,8 +1055,7 @@ position = Vector2(136, -223)
 shape = SubResource("CircleShape2D_mlcwn")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin73"]
-stream = ExtResource("7_413h6")
-volume_db = -10.0
+stream = ExtResource("7_rkqp6")
 
 [node name="Coin74" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1060,8 +1071,7 @@ position = Vector2(-232, -39)
 shape = SubResource("CircleShape2D_mlcwn")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin74"]
-stream = ExtResource("7_413h6")
-volume_db = -10.0
+stream = ExtResource("7_rkqp6")
 
 [node name="Coin75" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1077,8 +1087,7 @@ position = Vector2(-136, -247)
 shape = SubResource("CircleShape2D_mlcwn")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin75"]
-stream = ExtResource("7_413h6")
-volume_db = -10.0
+stream = ExtResource("7_rkqp6")
 
 [node name="Coin76" type="Area2D" parent="Coins"]
 collision_layer = 16
@@ -1094,8 +1103,7 @@ position = Vector2(-240, -471)
 shape = SubResource("CircleShape2D_mlcwn")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin76"]
-stream = ExtResource("7_413h6")
-volume_db = -10.0
+stream = ExtResource("7_rkqp6")
 
 [node name="Traps" type="Node" parent="."]
 
@@ -1188,14 +1196,14 @@ patrol_distance = 305
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/SawRunRight2"]
 process_mode = 3
-position = Vector2(-65.9999, -579)
+position = Vector2(-64.4211, -578.105)
 scale = Vector2(0.736842, 0.684211)
 sprite_frames = SubResource("SpriteFrames_gvn1d")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/SawRunRight2"]
 process_mode = 3
-position = Vector2(-66, -579)
+position = Vector2(-64.4212, -578.105)
 shape = SubResource("CircleShape2D_hrhcn")
 
 [node name="SawRunRight3" type="Area2D" parent="Traps"]
@@ -1207,14 +1215,14 @@ patrol_distance = 305
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/SawRunRight3"]
 process_mode = 3
-position = Vector2(-65.9999, -387)
+position = Vector2(-64.4211, -386.105)
 scale = Vector2(0.736842, 0.684211)
 sprite_frames = SubResource("SpriteFrames_gvn1d")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/SawRunRight3"]
 process_mode = 3
-position = Vector2(-66, -387)
+position = Vector2(-64.4212, -386.105)
 shape = SubResource("CircleShape2D_hrhcn")
 
 [node name="SawRunRight4" type="Area2D" parent="Traps"]
@@ -1226,14 +1234,14 @@ patrol_distance = 305
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/SawRunRight4"]
 process_mode = 3
-position = Vector2(-65.9999, -195)
+position = Vector2(-64.4211, -194.105)
 scale = Vector2(0.736842, 0.684211)
 sprite_frames = SubResource("SpriteFrames_gvn1d")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/SawRunRight4"]
 process_mode = 3
-position = Vector2(-66, -195)
+position = Vector2(-64.4212, -194.105)
 shape = SubResource("CircleShape2D_hrhcn")
 
 [node name="SawRunLeft2" type="Area2D" parent="Traps"]
@@ -1245,14 +1253,14 @@ patrol_distance = 305
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/SawRunLeft2"]
 process_mode = 3
-position = Vector2(274, -541)
+position = Vector2(272.579, -542.105)
 scale = Vector2(0.736842, 0.684211)
 sprite_frames = SubResource("SpriteFrames_gvn1d")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/SawRunLeft2"]
 process_mode = 3
-position = Vector2(274, -541)
+position = Vector2(272.579, -542.105)
 shape = SubResource("CircleShape2D_hrhcn")
 
 [node name="SawRunLeft3" type="Area2D" parent="Traps"]
@@ -1264,14 +1272,14 @@ patrol_distance = 305
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/SawRunLeft3"]
 process_mode = 3
-position = Vector2(274, -483)
+position = Vector2(272.579, -482.105)
 scale = Vector2(0.736842, 0.684211)
 sprite_frames = SubResource("SpriteFrames_gvn1d")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/SawRunLeft3"]
 process_mode = 3
-position = Vector2(274, -483)
+position = Vector2(272.579, -482.105)
 shape = SubResource("CircleShape2D_hrhcn")
 
 [node name="SawRunLeft4" type="Area2D" parent="Traps"]
@@ -1283,14 +1291,14 @@ patrol_distance = 305
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/SawRunLeft4"]
 process_mode = 3
-position = Vector2(274, -349)
+position = Vector2(272.579, -350.105)
 scale = Vector2(0.736842, 0.684211)
 sprite_frames = SubResource("SpriteFrames_gvn1d")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/SawRunLeft4"]
 process_mode = 3
-position = Vector2(274, -349)
+position = Vector2(272.579, -350.105)
 shape = SubResource("CircleShape2D_hrhcn")
 
 [node name="SawRunLeft5" type="Area2D" parent="Traps"]
@@ -1302,14 +1310,14 @@ patrol_distance = 305
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/SawRunLeft5"]
 process_mode = 3
-position = Vector2(274, -291)
+position = Vector2(272.579, -290.105)
 scale = Vector2(0.736842, 0.684211)
 sprite_frames = SubResource("SpriteFrames_gvn1d")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/SawRunLeft5"]
 process_mode = 3
-position = Vector2(274, -291)
+position = Vector2(272.579, -290.105)
 shape = SubResource("CircleShape2D_hrhcn")
 
 [node name="SawRunLeft6" type="Area2D" parent="Traps"]
@@ -1321,14 +1329,14 @@ patrol_distance = 305
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/SawRunLeft6"]
 process_mode = 3
-position = Vector2(274, -157)
+position = Vector2(272.579, -158.105)
 scale = Vector2(0.736842, 0.684211)
 sprite_frames = SubResource("SpriteFrames_gvn1d")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/SawRunLeft6"]
 process_mode = 3
-position = Vector2(274, -157)
+position = Vector2(272.579, -158.105)
 shape = SubResource("CircleShape2D_hrhcn")
 
 [node name="SawRunRight5" type="Area2D" parent="Traps"]
@@ -1340,14 +1348,14 @@ patrol_distance = 305
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/SawRunRight5"]
 process_mode = 3
-position = Vector2(-65.9999, -445)
+position = Vector2(-64.4211, -446.105)
 scale = Vector2(0.736842, 0.684211)
 sprite_frames = SubResource("SpriteFrames_gvn1d")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/SawRunRight5"]
 process_mode = 3
-position = Vector2(-66, -445)
+position = Vector2(-64.4212, -446.105)
 shape = SubResource("CircleShape2D_hrhcn")
 
 [node name="SawRunRight6" type="Area2D" parent="Traps"]
@@ -1359,14 +1367,14 @@ patrol_distance = 305
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/SawRunRight6"]
 process_mode = 3
-position = Vector2(-65.9999, -253)
+position = Vector2(-64.4211, -254.105)
 scale = Vector2(0.736842, 0.684211)
 sprite_frames = SubResource("SpriteFrames_gvn1d")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/SawRunRight6"]
 process_mode = 3
-position = Vector2(-66, -253)
+position = Vector2(-64.4212, -254.105)
 shape = SubResource("CircleShape2D_hrhcn")
 
 [node name="Trap3" type="Area2D" parent="Traps"]
@@ -1398,9 +1406,5 @@ shape = SubResource("CapsuleShape2D_q1230")
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("5_5dt6m")]
 
-[node name="LevelHardSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("18_pr3tj")
-parameters/looping = true
-
 [node name="TPSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_mtehy")
+stream = ExtResource("17_rkqp6")

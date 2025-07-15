@@ -14,27 +14,34 @@ var levels = [
 	"res://Assets/Scenes/level_hard_2.tscn",
 	"res://Assets/Scenes/level_hard_3.tscn",
 	"res://Assets/Scenes/level_hard_4.tscn",
-	"res://Assets/Scenes/level_hard_5.tscn",
-	# ...
+	"res://Assets/Scenes/level_hard_5.tscn"
 ]
 
 var current_level = 0
 
 func load_level(index: int):
 	if index >= 0 and index < levels.size():
-		var level_scene = load(levels[index])
-		get_tree().change_scene_to_packed(level_scene)
 		current_level = index
-
-func load_next_level():
-	load_level(current_level + 1)
+		call_deferred("_load_level_deferred", levels[index])
 
 func restart_level():
 	load_level(current_level)
 
+func load_next_level():
+	load_level(current_level + 1)
+
 func return_to_menu():
-	get_tree().change_scene_to_file("res://Assets/Scenes/start_menu.tscn")
+	call_deferred("_load_level_deferred", "res://Assets/Scenes/start_menu.tscn")
 
 func load_level_by_path(path: String):
-	var level_scene = load(path)
-	get_tree().change_scene_to_packed(level_scene)
+	call_deferred("_load_level_deferred", path)
+
+func _load_level_deferred(path: String):
+	print("Chargement de la scène différé :", path)
+	get_tree().get_root().set_process_input(false)
+	var scene = load(path)
+	var error = get_tree().change_scene_to_packed(scene)
+	if error != OK:
+		print("Erreur lors du chargement de la scène :", error)
+	await get_tree().create_timer(0.1).timeout
+	get_tree().get_root().set_process_input(true)

@@ -11,7 +11,6 @@ func _ready():
 	var coin_id = name
 	print("Collecting coin:", coin_name, "in level:", level_name, "id:", coin_id)
 
-	# Si déjà collecté dans ce niveau, on ne le montre pas
 	if GameManager.is_coin_already_collected(level_name, coin_id):
 		queue_free()
 		return

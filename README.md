@@ -39,15 +39,15 @@ Interface repensée : menus, infos sur le déblocage des skins.
 
 🔧 Modes de difficulté
 
-Mode	Vies	Pour qui?
+Mode - Vies - Pour qui?
 
-Easy	8	Pour découvrir tranquillement.
+Easy - 8 - Pour découvrir tranquillement.
 
-Normal	5	Pour un bon challenge équilibré.
+Normal - 5 - Pour un bon challenge équilibré.
 
-Hard	1	Pour les joueurs extrêmes.
+Hard - 1 - Pour les joueurs extrêmes.
 
-Fun	500	Pour délirer (et débloquer Rainbow).
+Fun - 500 - Pour délirer (et débloquer Rainbow).
 
 
 👾 Infos Techniques

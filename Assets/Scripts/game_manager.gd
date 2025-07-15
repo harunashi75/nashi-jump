@@ -34,7 +34,8 @@ var unlocked_skins := {
 	"gold": false,
 	"time": false,
 	"timetwo": false,
-	"cyber": false
+	"cyber": false,
+	"rokzor": false
 }
 
 var coins_collected_by_difficulty := {
@@ -51,6 +52,12 @@ const SAVE_PATH = "user://skin_data.save"
 
 func _ready():
 	load_skin_data()
+	if hud and not hud.is_inside_tree():
+		print("Erreur : HUD n'est pas dans l'arbre")
+		hud = null
+	if pause_menu and not pause_menu.is_inside_tree():
+		print("Erreur : pause_menu n'est pas dans l'arbre")
+		pause_menu = null
 
 func start_game(lives: int):
 	reset_coins()
@@ -62,10 +69,10 @@ func start_game(lives: int):
 func toggle_pause():
 	is_game_paused = not is_game_paused
 	get_tree().paused = is_game_paused
-
-	if pause_menu:
+	if pause_menu and pause_menu.is_inside_tree():
 		pause_menu.visible = is_game_paused
-
+	else:
+		print("Erreur : pause_menu n'est pas dans l'arbre ou est null")
 	print("Pause :", is_game_paused)
 
 func reset_lives_by_difficulty():
@@ -129,28 +136,43 @@ func check_unlock_skins():
 	for level_coins in coins_collected_by_level.values():
 		total += level_coins.size()
 
-	# Met à jour le nombre de coins collectés pour la difficulté actuelle
 	if difficulty in coins_collected_by_difficulty:
-		coins_collected_by_difficulty[difficulty] = total
+		coins_collected_by_difficulty[difficulty] = max(
+			coins_collected_by_difficulty[difficulty],
+			total
+		)
 
-	# Débloque les skins par difficulté
 	if total >= 94 and not unlocked_skins.get(difficulty, false):
 		unlocked_skins[difficulty] = true
 		print("Skin", difficulty, "débloqué!")
 
-	# Vérifie si toutes les difficultés ont 94 coins => débloque le skin doré
+	# On diffère les vérifications globales pour que les données soient bien en place
+	call_deferred("_check_global_skin_unlocks")
+	save_skin_data()
+
+func _check_global_skin_unlocks():
+	# Débloque GOLD si easy + normal + hard ≥ 94
 	var all_done = true
 	for d in ["easy", "normal", "hard"]:
 		if coins_collected_by_difficulty.get(d, 0) < 94:
 			all_done = false
 			break
-
 	if all_done and not unlocked_skins.get("gold", false):
 		unlocked_skins["gold"] = true
 		print("Skin GOLD débloqué!")
 
-	# Débloque le skin Cyber si 94 coins collectés en mode fun ET au moins une mort
-	if difficulty == "fun" and total >= 94 and has_died_in_fun_mode and not unlocked_skins.get("cyber", false):
+	# Débloque ROKZOR si TOUT ≥ 94
+	var all_have_94 = true
+	for d in ["easy", "normal", "hard", "fun"]:
+		if coins_collected_by_difficulty.get(d, 0) < 94:
+			all_have_94 = false
+			break
+	if all_have_94 and not unlocked_skins.get("rokzor", false):
+		unlocked_skins["rokzor"] = true
+		print("Skin ROKZOR débloqué!")
+
+	# Débloque CYBER si FUN ≥ 94 et une mort
+	if difficulty == "fun" and coins_collected_by_difficulty["fun"] >= 94 and has_died_in_fun_mode and not unlocked_skins["cyber"]:
 		unlocked_skins["cyber"] = true
 		print("Skin RAINBOW débloqué!")
 
@@ -178,7 +200,7 @@ func load_skin_data():
 		time_scores = data.get("time_scores", {})
 		file.close()
 
-		for key in ["easy", "normal", "hard", "gold", "time", "timetwo", "cyber"]:
+		for key in ["easy", "normal", "hard", "gold", "time", "timetwo", "cyber", "rokzor"]:
 			if not unlocked_skins.has(key):
 				unlocked_skins[key] = false
 	else:
@@ -190,7 +212,8 @@ func load_skin_data():
 			"gold": false,
 			"time": false,
 			"timetwo": false,
-			"cyber": false
+			"cyber": false,
+			"rokzor": false
 		}
 		coins_collected_by_difficulty = {
 			"easy": 0,

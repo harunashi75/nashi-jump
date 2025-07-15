@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxqaap5dhcl18"]
+[gd_scene load_steps=6 format=3 uid="uid://cxqaap5dhcl18"]
 
 [ext_resource type="Script" uid="uid://bifmrxcevriyn" path="res://Assets/Scripts/start_menu.gd" id="1_qd4of"]
 [ext_resource type="Shader" uid="uid://dq6ofhffys086" path="res://Assets/Scenes/start_menu.gdshader" id="2_esus2"]
 [ext_resource type="Texture2D" uid="uid://r0lja3wk7m2f" path="res://Assets/Sprites/Maps/Brown.png" id="2_ttvl8"]
-[ext_resource type="FontFile" uid="uid://bclc2bjxfmsa2" path="res://Assets/Sprites/Squares.ttf" id="3_esus2"]
-[ext_resource type="FontFile" uid="uid://ck2ml0wud68ix" path="res://Assets/Sprites/PublicPixel.otf" id="5_esus2"]
-[ext_resource type="AudioStream" uid="uid://spf8x4h5gjwl" path="res://Assets/Sounds/Water Theme - G Major - Jordan Ottesen.ogg" id="5_ttvl8"]
+[ext_resource type="FontFile" uid="uid://ck2ml0wud68ix" path="res://Assets/Fonts/PublicPixel.otf" id="5_esus2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nnfbk"]
 shader = ExtResource("2_esus2")
@@ -35,47 +33,41 @@ stretch_mode = 1
 
 [node name="GameName" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 63.0
-offset_top = 113.0
-offset_right = 697.0
-offset_bottom = 471.0
-theme_override_fonts/normal_font = ExtResource("3_esus2")
-theme_override_font_sizes/normal_font_size = 40
+offset_left = 210.0
+offset_top = 40.0
+offset_right = 940.0
+offset_bottom = 345.0
+theme_override_fonts/normal_font = ExtResource("5_esus2")
+theme_override_font_sizes/normal_font_size = 100
 text = "Nashi Jump"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 711.0
-offset_top = 109.0
-offset_right = 861.0
-offset_bottom = 293.0
+offset_left = 375.0
+offset_top = 280.0
+offset_right = 575.0
+offset_bottom = 438.0
 scale = Vector2(2, 2)
 theme_override_constants/separation = 10
 
-[node name="Easy" type="Button" parent="VBoxContainer"]
+[node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "EASY"
+text = "PLAY"
 
-[node name="Normal" type="Button" parent="VBoxContainer"]
+[node name="Skins" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "NORMAL"
+text = "SKINS"
 
-[node name="Hard" type="Button" parent="VBoxContainer"]
+[node name="HowToUnlock" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "HARD"
-
-[node name="Fun" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_esus2")
-theme_override_font_sizes/font_size = 16
-text = "FUN"
+text = "UNLOCK SKINS"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -83,85 +75,111 @@ theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "QUIT"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 107.0
-offset_top = 460.0
-offset_right = 1093.0
-offset_bottom = 504.0
+[node name="ModePopup" type="PopupPanel" parent="."]
+size = Vector2i(112, 116)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ModePopup"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 108.0
+offset_bottom = 112.0
+
+[node name="Easy" type="Button" parent="ModePopup/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "EASY"
+
+[node name="Normal" type="Button" parent="ModePopup/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "NORMAL"
+
+[node name="Hard" type="Button" parent="ModePopup/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "HARD"
+
+[node name="Fun" type="Button" parent="ModePopup/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "FUN"
+
+[node name="SkinPopup" type="PopupPanel" parent="."]
+size = Vector2i(224, 270)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SkinPopup"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 220.0
+offset_bottom = 300.0
 theme_override_constants/separation = 10
 
-[node name="DefaultSkin" type="Button" parent="HBoxContainer"]
+[node name="DefaultSkin" type="Button" parent="SkinPopup/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "DEFAULT SKIN"
 
-[node name="GoldSkin" type="Button" parent="HBoxContainer"]
+[node name="GoldSkin" type="Button" parent="SkinPopup/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "GOLD SKIN"
 
-[node name="EasySkin" type="Button" parent="HBoxContainer"]
+[node name="EasySkin" type="Button" parent="SkinPopup/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "LEAF SKIN"
 
-[node name="NormalSkin" type="Button" parent="HBoxContainer"]
+[node name="NormalSkin" type="Button" parent="SkinPopup/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "MYSTIC SKIN"
 
-[node name="HardSkin" type="Button" parent="HBoxContainer"]
+[node name="HardSkin" type="Button" parent="SkinPopup/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "ABYSSAL SKIN"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 107.0
-offset_top = 514.0
-offset_right = 1092.0
-offset_bottom = 554.0
-theme_override_constants/separation = 10
-
-[node name="TimeSkin" type="Button" parent="HBoxContainer2"]
+[node name="TimeSkin" type="Button" parent="SkinPopup/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "TIME SKIN"
 
-[node name="TimeSkinTwo" type="Button" parent="HBoxContainer2"]
+[node name="TimeSkinTwo" type="Button" parent="SkinPopup/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "TIME SKIN TWO"
 
-[node name="CyberSkin" type="Button" parent="HBoxContainer2"]
+[node name="CyberSkin" type="Button" parent="SkinPopup/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "RAINBOW SKIN"
 
-[node name="HowToUnlock" type="Button" parent="HBoxContainer2"]
+[node name="RokzorSkin" type="Button" parent="SkinPopup/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "HOW TO UNLOCK SKINS"
+text = "ROKZOR SKIN"
 
 [node name="UnlockInfoPanel" type="PopupPanel" parent="."]
-size = Vector2i(1000, 500)
-min_size = Vector2i(1000, 400)
+size = Vector2i(1000, 350)
 
 [node name="MarginContainer" type="MarginContainer" parent="UnlockInfoPanel"]
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 996.0
-offset_bottom = 496.0
+offset_bottom = 346.0
 
 [node name="InfoTextLabel" type="RichTextLabel" parent="UnlockInfoPanel/MarginContainer"]
 layout_mode = 2
@@ -181,7 +199,9 @@ text = "Skins Unlock Conditions:
 
 • Time Skin Two – 94 coins in all three modes in 10min or less
 
-• Rainbow ​​Skin = 94 coins in Fun mode AND die at least once"
+• Rainbow ​​Skin – 94 coins in Fun mode AND die at least once
+
+• Rokzor Skin – 94 coins in all four modes"
 vertical_alignment = 1
 
 [node name="GameVersion" type="RichTextLabel" parent="."]
@@ -192,9 +212,4 @@ offset_right = 1134.0
 offset_bottom = 638.0
 theme_override_fonts/normal_font = ExtResource("5_esus2")
 theme_override_font_sizes/normal_font_size = 32
-text = "v2.0.0"
-
-[node name="StartMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_ttvl8")
-volume_db = -10.0
-parameters/looping = true
+text = "v2.1.0"

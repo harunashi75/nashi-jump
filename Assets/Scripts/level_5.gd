@@ -5,10 +5,6 @@ func _ready():
 	if enter_sound:
 		enter_sound.play()
 	
-	var music = $LevelSound
-	if music:
-		music.play()
-	
 	var hud = preload("res://Assets/Scenes/hud.tscn").instantiate()
 	add_child(hud)
 	GameManager.hud = hud
@@ -22,8 +18,3 @@ func _exit_tree():
 		$TPSound.stop()
 		$TPSound.stream = null
 		$TPSound.queue_free()
-	
-	if $LevelSound:
-		$LevelSound.stop()
-		$LevelSound.stream = null
-		$LevelSound.queue_free()

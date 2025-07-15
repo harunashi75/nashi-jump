@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dep876lam2db4"]
+[gd_scene load_steps=24 format=4 uid="uid://dep876lam2db4"]
 
 [ext_resource type="Texture2D" uid="uid://r0lja3wk7m2f" path="res://Assets/Sprites/Maps/Brown.png" id="1_fc2nj"]
 [ext_resource type="Script" uid="uid://dmfkqvh4flah3" path="res://Assets/Scripts/level_victory.gd" id="1_ikbl5"]
@@ -6,13 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://bc4ljdqavyty3" path="res://Assets/Sprites/Levels/hard.png" id="3_1bigt"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="5_1bigt"]
 [ext_resource type="Texture2D" uid="uid://ds7n0ff6q4r8f" path="res://Assets/Sprites/Plataformpack-byArpion.png" id="6_d2o0g"]
-[ext_resource type="Script" uid="uid://bm1l3end5hfrl" path="res://Assets/Scripts/tp_reset.gd" id="7_c4d2k"]
+[ext_resource type="Script" uid="uid://bm1l3end5hfrl" path="res://Assets/Scripts/tp_levels_0.gd" id="7_c4d2k"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="8_hxurn"]
-[ext_resource type="Script" uid="uid://jn4n3848symy" path="res://Assets/Scripts/tp_levels_hard.gd" id="9_1bigt"]
+[ext_resource type="Script" uid="uid://jn4n3848symy" path="res://Assets/Scripts/tp_levels_hard_0.gd" id="9_1bigt"]
 [ext_resource type="Script" uid="uid://3t378uqbxysf" path="res://Assets/Scripts/tp_levels_2.gd" id="10_d2o0g"]
 [ext_resource type="Script" uid="uid://ls3hl01uvuvl" path="res://Assets/Scripts/tp_levels_4.gd" id="11_hxurn"]
 [ext_resource type="AudioStream" uid="uid://b65200jfv0ngs" path="res://Assets/Sounds/Hall of the King.ogg" id="12_1bigt"]
-[ext_resource type="AudioStream" uid="uid://6hh0jupgi3gx" path="res://Assets/Sounds/Victorious.ogg" id="12_qmgju"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hxurn"]
 shader = ExtResource("2_d2o0g")
@@ -881,7 +880,3 @@ shape = SubResource("CapsuleShape2D_erade")
 stream = ExtResource("12_1bigt")
 volume_db = -5.0
 parameters/looping = true
-
-[node name="VictorySound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_qmgju")
-volume_db = -10.0
