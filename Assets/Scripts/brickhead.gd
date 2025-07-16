@@ -9,6 +9,7 @@ var start_y := 0.0
 var target_y := 0.0
 var wait_timer := 0.0
 var is_waiting := false
+var damage := 1  # Valeur par défaut
 
 @onready var sprite := $AnimatedSprite2D
 
@@ -17,6 +18,7 @@ func _ready():
 	target_y = start_y + distance * direction
 	sprite.play("idle")
 	connect("body_entered", Callable(self, "_on_body_entered"))
+	_set_damage_by_difficulty()
 
 func _process(delta):
 	if is_waiting:
@@ -36,4 +38,11 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.name == "Player":
-		body.take_damage(1)
+		body.take_damage(damage)
+
+func _set_damage_by_difficulty():
+	var scene_name = get_tree().current_scene.name
+	var difficulty = GameManager.difficulty
+
+	damage = GameManager.enemy_damage_by_level.get(difficulty, {}).get(scene_name, 1)
+	print("Brickhead damage set to:", damage, "for scene:", scene_name, "difficulty:", difficulty)

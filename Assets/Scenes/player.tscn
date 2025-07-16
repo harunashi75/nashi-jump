@@ -2517,7 +2517,6 @@ offset_left = -275.0
 offset_top = -164.0
 offset_right = -211.0
 offset_bottom = -147.0
-max_value = 5.0
 texture_under = ExtResource("10_vy5gb")
 texture_progress = ExtResource("11_rsrmw")
 texture_progress_offset = Vector2(14, 0)

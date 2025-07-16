@@ -78,15 +78,15 @@ func toggle_pause():
 func reset_lives_by_difficulty():
 	match difficulty:
 		"easy":
-			player_lives = 8
+			player_lives = 100
 		"normal":
-			player_lives = 5
+			player_lives = 60
 		"hard":
-			player_lives = 1
+			player_lives = 30
 		"fun":
-			player_lives = 500
+			player_lives = 200
 		_:
-			player_lives = 5
+			player_lives = 100
 
 	player_current_health = player_lives
 
@@ -243,3 +243,62 @@ func set_completion_time(diff: String, time_in_seconds: float):
 		print("Temps mis à jour pour", diff, ":", time_in_seconds)
 		check_time_skins()
 		save_skin_data()
+
+var enemy_damage_by_level := {
+	"easy": {
+		"Level_1": 5,
+		"Level_2": 7,
+		"Level_3": 10,
+		"Level_4": 12,
+		"Level_5": 15,
+		"Level_6": 18,
+		"Level_Bonus_1": 20,
+		"Level_Bonus_2": 25,
+		"Level_Hard_1": 30,
+		"Level_Hard_2": 35,
+		"Level_Hard_3": 40,
+		"Level_Hard_4": 45
+	},
+	"normal": {
+		"Level_1": 10,
+		"Level_2": 13,
+		"Level_3": 17,
+		"Level_4": 20,
+		"Level_5": 25,
+		"Level_6": 30,
+		"Level_Bonus_1": 35,
+		"Level_Bonus_2": 40,
+		"Level_Hard_1": 50,
+		"Level_Hard_2": 60,
+		"Level_Hard_3": 70,
+		"Level_Hard_4": 80
+	},
+	"hard": {
+		"Level_1": 15,
+		"Level_2": 20,
+		"Level_3": 25,
+		"Level_4": 30,
+		"Level_5": 35,
+		"Level_6": 40,
+		"Level_Bonus_1": 50,
+		"Level_Bonus_2": 60,
+		"Level_Hard_1": 70,
+		"Level_Hard_2": 80,
+		"Level_Hard_3": 90,
+		"Level_Hard_4": 100
+	},
+	"fun": {
+		"Level_1": 3,
+		"Level_2": 4,
+		"Level_3": 5,
+		"Level_4": 6,
+		"Level_5": 7,
+		"Level_6": 8,
+		"Level_Bonus_1": 10,
+		"Level_Bonus_2": 12,
+		"Level_Hard_1": 14,
+		"Level_Hard_2": 16,
+		"Level_Hard_3": 18,
+		"Level_Hard_4": 20,
+	}
+}
