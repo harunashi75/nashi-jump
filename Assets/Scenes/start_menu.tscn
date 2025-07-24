@@ -31,23 +31,24 @@ texture = ExtResource("2_ttvl8")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="GameName" type="RichTextLabel" parent="."]
+[node name="GameName" type="Label" parent="."]
 layout_mode = 0
-offset_left = 210.0
-offset_top = 40.0
-offset_right = 940.0
-offset_bottom = 345.0
-theme_override_fonts/normal_font = ExtResource("5_esus2")
-theme_override_font_sizes/normal_font_size = 100
-text = "Nashi Jump"
+offset_left = 201.0
+offset_top = 33.0
+offset_right = 941.0
+offset_bottom = 338.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 128
+text = "Nashi
+Jump"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 375.0
-offset_top = 280.0
+offset_top = 332.0
 offset_right = 575.0
-offset_bottom = 438.0
+offset_bottom = 490.0
 scale = Vector2(2, 2)
 theme_override_constants/separation = 10
 
@@ -63,7 +64,7 @@ theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "SKINS"
 
-[node name="HowToUnlock" type="Button" parent="VBoxContainer"]
+[node name="UnlockInfo" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
@@ -76,7 +77,6 @@ theme_override_font_sizes/font_size = 16
 text = "QUIT"
 
 [node name="ModePopup" type="PopupPanel" parent="."]
-size = Vector2i(112, 116)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ModePopup"]
 offset_left = 4.0
@@ -108,8 +108,15 @@ theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "FUN"
 
+[node name="Arena" type="Button" parent="ModePopup/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+disabled = true
+text = "COMING SOON"
+
 [node name="SkinPopup" type="PopupPanel" parent="."]
-size = Vector2i(224, 270)
+size = Vector2i(224, 304)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SkinPopup"]
 offset_left = 4.0
@@ -195,21 +202,21 @@ text = "Skins Unlock Conditions:
 
 • Gold Skin – 94 coins in all three modes
 
-• Time Skin – 94 coins in any mode in 10min or less
+• Time Skin – 94 coins in any mode in 12min or less
 
-• Time Skin Two – 94 coins in all three modes in 10min or less
+• Time Skin Two – 94 coins in all three modes in 12min or less
 
 • Rainbow ​​Skin – 94 coins in Fun mode AND die at least once
 
 • Rokzor Skin – 94 coins in all four modes"
 vertical_alignment = 1
 
-[node name="GameVersion" type="RichTextLabel" parent="."]
+[node name="GameVersion" type="Label" parent="."]
 layout_mode = 0
-offset_left = 899.0
-offset_top = 591.0
-offset_right = 1134.0
-offset_bottom = 638.0
-theme_override_fonts/normal_font = ExtResource("5_esus2")
-theme_override_font_sizes/normal_font_size = 32
-text = "v2.1.1"
+offset_left = 977.0
+offset_top = 603.0
+offset_right = 1138.0
+offset_bottom = 627.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 24
+text = "v2.2.0"

@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://dpj0yojkqxtnx"]
+
+[ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_3m0gq"]
+[ext_resource type="Texture2D" uid="uid://rpos307roc5o" path="res://Assets/Sprites/Enemies/Bee.png" id="1_daxcw"]
+[ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/killzone.gd" id="3_pp4ub"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0723"]
+atlas = ExtResource("1_daxcw")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m0gq"]
+atlas = ExtResource("1_daxcw")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pp4ub"]
+atlas = ExtResource("1_daxcw")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amn0o"]
+atlas = ExtResource("1_daxcw")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sf5fl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0723")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3m0gq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pp4ub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amn0o")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_daxcw"]
+size = Vector2(10, 10)
+
+[node name="Enemy_Bee" type="Node2D"]
+script = ExtResource("1_3m0gq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_sf5fl")
+animation = &"run"
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
+target_position = Vector2(12, 0)
+collision_mask = 2
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
+target_position = Vector2(-12, 0)
+collision_mask = 2
+
+[node name="Killzone" type="Area2D" parent="."]
+collision_layer = 8
+script = ExtResource("3_pp4ub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_daxcw")

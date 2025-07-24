@@ -2483,23 +2483,21 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5d67n"]
-radius = 7.0
-height = 20.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_eprmk"]
+radius = 5.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_mask = 14
+collision_mask = 62
 script = ExtResource("1_crp4q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(9, -15)
-scale = Vector2(1.25, 1.25)
+position = Vector2(9, -12)
 sprite_frames = SubResource("SpriteFrames_3luqq")
-animation = &"idle_rokzor"
+animation = &"idle_default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(9, -10)
-shape = SubResource("CapsuleShape2D_5d67n")
+position = Vector2(9, -5)
+shape = SubResource("CircleShape2D_eprmk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -15)

@@ -3,22 +3,19 @@ extends CharacterBody2D
 # ------------------------
 # Constantes et Variables
 # ------------------------
-
-# Physique
 const GRAVITY = 980
-const JUMP_FORCE = -350
-const MOVE_SPEED = 200
+const DEFAULT_MOVE_SPEED = 180
+const DEFAULT_JUMP_FORCE = -310
 const DECELERATION = 20
 
+var MOVE_SPEED = DEFAULT_MOVE_SPEED
+var JUMP_FORCE = DEFAULT_JUMP_FORCE
 var max_jumps = 1
 var jumps_left = 2
 
-# Santé
-var max_health = 1
-var current_health = max_health
-var health = 3
+var current_health : int
+var max_health : int
 
-# Animation saut
 var just_jumped = false
 var jump_anim_timer = 0.15
 var current_skin := "default"
@@ -32,31 +29,29 @@ var current_skin := "default"
 @onready var health_bar = $HealthBar
 
 # ------------------------
-# Ready
+# Initialisation
 # ------------------------
 func _ready():
 	add_to_group("player")
-	set_process_input(false) # Désactiver les entrées au démarrage
+	set_process_input(false)
 	current_skin = GameManager.current_skin
-	print("Skin actif :", current_skin)
 	var current_scene = get_tree().current_scene.scene_file_path
+
 	if current_scene == "res://Assets/Scenes/level_victory.tscn":
 		GameManager.reset_lives_by_difficulty()
 		initialize_health()
-		GameManager.has_initialized_health = true
 	else:
 		if not GameManager.has_initialized_health:
 			initialize_health()
-			GameManager.has_initialized_health = true
 		else:
 			max_health = GameManager.player_lives
 			current_health = GameManager.player_current_health
-	if is_instance_valid(health_bar) and health_bar.is_inside_tree():
-		health_bar.set_health(current_health, max_health)
-	else:
-		print("Erreur : health_bar n'est pas dans l'arbre ou est null")
-	await get_tree().create_timer(0.1).timeout # Attendre que la scène soit chargée
-	set_process_input(true) # Réactiver les entrées
+
+	GameManager.has_initialized_health = true
+	update_health_bar()
+
+	await get_tree().create_timer(0.1).timeout
+	set_process_input(true)
 
 # ------------------------
 # Physique principale
@@ -80,9 +75,8 @@ func handle_input():
 
 func handle_movement():
 	var direction = Input.get_axis("move_left", "move_right")
-
 	if direction:
-		velocity.x = direction * MOVE_SPEED
+		velocity.x = direction * MOVE_SPEED * GameManager.speed_multiplier
 		sprite.flip_h = direction < 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, DECELERATION)
@@ -92,10 +86,8 @@ func handle_jump():
 		velocity.y = JUMP_FORCE
 		jump_sound.play()
 
-		if is_on_floor():
-			play_skin_anim("jump")
-		else:
-			play_skin_anim("double_jump")
+		var anim = "jump" if is_on_floor() else "double_jump"
+		play_skin_anim(anim)
 
 		jumps_left -= 1
 		just_jumped = true
@@ -105,7 +97,7 @@ func handle_jump():
 		jumps_left = max_jumps
 
 # ------------------------
-# Gestion Animation
+# Animation
 # ------------------------
 func handle_animation(delta):
 	if current_skin != GameManager.current_skin:
@@ -119,96 +111,82 @@ func handle_animation(delta):
 		return
 
 	if not is_on_floor():
-		if velocity.y > 0 and sprite.animation != get_skin_anim("fall"):
-			play_skin_anim("fall")
+		play_skin_anim("fall")
 	elif velocity.x != 0:
-		if sprite.animation != get_skin_anim("run"):
-			play_skin_anim("run")
+		play_skin_anim("run")
 	else:
-		if sprite.animation != get_skin_anim("idle"):
-			play_skin_anim("idle")
+		play_skin_anim("idle")
 
 func get_skin_anim(base: String) -> String:
 	return "%s_%s" % [base, current_skin]
 
 func play_skin_anim(base: String):
 	var anim_name = get_skin_anim(base)
-
 	if sprite.sprite_frames.has_animation(anim_name):
 		sprite.play(anim_name)
 	else:
-		var fallback_anim = "%s_default" % base
-		if sprite.sprite_frames.has_animation(fallback_anim):
-			sprite.play(fallback_anim)
-		else:
-			print("Aucune animation trouvée pour :", anim_name, "ni", fallback_anim)
+		var fallback = "%s_default" % base
+		if sprite.sprite_frames.has_animation(fallback):
+			sprite.play(fallback)
 
 # ------------------------
-# Gestion Santé
+# Santé
 # ------------------------
 func initialize_health():
-	health = GameManager.player_lives
-	max_health = health
-	current_health = max_health
-	if health_bar:
-		health_bar.max_value = max_health
-		health_bar.value = current_health
+	current_health = GameManager.player_lives
+	max_health = current_health
+	update_health_bar()
 
 func set_lives(amount: int):
 	current_health = amount
 	max_health = amount
-
-	if is_instance_valid(health_bar):
-		health_bar.set_health(current_health, max_health)
-
-	print("Nouvelles vies définies : %d" % current_health)
+	update_health_bar()
 
 func take_damage(amount):
-	current_health -= amount
-	print("Vies restantes :", current_health)
+	if GameManager.godmode_enabled:
+		return
 
+	current_health -= amount
 	play_skin_anim("hit")
 	if not hit_sound.playing:
 		hit_sound.play()
 
 	set_physics_process(false)
 	await get_tree().create_timer(0.3).timeout
-	print("Délai écoulé")
 	set_physics_process(true)
 
-	if is_instance_valid(health_bar):
-		health_bar.set_health(current_health, max_health)
+	update_health_bar()
+	GameManager.player_current_health = current_health
 
 	if current_health <= 0:
 		if GameManager.difficulty == "fun":
 			GameManager.has_died_in_fun_mode = true
 		respawn()
 
-	GameManager.player_current_health = current_health
-
 func reset_health():
 	current_health = max_health
+	update_health_bar()
+
+func update_health_bar():
 	if is_instance_valid(health_bar):
 		health_bar.set_health(current_health, max_health)
 
+# ------------------------
+# Respawn
+# ------------------------
 func respawn():
-	print("Respawn du joueur...")
+	GameManager.reset_lives_by_difficulty()
 	initialize_health()
-	set_process_input(false)  # Désactive les inputs pour éviter les appels à _input()
+	set_process_input(false)
+	call_deferred("load_respawn_scene")
 
-	call_deferred("do_respawn")  # Attend la fin de frame pour changer de scène
-
-func do_respawn():
-	if GameManager.victory_checkpoint_enabled:
-		LevelManager.load_level_by_path(GameManager.victory_checkpoint_scene_path)
-	else:
-		LevelManager.load_level_by_path("res://Assets/Scenes/level_1.tscn")
+func load_respawn_scene():
+	var path = GameManager.victory_checkpoint_scene_path if GameManager.victory_checkpoint_enabled else "res://Assets/Scenes/level_1.tscn"
+	LevelManager.load_level_by_path(path)
 
 # ------------------------
-# Pause Menu
+# Pause
 # ------------------------
 func _input(event):
-	if is_inside_tree() and event.is_action_pressed("pause_menu"):
+	if event.is_action_pressed("pause_menu"):
 		GameManager.toggle_pause()
-	elif not is_inside_tree():
-		print("Erreur : Player n'est pas dans l'arbre lors de la gestion de l'entrée")

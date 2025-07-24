@@ -41,13 +41,13 @@ Interface repensée : menus, infos sur le déblocage des skins.
 
 Mode - Vies - Pour qui?
 
-Easy - 8 - Pour découvrir tranquillement.
+Easy - 100 - Pour découvrir tranquillement.
 
-Normal - 5 - Pour un bon challenge équilibré.
+Normal - 60 - Pour un bon challenge équilibré.
 
-Hard - 1 - Pour les joueurs extrêmes.
+Hard - 30 - Pour les joueurs extrêmes.
 
-Fun - 500 - Pour délirer (et débloquer Rainbow).
+Fun - 200 - Pour délirer (et débloquer Rainbow).
 
 
 👾 Infos Techniques

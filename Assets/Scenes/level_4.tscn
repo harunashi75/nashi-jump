@@ -1,22 +1,20 @@
-[gd_scene load_steps=72 format=4 uid="uid://bvgif31x4jwds"]
+[gd_scene load_steps=62 format=4 uid="uid://bvgif31x4jwds"]
 
 [ext_resource type="Script" uid="uid://7536evx3yuda" path="res://Assets/Scripts/level_4.gd" id="1_7dy2j"]
 [ext_resource type="Shader" uid="uid://c2onma6jav7dy" path="res://Assets/Scenes/level_4.gdshader" id="2_wgxem"]
 [ext_resource type="Texture2D" uid="uid://dqaa4lvbt0nyb" path="res://Assets/Sprites/Maps/Pink.png" id="3_wgxem"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="4_ucue1"]
 [ext_resource type="Script" uid="uid://c7t0glmdv8r7h" path="res://Assets/Scripts/tp_levels_bonus_1.gd" id="5_7dy2j"]
+[ext_resource type="PackedScene" uid="uid://dgd83j7up65k4" path="res://Assets/Scenes/platform_2.tscn" id="6_colll"]
 [ext_resource type="Texture2D" uid="uid://ds7n0ff6q4r8f" path="res://Assets/Sprites/Plataformpack-byArpion.png" id="6_wgxem"]
-[ext_resource type="AudioStream" uid="uid://d1xnfv5vtjgd2" path="res://Assets/Sounds/coin.wav" id="8_colll"]
+[ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="8_sgnlk"]
 [ext_resource type="Script" uid="uid://ch3wlueq23qak" path="res://Assets/Scripts/traps.gd" id="8_wgxem"]
-[ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="9_colll"]
 [ext_resource type="Script" uid="uid://rj8bo7ewwsmm" path="res://Assets/Scripts/brickhead.gd" id="10_1frf3"]
-[ext_resource type="Texture2D" uid="uid://8anjafqlpnde" path="res://Assets/Sprites/Enemies/14.png" id="14_n2p1r"]
 [ext_resource type="Texture2D" uid="uid://dkbugje2anayf" path="res://Assets/Sprites/Traps/Brickhead_1_2.png" id="16_7dy2j"]
 [ext_resource type="Script" uid="uid://ls3hl01uvuvl" path="res://Assets/Scripts/tp_levels_4.gd" id="16_dfrsb"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="18_2x02o"]
 [ext_resource type="AudioStream" uid="uid://3ob7ge3sd6ad" path="res://Assets/Sounds/mixkit-wind-chimes-2014.wav" id="18_colll"]
 [ext_resource type="Texture2D" uid="uid://edyq1wc3bwlp" path="res://Assets/Sprites/Traps/Cactus_2.png" id="18_ucue1"]
-[ext_resource type="Script" uid="uid://bgmj14jugfpqk" path="res://Assets/Scripts/coins.gd" id="18_wnis3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0pwy5"]
 shader = ExtResource("2_wgxem")
@@ -268,11 +266,11 @@ texture = ExtResource("6_wgxem")
 8:6/0 = 0
 8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:6/0 = 0
-9:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -6.00762, 8, -0.0323491, -8, -2.29679)
 10:6/0 = 0
-10:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6.00762, 8, -6.02588, 8, 0, -8, -0.01826)
 11:6/0 = 0
-11:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6.02588, 8, -8, 8, -2.23356, -8, -0.018261)
 12:6/0 = 0
 13:6/0 = 0
 14:6/0 = 0
@@ -1782,13 +1780,81 @@ sources/0 = SubResource("TileSetAtlasSource_0pwy5")
 sources/1 = SubResource("TileSetAtlasSource_wgxem")
 sources/2 = SubResource("TileSetAtlasSource_bkqlj")
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_bkqlj"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"idle",
-"speed": 20.0
-}]
+[sub_resource type="Animation" id="Animation_dfrsb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-208, -59)]
+}
+
+[sub_resource type="Animation" id="Animation_3nl6r"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-208, -59), Vector2(-81, -59)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pqhb"]
+_data = {
+&"RESET": SubResource("Animation_dfrsb"),
+&"move": SubResource("Animation_3nl6r")
+}
+
+[sub_resource type="Animation" id="Animation_1pqhb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(49, -59)]
+}
+
+[sub_resource type="Animation" id="Animation_colll"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(49, -59), Vector2(176, -59)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7dy2j"]
+_data = {
+&"RESET": SubResource("Animation_1pqhb"),
+&"move": SubResource("Animation_colll")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ucue1"]
 radius = 8.0
@@ -2041,84 +2107,6 @@ separation = Vector2i(10, 0)
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_n2p1r")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1pqhb"]
-atlas = ExtResource("6_wgxem")
-region = Rect2(288, 160, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ucue1"]
-atlas = ExtResource("6_wgxem")
-region = Rect2(304, 160, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0pwy5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1pqhb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ucue1")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 7.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1frf3"]
-radius = 6.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fl5tw"]
-atlas = ExtResource("14_n2p1r")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1c0il"]
-atlas = ExtResource("14_n2p1r")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fxpm0"]
-atlas = ExtResource("14_n2p1r")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dox5g"]
-atlas = ExtResource("14_n2p1r")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_risso"]
-atlas = ExtResource("14_n2p1r")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ka64i"]
-atlas = ExtResource("14_n2p1r")
-region = Rect2(32, 16, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8u1gu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fl5tw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1c0il")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fxpm0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dox5g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_risso")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ka64i")
-}],
-"loop": true,
-"name": &"run",
-"speed": 7.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_nrltu"]
-radius = 6.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dy2j"]
 atlas = ExtResource("6_wgxem")
 region = Rect2(256, 48, 16, 16)
@@ -2327,14 +2315,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1sf4"]
 radius = 6.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_j2sux"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"idle",
-"speed": 20.0
-}]
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68j18"]
 radius = 3.0
 height = 32.0
@@ -2342,196 +2322,85 @@ height = 32.0
 [node name="Level_4" type="Node"]
 script = ExtResource("1_7dy2j")
 
-[node name="Blue" type="TextureRect" parent="."]
+[node name="Pink" type="TextureRect" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_0pwy5")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -320.0
-offset_top = -464.0
+offset_top = -400.0
 offset_right = -848.0
-offset_bottom = -584.0
+offset_bottom = -600.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_wgxem")
 stretch_mode = 1
 
-[node name="TileMapLayer3" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAMAOn/AQAEAA4AAAALAOn/AQAEAA4AAAAKAOn/AQAEAA4AAAAJAOn/AQAEAA4AAAAIAOn/AQAEAA4AAAAIAOj/AQAEAA4AAAAIAOf/AQAEAA4AAAAIAOb/AQAEAA4AAAAIAOX/AQAEAA4AAAAHAOX/AQAEAA4AAAAGAOX/AQAEAA4AAAAFAOX/AQAEAA4AAAAEAOX/AQAEAA4AAAAEAOb/AQAEAA4AAAAEAOf/AQAEAA4AAAAEAOj/AQAEAA4AAAAEAOn/AQAEAA4AAAAEAOr/AQAEAA4AAAAEAOv/AQAEAA4AAAAEAOz/AQAEAA4AAAAEAO3/AQAEAA4AAAAFAO3/AQAEAA4AAAAGAO3/AQAEAA4AAAAGAOz/AQAEAA4AAAAGAOv/AQAEAA4AAAAFAOv/AQAEAA4AAAAFAOz/AQAEAA4AAAAFAOr/AQAEAA4AAAAGAOr/AQAEAA4AAAAHAOr/AQAEAA4AAAAIAOr/AQAEAA4AAAAHAOn/AQAEAA4AAAAHAOj/AQAEAA4AAAAHAOf/AQAEAA4AAAAHAOb/AQAEAA4AAAAGAOb/AQAEAA4AAAAFAOb/AQAEAA4AAAAFAOf/AQAEAA4AAAAFAOj/AQAEAA4AAAAFAOn/AQAEAA4AAAAGAOn/AQAEAA4AAAAGAOj/AQAEAA4AAAAGAOf/AQAEAA4AAAADAOz/AQAEAA4AAAACAOz/AQAEAA4AAAACAO3/AQAEAA4AAAACAO7/AQAEAA4AAAACAO//AQAEAA4AAAACAPD/AQAEAA4AAAADAPL/AQAEAA4AAAADAPH/AQAEAA4AAAADAPD/AQAEAA4AAAADAO//AQAEAA4AAAADAO7/AQAEAA4AAAADAO3/AQAEAA4AAAAEAPL/AQAEAA4AAAAFAPL/AQAEAA4AAAAGAPL/AQAEAA4AAAAHAPL/AQAEAA4AAAAIAPL/AQAEAA4AAAAJAPL/AQAEAA4AAAABAPD/AQAEAA4AAAAAAPD/AQAEAA4AAAD///D/AQAEAA4AAAD+//D/AQAEAA4AAAD9//D/AQAEAA4AAAD8//D/AQAEAA4AAAD8//H/AQAEAA4AAAD7//H/AQAEAA4AAAD7//D/AQAEAA4AAAD7//L/AQAEAA4AAAD8//L/AQAEAA4AAAD9//L/AQAEAA4AAAD+//L/AQAEAA4AAAD///L/AQAEAA4AAAD///H/AQAEAA4AAAD+//H/AQAEAA4AAAD9//H/AQAEAA4AAAD8/+//AQAEAA4AAAD8/+7/AQAEAA4AAAD8/+3/AQAEAA4AAAD8/+z/AQAEAA4AAAD8/+v/AQAEAA4AAAD8/+r/AQAEAA4AAAD8/+n/AQAEAA4AAAD7/+n/AQAEAA4AAAD7/+r/AQAEAA4AAAD7/+v/AQAEAA4AAAD7/+z/AQAEAA4AAAD7/+3/AQAEAA4AAAD7/+7/AQAEAA4AAAD7/+//AQAEAA4AAAD6/+z/AQAEAA4AAAD5/+z/AQAEAA4AAAAJAPH/AQAEAA0AAAAIAPH/AQAEAA0AAAAHAPH/AQAEAA0AAAAGAPH/AQAEAA0AAAAFAPH/AQAEAA0AAAAEAPH/AQAEAA0AAAABAO//AQAEAA0AAAAAAO//AQAEAA0AAAD//+//AQAEAA0AAAD+/+//AQAEAA0AAAD9/+//AQAEAA0AAAD5/+v/AQAEAA0AAAD6/+v/AQAEAA0AAAD7/+j/AQAEAA0AAAD8/+j/AQAEAA0AAAACAOv/AQAEAA0AAAADAOv/AQAEAA0AAAAMAOj/AQAEAA0AAAALAOj/AQAEAA0AAAAKAOj/AQAEAA0AAAAJAOj/AQAEAA0AAAAPAO3/AQAEAA0AAAAQAO3/AQAEAA0AAAARAO3/AQAEAA0AAAAPAPX/AQAEAA0AAAAQAPX/AQAEAA0AAAARAPX/AQAEAA0AAADt//P/AQAEAA0AAADu//P/AQAEAA0AAADz//v/AAASAAYAAAD0//v/AAATAAYAAAD+//v/AAAKAAYAAAD///v/AAAKAAYAAAAJAPv/AAASAAYAAAAKAPv/AAATAAYAAADv//P/AQAEAA0AAADy/+X/AAAOAAgAAADx/+X/AAAOAAgAAADw/+X/AAAOAAgAAADv/+X/AAAOAAgAAADu/+X/AAAOAAgAAADu/+b/AAAOAAgAAADu/+f/AAAOAAgAAADu/+j/AAAOAAgAAADu/+n/AAAOAAgAAADv/+b/AAAOAAgAAADt//T/AQAEAA4AAADu//T/AQAEAA4AAADv//T/AQAEAA4AAAARAPb/AQAEAA4AAAAQAPb/AQAEAA4AAAAPAPb/AQAEAA4AAAARAO7/AQAEAA4AAAAQAO7/AQAEAA4AAAAPAO7/AQAEAA4AAADs/wAAAAAPAAsAAADt/wAAAAAPAAsAAADu/wAAAAAPAAsAAADv/wAAAAAPAAsAAADv/wEAAAAPAAsAAADv/wIAAAAPAAsAAADv/wMAAAAPAAsAAADs/wMAAAAPAAsAAADs/wIAAAAPAAsAAADs/wEAAAAPAAsAAADt/wEAAAAPAAsAAADu/wEAAAAPAAsAAADu/wIAAAAPAAsAAADu/wMAAAAPAAsAAADt/wMAAAAPAAsAAADt/wIAAAAPAAsAAADw/wIAAAAPAAsAAADx/wIAAAAPAAsAAADy/wIAAAAPAAsAAADz/wIAAAAPAAsAAAD0/wIAAAAPAAsAAAD1/wIAAAAPAAsAAAD2/wIAAAAPAAsAAAD3/wIAAAAPAAsAAAD4/wIAAAAPAAsAAAD5/wIAAAAPAAsAAAD6/wIAAAAPAAsAAAD7/wIAAAAPAAsAAAD8/wIAAAAPAAsAAAD9/wIAAAAPAAsAAAADAAIAAAAPAAsAAADw/wMAAAAPAAsAAADx/wMAAAAPAAsAAADy/wMAAAAPAAsAAADz/wMAAAAPAAsAAAD0/wMAAAAPAAsAAAD1/wMAAAAPAAsAAAD2/wMAAAAPAAsAAAD3/wMAAAAPAAsAAAD4/wMAAAAPAAsAAAD5/wMAAAAPAAsAAAD6/wMAAAAPAAsAAAD7/wMAAAAPAAsAAAD8/wMAAAAPAAsAAAD9/wMAAAAPAAsAAAD+/wMAAAAPAAsAAAD//wMAAAAPAAsAAAAAAAMAAAAPAAsAAAABAAMAAAAPAAsAAAACAAMAAAAPAAsAAAACAAIAAAAPAAsAAAABAAIAAAAPAAsAAAAAAAIAAAAPAAsAAAD//wIAAAAPAAsAAAD+/wIAAAAPAAsAAAAEAAIAAAAPAAsAAAAFAAIAAAAPAAsAAAAGAAIAAAAPAAsAAAAHAAIAAAAPAAsAAAAIAAIAAAAPAAsAAAAJAAIAAAAPAAsAAAAKAAIAAAAPAAsAAAALAAIAAAAPAAsAAAAMAAIAAAAPAAsAAAANAAIAAAAPAAsAAAAOAAIAAAAPAAsAAAAPAAIAAAAPAAsAAAAQAAIAAAAPAAsAAAAQAAEAAAAPAAsAAAAQAAAAAAAPAAsAAAARAAAAAAAPAAsAAAARAP//AAAPAAsAAAARAP7/AAAPAAsAAAARAP3/AAAPAAsAAAARAPz/AAAPAAsAAAARAPv/AAAPAAsAAAARAPr/AAAPAAsAAAARAPn/AAAPAAsAAAARAPj/AAAPAAsAAAARAPf/AAAPAAsAAAASAPf/AAAPAAsAAAALAAMAAAAPAAsAAAAKAAMAAAAPAAsAAAAJAAMAAAAPAAsAAAAIAAMAAAAPAAsAAAAHAAMAAAAPAAsAAAAGAAMAAAAPAAsAAAAFAAMAAAAPAAsAAAAEAAMAAAAPAAsAAAADAAMAAAAPAAsAAAAMAAMAAAAPAAsAAAANAAMAAAAPAAsAAAAOAAMAAAAPAAsAAAAPAAMAAAAPAAsAAAAQAAMAAAAPAAsAAAARAAMAAAAPAAsAAAASAAMAAAAPAAsAAAASAAIAAAAPAAsAAAARAAIAAAAPAAsAAAARAAEAAAAPAAsAAAASAAEAAAAPAAsAAAASAAAAAAAPAAsAAAASAP//AAAPAAsAAAASAP7/AAAPAAsAAAASAP3/AAAPAAsAAAASAPz/AAAPAAsAAAASAPv/AAAPAAsAAAASAPr/AAAPAAsAAAASAPn/AAAPAAsAAAASAPj/AAAPAAsAAAASAPb/AAAPAAsAAAARAO//AAAPAAsAAAARAPD/AAAPAAsAAAARAPH/AAAPAAsAAAARAPL/AAAPAAsAAAARAPP/AAAPAAsAAAARAPT/AAAPAAsAAAASAPT/AAAPAAsAAAASAPX/AAAPAAsAAAASAO3/AAAPAAsAAAASAOz/AAAPAAsAAAARAOz/AAAPAAsAAAASAO7/AAAPAAsAAAASAO//AAAPAAsAAAASAPD/AAAPAAsAAAASAPH/AAAPAAsAAAASAPL/AAAPAAsAAAASAPP/AAAPAAsAAADt////AAAPAAsAAADt//7/AAAPAAsAAADt//3/AAAPAAsAAADt//z/AAAPAAsAAADt//v/AAAPAAsAAADt//r/AAAPAAsAAADt//n/AAAPAAsAAADt//j/AAAPAAsAAADt//f/AAAPAAsAAADt//b/AAAPAAsAAADt//X/AAAPAAsAAADs//X/AAAPAAsAAADs//T/AAAPAAsAAADs//P/AAAPAAsAAADs//L/AAAPAAsAAADt//L/AAAPAAsAAADt//H/AAAPAAsAAADs//H/AAAPAAsAAADs////AAAPAAsAAADs//7/AAAPAAsAAADs//3/AAAPAAsAAADs//z/AAAPAAsAAADs//v/AAAPAAsAAADs//r/AAAPAAsAAADs//n/AAAPAAsAAADs//j/AAAPAAsAAADs//f/AAAPAAsAAADs//b/AAAPAAsAAADu/+P/AAAPAAsAAADu/+T/AAAPAAsAAADt/+T/AAAPAAsAAADs/+T/AAAPAAsAAADs/+P/AAAPAAsAAADt/+P/AAAPAAsAAADt/+X/AAAPAAsAAADt/+b/AAAPAAsAAADt/+f/AAAPAAsAAADt/+j/AAAPAAsAAADt/+n/AAAPAAsAAADt/+r/AAAPAAsAAADt/+v/AAAPAAsAAADt/+z/AAAPAAsAAADt/+3/AAAPAAsAAADt/+7/AAAPAAsAAADt/+//AAAPAAsAAADt//D/AAAPAAsAAADs//D/AAAPAAsAAADs/+X/AAAPAAsAAADs/+b/AAAPAAsAAADs/+f/AAAPAAsAAADs/+j/AAAPAAsAAADs/+n/AAAPAAsAAADs/+r/AAAPAAsAAADs/+v/AAAPAAsAAADs/+z/AAAPAAsAAADs/+3/AAAPAAsAAADs/+7/AAAPAAsAAADs/+//AAAPAAsAAAARAOv/AAAPAAsAAAARAOr/AAAPAAsAAAARAOn/AAAPAAsAAAARAOj/AAAPAAsAAAARAOf/AAAPAAsAAAARAOb/AAAPAAsAAAARAOX/AAAPAAsAAAARAOT/AAAPAAsAAAARAOP/AAAPAAsAAAASAOv/AAAPAAsAAAASAOr/AAAPAAsAAAASAOn/AAAPAAsAAAASAOj/AAAPAAsAAAASAOf/AAAPAAsAAAASAOb/AAAPAAsAAAASAOX/AAAPAAsAAAASAOT/AAAPAAsAAAASAOP/AAAPAAsAAAAQAOT/AAAPAAsAAAAPAOT/AAAPAAsAAAAOAOT/AAAPAAsAAAANAOT/AAAPAAsAAAAMAOT/AAAPAAsAAAALAOT/AAAPAAsAAAAKAOT/AAAPAAsAAAAJAOT/AAAPAAsAAAAIAOT/AAAPAAsAAAAHAOT/AAAPAAsAAAAGAOT/AAAPAAsAAAAFAOT/AAAPAAsAAAAEAOT/AAAPAAsAAAADAOT/AAAPAAsAAAACAOT/AAAPAAsAAAABAOT/AAAPAAsAAAAAAOT/AAAPAAsAAAD//+T/AAAPAAsAAAD+/+T/AAAPAAsAAAD9/+T/AAAPAAsAAAD8/+T/AAAPAAsAAAD7/+T/AAAPAAsAAAD6/+T/AAAPAAsAAAD5/+T/AAAPAAsAAAD4/+T/AAAPAAsAAAD3/+T/AAAPAAsAAAD2/+T/AAAPAAsAAAD1/+T/AAAPAAsAAAD0/+T/AAAPAAsAAADz/+T/AAAPAAsAAADy/+T/AAAPAAsAAADx/+T/AAAPAAsAAADw/+T/AAAPAAsAAADv/+T/AAAPAAsAAADv/+P/AAAPAAsAAADw/+P/AAAPAAsAAADx/+P/AAAPAAsAAADy/+P/AAAPAAsAAADz/+P/AAAPAAsAAAD0/+P/AAAPAAsAAAD1/+P/AAAPAAsAAAD2/+P/AAAPAAsAAAD3/+P/AAAPAAsAAAD4/+P/AAAPAAsAAAD5/+P/AAAPAAsAAAD6/+P/AAAPAAsAAAD7/+P/AAAPAAsAAAD8/+P/AAAPAAsAAAD9/+P/AAAPAAsAAAD+/+P/AAAPAAsAAAD//+P/AAAPAAsAAAAAAOP/AAAPAAsAAAABAOP/AAAPAAsAAAACAOP/AAAPAAsAAAADAOP/AAAPAAsAAAAEAOP/AAAPAAsAAAAFAOP/AAAPAAsAAAAGAOP/AAAPAAsAAAAHAOP/AAAPAAsAAAAIAOP/AAAPAAsAAAAJAOP/AAAPAAsAAAAKAOP/AAAPAAsAAAALAOP/AAAPAAsAAAAMAOP/AAAPAAsAAAANAOP/AAAPAAsAAAAOAOP/AAAPAAsAAAAPAOP/AAAPAAsAAAAQAOP/AAAPAAsAAAAKAOf/AAARAAkAAAAKAOb/AAAQAAkAAAADAPP/AAAOAAAAADADAOr/AAANAA8AAAAEAPD/AAAOAAcAAAD9/+7/AAANAAcAAAD9/+z/AAANAAIAAAD9/+3/AAANAAMAAAABAO7/AAANAAkAAAD6/+r/AAANAAkAAAAFAPD/AAANAA8AAAAEAO//AAANAA8AAADu////AAANAA8AAAD9//v/AAAJAAYAAAAAAPv/AAALAAYAAAD8//v/AgAEAA8AAAABAPv/AgAEAA8AAADy//v/AAARAAYAAAALAPv/AAARAAYAAAALAPr/AAALAA8AAADy//r/AAALAA8AAAAQAPT/AAANAAcAAADu//L/AAANAAcAAAAQAOz/AAANAAkAAADu//D/AAANAAIAAADu//H/AAANAAMAAAAQAPL/AAANAAIAAAAQAPP/AAANAAMAAAAJAOf/AAAKAA8AAAAIAPD/AAAJAA8AAAAPAO//AAAQAA4AADAHAOv/AAAQAA4AADD+//P/AAAQAA4AADDv//X/AAAQAA4AADD6/+//AAAQAA4AAGADAOb/AAAQAA4AAGAJAPP/AAAQAA4AADAGAO7/AAAQAA4AADD7/+f/AAAOAAIAAAD0//r/AAAOAAEAAAA=")
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAARAP7/AAAPAAsAAAARAP3/AAAPAAsAAAARAPz/AAAPAAsAAAARAPv/AAAPAAsAAAASAP7/AAAPAAsAAAASAP3/AAAPAAsAAAASAPz/AAAPAAsAAAASAPv/AAAPAAsAAADt//7/AAAPAAsAAADt//3/AAAPAAsAAADt//z/AAAPAAsAAADt//v/AAAPAAsAAADs//7/AAAPAAsAAADs//3/AAAPAAsAAADs//z/AAAPAAsAAADs//v/AAAPAAsAAADs////AAAPAAsAAADs/wAAAAAPAAsAAADs/wEAAAAPAAsAAADs/wIAAAAPAAsAAADt////AAAPAAsAAADt/wAAAAAPAAsAAADt/wEAAAAPAAsAAADt/wIAAAAPAAsAAADu////AQAEAA0AAADu/wAAAQAEAA4AAADu/wEAAAAPAAsAAADu/wIAAAAPAAsAAADv/wAAAQAEAA4AAADv/wEAAAAPAAsAAADv/wIAAAAPAAsAAADw/wIAAAAPAAsAAADx/wIAAAAPAAsAAADy/wIAAAAPAAsAAADz/wIAAAAPAAsAAAD0/wIAAAAPAAsAAAD1/wIAAAAPAAsAAAD2/wIAAAAPAAsAAAD3/wIAAAAPAAsAAAD4/wIAAAAPAAsAAAD5/wIAAAAPAAsAAAD6/wIAAAAPAAsAAAD7/wIAAAAPAAsAAAD8/wIAAAAPAAsAAAD9/wIAAAAPAAsAAAD+/wIAAAAPAAsAAAD//wIAAAAPAAsAAAAAAAIAAAAPAAsAAAABAAIAAAAPAAsAAAACAAIAAAAPAAsAAAADAAIAAAAPAAsAAAAEAAIAAAAPAAsAAAAFAAIAAAAPAAsAAAAGAAIAAAAPAAsAAAAHAAIAAAAPAAsAAAAIAAIAAAAPAAsAAAAJAAIAAAAPAAsAAAAKAAIAAAAPAAsAAAALAAIAAAAPAAsAAAAMAAIAAAAPAAsAAAANAAIAAAAPAAsAAAAOAAIAAAAPAAsAAAAPAAIAAAAPAAsAAAAQAAAAAQAEAA4AAAAQAAEAAAAPAAsAAAAQAAIAAAAPAAsAAAARAP//AAAPAAsAAAARAAAAAAAPAAsAAAARAAEAAAAPAAsAAAARAAIAAAAPAAsAAAASAP//AAAPAAsAAAASAAAAAAAPAAsAAAASAAEAAAAPAAsAAAASAAIAAAAPAAsAAADu//7/AAANAA8A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AAADAO//AQAEAA0AAAADAPD/AQAEAA4AAAADAPH/AQAEAA4AAAADAPL/AQAEAA4AAAADAPP/AQAEAA4AAAADAPT/AQAEAA4AAAADAPX/AQAEAA4AAAADAPb/AQAEAA4AAAAEAOf/AAAPAAsAAAAEAOj/AAAPAAsAAAAEAOn/AQAEAA4AAAAEAOr/AQAEAA4AAAAEAO//AQAEAA4AAAAEAPD/AQAEAA4AAAAEAPT/AAAOAAcAAAAEAPX/AQAEAA0AAAAFAOf/AAAPAAsAAAAFAOj/AAAPAAsAAAAFAOn/AQAEAA4AAAAFAOr/AQAEAA4AAAAFAO//AQAEAA4AAAAFAPD/AQAEAA4AAAAFAPX/AQAEAA0AAAAGAOf/AAAPAAsAAAAGAOj/AAAPAAsAAAAGAOn/AQAEAA4AAAAGAOr/AQAEAA4AAAAGAO7/AQAEAA4AAAAGAO//AQAEAA4AAAAGAPD/AQAEAA4AAAAGAPX/AQAEAA0AAAAHAOf/AAAPAAsAAAAHAOj/AAAPAAsAAAAHAOn/AQAEAA4AAAAHAOr/AQAEAA4AAAAHAOv/AQAEAA4AAAAHAOz/AQAEAA4AAAAHAO3/AQAEAA4AAAAHAO7/AQAEAA4AAAAHAPX/AQAEAA0AAAAIAOf/AAAPAAsAAAAIAOj/AAAPAAsAAAAIAOn/AQAEAA4AAAAIAOr/AQAEAA4AAAAIAOv/AQAEAA4AAAAIAOz/AQAEAA4AAAAIAO3/AQAEAA4AAAAIAPX/AQAEAA0AAAAJAOf/AAAPAAsAAAAJAOv/AAAKAA8AAAAJAOz/AQAEAA0AAAAJAPX/AQAEAA4AAAAJAPb/AQAEAA4AAAAKAOf/AAAPAAsAAAAKAOr/AAAQAAgAAAAKAOv/AAARAAgAAAAKAOz/AQAEAA0AAAALAOf/AAAPAAsAAAALAOz/AQAEAA0AAAAMAOf/AAAPAAsAAAAMAOz/AQAEAA0AAAANAOf/AAAPAAsAAAAOAOf/AAAPAAsAAAAPAOf/AAAPAAsAAAAQAOf/AAAPAAsAAAARAOf/AAAPAAsAAAARAOj/AAAPAAsAAAARAOn/AAAPAAsAAAARAOr/AAAPAAsAAAARAOv/AAAPAAsAAAARAOz/AAAPAAsAAAARAO3/AAAPAAsAAAARAO7/AAAPAAsAAAARAO//AAAPAAsAAAARAPD/AAAPAAsA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")
 tile_set = SubResource("TileSet_1frf3")
 
 [node name="Player" parent="." instance=ExtResource("4_ucue1")]
-position = Vector2(-17, -272)
+position = Vector2(-16, -208)
+
+[node name="Platform" type="Node" parent="."]
+
+[node name="Platform_2" parent="Platform" instance=ExtResource("6_colll")]
+position = Vector2(-208, -59)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform/Platform_2"]
+libraries = {
+&"": SubResource("AnimationLibrary_1pqhb")
+}
+autoplay = "move"
+
+[node name="Platform_3" parent="Platform" instance=ExtResource("6_colll")]
+position = Vector2(49, -59)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform/Platform_3"]
+libraries = {
+&"": SubResource("AnimationLibrary_7dy2j")
+}
+autoplay = "move"
 
 [node name="TP-Secret" type="Area2D" parent="."]
 script = ExtResource("5_7dy2j")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TP-Secret"]
-position = Vector2(23.5, -223.5)
-scale = Vector2(0.453125, 0.453125)
-sprite_frames = SubResource("SpriteFrames_bkqlj")
-animation = &"idle"
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Secret"]
-position = Vector2(24, -216)
+position = Vector2(24, -152)
 shape = SubResource("CircleShape2D_ucue1")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAACAPH/AAAEAA8AAAACAPL/AAAEAA8AAAAAAPH/AAAEAA8AAAAAAPL/AAAEAA8AAAABAPH/AAAEAA8AAAABAPL/AAAEAA8AAAA=")
+tile_map_data = PackedByteArray("AAAAAPX/AAAEAA8AAAAAAPb/AAAEAA8AAAABAPX/AAAEAA8AAAABAPb/AAAEAA8AAAACAPX/AAAEAA8AAAACAPb/AAAEAA8AAAD7//H/AAAEAA8AAAD8//H/AAAEAA8AAAA=")
 tile_set = SubResource("TileSet_jbg21")
 
 [node name="Coins" type="Node" parent="."]
 
-[node name="Coin25" type="Area2D" parent="Coins"]
-collision_layer = 16
-script = ExtResource("18_wnis3")
+[node name="Coin" parent="Coins" instance=ExtResource("8_sgnlk")]
+position = Vector2(-88, -232)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coins/Coin25"]
-position = Vector2(-96, -288)
-sprite_frames = SubResource("SpriteFrames_0pwy5")
-animation = &"idle"
+[node name="Coin2" parent="Coins" instance=ExtResource("8_sgnlk")]
+position = Vector2(72, -216)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coins/Coin25"]
-position = Vector2(-96, -287)
-shape = SubResource("CircleShape2D_1frf3")
-
-[node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin25"]
-stream = ExtResource("8_colll")
-
-[node name="Coin26" type="Area2D" parent="Coins"]
-collision_layer = 16
-script = ExtResource("18_wnis3")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coins/Coin26"]
-position = Vector2(80, -280)
-sprite_frames = SubResource("SpriteFrames_0pwy5")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coins/Coin26"]
-position = Vector2(80, -279)
-shape = SubResource("CircleShape2D_1frf3")
-
-[node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin26"]
-stream = ExtResource("8_colll")
-
-[node name="Coin27" type="Area2D" parent="Coins"]
-collision_layer = 16
-script = ExtResource("18_wnis3")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coins/Coin27"]
+[node name="Coin3" parent="Coins" instance=ExtResource("8_sgnlk")]
 position = Vector2(-280, -40)
-sprite_frames = SubResource("SpriteFrames_0pwy5")
-animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coins/Coin27"]
-position = Vector2(-280, -39)
-shape = SubResource("CircleShape2D_1frf3")
-
-[node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin27"]
-stream = ExtResource("8_colll")
-
-[node name="Coin28" type="Area2D" parent="Coins"]
-collision_layer = 16
-script = ExtResource("18_wnis3")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coins/Coin28"]
+[node name="Coin4" parent="Coins" instance=ExtResource("8_sgnlk")]
 position = Vector2(264, -24)
-sprite_frames = SubResource("SpriteFrames_0pwy5")
-animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coins/Coin28"]
-position = Vector2(264, -23)
-shape = SubResource("CircleShape2D_1frf3")
+[node name="Coin5" parent="Coins" instance=ExtResource("8_sgnlk")]
+position = Vector2(56, -360)
 
-[node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin28"]
-stream = ExtResource("8_colll")
+[node name="Coin6" parent="Coins" instance=ExtResource("8_sgnlk")]
+position = Vector2(-16, -70)
 
-[node name="Coin29" type="Area2D" parent="Coins"]
-collision_layer = 16
-script = ExtResource("18_wnis3")
+[node name="Coin7" parent="Coins" instance=ExtResource("8_sgnlk")]
+position = Vector2(-280, -216)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coins/Coin29"]
-position = Vector2(56, -424)
-sprite_frames = SubResource("SpriteFrames_0pwy5")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coins/Coin29"]
-position = Vector2(56, -423)
-shape = SubResource("CircleShape2D_1frf3")
-
-[node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin29"]
-stream = ExtResource("8_colll")
-
-[node name="Coin30" type="Area2D" parent="Coins"]
-collision_layer = 16
-script = ExtResource("18_wnis3")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coins/Coin30"]
-position = Vector2(-16, -90)
-sprite_frames = SubResource("SpriteFrames_0pwy5")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coins/Coin30"]
-position = Vector2(-16, -89)
-shape = SubResource("CircleShape2D_1frf3")
-
-[node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin30"]
-stream = ExtResource("8_colll")
-
-[node name="Coin31" type="Area2D" parent="Coins"]
-collision_layer = 16
-script = ExtResource("18_wnis3")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coins/Coin31"]
-position = Vector2(-280, -312)
-sprite_frames = SubResource("SpriteFrames_0pwy5")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coins/Coin31"]
-position = Vector2(-280, -311)
-shape = SubResource("CircleShape2D_1frf3")
-
-[node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin31"]
-stream = ExtResource("8_colll")
-
-[node name="Coin32" type="Area2D" parent="Coins"]
-collision_layer = 16
-script = ExtResource("18_wnis3")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coins/Coin32"]
-position = Vector2(264, -264)
-sprite_frames = SubResource("SpriteFrames_0pwy5")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coins/Coin32"]
-position = Vector2(264, -263)
-shape = SubResource("CircleShape2D_1frf3")
-
-[node name="CollectSound" type="AudioStreamPlayer" parent="Coins/Coin32"]
-stream = ExtResource("8_colll")
-
-[node name="Enemies" type="Node" parent="."]
-
-[node name="Gerbillinae" type="Area2D" parent="Enemies"]
-process_mode = 3
-collision_layer = 8
-script = ExtResource("9_colll")
-speed = 44
-patrol_distance = 24
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemies/Gerbillinae"]
-process_mode = 3
-position = Vector2(128, -248)
-sprite_frames = SubResource("SpriteFrames_8u1gu")
-animation = &"run"
-frame_progress = 0.31231
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Gerbillinae"]
-process_mode = 3
-position = Vector2(128, -246)
-shape = SubResource("CircleShape2D_nrltu")
+[node name="Coin8" parent="Coins" instance=ExtResource("8_sgnlk")]
+position = Vector2(264, -216)
 
 [node name="Traps" type="Node" parent="."]
 
@@ -2539,276 +2408,307 @@ shape = SubResource("CircleShape2D_nrltu")
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap"]
-position = Vector2(-240, 16)
+position = Vector2(-240, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap"]
-position = Vector2(-240, 25)
+position = Vector2(-240, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap2" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap2"]
-position = Vector2(-208, 16)
+position = Vector2(-208, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap2"]
-position = Vector2(-208, 25)
+position = Vector2(-208, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap3" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap3"]
-position = Vector2(-176, 16)
+position = Vector2(-176, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap3"]
-position = Vector2(-176, 25)
+position = Vector2(-176, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap4" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap4"]
-position = Vector2(-144, 16)
+position = Vector2(-144, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap4"]
-position = Vector2(-144, 25)
+position = Vector2(-144, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap5" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap5"]
-position = Vector2(-112, 16)
+position = Vector2(-112, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap5"]
-position = Vector2(-112, 25)
+position = Vector2(-112, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap6" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap6"]
-position = Vector2(-80, 16)
+position = Vector2(-80, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap6"]
-position = Vector2(-80, 25)
+position = Vector2(-80, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap7" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap7"]
-position = Vector2(-48, 16)
+position = Vector2(-48, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap7"]
-position = Vector2(-48, 25)
+position = Vector2(-48, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap8" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap8"]
-position = Vector2(-16, 16)
+position = Vector2(-16, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap8"]
-position = Vector2(-16, 25)
+position = Vector2(-16, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap9" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap9"]
-position = Vector2(16, 16)
+position = Vector2(16, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap9"]
-position = Vector2(16, 25)
+position = Vector2(16, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap10" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap10"]
-position = Vector2(48, 16)
+position = Vector2(48, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap10"]
-position = Vector2(48, 25)
+position = Vector2(48, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap11" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap11"]
-position = Vector2(80, 16)
+position = Vector2(80, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap11"]
-position = Vector2(80, 25)
+position = Vector2(80, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap12" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap12"]
-position = Vector2(112, 16)
+position = Vector2(112, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap12"]
-position = Vector2(112, 25)
+position = Vector2(112, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap13" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap13"]
-position = Vector2(144, 16)
+position = Vector2(144, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap13"]
-position = Vector2(144, 25)
+position = Vector2(144, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap14" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap14"]
-position = Vector2(176, 16)
+position = Vector2(176, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap14"]
-position = Vector2(176, 25)
+position = Vector2(176, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap15" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap15"]
-position = Vector2(208, 16)
+position = Vector2(208, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap15"]
-position = Vector2(208, 25)
+position = Vector2(208, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Trap16" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap16"]
-position = Vector2(240, 16)
+position = Vector2(240, 0)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nrltu")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap16"]
-position = Vector2(240, 25)
+position = Vector2(240, 9)
 shape = SubResource("RectangleShape2D_j5eo6")
 
 [node name="Brickhead" type="Area2D" parent="Traps"]
 script = ExtResource("10_1frf3")
 speed = 180
-distance = 161
+distance = 128
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead"]
-position = Vector2(-192, -256)
+position = Vector2(-192, -208)
 sprite_frames = SubResource("SpriteFrames_g1sf4")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead"]
-position = Vector2(-192, -256)
+position = Vector2(-192, -208)
 shape = SubResource("RectangleShape2D_5s5me")
 
 [node name="Brickhead2" type="Area2D" parent="Traps"]
 script = ExtResource("10_1frf3")
-speed = 130
-distance = 49
+speed = 90
+distance = 24
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead2"]
-position = Vector2(-16, -144)
+position = Vector2(-16, -104)
 sprite_frames = SubResource("SpriteFrames_g1sf4")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead2"]
-position = Vector2(-16, -144)
-shape = SubResource("RectangleShape2D_5s5me")
-
-[node name="Brickhead3" type="Area2D" parent="Traps"]
-script = ExtResource("10_1frf3")
-speed = 90
-distance = 49
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead3"]
-position = Vector2(160, -144)
-sprite_frames = SubResource("SpriteFrames_g1sf4")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead3"]
-position = Vector2(160, -144)
+position = Vector2(-16, -104)
 shape = SubResource("RectangleShape2D_5s5me")
 
 [node name="Trap17" type="Area2D" parent="Traps"]
 script = ExtResource("8_wgxem")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap17"]
-position = Vector2(176, -340)
+position = Vector2(168, -276)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_j5eo6")
 animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap17"]
-position = Vector2(176, -346)
+position = Vector2(168, -282)
 rotation = 3.14159
+shape = SubResource("CircleShape2D_g1sf4")
+
+[node name="Trap18" type="Area2D" parent="Traps"]
+script = ExtResource("8_wgxem")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap18"]
+position = Vector2(184, -276)
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_j5eo6")
+animation = &"damage"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap18"]
+position = Vector2(184, -282)
+rotation = 3.14159
+shape = SubResource("CircleShape2D_g1sf4")
+
+[node name="Trap19" type="Area2D" parent="Traps"]
+script = ExtResource("8_wgxem")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap19"]
+position = Vector2(104, -188)
+sprite_frames = SubResource("SpriteFrames_j5eo6")
+animation = &"damage"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap19"]
+position = Vector2(104, -182)
+shape = SubResource("CircleShape2D_g1sf4")
+
+[node name="Trap20" type="Area2D" parent="Traps"]
+script = ExtResource("8_wgxem")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap20"]
+position = Vector2(120, -188)
+sprite_frames = SubResource("SpriteFrames_j5eo6")
+animation = &"damage"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap20"]
+position = Vector2(120, -182)
+shape = SubResource("CircleShape2D_g1sf4")
+
+[node name="Trap21" type="Area2D" parent="Traps"]
+script = ExtResource("8_wgxem")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap21"]
+position = Vector2(136, -188)
+sprite_frames = SubResource("SpriteFrames_j5eo6")
+animation = &"damage"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap21"]
+position = Vector2(136, -182)
 shape = SubResource("CircleShape2D_g1sf4")
 
 [node name="TP-Levels" type="Area2D" parent="."]
 script = ExtResource("16_dfrsb")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TP-Levels"]
-position = Vector2(166, -416)
-sprite_frames = SubResource("SpriteFrames_j2sux")
-animation = &"idle"
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels"]
-position = Vector2(164, -400)
+position = Vector2(164, -336)
 shape = SubResource("CapsuleShape2D_68j18")
 
 [node name="UI" type="CanvasLayer" parent="."]

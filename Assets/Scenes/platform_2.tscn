@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgd83j7up65k4"]
+
+[ext_resource type="Texture2D" uid="uid://ds7n0ff6q4r8f" path="res://Assets/Sprites/Plataformpack-byArpion.png" id="1_dg563"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ron2s"]
+size = Vector2(32, 8)
+
+[node name="Platform_2" type="AnimatableBody2D"]
+collision_layer = 32
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dg563")
+region_enabled = true
+region_rect = Rect2(288, 96, 32, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ron2s")
+one_way_collision = true

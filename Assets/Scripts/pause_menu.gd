@@ -8,7 +8,7 @@ extends Control
 
 func _ready():
 	print("PauseMenu visible:", pause_menu.visible)
-	GameManager.pause_menu = self # Assigner ce nœud à GameManager
+	GameManager.pause_menu = self
 	resume_button.pressed.connect(_on_resume_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
 	start_menu_button.pressed.connect(_on_start_menu_button_pressed)
@@ -21,8 +21,6 @@ func _ready():
 	if is_inside_tree():
 		pause_menu.hide()
 		set_process(true)
-	else:
-		print("Erreur : PauseMenu n'est pas dans l'arbre")
 
 func _on_volume_changed(value):
 	AudioServer.set_bus_volume_db(0, linear_to_db(value))
@@ -43,8 +41,6 @@ func _process(_delta):
 	if is_inside_tree():
 		var viewport_size = get_viewport_rect().size
 		position = (viewport_size - size) / 2
-	else:
-		print("Erreur : PauseMenu n'est pas dans l'arbre pendant _process")
 
 func _on_resume_button_pressed():
 	GameManager.toggle_pause()
