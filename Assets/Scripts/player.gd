@@ -35,6 +35,7 @@ func _ready():
 	add_to_group("player")
 	set_process_input(false)
 	current_skin = GameManager.current_skin
+	print("Skin actif :", current_skin)
 	var current_scene = get_tree().current_scene.scene_file_path
 
 	if current_scene == "res://Assets/Scenes/level_victory.tscn":
@@ -140,6 +141,7 @@ func initialize_health():
 func set_lives(amount: int):
 	current_health = amount
 	max_health = amount
+	print("Nouvelles vies définies : %d" % current_health)
 	update_health_bar()
 
 func take_damage(amount):
@@ -147,6 +149,7 @@ func take_damage(amount):
 		return
 
 	current_health -= amount
+	print("Vies restantes :", current_health)
 	play_skin_anim("hit")
 	if not hit_sound.playing:
 		hit_sound.play()
@@ -181,6 +184,7 @@ func respawn():
 	call_deferred("load_respawn_scene")
 
 func load_respawn_scene():
+	print("Respawn du joueur...")
 	var path = GameManager.victory_checkpoint_scene_path if GameManager.victory_checkpoint_enabled else "res://Assets/Scenes/level_1.tscn"
 	LevelManager.load_level_by_path(path)
 

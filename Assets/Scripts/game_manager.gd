@@ -40,7 +40,8 @@ var coins_collected_by_difficulty := {
 	"easy": 0,
 	"normal": 0,
 	"hard": 0,
-	"fun": 0
+	"fun": 0,
+	"jumpgo": 0
 }
 var total_coins_in_level := 0
 
@@ -51,7 +52,7 @@ var current_skin := "default"
 var unlocked_skins := {
 	"easy": false, "normal": false, "hard": false,
 	"gold": false, "time": false, "timetwo": false,
-	"cyber": false, "rokzor": false
+	"cyber": false, "rokzor": false, "vagabond": false
 }
 const SAVE_PATH = "user://skin_data.save"
 
@@ -89,6 +90,8 @@ func reset_lives_by_difficulty():
 		"normal": player_lives = 60
 		"hard": player_lives = 30
 		"fun": player_lives = 200
+		"arena": player_lives = 1000
+		"jumpgo": player_lives = 100
 		_: player_lives = 60
 	player_current_health = player_lives
 
@@ -104,11 +107,13 @@ func add_coin(_coin_name: String, amount: int = 1):
 	coins_collected[name] = coins_collected.get(name, 0) + amount
 	if is_instance_valid(hud):
 		hud.update_coins_display()
+	print("Coins collectés :", coins_collected)
 
 func mark_coin_collected(level: String, id: String):
 	coins_collected_by_level[level] = coins_collected_by_level.get(level, [])
 	if id not in coins_collected_by_level[level]:
 		coins_collected_by_level[level].append(id)
+		print("Coin unique collecté :", id)
 		check_unlock_skins()
 
 func is_coin_already_collected(level_name: String, coin_id: String) -> bool:
@@ -117,6 +122,7 @@ func is_coin_already_collected(level_name: String, coin_id: String) -> bool:
 func set_victory_checkpoint(path: String):
 	victory_checkpoint_enabled = true
 	victory_checkpoint_scene_path = path
+	print("Checkpoint activé :", path)
 
 # ------------------------
 # Skins : Déblocage & Sauvegarde
@@ -126,8 +132,9 @@ func check_unlock_skins():
 	for coins in coins_collected_by_level.values():
 		total += coins.size()
 	coins_collected_by_difficulty[difficulty] = max(coins_collected_by_difficulty[difficulty], total)
-	if total >= 94 and not unlocked_skins.get(difficulty, false):
+	if total >= 104 and not unlocked_skins.get(difficulty, false):
 		unlocked_skins[difficulty] = true
+		print("Skin", difficulty, "débloqué!")
 	call_deferred("_check_global_skin_unlocks")
 	save_skin_data()
 
@@ -138,24 +145,34 @@ func _all_difficulties_have_min_coins(difficulties: Array, min_coins: int) -> bo
 	return true
 
 func _check_global_skin_unlocks():
-	if _all_difficulties_have_min_coins(["easy", "normal", "hard"], 94):
+	if _all_difficulties_have_min_coins(["easy", "normal", "hard"], 104):
 		unlocked_skins["gold"] = true
-	if _all_difficulties_have_min_coins(["easy", "normal", "hard", "fun"], 94):
+		print("Skin GOLD débloqué!")
+	if _all_difficulties_have_min_coins(["easy", "normal", "hard", "fun"], 104):
 		unlocked_skins["rokzor"] = true
-	if difficulty == "fun" and coins_collected_by_difficulty["fun"] >= 94 and has_died_in_fun_mode:
+		print("Skin ROKZOR débloqué!")
+	if difficulty == "fun" and coins_collected_by_difficulty["fun"] >= 104 and has_died_in_fun_mode:
 		unlocked_skins["cyber"] = true
+		print("Skin RAINBOW débloqué!")
+	if difficulty == "jumpgo":
+		if coins_collected_by_difficulty.get("jumpgo", 0) >= 100 and not unlocked_skins.get("vagabond", false):
+			unlocked_skins["vagabond"] = true
+			print("Skin VAGABOND débloqué!")
+
 	check_time_skins()
 	save_skin_data()
 
 func check_time_skins():
 	var count = 0
 	for d in ["easy", "normal", "hard"]:
-		if time_scores.get(d, INF) <= 720.0 and coins_collected_by_difficulty.get(d, 0) >= 94:
+		if time_scores.get(d, INF) <= 720.0 and coins_collected_by_difficulty.get(d, 0) >= 104:
 			count += 1
 	if count >= 1:
 		unlocked_skins["time"] = true
+		print("Skin TIME débloqué!")
 	if count == 3:
 		unlocked_skins["timetwo"] = true
+		print("Skin TIME TWO débloqué!")
 
 # ------------------------
 # Sauvegarde
@@ -186,6 +203,7 @@ func load_skin_data():
 func set_completion_time(diff: String, time_in_seconds: float):
 	if not time_scores.has(diff) or time_scores[diff] > time_in_seconds:
 		time_scores[diff] = time_in_seconds
+		print("Temps mis à jour pour", diff, ":", time_in_seconds)
 		check_time_skins()
 		save_skin_data()
 
@@ -247,6 +265,12 @@ var enemy_damage_by_level := {
 		"Level_Hard_1": 14,
 		"Level_Hard_2": 16,
 		"Level_Hard_3": 18,
-		"Level_Hard_4": 20,
+		"Level_Hard_4": 20
+	},
+	"arena": {
+		"Level_Arena": 200
+	},
+	"jumpgo": {
+		"Level_Jump": 5
 	}
 }

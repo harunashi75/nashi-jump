@@ -913,6 +913,12 @@ position = Vector2(176, -360)
 [node name="Coin6" parent="Coins" instance=ExtResource("6_al36u")]
 position = Vector2(8, -264)
 
+[node name="Coin7" parent="Coins" instance=ExtResource("6_al36u")]
+position = Vector2(-264, -104)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("6_al36u")]
+position = Vector2(280, -424)
+
 [node name="Traps" type="Node" parent="."]
 
 [node name="BrickheadRight" type="Area2D" parent="Traps"]

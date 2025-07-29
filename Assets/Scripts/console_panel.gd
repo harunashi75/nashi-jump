@@ -37,10 +37,11 @@ func _on_command_entered(command_line: String):
 				"easy": 300,
 				"normal": 180,
 				"hard": 90,
-				"fun": 600
+				"fun": 600,
+				"jumpgo": 300
 			}
 
-			var amount = default_amounts.get(GameManager.difficulty, 150)
+			var amount = default_amounts.get(GameManager.difficulty, 180)
 			if args.size() > 1 and args[1].is_valid_int():
 				amount = args[1].to_int()
 

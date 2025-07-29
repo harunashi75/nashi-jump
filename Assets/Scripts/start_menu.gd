@@ -14,6 +14,8 @@ extends Control
 @onready var normal_button = mode_popup.get_node("VBoxContainer/Normal")
 @onready var hard_button = mode_popup.get_node("VBoxContainer/Hard")
 @onready var fun_button = mode_popup.get_node("VBoxContainer/Fun")
+@onready var arena_button = mode_popup.get_node("VBoxContainer/Arena")
+@onready var jumpgo_button = mode_popup.get_node("VBoxContainer/JumpGo")
 
 @onready var skin_popup = $SkinPopup
 @onready var default_skin_button = skin_popup.get_node("VBoxContainer/DefaultSkin")
@@ -25,6 +27,7 @@ extends Control
 @onready var time_skin_two_button = skin_popup.get_node("VBoxContainer/TimeSkinTwo")
 @onready var cyber_skin_button = skin_popup.get_node("VBoxContainer/CyberSkin")
 @onready var rokzor_skin_button = skin_popup.get_node("VBoxContainer/RokzorSkin")
+@onready var vagabond_skin_button = skin_popup.get_node("VBoxContainer/VagabondSkin")
 
 # ------------------------
 # Ready
@@ -47,6 +50,8 @@ func _connect_buttons():
 	normal_button.pressed.connect(func(): _start_game("normal", "res://Assets/Scenes/level_1.tscn"))
 	hard_button.pressed.connect(func(): _start_game("hard", "res://Assets/Scenes/level_1.tscn"))
 	fun_button.pressed.connect(func(): _start_game("fun", "res://Assets/Scenes/level_victory.tscn"))
+	arena_button.pressed.connect(func(): _start_game("arena", "res://Assets/Scenes/level_arena.tscn"))
+	jumpgo_button.pressed.connect(func(): _start_game("jumpgo", "res://Assets/Scenes/level_jump.tscn"))
 
 	default_skin_button.pressed.connect(func(): _select_skin("default"))
 	gold_skin_button.pressed.connect(func(): _select_skin("gold"))
@@ -57,6 +62,7 @@ func _connect_buttons():
 	time_skin_two_button.pressed.connect(func(): _select_skin("timetwo"))
 	cyber_skin_button.pressed.connect(func(): _select_skin("cyber"))
 	rokzor_skin_button.pressed.connect(func(): _select_skin("rokzor"))
+	vagabond_skin_button.pressed.connect(func(): _select_skin("vagabond"))
 
 # ------------------------
 # Game Start Logic
@@ -97,6 +103,7 @@ func _update_skin_buttons():
 	time_skin_two_button.disabled = !GameManager.unlocked_skins.get("timetwo", false)
 	cyber_skin_button.disabled = !GameManager.unlocked_skins.get("cyber", false)
 	rokzor_skin_button.disabled = !GameManager.unlocked_skins.get("rokzor", false)
+	vagabond_skin_button.disabled = !GameManager.unlocked_skins.get("vagabond", false)
 
 # ------------------------
 # UI Popups

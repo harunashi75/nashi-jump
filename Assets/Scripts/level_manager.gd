@@ -17,7 +17,9 @@ var levels := [
 	"res://Assets/Scenes/level_hard_2.tscn",
 	"res://Assets/Scenes/level_hard_3.tscn",
 	"res://Assets/Scenes/level_hard_4.tscn",
-	"res://Assets/Scenes/level_hard_5.tscn"
+	"res://Assets/Scenes/level_hard_5.tscn",
+	"res://Assets/Scenes/level_arena.tscn",
+	"res://Assets/Scenes/level_jump.tscn"
 ]
 
 # ------------------------

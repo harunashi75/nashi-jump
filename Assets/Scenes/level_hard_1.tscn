@@ -694,6 +694,12 @@ position = Vector2(184, -408)
 [node name="Coin6" parent="Coins" instance=ExtResource("6_6jkin")]
 position = Vector2(8, -440)
 
+[node name="Coin7" parent="Coins" instance=ExtResource("6_6jkin")]
+position = Vector2(-264, -24)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("6_6jkin")]
+position = Vector2(280, -24)
+
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy_Purple" parent="Enemies" instance=ExtResource("7_8e8dh")]

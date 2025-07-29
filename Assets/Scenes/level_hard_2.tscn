@@ -1030,6 +1030,12 @@ position = Vector2(-168, -269)
 [node name="Coin6" parent="Coins" instance=ExtResource("6_sb4pu")]
 position = Vector2(-232, -456)
 
+[node name="Coin7" parent="Coins" instance=ExtResource("6_sb4pu")]
+position = Vector2(-8, -72)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("6_sb4pu")]
+position = Vector2(-88, -600)
+
 [node name="Traps" type="Node" parent="."]
 
 [node name="Trap" type="Area2D" parent="Traps"]
