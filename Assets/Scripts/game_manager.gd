@@ -50,9 +50,9 @@ var total_coins_in_level := 0
 # ------------------------
 var current_skin := "default"
 var unlocked_skins := {
-	"easy": false, "normal": false, "hard": false,
+	"leaf": false, "mystic": false, "abyssal": false,
 	"gold": false, "time": false, "timetwo": false,
-	"cyber": false, "rokzor": false, "vagabond": false
+	"rainbow": false, "rokzor": false, "vagabond": false
 }
 const SAVE_PATH = "user://skin_data.save"
 
@@ -152,7 +152,7 @@ func _check_global_skin_unlocks():
 		unlocked_skins["rokzor"] = true
 		print("Skin ROKZOR débloqué!")
 	if difficulty == "fun" and coins_collected_by_difficulty["fun"] >= 104 and has_died_in_fun_mode:
-		unlocked_skins["cyber"] = true
+		unlocked_skins["rainbow"] = true
 		print("Skin RAINBOW débloqué!")
 	if difficulty == "jumpgo":
 		if coins_collected_by_difficulty.get("jumpgo", 0) >= 100 and not unlocked_skins.get("vagabond", false):

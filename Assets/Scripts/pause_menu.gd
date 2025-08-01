@@ -6,6 +6,11 @@ extends Control
 @onready var start_menu_button = $VBoxContainer/StartMenu
 @onready var volume_slider = $VolumeSlider
 
+func _unhandled_input(event):
+	if event.is_action_pressed("pause_menu"):
+		get_viewport().set_input_as_handled()
+		GameManager.toggle_pause()
+
 func _ready():
 	print("PauseMenu visible:", pause_menu.visible)
 	GameManager.pause_menu = self

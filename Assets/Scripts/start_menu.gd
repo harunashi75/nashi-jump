@@ -20,12 +20,12 @@ extends Control
 @onready var skin_popup = $SkinPopup
 @onready var default_skin_button = skin_popup.get_node("VBoxContainer/DefaultSkin")
 @onready var gold_skin_button = skin_popup.get_node("VBoxContainer/GoldSkin")
-@onready var easy_skin_button = skin_popup.get_node("VBoxContainer/EasySkin")
-@onready var normal_skin_button = skin_popup.get_node("VBoxContainer/NormalSkin")
-@onready var hard_skin_button = skin_popup.get_node("VBoxContainer/HardSkin")
+@onready var leaf_skin_button = skin_popup.get_node("VBoxContainer/LeafSkin")
+@onready var mystic_skin_button = skin_popup.get_node("VBoxContainer/MysticSkin")
+@onready var abyssal_skin_button = skin_popup.get_node("VBoxContainer/AbyssalSkin")
 @onready var time_skin_button = skin_popup.get_node("VBoxContainer/TimeSkin")
 @onready var time_skin_two_button = skin_popup.get_node("VBoxContainer/TimeSkinTwo")
-@onready var cyber_skin_button = skin_popup.get_node("VBoxContainer/CyberSkin")
+@onready var rainbow_skin_button = skin_popup.get_node("VBoxContainer/RainbowSkin")
 @onready var rokzor_skin_button = skin_popup.get_node("VBoxContainer/RokzorSkin")
 @onready var vagabond_skin_button = skin_popup.get_node("VBoxContainer/VagabondSkin")
 
@@ -55,12 +55,12 @@ func _connect_buttons():
 
 	default_skin_button.pressed.connect(func(): _select_skin("default"))
 	gold_skin_button.pressed.connect(func(): _select_skin("gold"))
-	easy_skin_button.pressed.connect(func(): _select_skin("easy"))
-	normal_skin_button.pressed.connect(func(): _select_skin("normal"))
-	hard_skin_button.pressed.connect(func(): _select_skin("hard"))
+	leaf_skin_button.pressed.connect(func(): _select_skin("leaf"))
+	mystic_skin_button.pressed.connect(func(): _select_skin("mystic"))
+	abyssal_skin_button.pressed.connect(func(): _select_skin("abyssal"))
 	time_skin_button.pressed.connect(func(): _select_skin("time"))
 	time_skin_two_button.pressed.connect(func(): _select_skin("timetwo"))
-	cyber_skin_button.pressed.connect(func(): _select_skin("cyber"))
+	rainbow_skin_button.pressed.connect(func(): _select_skin("rainbow"))
 	rokzor_skin_button.pressed.connect(func(): _select_skin("rokzor"))
 	vagabond_skin_button.pressed.connect(func(): _select_skin("vagabond"))
 
@@ -96,12 +96,12 @@ func _select_skin(skin_name: String):
 # ------------------------
 func _update_skin_buttons():
 	gold_skin_button.disabled = !GameManager.unlocked_skins.get("gold", false)
-	easy_skin_button.disabled = !GameManager.unlocked_skins.get("easy", false)
-	normal_skin_button.disabled = !GameManager.unlocked_skins.get("normal", false)
-	hard_skin_button.disabled = !GameManager.unlocked_skins.get("hard", false)
+	leaf_skin_button.disabled = !GameManager.unlocked_skins.get("leaf", false)
+	mystic_skin_button.disabled = !GameManager.unlocked_skins.get("mystic", false)
+	abyssal_skin_button.disabled = !GameManager.unlocked_skins.get("abyssal", false)
 	time_skin_button.disabled = !GameManager.unlocked_skins.get("time", false)
 	time_skin_two_button.disabled = !GameManager.unlocked_skins.get("timetwo", false)
-	cyber_skin_button.disabled = !GameManager.unlocked_skins.get("cyber", false)
+	rainbow_skin_button.disabled = !GameManager.unlocked_skins.get("rainbow", false)
 	rokzor_skin_button.disabled = !GameManager.unlocked_skins.get("rokzor", false)
 	vagabond_skin_button.disabled = !GameManager.unlocked_skins.get("vagabond", false)
 

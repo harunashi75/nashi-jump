@@ -143,19 +143,19 @@ theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "GOLD SKIN"
 
-[node name="EasySkin" type="Button" parent="SkinPopup/VBoxContainer"]
+[node name="LeafSkin" type="Button" parent="SkinPopup/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "LEAF SKIN"
 
-[node name="NormalSkin" type="Button" parent="SkinPopup/VBoxContainer"]
+[node name="MysticSkin" type="Button" parent="SkinPopup/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "MYSTIC SKIN"
 
-[node name="HardSkin" type="Button" parent="SkinPopup/VBoxContainer"]
+[node name="AbyssalSkin" type="Button" parent="SkinPopup/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
@@ -173,7 +173,7 @@ theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "TIME SKIN TWO"
 
-[node name="CyberSkin" type="Button" parent="SkinPopup/VBoxContainer"]
+[node name="RainbowSkin" type="Button" parent="SkinPopup/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
@@ -206,21 +206,21 @@ theme_override_fonts/normal_font = ExtResource("5_esus2")
 theme_override_font_sizes/normal_font_size = 16
 text = "Skins Unlock Conditions:
 
-• Leaf Skin – 94 coins in Easy mode
+• Leaf Skin – 104 coins in Easy mode
 
-• Mystic Skin – 94 coins in Normal mode
+• Mystic Skin – 104 coins in Normal mode
 
-• Abyssal Skin – 94 coins in Hard mode
+• Abyssal Skin – 104 coins in Hard mode
 
-• Gold Skin – 94 coins in all three modes
+• Gold Skin – 104 coins in all three modes
 
-• Time Skin – 94 coins in any mode in 12min or less
+• Time Skin – 104 coins in any mode in 12min or less
 
-• Time Skin Two – 94 coins in all three modes in 12min or less
+• Time Skin Two – 104 coins in all three modes in 12min or less
 
-• Rainbow ​​Skin – 94 coins in Fun mode AND die at least once
+• Rainbow ​​Skin – 104 coins in Fun mode AND die at least once
 
-• Rokzor Skin – 94 coins in all four modes
+• Rokzor Skin – 104 coins in all four modes
 
 • Vagabond Skin – 100 coins in Jump Go! mode"
 vertical_alignment = 1
@@ -233,4 +233,4 @@ offset_right = 1138.0
 offset_bottom = 627.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 24
-text = "v2.3.0"
+text = "v2.3.1"

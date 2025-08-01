@@ -187,10 +187,3 @@ func load_respawn_scene():
 	print("Respawn du joueur...")
 	var path = GameManager.victory_checkpoint_scene_path if GameManager.victory_checkpoint_enabled else "res://Assets/Scenes/level_1.tscn"
 	LevelManager.load_level_by_path(path)
-
-# ------------------------
-# Pause
-# ------------------------
-func _input(event):
-	if event.is_action_pressed("pause_menu"):
-		GameManager.toggle_pause()
