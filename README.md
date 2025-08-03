@@ -11,7 +11,7 @@ Une expérience rétro & chill, mais attention… ce n’est pas aussi facile qu
 
 Atteindre la fin du parcours sans mourir.
 
-Collecter les 94 pièces pour débloquer des récompenses.
+Collecter les 104 pièces pour débloquer des récompenses.
 
 Terminer le jeu rapidement pour accéder à des skins spéciaux.
 
@@ -30,7 +30,7 @@ Skins "Time" : gagne-les en complétant le jeu sous les 10 minutes!
 
 Skin "Rainbow" : à débloquer dans le mode Fun... si tu meurs!
 
-Mode Fun : commence avec 500 vies et commence directement au niveau final!
+Mode Fun : commence avec 200 vies et commence directement au niveau final!
 
 Niveaux hard accessibles après le niveau final pour plus de challenge.
 
@@ -41,13 +41,13 @@ Interface repensée : menus, infos sur le déblocage des skins.
 
 Mode - Vies - Pour qui?
 
-Easy - 100 - Pour découvrir tranquillement.
+Easy   - 100 - Pour découvrir tranquillement.
 
-Normal - 60 - Pour un bon challenge équilibré.
+Normal - 60  - Pour un bon challenge équilibré.
 
-Hard - 30 - Pour les joueurs extrêmes.
+Hard   - 30  - Pour les joueurs extrêmes.
 
-Fun - 200 - Pour délirer (et débloquer Rainbow).
+Fun    - 200 - Pour délirer (et débloquer Rainbow).
 
 
 👾 Infos Techniques
