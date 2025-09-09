@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://b65200jfv0ngs" path="res://Assets/Sounds/Hall of the King.ogg" id="12_1bigt"]
 [ext_resource type="Script" uid="uid://ccpu806yaiy8n" path="res://Assets/Scripts/tp_levels_1.gd" id="12_6lspk"]
 [ext_resource type="FontFile" uid="uid://ck2ml0wud68ix" path="res://Assets/Fonts/PublicPixel.otf" id="12_q7lng"]
-[ext_resource type="Texture2D" uid="uid://cw5m10fmfkc0n" path="res://Assets/Sprites/DialogueBoxSimple.png" id="12_uipdq"]
+[ext_resource type="Texture2D" uid="uid://t6qae3a33pk8" path="res://Assets/Sprites/UI/UI - 1.png" id="12_uipdq"]
 [ext_resource type="Script" uid="uid://da33b1txekhmy" path="res://Assets/Scripts/tp_levels_8.gd" id="13_gltxq"]
 [ext_resource type="Script" uid="uid://3t378uqbxysf" path="res://Assets/Scripts/tp_levels_2.gd" id="13_s67qe"]
 [ext_resource type="Script" uid="uid://bui5is7kpscux" path="res://Assets/Scripts/tp_levels_11.gd" id="14_gltxq"]
@@ -1123,10 +1123,10 @@ flip_h = true
 [node name="Bubble" type="Control" parent="Npc"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -37.0
-offset_top = -106.0
-offset_right = -37.0
-offset_bottom = -106.0
+offset_left = -66.0
+offset_top = -115.0
+offset_right = -66.0
+offset_bottom = -115.0
 
 [node name="TextureRect" type="TextureRect" parent="Npc/Bubble"]
 layout_mode = 0
@@ -1134,16 +1134,14 @@ offset_left = -45.0
 offset_right = 50.0
 offset_bottom = 22.0
 texture = ExtResource("12_uipdq")
-expand_mode = 1
 
 [node name="Label" type="Label" parent="Npc/Bubble"]
 layout_mode = 0
-offset_left = -41.0
-offset_top = 4.0
-offset_right = 133.0
-offset_bottom = 32.0
+offset_left = -35.0
+offset_top = 7.0
+offset_right = 115.0
+offset_bottom = 43.0
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("12_q7lng")
 theme_override_font_sizes/font_size = 8
 

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ro0f4a5llw0m" path="res://Assets/Sprites/Characters/ignatiusknight.png" id="5_tpl1r"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="6_nebf7"]
 [ext_resource type="FontFile" uid="uid://ck2ml0wud68ix" path="res://Assets/Fonts/PublicPixel.otf" id="6_per8p"]
-[ext_resource type="Texture2D" uid="uid://cw5m10fmfkc0n" path="res://Assets/Sprites/DialogueBoxSimple.png" id="6_tpl1r"]
+[ext_resource type="Texture2D" uid="uid://t6qae3a33pk8" path="res://Assets/Sprites/UI/UI - 1.png" id="6_tpl1r"]
 [ext_resource type="PackedScene" uid="uid://b2ery55yhbn6v" path="res://Assets/Scenes/enemy_brown.tscn" id="7_qhk0j"]
 [ext_resource type="Script" uid="uid://rj8bo7ewwsmm" path="res://Assets/Scripts/brickhead.gd" id="8_4mlq1"]
 [ext_resource type="Script" uid="uid://cb0buwrvrpv5h" path="res://Assets/Scripts/tp_levels_6.gd" id="9_ra7wl"]
@@ -405,28 +405,26 @@ autoplay = "default"
 [node name="Bubble" type="Control" parent="Npc"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -138.0
-offset_top = -475.0
-offset_right = -138.0
-offset_bottom = -475.0
+offset_left = -128.0
+offset_top = -470.0
+offset_right = -128.0
+offset_bottom = -470.0
 
 [node name="TextureRect" type="TextureRect" parent="Npc/Bubble"]
 layout_mode = 0
 offset_left = -30.0
 offset_top = -2.0
-offset_right = 75.0
-offset_bottom = 39.0
+offset_right = 73.0
+offset_bottom = 35.0
 texture = ExtResource("6_tpl1r")
-expand_mode = 1
 
 [node name="Label" type="Label" parent="Npc/Bubble"]
 layout_mode = 0
-offset_left = -25.0
-offset_top = 4.0
-offset_right = 165.0
-offset_bottom = 62.0
+offset_left = -19.0
+offset_top = 6.0
+offset_right = 143.0
+offset_bottom = 48.0
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_per8p")
 theme_override_font_sizes/font_size = 8
 

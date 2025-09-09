@@ -18,8 +18,6 @@ var time_scores := {}
 # Paramètres globaux
 # ------------------------
 var godmode_enabled := false
-var speed_multiplier := 1.0
-var speedup_enabled := false
 var is_game_paused: bool = false
 var difficulty := "normal"
 var has_initialized_health := false
@@ -77,9 +75,12 @@ func _ready():
 		hud = null
 	if pause_menu and not pause_menu.is_inside_tree():
 		pause_menu = null
-	
-	for diff in ["veryeasy", "easy", "normal", "hard", "insane"]:
-		enemy_damage_by_level[diff] = base_enemy_damage
+
+func get_enemy_damage(level_name: String) -> int:
+	if base_enemy_damage.has(level_name):
+		return base_enemy_damage[level_name]
+	else:
+		return 1
 
 func show_floating_text(text: String, position: Vector2, color: Color = Color.WHITE):
 	var floating_text = floating_text_scene.instantiate()
@@ -260,20 +261,19 @@ var base_enemy_damage := {
 	"Level_17": 4,
 	"Level_18": 4,
 	"Level_Hard": 4,
-	"Level_Void": 4
+	"Level_Void": 4,
+	"Level_Jump": 1,
+	"Level_Run": 1
 }
 
-var enemy_damage_by_level := {
-	"jumpgo": {
-		"Level_Jump": 2
-	},
-	"gorun": {
-		"Level_Run": 1
-	}
-}
-
-func _unhandled_input(event):
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
 			KEY_KP_1:
 				LevelManager.load_level_by_path("res://Assets/Scenes/level_victory.tscn")
+			KEY_G:
+				_toggle_godmode()
+
+func _toggle_godmode() -> void:
+	godmode_enabled = !godmode_enabled
+	print("Godmode " + ("activé" if godmode_enabled else "désactivé"))

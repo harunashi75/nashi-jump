@@ -18,7 +18,7 @@ func _ready():
 	right_limit = start_position.x + patrol_distance
 	sprite.play("run")
 	connect("body_entered", _on_body_entered)
-	_set_damage_by_difficulty()
+	_set_damage_by_scene()
 
 func _process(delta):
 	global_position.x += direction * speed * delta
@@ -34,9 +34,7 @@ func _on_body_entered(body):
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
 
-func _set_damage_by_difficulty():
+func _set_damage_by_scene():
 	var scene_name = get_tree().current_scene.name
-	var difficulty = GameManager.difficulty
-
-	damage = GameManager.enemy_damage_by_level.get(difficulty, {}).get(scene_name, 1)
-	print("Traps damage set to:", damage, "for scene:", scene_name, "difficulty:", difficulty)
+	damage = GameManager.get_enemy_damage(scene_name)
+	print("Enemies damage set to:", damage, "for scene:", scene_name)

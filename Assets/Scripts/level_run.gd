@@ -23,8 +23,6 @@ func _ready():
 	GameManager.hud = hud
 	hud.update_coins_display()
 
-	GameManager.pause_menu = $UI/PauseMenu
-
 func _process(delta):
 	time_elapsed += delta
 	speed = min(base_speed + speed_increase * time_elapsed, max_speed)

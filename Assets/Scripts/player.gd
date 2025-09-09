@@ -100,7 +100,7 @@ func handle_movement():
 	else:
 		var direction = Input.get_axis("move_left", "move_right")
 		if direction:
-			velocity.x = direction * MOVE_SPEED * GameManager.speed_multiplier
+			velocity.x = direction * MOVE_SPEED
 			sprite.flip_h = direction < 0
 		else:
 			velocity.x = move_toward(velocity.x, 0, DECELERATION)

@@ -11,8 +11,6 @@ func _ready():
 	GameManager.total_coins_in_level = 210
 	hud.update_coins_display()
 
-	GameManager.pause_menu = $UI/PauseMenu
-
 func _exit_tree():
 	if $TPSound:
 		$TPSound.stop()
