@@ -1,73 +1,27 @@
-🎮 Nashi Jump
+🎮 Nashi Jump – Version 0.6.0 The Void Update
 
-Bienvenue dans Nashi Jump, un jeu de plateforme dynamique et exigeant, où chaque saut peut être le dernier!
+Nashi Jump is a small retro platformer, simple in concept... but always full of challenges. Every jump counts, and the traps are unforgiving. Fortunately, the levels now have checkpoints to make the adventure more accessible while keeping the challenge intense.
 
-Incarne un petit personnage dans des niveaux remplis de pièges, plateformes, téléporteurs, secrets, et désormais plusieurs modes de jeu et skins à débloquer.
+📌 Objective
 
-Une expérience rétro & chill, mais attention… ce n’est pas aussi facile qu’il n’y paraît!
+Jump, avoid traps and enemies, collect the 200 coins scattered throughout the levels... and reach the end.
 
+Checkpoints are there to help you progress: each level now has at least one, allowing you to learn and improve without starting from scratch.
 
-🕹️ Objectif
+🕹️ Current Content (v0.6.0)
 
-Atteindre la fin du parcours sans mourir.
+12 levels with polished level design
 
-Collecter les 104 pièces pour débloquer des récompenses.
+5 hard levels for the most daring players
 
-Terminer le jeu rapidement pour accéder à des skins spéciaux.
+2 hidden bonus levels for explorers
 
-Changer de skin pour personnaliser ton aventure.
+New level: Void
 
+200 coins to collect
 
-🌟 Nouveautés récentes
+Unlockable skin system based on your progress
 
-Système de skins déblocables selon tes performances :
+New skins: Frost Knight and Voidwalker
 
-Leaf, Mystic, Abyssal, Gold, Time, Time Two, Rainbow...
-
-Timer intégré : mesure ton temps de run dans chaque mode.
-
-Skins "Time" : gagne-les en complétant le jeu sous les 10 minutes!
-
-Skin "Rainbow" : à débloquer dans le mode Fun... si tu meurs!
-
-Mode Fun : commence avec 200 vies et commence directement au niveau final!
-
-Niveaux hard accessibles après le niveau final pour plus de challenge.
-
-Interface repensée : menus, infos sur le déblocage des skins.
-
-
-🔧 Modes de difficulté
-
-Mode - Vies - Pour qui?
-
-Easy   - 100 - Pour découvrir tranquillement.
-
-Normal - 60  - Pour un bon challenge équilibré.
-
-Hard   - 30  - Pour les joueurs extrêmes.
-
-Fun    - 200 - Pour délirer (et débloquer Rainbow).
-
-
-👾 Infos Techniques
-
-Moteur : [Godot Engine 4]
-
-Style : Rétro / Chill
-
-Type : Plateformer 2D avec un soupçon de die & retry
-
-Système de sauvegarde intégré (progression & skins)
-
-
-☕ Soutenir le projet
-
-Si tu aimes le jeu et veux encourager son développement, tu peux m’offrir un café ici : https://ko-fi.com/harunashi75
-
-Chaque don aide à : améliorer le jeu, ajouter du nouveau contenu (skins, sons, niveaux), et continuer cette belle aventure avec vous ❤️
-
-
-👤 Développé avec amour par Haru Nashi / Nashi Studio
-
-Merci pour ton soutien… et bon jump!
+👍 Good luck. You're going to need it.

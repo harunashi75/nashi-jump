@@ -10,16 +10,23 @@ var levels := [
 	"res://Assets/Scenes/level_4.tscn",
 	"res://Assets/Scenes/level_5.tscn",
 	"res://Assets/Scenes/level_6.tscn",
-	"res://Assets/Scenes/level_bonus_1.tscn",
-	"res://Assets/Scenes/level_bonus_2.tscn",
+	"res://Assets/Scenes/level_7.tscn",
+	"res://Assets/Scenes/level_8.tscn",
+	"res://Assets/Scenes/level_9.tscn",
+	"res://Assets/Scenes/level_10.tscn",
+	"res://Assets/Scenes/level_11.tscn",
+	"res://Assets/Scenes/level_12.tscn",
+	"res://Assets/Scenes/level_13.tscn",
+	"res://Assets/Scenes/level_14.tscn",
+	"res://Assets/Scenes/level_15.tscn",
+	"res://Assets/Scenes/level_16.tscn",
+	"res://Assets/Scenes/level_17.tscn",
+	"res://Assets/Scenes/level_18.tscn",
 	"res://Assets/Scenes/level_victory.tscn",
-	"res://Assets/Scenes/level_hard_1.tscn",
-	"res://Assets/Scenes/level_hard_2.tscn",
-	"res://Assets/Scenes/level_hard_3.tscn",
-	"res://Assets/Scenes/level_hard_4.tscn",
-	"res://Assets/Scenes/level_hard_5.tscn",
-	"res://Assets/Scenes/level_arena.tscn",
-	"res://Assets/Scenes/level_jump.tscn"
+	"res://Assets/Scenes/level_hard.tscn",
+	"res://Assets/Scenes/level_void.tscn",
+	"res://Assets/Scenes/level_jump.tscn",
+	"res://Assets/Scenes/level_run.tscn"
 ]
 
 # ------------------------

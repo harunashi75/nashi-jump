@@ -3,8 +3,9 @@ extends Area2D
 @export var coin_name: String = "Coin"
 @export var value: int = 1
 
-@onready var collect_sound: AudioStreamPlayer2D = $PickupSound
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+var collected: bool = false
 
 func _ready():
 	_initialize_coin()
@@ -21,15 +22,16 @@ func _initialize_coin():
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
 func _on_body_entered(body: Node):
+	if collected: 
+		return
 	if body.name != "Player":
 		return
 
+	collected = true
 	_collect_coin()
 
 func _collect_coin():
-	if collect_sound:
-		collect_sound.play()
-
+	SoundManager.play("coin")
 	GameManager.add_coin(coin_name, value)
 	GameManager.mark_coin_collected(get_tree().current_scene.name, name)
 

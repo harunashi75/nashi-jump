@@ -2,23 +2,51 @@ extends Node2D
 
 const SPEED = 100
 var direction = 1
+var is_attacking = false
+var is_go_run: bool = false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var raycast_right: RayCast2D = $RayCastRight
 @onready var raycast_left: RayCast2D = $RayCastLeft
+@onready var hitbox: Area2D = $Hitbox
 
 func _ready():
 	sprite.play("run")
+	hitbox.body_entered.connect(_on_body_entered)
+	
+	var current_scene = get_tree().current_scene
+	if current_scene and current_scene.scene_file_path.ends_with("level_run.tscn"):
+		is_go_run = true
 
 func _process(delta):
-	# Inverse direction si mur détecté
+	if is_attacking:
+		return
+	
+	if is_go_run:
+		return
+	
 	if raycast_right.is_colliding():
 		direction = -1
 	elif raycast_left.is_colliding():
 		direction = 1
-
-	# Déplacement
+	
 	position.x += direction * SPEED * delta
+	sprite.flip_h = direction > 0
 
-	# Flip sprite selon direction
-	sprite.flip_h = direction < 0
+func _on_body_entered(body):
+	if body.is_in_group("player"):
+		play_attack_anim()
+
+func play_attack_anim():
+	if is_attacking:
+		return
+	is_attacking = true
+	if sprite.sprite_frames.has_animation("hit"):
+		sprite.play("hit")
+		sprite.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
+	else:
+		_on_attack_finished()
+
+func _on_attack_finished():
+	is_attacking = false
+	sprite.play("run")

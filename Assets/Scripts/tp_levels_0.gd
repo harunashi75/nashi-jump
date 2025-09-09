@@ -10,4 +10,5 @@ func _on_body_entered(body):
 		call_deferred("_deferred_load_next_level")
 
 func _deferred_load_next_level():
+	GameManager.set_levels_checkpoint(next_level_path)
 	LevelManager.load_level_by_path(next_level_path)

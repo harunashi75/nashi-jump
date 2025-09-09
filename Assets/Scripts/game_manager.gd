@@ -9,8 +9,8 @@ var pause_menu: Control = null
 # ------------------------
 # Checkpoint & Temps
 # ------------------------
-var victory_checkpoint_enabled := false
-var victory_checkpoint_scene_path := ""
+var levels_checkpoint_enabled := false
+var levels_checkpoint_scene_path := ""
 var game_start_time: int = 0
 var time_scores := {}
 
@@ -22,14 +22,14 @@ var speed_multiplier := 1.0
 var speedup_enabled := false
 var is_game_paused: bool = false
 var difficulty := "normal"
-var has_died_in_fun_mode := false
 var has_initialized_health := false
+var floating_text_scene := preload("res://Assets/Scenes/floating_text.tscn")
 
 # ------------------------
 # Joueur & Vies
 # ------------------------
-var player_lives: int = 60
-var player_current_health := 60
+var player_lives: int = 10
+var player_current_health := 10
 
 # ------------------------
 # Pièces
@@ -37,11 +37,13 @@ var player_current_health := 60
 var coins_collected := {}
 var coins_collected_by_level := {}
 var coins_collected_by_difficulty := {
+	"veryeasy": 0,
 	"easy": 0,
 	"normal": 0,
 	"hard": 0,
-	"fun": 0,
-	"jumpgo": 0
+	"insane": 0,
+	"jumpgo": 0,
+	"gorun": 0
 }
 var total_coins_in_level := 0
 
@@ -50,11 +52,21 @@ var total_coins_in_level := 0
 # ------------------------
 var current_skin := "default"
 var unlocked_skins := {
-	"leaf": false, "mystic": false, "abyssal": false,
-	"gold": false, "time": false, "timetwo": false,
-	"rainbow": false, "rokzor": false, "vagabond": false
+	"bubblegum": false, "emerald": false, "mystic": false,
+	"abyssal": false, "rainbow": false, "gold": false,
+	"whisper": false, "hell": false, "ignatius": false,
+	"barbie": false, "bloodforged": false, "frost": false,
+	"void": false
 }
 const SAVE_PATH = "user://skin_data.save"
+var difficulty_to_skin_name = {
+	"veryeasy": "bubblegum",
+	"easy": "emerald",
+	"normal": "mystic",
+	"hard": "abyssal",
+	"insane": "rainbow",
+	"jumpgo": "ignatius"
+}
 
 # ------------------------
 # Initialisation
@@ -65,6 +77,16 @@ func _ready():
 		hud = null
 	if pause_menu and not pause_menu.is_inside_tree():
 		pause_menu = null
+	
+	for diff in ["veryeasy", "easy", "normal", "hard", "insane"]:
+		enemy_damage_by_level[diff] = base_enemy_damage
+
+func show_floating_text(text: String, position: Vector2, color: Color = Color.WHITE):
+	var floating_text = floating_text_scene.instantiate()
+	floating_text.position = position
+	floating_text.get_node("Label").text = text
+	floating_text.get_node("Label").modulate = color
+	get_tree().current_scene.add_child(floating_text)
 
 # ------------------------
 # Démarrage & Pause
@@ -86,13 +108,14 @@ func toggle_pause():
 # ------------------------
 func reset_lives_by_difficulty():
 	match difficulty:
-		"easy": player_lives = 100
-		"normal": player_lives = 60
-		"hard": player_lives = 30
-		"fun": player_lives = 200
-		"arena": player_lives = 1000
-		"jumpgo": player_lives = 100
-		_: player_lives = 60
+		"veryeasy": player_lives = 20
+		"easy": player_lives = 15
+		"normal": player_lives = 10
+		"hard": player_lives = 5
+		"insane": player_lives = 1
+		"jumpgo": player_lives = 10
+		"gorun": player_lives = 10
+		_: player_lives = 10
 	player_current_health = player_lives
 
 # ------------------------
@@ -103,8 +126,8 @@ func reset_coins():
 	coins_collected_by_level.clear()
 	total_coins_in_level = 0
 
-func add_coin(_coin_name: String, amount: int = 1):
-	coins_collected[name] = coins_collected.get(name, 0) + amount
+func add_coin(coin_name: String, amount: int = 1):
+	coins_collected[coin_name] = coins_collected.get(coin_name, 0) + amount
 	if is_instance_valid(hud):
 		hud.update_coins_display()
 	print("Coins collectés :", coins_collected)
@@ -119,22 +142,31 @@ func mark_coin_collected(level: String, id: String):
 func is_coin_already_collected(level_name: String, coin_id: String) -> bool:
 	return coins_collected_by_level.has(level_name) and coin_id in coins_collected_by_level[level_name]
 
-func set_victory_checkpoint(path: String):
-	victory_checkpoint_enabled = true
-	victory_checkpoint_scene_path = path
+func set_levels_checkpoint(path: String):
+	levels_checkpoint_enabled = true
+	levels_checkpoint_scene_path = path
 	print("Checkpoint activé :", path)
 
 # ------------------------
 # Skins : Déblocage & Sauvegarde
 # ------------------------
+func get_player_pos() -> Vector2:
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		return player.position + Vector2(0, -80)
+	return Vector2(200, 200)
+
 func check_unlock_skins():
 	var total = 0
 	for coins in coins_collected_by_level.values():
 		total += coins.size()
 	coins_collected_by_difficulty[difficulty] = max(coins_collected_by_difficulty[difficulty], total)
-	if total >= 104 and not unlocked_skins.get(difficulty, false):
+	if total >= 180 and not unlocked_skins.get(difficulty, false):
 		unlocked_skins[difficulty] = true
-		print("Skin", difficulty, "débloqué!")
+		var skin_name = difficulty_to_skin_name.get(difficulty, difficulty)
+		unlocked_skins[skin_name] = true
+		show_floating_text("Skin débloqué : " + skin_name, get_player_pos(), Color(1.0, 0.84, 0.0))
+		SoundManager.play("unlock")
 	call_deferred("_check_global_skin_unlocks")
 	save_skin_data()
 
@@ -145,19 +177,15 @@ func _all_difficulties_have_min_coins(difficulties: Array, min_coins: int) -> bo
 	return true
 
 func _check_global_skin_unlocks():
-	if _all_difficulties_have_min_coins(["easy", "normal", "hard"], 104):
+	if _all_difficulties_have_min_coins(["veryeasy", "easy", "normal", "hard"], 210) and not unlocked_skins.get("gold", false):
 		unlocked_skins["gold"] = true
-		print("Skin GOLD débloqué!")
-	if _all_difficulties_have_min_coins(["easy", "normal", "hard", "fun"], 104):
-		unlocked_skins["rokzor"] = true
-		print("Skin ROKZOR débloqué!")
-	if difficulty == "fun" and coins_collected_by_difficulty["fun"] >= 104 and has_died_in_fun_mode:
-		unlocked_skins["rainbow"] = true
-		print("Skin RAINBOW débloqué!")
-	if difficulty == "jumpgo":
-		if coins_collected_by_difficulty.get("jumpgo", 0) >= 100 and not unlocked_skins.get("vagabond", false):
-			unlocked_skins["vagabond"] = true
-			print("Skin VAGABOND débloqué!")
+		show_floating_text("Skin débloqué : gold", get_player_pos(), Color(1.0, 0.84, 0.0))
+		SoundManager.play("unlock")
+	if difficulty == "jumpgo" and coins_collected_by_difficulty["jumpgo"] >= 100 and not unlocked_skins.get("ignatius", false):
+		var skin_name = difficulty_to_skin_name.get("jumpgo", "jumpgo")
+		unlocked_skins[skin_name] = true
+		show_floating_text("Skin débloqué : " + skin_name, get_player_pos(), Color(1.0, 0.84, 0.0))
+		SoundManager.play("unlock")
 
 	check_time_skins()
 	save_skin_data()
@@ -165,14 +193,16 @@ func _check_global_skin_unlocks():
 func check_time_skins():
 	var count = 0
 	for d in ["easy", "normal", "hard"]:
-		if time_scores.get(d, INF) <= 720.0 and coins_collected_by_difficulty.get(d, 0) >= 104:
+		if time_scores.get(d, INF) <= 900.0 and coins_collected_by_difficulty.get(d, 0) >= 180:
 			count += 1
-	if count >= 1:
-		unlocked_skins["time"] = true
-		print("Skin TIME débloqué!")
-	if count == 3:
-		unlocked_skins["timetwo"] = true
-		print("Skin TIME TWO débloqué!")
+	if count >= 1 and not unlocked_skins.get("whisper", false):
+		unlocked_skins["whisper"] = true
+		show_floating_text("Skin débloqué : whisper", get_player_pos(), Color(1.0, 0.84, 0.0))
+		SoundManager.play("unlock")
+	if count == 3 and not unlocked_skins.get("hell", false):
+		unlocked_skins["hell"] = true
+		show_floating_text("Skin débloqué : hell", get_player_pos(), Color(1.0, 0.84, 0.0))
+		SoundManager.play("unlock")
 
 # ------------------------
 # Sauvegarde
@@ -210,67 +240,40 @@ func set_completion_time(diff: String, time_in_seconds: float):
 # ------------------------
 # Dommages ennemis
 # ------------------------
+var base_enemy_damage := {
+	"Level_1": 1,
+	"Level_2": 1,
+	"Level_3": 1,
+	"Level_4": 1,
+	"Level_5": 1,
+	"Level_6": 2,
+	"Level_7": 2,
+	"Level_8": 2,
+	"Level_9": 2,
+	"Level_10": 2,
+	"Level_11": 3,
+	"Level_12": 3,
+	"Level_13": 3,
+	"Level_14": 3,
+	"Level_15": 3,
+	"Level_16": 4,
+	"Level_17": 4,
+	"Level_18": 4,
+	"Level_Hard": 4,
+	"Level_Void": 4
+}
+
 var enemy_damage_by_level := {
-	"easy": {
-		"Level_1": 5,
-		"Level_2": 7,
-		"Level_3": 10,
-		"Level_4": 12,
-		"Level_5": 15,
-		"Level_6": 18,
-		"Level_Bonus_1": 20,
-		"Level_Bonus_2": 25,
-		"Level_Hard_1": 30,
-		"Level_Hard_2": 35,
-		"Level_Hard_3": 40,
-		"Level_Hard_4": 45
-	},
-	"normal": {
-		"Level_1": 10,
-		"Level_2": 13,
-		"Level_3": 17,
-		"Level_4": 20,
-		"Level_5": 25,
-		"Level_6": 30,
-		"Level_Bonus_1": 35,
-		"Level_Bonus_2": 40,
-		"Level_Hard_1": 50,
-		"Level_Hard_2": 60,
-		"Level_Hard_3": 70,
-		"Level_Hard_4": 80
-	},
-	"hard": {
-		"Level_1": 15,
-		"Level_2": 20,
-		"Level_3": 25,
-		"Level_4": 30,
-		"Level_5": 35,
-		"Level_6": 40,
-		"Level_Bonus_1": 50,
-		"Level_Bonus_2": 60,
-		"Level_Hard_1": 70,
-		"Level_Hard_2": 80,
-		"Level_Hard_3": 90,
-		"Level_Hard_4": 100
-	},
-	"fun": {
-		"Level_1": 3,
-		"Level_2": 4,
-		"Level_3": 5,
-		"Level_4": 6,
-		"Level_5": 7,
-		"Level_6": 8,
-		"Level_Bonus_1": 10,
-		"Level_Bonus_2": 12,
-		"Level_Hard_1": 14,
-		"Level_Hard_2": 16,
-		"Level_Hard_3": 18,
-		"Level_Hard_4": 20
-	},
-	"arena": {
-		"Level_Arena": 200
-	},
 	"jumpgo": {
-		"Level_Jump": 5
+		"Level_Jump": 2
+	},
+	"gorun": {
+		"Level_Run": 1
 	}
 }
+
+func _unhandled_input(event):
+	if event is InputEventKey and event.pressed and not event.echo:
+		match event.keycode:
+			KEY_KP_1:
+				LevelManager.load_level_by_path("res://Assets/Scenes/level_victory.tscn")

@@ -32,37 +32,6 @@ func _on_command_entered(command_line: String):
 	var command = args[0]
 
 	match command:
-		"give_life":
-			var default_amounts = {
-				"easy": 300,
-				"normal": 180,
-				"hard": 90,
-				"fun": 600,
-				"jumpgo": 300
-			}
-
-			var amount = default_amounts.get(GameManager.difficulty, 180)
-			if args.size() > 1 and args[1].is_valid_int():
-				amount = args[1].to_int()
-
-			GameManager.player_lives = amount
-			GameManager.player_current_health = amount
-
-			var player = get_tree().get_first_node_in_group("player")
-			if player and player.has_method("set_lives"):
-				player.set_lives(amount)
-
-			history.text += "\nVies définies à %d (cheat activé)" % amount
-
-		"set_skin":
-			if args.size() > 1:
-				var skin = args[1].to_lower()
-				GameManager.current_skin = skin
-				GameManager.save_skin_data()
-				history.text += "\nSkin temporaire appliqué : %s" % skin
-			else:
-				history.text += "\nUsage : set_skin nashi"
-
 		"tp":
 			if args.size() > 1 and args[1] == "victory":
 				get_tree().change_scene_to_file("res://Assets/Scenes/level_victory.tscn")
@@ -86,29 +55,6 @@ func _on_command_entered(command_line: String):
 		"godmode":
 			GameManager.godmode_enabled = !GameManager.godmode_enabled
 			history.text += "\nGodmode " + ("activé" if GameManager.godmode_enabled else "désactivé")
-
-		"killme":
-			var player = get_tree().get_first_node_in_group("player")
-			if player:
-				player.take_damage(player.current_health)
-				history.text += "\nLe joueur s'est suicidé..."
-			else:
-				history.text += "\nAucun joueur trouvé."
-
-		"speedup":
-			var player = get_tree().get_first_node_in_group("player")
-			if player:
-				GameManager.speedup_enabled = !GameManager.speedup_enabled
-				if GameManager.speedup_enabled:
-					player.MOVE_SPEED *= 2
-					player.JUMP_FORCE *= 1.5
-					history.text += "\nVitesse augmentée (cheat activé)"
-				else:
-					player.MOVE_SPEED = player.DEFAULT_MOVE_SPEED
-					player.JUMP_FORCE = player.DEFAULT_JUMP_FORCE
-					history.text += "\nVitesse réinitialisée"
-			else:
-				history.text += "\nAucun joueur trouvé."
 
 		_:
 			history.text += "\nCommande inconnue."

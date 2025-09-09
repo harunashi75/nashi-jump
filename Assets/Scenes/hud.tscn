@@ -1,29 +1,64 @@
-[gd_scene load_steps=3 format=3 uid="uid://hbfgacy1e3rr"]
+[gd_scene load_steps=7 format=3 uid="uid://hbfgacy1e3rr"]
 
 [ext_resource type="Script" uid="uid://qpjwae1hpo53" path="res://Assets/Scripts/hud.gd" id="1_th0pt"]
 [ext_resource type="FontFile" uid="uid://ck2ml0wud68ix" path="res://Assets/Fonts/PublicPixel.otf" id="2_th0pt"]
+[ext_resource type="Texture2D" uid="uid://ttu2us3mvko1" path="res://Assets/Sprites/UI/UI - 49.png" id="2_vy1te"]
+[ext_resource type="Texture2D" uid="uid://chto82kuf0jwa" path="res://Assets/Sprites/UI/UI - 44.png" id="3_l5nkk"]
+[ext_resource type="Texture2D" uid="uid://dtcruhdy27nex" path="res://Assets/Sprites/UI/UI - 46.png" id="4_vy1te"]
+[ext_resource type="Script" uid="uid://bc4mnu3w6i6fv" path="res://Assets/Scripts/health_bar.gd" id="5_uttbk"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_th0pt")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(558.75, 34)
+scale = Vector2(1.89375, 1.75)
+texture = ExtResource("2_vy1te")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 542.0
+offset_top = 8.0
+offset_right = 606.0
+offset_bottom = 24.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_th0pt")
+theme_override_font_sizes/font_size = 16
+text = "INFO"
+
 [node name="TimerLabel" type="Label" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -247.0
-offset_right = -16.0
-offset_bottom = 48.0
-grow_horizontal = 0
+offset_left = 501.0
+offset_top = 22.0
+offset_right = 732.0
+offset_bottom = 58.0
+scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_th0pt")
 theme_override_font_sizes/font_size = 16
 
 [node name="CoinLabel" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -131.0
-offset_right = 131.0
-offset_bottom = 37.0
-grow_horizontal = 2
+offset_left = 506.0
+offset_top = 41.0
+offset_right = 720.0
+offset_bottom = 78.0
+scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_th0pt")
 theme_override_font_sizes/font_size = 16
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_right = 64.0
+offset_bottom = 17.0
+scale = Vector2(4, 4)
+texture_under = ExtResource("3_l5nkk")
+texture_progress = ExtResource("4_vy1te")
+script = ExtResource("5_uttbk")
+
+[node name="HealthLabel" type="Label" parent="HealthBar"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 46.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_th0pt")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1

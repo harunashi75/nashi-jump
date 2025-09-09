@@ -3,7 +3,7 @@ extends Control
 @onready var pause_menu = $"."
 @onready var resume_button = $VBoxContainer/Resume
 @onready var quit_button = $VBoxContainer/QuitButton
-@onready var start_menu_button = $VBoxContainer/StartMenu
+@onready var leave_game_button = $VBoxContainer/LeaveGame
 @onready var volume_slider = $VolumeSlider
 
 func _unhandled_input(event):
@@ -16,7 +16,7 @@ func _ready():
 	GameManager.pause_menu = self
 	resume_button.pressed.connect(_on_resume_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
-	start_menu_button.pressed.connect(_on_start_menu_button_pressed)
+	leave_game_button.pressed.connect(_on_leave_game_button_pressed)
 
 	var saved_volume = load_volume()
 	volume_slider.value = saved_volume
@@ -53,7 +53,7 @@ func _on_resume_button_pressed():
 func _on_quit_button_pressed():
 	get_tree().quit()
 
-func _on_start_menu_button_pressed():
+func _on_leave_game_button_pressed():
 	GameManager.is_game_paused = false
 	get_tree().paused = false
 	set_process_input(false)

@@ -1,13 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxqaap5dhcl18"]
+[gd_scene load_steps=7 format=3 uid="uid://cxqaap5dhcl18"]
 
 [ext_resource type="Script" uid="uid://bifmrxcevriyn" path="res://Assets/Scripts/start_menu.gd" id="1_qd4of"]
-[ext_resource type="Shader" uid="uid://dq6ofhffys086" path="res://Assets/Scenes/start_menu.gdshader" id="2_esus2"]
-[ext_resource type="Texture2D" uid="uid://r0lja3wk7m2f" path="res://Assets/Sprites/Maps/Brown.png" id="2_ttvl8"]
+[ext_resource type="Texture2D" uid="uid://c55jxfroa6gkh" path="res://Assets/Sprites/Backgrounds/Background Start.png" id="2_ttvl8"]
+[ext_resource type="Texture2D" uid="uid://dwnikhjsbtd42" path="res://Assets/Sprites/UI/UI - 33.png" id="4_qd4of"]
 [ext_resource type="FontFile" uid="uid://ck2ml0wud68ix" path="res://Assets/Fonts/PublicPixel.otf" id="5_esus2"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nnfbk"]
-shader = ExtResource("2_esus2")
-shader_parameter/SPEED = 0.5
+[ext_resource type="Texture2D" uid="uid://baaux8n6uhq5c" path="res://Assets/Sprites/UI/UI - 32.png" id="5_ttvl8"]
+[ext_resource type="Texture2D" uid="uid://7samt1kmthj6" path="res://Assets/Sprites/UI/UI - 34.png" id="6_esus2"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -18,9 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qd4of")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_nnfbk")
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,209 +24,571 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ttvl8")
-expand_mode = 1
-stretch_mode = 1
 
 [node name="GameName" type="Label" parent="."]
 layout_mode = 0
-offset_left = 201.0
-offset_top = 33.0
-offset_right = 941.0
-offset_bottom = 338.0
+offset_left = 165.0
+offset_top = 20.0
+offset_right = 485.0
+offset_bottom = 151.0
 theme_override_fonts/font = ExtResource("5_esus2")
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 64
 text = "Nashi
 Jump"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 375.0
-offset_top = 332.0
-offset_right = 575.0
-offset_bottom = 490.0
-scale = Vector2(2, 2)
-theme_override_constants/separation = 10
+offset_left = 225.0
+offset_top = 170.0
+offset_right = 425.0
+offset_bottom = 337.0
+theme_override_constants/separation = 5
 
-[node name="Play" type="Button" parent="VBoxContainer"]
+[node name="Play" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/Play"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 7.0
+offset_right = 132.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "PLAY"
 
-[node name="Skins" type="Button" parent="VBoxContainer"]
+[node name="Skins" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/Skins"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 7.00001
+offset_right = 142.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "SKINS"
 
-[node name="UnlockInfo" type="Button" parent="VBoxContainer"]
+[node name="UnlockInfo" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/UnlockInfo"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 7.0
+offset_right = 180.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "UNLOCK SKINS"
+text = "INFO SKINS"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/Quit"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 7.0
+offset_right = 132.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "QUIT"
 
 [node name="ModePopup" type="PopupPanel" parent="."]
+size = Vector2i(180, 256)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ModePopup"]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 140.0
-offset_bottom = 168.0
+offset_right = 176.0
+offset_bottom = 252.0
 
-[node name="Easy" type="Button" parent="ModePopup/VBoxContainer"]
+[node name="VeryEasy" type="TextureButton" parent="ModePopup/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ModePopup/VBoxContainer/VeryEasy"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 7.0
+offset_right = 159.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "VERY EASY"
+
+[node name="Easy" type="TextureButton" parent="ModePopup/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ModePopup/VBoxContainer/Easy"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 7.0
+offset_right = 119.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "EASY"
 
-[node name="Normal" type="Button" parent="ModePopup/VBoxContainer"]
+[node name="Normal" type="TextureButton" parent="ModePopup/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ModePopup/VBoxContainer/Normal"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 7.0
+offset_right = 136.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "NORMAL"
 
-[node name="Hard" type="Button" parent="ModePopup/VBoxContainer"]
+[node name="Hard" type="TextureButton" parent="ModePopup/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ModePopup/VBoxContainer/Hard"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 7.0
+offset_right = 119.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "HARD"
 
-[node name="Fun" type="Button" parent="ModePopup/VBoxContainer"]
+[node name="Insane" type="TextureButton" parent="ModePopup/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ModePopup/VBoxContainer/Insane"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 7.0
+offset_right = 136.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "FUN"
+text = "INSANE"
 
-[node name="Arena" type="Button" parent="ModePopup/VBoxContainer"]
+[node name="JumpGo" type="TextureButton" parent="ModePopup/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_esus2")
-theme_override_font_sizes/font_size = 16
-disabled = true
-text = "ARENA"
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+stretch_mode = 0
 
-[node name="JumpGo" type="Button" parent="ModePopup/VBoxContainer"]
-layout_mode = 2
+[node name="Label" type="Label" parent="ModePopup/VBoxContainer/JumpGo"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 7.0
+offset_right = 153.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "JUMP GO!"
 
-[node name="SkinPopup" type="PopupPanel" parent="."]
-size = Vector2i(224, 304)
+[node name="GoRun" type="TextureButton" parent="ModePopup/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+stretch_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SkinPopup"]
+[node name="Label" type="Label" parent="ModePopup/VBoxContainer/GoRun"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 7.0
+offset_right = 146.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "GO RUN!"
+
+[node name="SkinPopup" type="PopupPanel" parent="."]
+size = Vector2i(228, 764)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SkinPopup"]
+custom_minimum_size = Vector2(210, 300)
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 220.0
-offset_bottom = 334.0
-theme_override_constants/separation = 10
+offset_right = 224.0
+offset_bottom = 760.0
 
-[node name="DefaultSkin" type="Button" parent="SkinPopup/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SkinPopup/ScrollContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+
+[node name="DefaultSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/DefaultSkin"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 7.0
+offset_right = 160.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "DEFAULT SKIN"
+text = "DEFAULT"
 
-[node name="GoldSkin" type="Button" parent="SkinPopup/VBoxContainer"]
+[node name="TheCreatorSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/TheCreatorSkin"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 188.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "GOLD SKIN"
+text = "THE CREATOR"
 
-[node name="LeafSkin" type="Button" parent="SkinPopup/VBoxContainer"]
+[node name="BubblegumSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/BubblegumSkin"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 7.0
+offset_right = 175.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "LEAF SKIN"
+text = "BUBBLEGUM"
 
-[node name="MysticSkin" type="Button" parent="SkinPopup/VBoxContainer"]
+[node name="EmeraldSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/EmeraldSkin"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 7.0
+offset_right = 159.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "MYSTIC SKIN"
+text = "EMERALD"
 
-[node name="AbyssalSkin" type="Button" parent="SkinPopup/VBoxContainer"]
+[node name="MysticSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/MysticSkin"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 7.0
+offset_right = 149.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "ABYSSAL SKIN"
+text = "MYSTIC"
 
-[node name="TimeSkin" type="Button" parent="SkinPopup/VBoxContainer"]
+[node name="AbyssalSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/AbyssalSkin"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 7.0
+offset_right = 159.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "TIME SKIN"
+text = "ABYSSAL"
 
-[node name="TimeSkinTwo" type="Button" parent="SkinPopup/VBoxContainer"]
+[node name="RainbowSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/RainbowSkin"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 7.0
+offset_right = 159.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "TIME SKIN TWO"
+text = "RAINBOW"
 
-[node name="RainbowSkin" type="Button" parent="SkinPopup/VBoxContainer"]
+[node name="GoldSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/GoldSkin"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 7.0
+offset_right = 133.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "RAINBOW SKIN"
+text = "GOLD"
 
-[node name="RokzorSkin" type="Button" parent="SkinPopup/VBoxContainer"]
+[node name="WhisperSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/WhisperSkin"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 7.0
+offset_right = 158.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "ROKZOR SKIN"
+text = "WHISPER"
 
-[node name="VagabondSkin" type="Button" parent="SkinPopup/VBoxContainer"]
+[node name="HellSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/HellSkin"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 7.0
+offset_right = 183.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "VAGABOND SKIN"
+text = "HELL SPAWN"
+
+[node name="IgnatiusSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/IgnatiusSkin"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 7.0
+offset_right = 164.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "IGNATIUS"
+
+[node name="BarbieSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/BarbieSkin"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 7.0
+offset_right = 149.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "BARBIE"
+
+[node name="BloodforgedSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/BloodforgedSkin"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 7.0
+offset_right = 189.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "BLOODFORGED"
+
+[node name="FrostSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/FrostSkin"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 199.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "FROST KNIGHT"
+
+[node name="VoidSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/VoidSkin"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 7.0
+offset_right = 181.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "VOIDWALKER"
+
+[node name="GagaSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/GagaSkin"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 7.0
+offset_right = 131.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "GAGA"
+
+[node name="MurlocSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/MurlocSkin"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 7.0
+offset_right = 151.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "MURLOC"
 
 [node name="UnlockInfoPanel" type="PopupPanel" parent="."]
-size = Vector2i(1000, 350)
+size = Vector2i(1064, 480)
 
 [node name="MarginContainer" type="MarginContainer" parent="UnlockInfoPanel"]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 996.0
-offset_bottom = 346.0
+offset_right = 1060.0
+offset_bottom = 476.0
 
-[node name="InfoTextLabel" type="RichTextLabel" parent="UnlockInfoPanel/MarginContainer"]
+[node name="InfoTextLabel" type="Label" parent="UnlockInfoPanel/MarginContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("5_esus2")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 8
 text = "Skins Unlock Conditions:
 
-• Leaf Skin – 104 coins in Easy mode
+• Bubblegum – 180 coins in Very Easy mode
 
-• Mystic Skin – 104 coins in Normal mode
+• Emerald – 180 coins in Easy mode
 
-• Abyssal Skin – 104 coins in Hard mode
+• Mystic – 180 coins in Normal mode
 
-• Gold Skin – 104 coins in all three modes
+• Abyssal – 180 coins in Hard mode
 
-• Time Skin – 104 coins in any mode in 12min or less
+• Rainbow – 180 coins in Insane mode
 
-• Time Skin Two – 104 coins in all three modes in 12min or less
+• Gold – 210 coins in Very Easy, Easy, Normal and Hard modes
 
-• Rainbow ​​Skin – 104 coins in Fun mode AND die at least once
+• Whisper – 180 coins in Easy or Normal or Hard mode 
+  in 15min or less
 
-• Rokzor Skin – 104 coins in all four modes
+• Hell Spawn – 180 coins in Easy, Normal and Hard modes 
+  in 15min or less
 
-• Vagabond Skin – 100 coins in Jump Go! mode"
+• Ignatius – 100 coins in Jump GO! mode
+
+• Barbie, Bloodforged and Frost Knight – to be found in the levels
+
+• Voidwalker – to be found in the Void"
 vertical_alignment = 1
 
 [node name="GameVersion" type="Label" parent="."]
 layout_mode = 0
-offset_left = 977.0
-offset_top = 603.0
-offset_right = 1138.0
-offset_bottom = 627.0
+offset_left = 516.0
+offset_top = 333.0
+offset_right = 628.0
+offset_bottom = 349.0
 theme_override_fonts/font = ExtResource("5_esus2")
-theme_override_font_sizes/font_size = 24
-text = "v2.3.1"
+theme_override_font_sizes/font_size = 16
+text = "v0.6.99"
+
+[node name="UpdateName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 88.0
+offset_right = 549.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "THE VICTORY UPDATE"
