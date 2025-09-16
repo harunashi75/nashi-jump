@@ -198,21 +198,21 @@ theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "INSANE"
 
-[node name="JumpGo" type="TextureButton" parent="ModePopup/VBoxContainer"]
+[node name="Exploration" type="TextureButton" parent="ModePopup/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_qd4of")
 texture_hover = ExtResource("5_ttvl8")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="ModePopup/VBoxContainer/JumpGo"]
+[node name="Label" type="Label" parent="ModePopup/VBoxContainer/Exploration"]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 7.0
-offset_right = 153.0
-offset_bottom = 23.0
+offset_left = 43.0
+offset_top = 11.0
+offset_right = 131.0
+offset_bottom = 19.0
 theme_override_fonts/font = ExtResource("5_esus2")
-theme_override_font_sizes/font_size = 16
-text = "JUMP GO!"
+theme_override_font_sizes/font_size = 8
+text = "EXPLORATION"
 
 [node name="GoRun" type="TextureButton" parent="ModePopup/VBoxContainer"]
 layout_mode = 2
@@ -499,6 +499,23 @@ theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "VOIDWALKER"
 
+[node name="BeeSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/BeeSkin"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 7.0
+offset_right = 148.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "BEEZZZ"
+
 [node name="GagaSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_qd4of")
@@ -508,13 +525,47 @@ stretch_mode = 0
 
 [node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/GagaSkin"]
 layout_mode = 0
-offset_left = 67.0
+offset_left = 21.0
 offset_top = 7.0
-offset_right = 131.0
+offset_right = 181.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "GAGA"
+text = "BLUE EMBER"
+
+[node name="HiddenSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/HiddenSkin"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 7.0
+offset_right = 123.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "???"
+
+[node name="BearSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/BearSkin"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 7.0
+offset_right = 180.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "MOSSY BEAR"
 
 [node name="MurlocSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -525,9 +576,9 @@ stretch_mode = 0
 
 [node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/MurlocSkin"]
 layout_mode = 0
-offset_left = 55.0
+offset_left = 53.0
 offset_top = 7.0
-offset_right = 151.0
+offset_right = 149.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
@@ -548,15 +599,15 @@ theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 8
 text = "Skins Unlock Conditions:
 
-• Bubblegum – 180 coins in Very Easy mode
+• Bubblegum – 190 coins in Very Easy mode
 
-• Emerald – 180 coins in Easy mode
+• Emerald – 190 coins in Easy mode
 
-• Mystic – 180 coins in Normal mode
+• Mystic – 190 coins in Normal mode
 
-• Abyssal – 180 coins in Hard mode
+• Abyssal – 190 coins in Hard mode
 
-• Rainbow – 180 coins in Insane mode
+• Rainbow – 190 coins in Insane mode
 
 • Gold – 210 coins in Very Easy, Easy, Normal and Hard modes
 
@@ -566,11 +617,15 @@ text = "Skins Unlock Conditions:
 • Hell Spawn – 180 coins in Easy, Normal and Hard modes 
   in 15min or less
 
-• Ignatius – 100 coins in Jump GO! mode
+• Ignatius – 100 coins in Exploration mode
 
 • Barbie, Bloodforged and Frost Knight – to be found in the levels
 
-• Voidwalker – to be found in the Void"
+• Voidwalker – to be found in the Void
+
+• Beezzz, Blue Ember and Mossy Bear – to be found in the levels
+
+• ??? – ???"
 vertical_alignment = 1
 
 [node name="GameVersion" type="Label" parent="."]
@@ -581,7 +636,7 @@ offset_right = 628.0
 offset_bottom = 349.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "v0.6.99"
+text = "v0.7.99"
 
 [node name="UpdateName" type="Label" parent="."]
 layout_mode = 0
@@ -591,4 +646,4 @@ offset_right = 549.0
 offset_bottom = 104.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
-text = "THE VICTORY UPDATE"
+text = "THE EXPLORATION UPDATE"

@@ -15,70 +15,69 @@ extends Control
 @onready var normal_button = mode_popup.get_node("VBoxContainer/Normal")
 @onready var hard_button = mode_popup.get_node("VBoxContainer/Hard")
 @onready var insane_button = mode_popup.get_node("VBoxContainer/Insane")
-@onready var jumpgo_button = mode_popup.get_node("VBoxContainer/JumpGo")
+@onready var exploration_button = mode_popup.get_node("VBoxContainer/Exploration")
 @onready var gorun_button = mode_popup.get_node("VBoxContainer/GoRun")
 
 @onready var skin_popup = $SkinPopup
-@onready var default_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/DefaultSkin")
-@onready var gold_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/GoldSkin")
-@onready var emerald_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/EmeraldSkin")
-@onready var mystic_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/MysticSkin")
-@onready var abyssal_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/AbyssalSkin")
-@onready var rainbow_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/RainbowSkin")
-@onready var ignatius_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/IgnatiusSkin")
-@onready var thecreator_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/TheCreatorSkin")
-@onready var whisper_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/WhisperSkin")
-@onready var barbie_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/BarbieSkin")
-@onready var bloodforged_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/BloodforgedSkin")
-@onready var frost_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/FrostSkin")
-@onready var murloc_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/MurlocSkin")
-@onready var bubblegum_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/BubblegumSkin")
-@onready var hell_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/HellSkin")
-@onready var void_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/VoidSkin")
-@onready var gaga_skin_button = skin_popup.get_node("ScrollContainer/VBoxContainer/GagaSkin")
+
+# ------------------------
+# Skin Setup
+# ------------------------
+var skin_buttons := {
+	"default": "ScrollContainer/VBoxContainer/DefaultSkin",
+	"gold": "ScrollContainer/VBoxContainer/GoldSkin",
+	"emerald": "ScrollContainer/VBoxContainer/EmeraldSkin",
+	"mystic": "ScrollContainer/VBoxContainer/MysticSkin",
+	"abyssal": "ScrollContainer/VBoxContainer/AbyssalSkin",
+	"rainbow": "ScrollContainer/VBoxContainer/RainbowSkin",
+	"ignatius": "ScrollContainer/VBoxContainer/IgnatiusSkin",
+	"thecreator": "ScrollContainer/VBoxContainer/TheCreatorSkin",
+	"whisper": "ScrollContainer/VBoxContainer/WhisperSkin",
+	"barbie": "ScrollContainer/VBoxContainer/BarbieSkin",
+	"bloodforged": "ScrollContainer/VBoxContainer/BloodforgedSkin",
+	"frost": "ScrollContainer/VBoxContainer/FrostSkin",
+	"murloc": "ScrollContainer/VBoxContainer/MurlocSkin",
+	"bubblegum": "ScrollContainer/VBoxContainer/BubblegumSkin",
+	"hell": "ScrollContainer/VBoxContainer/HellSkin",
+	"void": "ScrollContainer/VBoxContainer/VoidSkin",
+	"gaga": "ScrollContainer/VBoxContainer/GagaSkin",
+	"bee": "ScrollContainer/VBoxContainer/BeeSkin",
+	"hidden": "ScrollContainer/VBoxContainer/HiddenSkin",
+	"bear": "ScrollContainer/VBoxContainer/BearSkin"
+}
 
 # ------------------------
 # Ready
 # ------------------------
 func _ready():
-	_connect_buttons()
+	_connect_main_buttons()
+	_connect_mode_buttons()
+	_init_skins()
 	_update_skin_buttons()
 	unlock_info_panel.hide()
 
 # ------------------------
 # Button Connections
 # ------------------------
-func _connect_buttons():
+func _connect_main_buttons():
 	play_button.pressed.connect(_show_mode_popup)
 	skins_button.pressed.connect(_show_skin_popup)
 	unlock_info_button.pressed.connect(_show_unlock_info)
 	quit_button.pressed.connect(_quit_game)
 
+func _connect_mode_buttons():
 	veryeasy_button.pressed.connect(func(): _start_game("veryeasy", "res://Assets/Scenes/level_1.tscn"))
 	easy_button.pressed.connect(func(): _start_game("easy", "res://Assets/Scenes/level_1.tscn"))
 	normal_button.pressed.connect(func(): _start_game("normal", "res://Assets/Scenes/level_1.tscn"))
 	hard_button.pressed.connect(func(): _start_game("hard", "res://Assets/Scenes/level_1.tscn"))
 	insane_button.pressed.connect(func(): _start_game("insane", "res://Assets/Scenes/level_1.tscn"))
-	jumpgo_button.pressed.connect(func(): _start_game("jumpgo", "res://Assets/Scenes/level_jump.tscn"))
+	exploration_button.pressed.connect(func(): _start_game("exploration", "res://Assets/Scenes/level_jump.tscn"))
 	gorun_button.pressed.connect(func(): _start_game("gorun", "res://Assets/Scenes/level_run.tscn"))
 
-	default_skin_button.pressed.connect(func(): _select_skin("default"))
-	gold_skin_button.pressed.connect(func(): _select_skin("gold"))
-	emerald_skin_button.pressed.connect(func(): _select_skin("emerald"))
-	mystic_skin_button.pressed.connect(func(): _select_skin("mystic"))
-	abyssal_skin_button.pressed.connect(func(): _select_skin("abyssal"))
-	rainbow_skin_button.pressed.connect(func(): _select_skin("rainbow"))
-	ignatius_skin_button.pressed.connect(func(): _select_skin("ignatius"))
-	thecreator_skin_button.pressed.connect(func(): _select_skin("thecreator"))
-	whisper_skin_button.pressed.connect(func(): _select_skin("whisper"))
-	barbie_skin_button.pressed.connect(func(): _select_skin("barbie"))
-	bloodforged_skin_button.pressed.connect(func(): _select_skin("bloodforged"))
-	frost_skin_button.pressed.connect(func(): _select_skin("frost"))
-	murloc_skin_button.pressed.connect(func(): _select_skin("murloc"))
-	bubblegum_skin_button.pressed.connect(func(): _select_skin("bubblegum"))
-	hell_skin_button.pressed.connect(func(): _select_skin("hell"))
-	void_skin_button.pressed.connect(func(): _select_skin("void"))
-	gaga_skin_button.pressed.connect(func(): _select_skin("gaga"))
+func _init_skins():
+	for skin_name in skin_buttons.keys():
+		var button = skin_popup.get_node(skin_buttons[skin_name])
+		button.pressed.connect(func(): _select_skin(skin_name))
 
 # ------------------------
 # Game Start Logic
@@ -104,26 +103,16 @@ func _load_scene(path: String):
 # Skin Logic
 # ------------------------
 func _select_skin(skin_name: String):
-	GameManager.current_skin = skin_name
-	GameManager.save_skin_data()
+	SkinManager.current_skin = skin_name
 
-# ------------------------
-# Skin Unlock Buttons
-# ------------------------
 func _update_skin_buttons():
-	gold_skin_button.disabled = !GameManager.unlocked_skins.get("gold", false)
-	emerald_skin_button.disabled = !GameManager.unlocked_skins.get("emerald", false)
-	mystic_skin_button.disabled = !GameManager.unlocked_skins.get("mystic", false)
-	abyssal_skin_button.disabled = !GameManager.unlocked_skins.get("abyssal", false)
-	rainbow_skin_button.disabled = !GameManager.unlocked_skins.get("rainbow", false)
-	ignatius_skin_button.disabled = !GameManager.unlocked_skins.get("ignatius", false)
-	barbie_skin_button.disabled = !GameManager.unlocked_skins.get("barbie", false)
-	bloodforged_skin_button.disabled = !GameManager.unlocked_skins.get("bloodforged", false)
-	frost_skin_button.disabled = !GameManager.unlocked_skins.get("frost", false)
-	void_skin_button.disabled = !GameManager.unlocked_skins.get("void", false)
-	bubblegum_skin_button.disabled = !GameManager.unlocked_skins.get("bubblegum", false)
-	whisper_skin_button.disabled = !GameManager.unlocked_skins.get("whisper", false)
-	hell_skin_button.disabled = !GameManager.unlocked_skins.get("hell", false)
+	for skin_name in skin_buttons.keys():
+		var button = skin_popup.get_node(skin_buttons[skin_name])
+		
+		if skin_name in ["default", "thecreator", "murloc"]:
+			button.disabled = false
+		else:
+			button.disabled = !SkinManager.unlocked_skins.get(skin_name, false)
 
 # ------------------------
 # UI Popups

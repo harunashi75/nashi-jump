@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxhtdejcf3oru"
-path="res://.godot/imported/Template-1.png_2.png-85798cb530cbeadbc40528d5ffb851ef.ctex"
+uid="uid://bks8qnomota12"
+path="res://.godot/imported/blueemberknight.png-2406087c4560077d681f083f7f36ce8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Characters/Template-1.png_2.png"
-dest_files=["res://.godot/imported/Template-1.png_2.png-85798cb530cbeadbc40528d5ffb851ef.ctex"]
+source_file="res://Assets/Sprites/Characters/blueemberknight.png"
+dest_files=["res://.godot/imported/blueemberknight.png-2406087c4560077d681f083f7f36ce8f.ctex"]
 
 [params]
 

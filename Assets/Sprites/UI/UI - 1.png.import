@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy2s8xe5k7vl2"
-path="res://.godot/imported/Galda-1.png.png-ce663ba09eaf0b66d41d358870532288.ctex"
+uid="uid://t6qae3a33pk8"
+path="res://.godot/imported/UI - 1.png-a1e4b8342841b61c3eebcf262c4ee3f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Characters/Galda-1.png.png"
-dest_files=["res://.godot/imported/Galda-1.png.png-ce663ba09eaf0b66d41d358870532288.ctex"]
+source_file="res://Assets/Sprites/UI/UI - 1.png"
+dest_files=["res://.godot/imported/UI - 1.png-a1e4b8342841b61c3eebcf262c4ee3f9.ctex"]
 
 [params]
 

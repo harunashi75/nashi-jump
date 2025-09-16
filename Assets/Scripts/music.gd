@@ -3,7 +3,8 @@ extends AudioStreamPlayer
 var excluded_scenes := [
 	"res://Assets/Scenes/start_menu.tscn",
 	"res://Assets/Scenes/level_victory.tscn",
-	"res://Assets/Scenes/level_void.tscn"
+	"res://Assets/Scenes/level_void.tscn",
+	"res://Assets/Scenes/level_hidden.tscn"
 ]
 
 func _ready():

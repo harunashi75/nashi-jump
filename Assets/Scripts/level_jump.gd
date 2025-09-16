@@ -6,5 +6,3 @@ func _ready():
 	GameManager.hud = hud
 	GameManager.total_coins_in_level = 100
 	hud.update_coins_display()
-
-	GameManager.pause_menu = $UI/PauseMenu

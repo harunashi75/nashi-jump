@@ -42,7 +42,7 @@ var is_go_run_mode = false
 func _ready():
 	add_to_group("player")
 	set_process_input(false)
-	current_skin = GameManager.current_skin
+	current_skin = SkinManager.current_skin
 	print("Skin actif :", current_skin)
 	
 	var current_scene = get_tree().current_scene.scene_file_path
@@ -100,7 +100,7 @@ func handle_movement():
 	else:
 		var direction = Input.get_axis("move_left", "move_right")
 		if direction:
-			velocity.x = direction * MOVE_SPEED * GameManager.speed_multiplier
+			velocity.x = direction * MOVE_SPEED
 			sprite.flip_h = direction < 0
 		else:
 			velocity.x = move_toward(velocity.x, 0, DECELERATION)
@@ -124,8 +124,8 @@ func handle_jump():
 # Animation
 # ------------------------
 func handle_animation(delta):
-	if current_skin != GameManager.current_skin:
-		current_skin = GameManager.current_skin
+	if current_skin != SkinManager.current_skin:
+		current_skin = SkinManager.current_skin
 		play_skin_anim("idle")
 
 	if just_jumped:
