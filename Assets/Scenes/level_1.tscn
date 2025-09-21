@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://cb1ojjxg165lf"]
+[gd_scene load_steps=25 format=4 uid="uid://cb1ojjxg165lf"]
 
 [ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_tb6r1"]
 [ext_resource type="Texture2D" uid="uid://cndwqmyxdtpey" path="res://Assets/Sprites/Backgrounds/Soft pastel sky2.png" id="2_gfgg3"]
@@ -10,9 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="6_gn4xj"]
 [ext_resource type="FontFile" uid="uid://ck2ml0wud68ix" path="res://Assets/Fonts/PublicPixel.otf" id="6_hjg8p"]
 [ext_resource type="PackedScene" uid="uid://8mwqb4osw62n" path="res://Assets/Scenes/enemy_green.tscn" id="9_2v7sf"]
-[ext_resource type="Script" uid="uid://rj8bo7ewwsmm" path="res://Assets/Scripts/brickhead.gd" id="10_nh0bx"]
+[ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="11_gn4xj"]
 [ext_resource type="Script" uid="uid://ccpu806yaiy8n" path="res://Assets/Scripts/tp_levels_1.gd" id="14_01bro"]
-[ext_resource type="Texture2D" uid="uid://dkbugje2anayf" path="res://Assets/Sprites/Traps/Brickhead_1_2.png" id="15_2kdgr"]
 [ext_resource type="AudioStream" uid="uid://3ob7ge3sd6ad" path="res://Assets/Sounds/mixkit-wind-chimes-2014.wav" id="15_2v7sf"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="16_7gr1e"]
 
@@ -327,101 +326,6 @@ texture = ExtResource("4_2gvtk")
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_gfgg3")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tb4ya"]
-atlas = ExtResource("15_2kdgr")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r4noj"]
-atlas = ExtResource("15_2kdgr")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rydm1"]
-atlas = ExtResource("15_2kdgr")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d4yln"]
-atlas = ExtResource("15_2kdgr")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gk2tv"]
-atlas = ExtResource("15_2kdgr")
-region = Rect2(0, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i7ag6"]
-atlas = ExtResource("15_2kdgr")
-region = Rect2(48, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7u22d"]
-atlas = ExtResource("15_2kdgr")
-region = Rect2(96, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7st13"]
-atlas = ExtResource("15_2kdgr")
-region = Rect2(144, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4n5yj"]
-atlas = ExtResource("15_2kdgr")
-region = Rect2(0, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cbu7u"]
-atlas = ExtResource("15_2kdgr")
-region = Rect2(48, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_og5wj"]
-atlas = ExtResource("15_2kdgr")
-region = Rect2(96, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o3kt4"]
-atlas = ExtResource("15_2kdgr")
-region = Rect2(144, 96, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bs1pa"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tb4ya")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r4noj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rydm1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d4yln")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gk2tv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i7ag6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7u22d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7st13")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4n5yj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cbu7u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_og5wj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o3kt4")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 10.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_of4xg"]
-size = Vector2(32, 32)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkvei"]
 radius = 2.0
 height = 32.0
@@ -528,19 +432,8 @@ position = Vector2(136, -192)
 
 [node name="Traps" type="Node" parent="."]
 
-[node name="Brickhead" type="Area2D" parent="Traps"]
-script = ExtResource("10_nh0bx")
-speed = 152
-distance = 75
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead"]
+[node name="Brickhead" parent="Traps" instance=ExtResource("11_gn4xj")]
 position = Vector2(-152, -219)
-sprite_frames = SubResource("SpriteFrames_bs1pa")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead"]
-position = Vector2(-152, -219)
-shape = SubResource("RectangleShape2D_of4xg")
 
 [node name="TP-Levels" type="Area2D" parent="."]
 script = ExtResource("14_01bro")

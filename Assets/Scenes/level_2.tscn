@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://chrppt8rr7t14"]
+[gd_scene load_steps=27 format=4 uid="uid://chrppt8rr7t14"]
 
 [ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_f7ha1"]
 [ext_resource type="Texture2D" uid="uid://fuyu3xrem837" path="res://Assets/Sprites/Backgrounds/Forest mist sky2.png" id="2_f7ha1"]
@@ -11,10 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="7_7373x"]
 [ext_resource type="Texture2D" uid="uid://t6qae3a33pk8" path="res://Assets/Sprites/UI/UI - 1.png" id="7_efllg"]
 [ext_resource type="PackedScene" uid="uid://dpj0yojkqxtnx" path="res://Assets/Scenes/enemy_bee.tscn" id="8_1cifp"]
-[ext_resource type="Script" uid="uid://rj8bo7ewwsmm" path="res://Assets/Scripts/brickhead.gd" id="8_phssg"]
 [ext_resource type="Script" uid="uid://3t378uqbxysf" path="res://Assets/Scripts/tp_levels_2.gd" id="12_efllg"]
+[ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="12_oqosq"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="14_a6f8o"]
-[ext_resource type="Texture2D" uid="uid://dkbugje2anayf" path="res://Assets/Sprites/Traps/Brickhead_1_2.png" id="15_ap8cu"]
 [ext_resource type="AudioStream" uid="uid://3ob7ge3sd6ad" path="res://Assets/Sounds/mixkit-wind-chimes-2014.wav" id="16_efllg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oqosq"]
@@ -345,196 +344,6 @@ texture = ExtResource("5_1cifp")
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_f7ha1")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bwmal"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cqdt7"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b5yqg"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_copeh"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ev20"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(0, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_thooq"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(48, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2i0nt"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(96, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sgljn"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(144, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ql5wp"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(0, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i8m1e"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(48, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o4adv"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(96, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xedja"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(144, 96, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1epww"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bwmal")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cqdt7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b5yqg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_copeh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2ev20")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_thooq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2i0nt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sgljn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ql5wp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i8m1e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o4adv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xedja")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 7.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kbj1s"]
-size = Vector2(32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kkoln"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tgp5i"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xcj3f"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e8a0a"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g1upr"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(0, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fg7sy"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(48, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d5a0m"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(96, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2shl3"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(144, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lcu8g"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(0, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_53stj"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(48, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gn14q"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(96, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8dwdt"]
-atlas = ExtResource("15_ap8cu")
-region = Rect2(144, 96, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5nd2d"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kkoln")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tgp5i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xcj3f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e8a0a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g1upr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fg7sy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d5a0m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2shl3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lcu8g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_53stj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gn14q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8dwdt")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 7.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_63crj"]
-size = Vector2(32, 32)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sc8i5"]
 radius = 3.0
 height = 32.0
@@ -647,33 +456,11 @@ position = Vector2(-22, 0)
 
 [node name="Traps" type="Node" parent="."]
 
-[node name="Brickhead" type="Area2D" parent="Traps"]
-script = ExtResource("8_phssg")
-speed = 144
-distance = 64
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead"]
+[node name="Brickhead" parent="Traps" instance=ExtResource("12_oqosq")]
 position = Vector2(136, -160)
-sprite_frames = SubResource("SpriteFrames_1epww")
-animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead"]
-position = Vector2(136, -160)
-shape = SubResource("RectangleShape2D_kbj1s")
-
-[node name="Brickhead2" type="Area2D" parent="Traps"]
-script = ExtResource("8_phssg")
-speed = 98
-distance = 48
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead2"]
+[node name="Brickhead2" parent="Traps" instance=ExtResource("12_oqosq")]
 position = Vector2(-248, -240)
-sprite_frames = SubResource("SpriteFrames_5nd2d")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead2"]
-position = Vector2(-248, -240)
-shape = SubResource("RectangleShape2D_63crj")
 
 [node name="TP-Levels" type="Area2D" parent="."]
 script = ExtResource("12_efllg")

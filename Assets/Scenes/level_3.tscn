@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://bfyspnwx6i5k5"]
+[gd_scene load_steps=47 format=4 uid="uid://bfyspnwx6i5k5"]
 
 [ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_y5qq7"]
 [ext_resource type="Texture2D" uid="uid://bmokrl8bas7xq" path="res://Assets/Sprites/Backgrounds/Soft Autumnal Sky2.png" id="2_y5qq7"]
@@ -14,8 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://jb7gqeylewot" path="res://Assets/Scenes/spikes.tscn" id="12_y5qq7"]
 [ext_resource type="Texture2D" uid="uid://edyq1wc3bwlp" path="res://Assets/Sprites/Traps/Cactus_2.png" id="13_a8knr"]
 [ext_resource type="Script" uid="uid://ch3wlueq23qak" path="res://Assets/Scripts/traps.gd" id="13_uswjp"]
-[ext_resource type="Script" uid="uid://rj8bo7ewwsmm" path="res://Assets/Scripts/brickhead.gd" id="15_p8mjd"]
-[ext_resource type="Texture2D" uid="uid://dkbugje2anayf" path="res://Assets/Sprites/Traps/Brickhead_1_2.png" id="16_i3up3"]
+[ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="15_pgype"]
 [ext_resource type="AudioStream" uid="uid://3ob7ge3sd6ad" path="res://Assets/Sounds/mixkit-wind-chimes-2014.wav" id="17_f8x85"]
 [ext_resource type="Script" uid="uid://djq8uh536rl42" path="res://Assets/Scripts/tp_levels_3.gd" id="17_naf3r"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="19_wpbe8"]
@@ -468,101 +467,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_7xabf"]
 radius = 6.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_16ff7"]
-atlas = ExtResource("16_i3up3")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y65q6"]
-atlas = ExtResource("16_i3up3")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ype0h"]
-atlas = ExtResource("16_i3up3")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qbbe0"]
-atlas = ExtResource("16_i3up3")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q41xx"]
-atlas = ExtResource("16_i3up3")
-region = Rect2(0, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gurkv"]
-atlas = ExtResource("16_i3up3")
-region = Rect2(48, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgmvp"]
-atlas = ExtResource("16_i3up3")
-region = Rect2(96, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_stl46"]
-atlas = ExtResource("16_i3up3")
-region = Rect2(144, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3mnk4"]
-atlas = ExtResource("16_i3up3")
-region = Rect2(0, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ufj7"]
-atlas = ExtResource("16_i3up3")
-region = Rect2(48, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3dcqy"]
-atlas = ExtResource("16_i3up3")
-region = Rect2(96, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ejsi2"]
-atlas = ExtResource("16_i3up3")
-region = Rect2(144, 96, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_n8nh1"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_16ff7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y65q6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ype0h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qbbe0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q41xx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gurkv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vgmvp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_stl46")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3mnk4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ufj7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3dcqy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ejsi2")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 7.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7wmr"]
-size = Vector2(32, 32)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cov1t"]
 radius = 3.0
 height = 32.0
@@ -729,30 +633,17 @@ animation = &"damage"
 position = Vector2(200, -294)
 shape = SubResource("CircleShape2D_7xabf")
 
-[node name="Trap15" type="Area2D" parent="Traps"]
+[node name="Trap4" type="Area2D" parent="Traps"]
 script = ExtResource("13_uswjp")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap15"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Trap4"]
 position = Vector2(-64, -12)
 sprite_frames = SubResource("SpriteFrames_ecwlk")
 animation = &"damage"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap15"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Trap4"]
 position = Vector2(-64, -6)
 shape = SubResource("CircleShape2D_7xabf")
-
-[node name="Brickhead" type="Area2D" parent="Traps"]
-script = ExtResource("15_p8mjd")
-distance = 32
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead"]
-position = Vector2(-2, -288)
-sprite_frames = SubResource("SpriteFrames_n8nh1")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead"]
-position = Vector2(-2, -288)
-shape = SubResource("RectangleShape2D_n7wmr")
 
 [node name="Spikes" parent="Traps" instance=ExtResource("12_y5qq7")]
 position = Vector2(-8, 16)
@@ -819,6 +710,10 @@ position = Vector2(120, -208)
 
 [node name="Spikes22" parent="Traps" instance=ExtResource("12_y5qq7")]
 position = Vector2(136, -208)
+
+[node name="Brickhead" parent="Traps" instance=ExtResource("15_pgype")]
+position = Vector2(-2, -288)
+speed = 70
 
 [node name="TP-Levels" type="Area2D" parent="."]
 script = ExtResource("17_naf3r")

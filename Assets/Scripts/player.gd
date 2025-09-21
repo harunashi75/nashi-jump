@@ -242,6 +242,9 @@ func load_respawn_scene():
 	if current_scene == "res://Assets/Scenes/level_run.tscn":
 		LevelManager.load_level_by_path(current_scene)
 		return
+	if current_scene == "res://Assets/Scenes/level_jump.tscn":
+		LevelManager.load_level_by_path(current_scene)
+		return
 	
 	var path = GameManager.levels_checkpoint_scene_path if GameManager.levels_checkpoint_enabled else "res://Assets/Scenes/level_1.tscn"
 	LevelManager.load_level_by_path(path)

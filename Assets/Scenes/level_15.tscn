@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bh4onqnf8fc2c"]
+[gd_scene load_steps=16 format=4 uid="uid://bh4onqnf8fc2c"]
 
 [ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_rvpyo"]
 [ext_resource type="Texture2D" uid="uid://c5ore2fp2w0j2" path="res://Assets/Sprites/Backgrounds/Graveyard Sky2.png" id="2_bh6ri"]
@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="4_ot8t8"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="5_7tamx"]
 [ext_resource type="PackedScene" uid="uid://dmn0met35qgss" path="res://Assets/Scenes/enemy_gray.tscn" id="6_od1hm"]
-[ext_resource type="Script" uid="uid://rj8bo7ewwsmm" path="res://Assets/Scripts/brickhead.gd" id="7_q2pkf"]
-[ext_resource type="Texture2D" uid="uid://dkbugje2anayf" path="res://Assets/Sprites/Traps/Brickhead_1_2.png" id="8_yiqb0"]
+[ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="8_k8ug8"]
 [ext_resource type="PackedScene" uid="uid://jb7gqeylewot" path="res://Assets/Scenes/spikes.tscn" id="9_vxdyt"]
 [ext_resource type="Script" uid="uid://eoamt1dcxceo" path="res://Assets/Scripts/tp_levels_15.gd" id="10_i11qu"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="11_1d568"]
@@ -154,101 +153,6 @@ sources/0 = SubResource("TileSetAtlasSource_u00l4")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8e8dh"]
 size = Vector2(16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wt8yq"]
-atlas = ExtResource("8_yiqb0")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_brcjt"]
-atlas = ExtResource("8_yiqb0")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_volas"]
-atlas = ExtResource("8_yiqb0")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j1bm6"]
-atlas = ExtResource("8_yiqb0")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qw85v"]
-atlas = ExtResource("8_yiqb0")
-region = Rect2(0, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8jhit"]
-atlas = ExtResource("8_yiqb0")
-region = Rect2(48, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o76cp"]
-atlas = ExtResource("8_yiqb0")
-region = Rect2(96, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nhth3"]
-atlas = ExtResource("8_yiqb0")
-region = Rect2(144, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_272jh"]
-atlas = ExtResource("8_yiqb0")
-region = Rect2(0, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bpwub"]
-atlas = ExtResource("8_yiqb0")
-region = Rect2(48, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wjmsb"]
-atlas = ExtResource("8_yiqb0")
-region = Rect2(96, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vx8ca"]
-atlas = ExtResource("8_yiqb0")
-region = Rect2(144, 96, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mdgdv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wt8yq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_brcjt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_volas")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j1bm6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qw85v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8jhit")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o76cp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nhth3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_272jh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bpwub")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wjmsb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vx8ca")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 7.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryu4i"]
-size = Vector2(32, 32)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_11qyg"]
 radius = 3.0
 height = 32.0
@@ -373,90 +277,6 @@ shape = SubResource("RectangleShape2D_8e8dh")
 
 [node name="Traps" type="Node" parent="."]
 
-[node name="Brickhead" type="Area2D" parent="Traps"]
-script = ExtResource("7_q2pkf")
-speed = 150
-distance = 56
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead"]
-position = Vector2(-40, -104)
-sprite_frames = SubResource("SpriteFrames_mdgdv")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead"]
-position = Vector2(-40, -104)
-shape = SubResource("RectangleShape2D_ryu4i")
-
-[node name="Brickhead2" type="Area2D" parent="Traps"]
-script = ExtResource("7_q2pkf")
-speed = 130
-distance = 56
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead2"]
-position = Vector2(56, -104)
-sprite_frames = SubResource("SpriteFrames_mdgdv")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead2"]
-position = Vector2(56, -104)
-shape = SubResource("RectangleShape2D_ryu4i")
-
-[node name="Brickhead3" type="Area2D" parent="Traps"]
-script = ExtResource("7_q2pkf")
-speed = 140
-distance = 72
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead3"]
-position = Vector2(-216, -184)
-sprite_frames = SubResource("SpriteFrames_mdgdv")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead3"]
-position = Vector2(-216, -184)
-shape = SubResource("RectangleShape2D_ryu4i")
-
-[node name="Brickhead4" type="Area2D" parent="Traps"]
-script = ExtResource("7_q2pkf")
-speed = 160
-distance = 72
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead4"]
-position = Vector2(232, -184)
-sprite_frames = SubResource("SpriteFrames_mdgdv")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead4"]
-position = Vector2(232, -184)
-shape = SubResource("RectangleShape2D_ryu4i")
-
-[node name="Brickhead5" type="Area2D" parent="Traps"]
-script = ExtResource("7_q2pkf")
-speed = 200
-distance = 88
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead5"]
-position = Vector2(-40, -344)
-sprite_frames = SubResource("SpriteFrames_mdgdv")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead5"]
-position = Vector2(-40, -344)
-shape = SubResource("RectangleShape2D_ryu4i")
-
-[node name="Brickhead6" type="Area2D" parent="Traps"]
-script = ExtResource("7_q2pkf")
-speed = 190
-distance = 88
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead6"]
-position = Vector2(56, -344)
-sprite_frames = SubResource("SpriteFrames_mdgdv")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead6"]
-position = Vector2(56, -344)
-shape = SubResource("RectangleShape2D_ryu4i")
-
 [node name="Spikes" parent="Traps" instance=ExtResource("9_vxdyt")]
 position = Vector2(-168, 16)
 
@@ -507,6 +327,29 @@ position = Vector2(216, 16)
 
 [node name="Spikes18" parent="Traps" instance=ExtResource("9_vxdyt")]
 position = Vector2(232, 16)
+
+[node name="Brickhead" parent="Traps" instance=ExtResource("8_k8ug8")]
+position = Vector2(-40, -104)
+speed = 130
+
+[node name="Brickhead2" parent="Traps" instance=ExtResource("8_k8ug8")]
+position = Vector2(56, -104)
+
+[node name="Brickhead3" parent="Traps" instance=ExtResource("8_k8ug8")]
+position = Vector2(232, -184)
+speed = 140
+
+[node name="Brickhead4" parent="Traps" instance=ExtResource("8_k8ug8")]
+position = Vector2(56, -344)
+speed = 130
+
+[node name="Brickhead5" parent="Traps" instance=ExtResource("8_k8ug8")]
+position = Vector2(-40, -344)
+speed = 160
+
+[node name="Brickhead6" parent="Traps" instance=ExtResource("8_k8ug8")]
+position = Vector2(-216, -184)
+speed = 140
 
 [node name="TP-Levels" type="Area2D" parent="."]
 script = ExtResource("10_i11qu")

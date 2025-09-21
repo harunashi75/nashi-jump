@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://v8uncne54gfv"]
+[gd_scene load_steps=17 format=4 uid="uid://v8uncne54gfv"]
 
 [ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_1vr78"]
 [ext_resource type="Texture2D" uid="uid://cn0d1rq4vcffm" path="res://Assets/Sprites/Backgrounds/Dungeon Sky2.png" id="2_vctxm"]
@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="5_ulpgb"]
 [ext_resource type="PackedScene" uid="uid://b2ery55yhbn6v" path="res://Assets/Scenes/enemy_brown.tscn" id="6_tsn8y"]
 [ext_resource type="PackedScene" uid="uid://8mwqb4osw62n" path="res://Assets/Scenes/enemy_green.tscn" id="7_d4xuu"]
-[ext_resource type="Script" uid="uid://rj8bo7ewwsmm" path="res://Assets/Scripts/brickhead.gd" id="8_hrmg3"]
-[ext_resource type="Texture2D" uid="uid://dkbugje2anayf" path="res://Assets/Sprites/Traps/Brickhead_1_2.png" id="9_v25q0"]
+[ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="9_8bhhi"]
 [ext_resource type="PackedScene" uid="uid://jb7gqeylewot" path="res://Assets/Scenes/spikes.tscn" id="10_i6ib6"]
 [ext_resource type="Script" uid="uid://cd8hi0bt1g3wk" path="res://Assets/Scripts/tp_levels_16.gd" id="11_a07lv"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="12_wmvuc"]
@@ -155,103 +154,8 @@ sources/0 = SubResource("TileSetAtlasSource_sb4pu")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahxwr"]
 size = Vector2(16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mlcwn"]
-atlas = ExtResource("9_v25q0")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mnk47"]
-atlas = ExtResource("9_v25q0")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6v47g"]
-atlas = ExtResource("9_v25q0")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_11qyg"]
-atlas = ExtResource("9_v25q0")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_epxtq"]
-atlas = ExtResource("9_v25q0")
-region = Rect2(0, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ufyk"]
-atlas = ExtResource("9_v25q0")
-region = Rect2(48, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ayh1h"]
-atlas = ExtResource("9_v25q0")
-region = Rect2(96, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lwhpa"]
-atlas = ExtResource("9_v25q0")
-region = Rect2(144, 48, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y3hlf"]
-atlas = ExtResource("9_v25q0")
-region = Rect2(0, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k8sq3"]
-atlas = ExtResource("9_v25q0")
-region = Rect2(48, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yarxw"]
-atlas = ExtResource("9_v25q0")
-region = Rect2(96, 96, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mdgdv"]
-atlas = ExtResource("9_v25q0")
-region = Rect2(144, 96, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_yb263"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mlcwn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mnk47")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6v47g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_11qyg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_epxtq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5ufyk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ayh1h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lwhpa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y3hlf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k8sq3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yarxw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mdgdv")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 7.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjafq"]
-size = Vector2(32, 32)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q1230"]
-radius = 3.0
+radius = 2.0
 height = 32.0
 
 [node name="Level_16" type="Node"]
@@ -367,60 +271,6 @@ shape = SubResource("RectangleShape2D_ahxwr")
 
 [node name="Traps" type="Node" parent="."]
 
-[node name="Brickhead" type="Area2D" parent="Traps"]
-script = ExtResource("8_hrmg3")
-distance = 48
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead"]
-position = Vector2(-152, -384)
-sprite_frames = SubResource("SpriteFrames_yb263")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead"]
-position = Vector2(-152, -384)
-shape = SubResource("RectangleShape2D_yjafq")
-
-[node name="Brickhead2" type="Area2D" parent="Traps"]
-script = ExtResource("8_hrmg3")
-speed = 130
-distance = 24
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead2"]
-position = Vector2(-248, -312)
-sprite_frames = SubResource("SpriteFrames_yb263")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead2"]
-position = Vector2(-248, -312)
-shape = SubResource("RectangleShape2D_yjafq")
-
-[node name="Brickhead3" type="Area2D" parent="Traps"]
-script = ExtResource("8_hrmg3")
-distance = 40
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead3"]
-position = Vector2(-152, -232)
-sprite_frames = SubResource("SpriteFrames_yb263")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead3"]
-position = Vector2(-152, -232)
-shape = SubResource("RectangleShape2D_yjafq")
-
-[node name="Brickhead4" type="Area2D" parent="Traps"]
-script = ExtResource("8_hrmg3")
-speed = 130
-distance = 48
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Traps/Brickhead4"]
-position = Vector2(-248, -160)
-sprite_frames = SubResource("SpriteFrames_yb263")
-animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/Brickhead4"]
-position = Vector2(-248, -160)
-shape = SubResource("RectangleShape2D_yjafq")
-
 [node name="Spikes" parent="Traps" instance=ExtResource("10_i6ib6")]
 position = Vector2(-232, 16)
 
@@ -438,6 +288,21 @@ position = Vector2(-168, 16)
 
 [node name="Spikes6" parent="Traps" instance=ExtResource("10_i6ib6")]
 position = Vector2(-152, 16)
+
+[node name="Brickhead" parent="Traps" instance=ExtResource("9_8bhhi")]
+position = Vector2(-248, -160)
+
+[node name="Brickhead2" parent="Traps" instance=ExtResource("9_8bhhi")]
+position = Vector2(-152, -232)
+speed = 80
+
+[node name="Brickhead3" parent="Traps" instance=ExtResource("9_8bhhi")]
+position = Vector2(-248, -312)
+speed = 60
+
+[node name="Brickhead4" parent="Traps" instance=ExtResource("9_8bhhi")]
+position = Vector2(-152, -384)
+speed = 80
 
 [node name="TP-Levels" type="Area2D" parent="."]
 script = ExtResource("11_a07lv")
