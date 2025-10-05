@@ -3,7 +3,6 @@ extends Node2D
 const SPEED = 100
 var direction = 1
 var is_attacking = false
-var is_go_run: bool = false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var raycast_right: RayCast2D = $RayCastRight
@@ -13,16 +12,9 @@ var is_go_run: bool = false
 func _ready():
 	sprite.play("run")
 	hitbox.body_entered.connect(_on_body_entered)
-	
-	var current_scene = get_tree().current_scene
-	if current_scene and current_scene.scene_file_path.ends_with("level_run.tscn"):
-		is_go_run = true
 
 func _process(delta):
 	if is_attacking:
-		return
-	
-	if is_go_run:
 		return
 	
 	if raycast_right.is_colliding():

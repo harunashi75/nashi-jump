@@ -8,7 +8,7 @@ func _ready():
 	var hud = preload("res://Assets/Scenes/hud.tscn").instantiate()
 	add_child(hud)
 	GameManager.hud = hud
-	GameManager.total_coins_in_level = 210
+	GameManager.total_coins_in_level = 245
 	hud.update_coins_display()
 
 func _exit_tree():

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x3a4k40cbjkb"
-path="res://.godot/imported/abyssalknight.png-c42f0c08a662b700b5af7424273863bb.ctex"
+uid="uid://bi7xlt6r3j1b8"
+path="res://.godot/imported/Dark Cave3.png-602004d065d30f803d4ed4c099e89ee3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Characters/abyssalknight.png"
-dest_files=["res://.godot/imported/abyssalknight.png-c42f0c08a662b700b5af7424273863bb.ctex"]
+source_file="res://Assets/Sprites/Backgrounds/Dark Cave3.png"
+dest_files=["res://.godot/imported/Dark Cave3.png-602004d065d30f803d4ed4c099e89ee3.ctex"]
 
 [params]
 

@@ -51,11 +51,11 @@ sprite_frames = SubResource("SpriteFrames_vy0jc")
 animation = &"idle"
 
 [node name="RayCastUp" type="RayCast2D" parent="."]
-target_position = Vector2(0, -18)
+target_position = Vector2(0, -16)
 collision_mask = 66
 
 [node name="RayCastDown" type="RayCast2D" parent="."]
-target_position = Vector2(0, 18)
+target_position = Vector2(0, 16)
 collision_mask = 66
 
 [node name="Hitbox" type="Area2D" parent="."]

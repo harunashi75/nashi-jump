@@ -118,22 +118,6 @@ offset_top = 4.0
 offset_right = 176.0
 offset_bottom = 252.0
 
-[node name="VeryEasy" type="TextureButton" parent="ModePopup/VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("4_qd4of")
-texture_hover = ExtResource("5_ttvl8")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="ModePopup/VBoxContainer/VeryEasy"]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 7.0
-offset_right = 159.0
-offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("5_esus2")
-theme_override_font_sizes/font_size = 16
-text = "VERY EASY"
-
 [node name="Easy" type="TextureButton" parent="ModePopup/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_qd4of")
@@ -197,38 +181,6 @@ offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "INSANE"
-
-[node name="Exploration" type="TextureButton" parent="ModePopup/VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("4_qd4of")
-texture_hover = ExtResource("5_ttvl8")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="ModePopup/VBoxContainer/Exploration"]
-layout_mode = 0
-offset_left = 43.0
-offset_top = 11.0
-offset_right = 131.0
-offset_bottom = 19.0
-theme_override_fonts/font = ExtResource("5_esus2")
-theme_override_font_sizes/font_size = 8
-text = "EXPLORATION"
-
-[node name="GoRun" type="TextureButton" parent="ModePopup/VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("4_qd4of")
-texture_hover = ExtResource("5_ttvl8")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="ModePopup/VBoxContainer/GoRun"]
-layout_mode = 0
-offset_left = 34.0
-offset_top = 7.0
-offset_right = 146.0
-offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("5_esus2")
-theme_override_font_sizes/font_size = 16
-text = "GO RUN!"
 
 [node name="SkinPopup" type="PopupPanel" parent="."]
 size = Vector2i(228, 764)
@@ -599,25 +551,21 @@ theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 8
 text = "Skins Unlock Conditions:
 
-• Bubblegum – 190 coins in Very Easy mode
+• Emerald – 210 coins in Easy mode
 
-• Emerald – 190 coins in Easy mode
+• Mystic – 210 coins in Normal mode
 
-• Mystic – 190 coins in Normal mode
+• Abyssal – 210 coins in Hard mode
 
-• Abyssal – 190 coins in Hard mode
+• Rainbow – 210 coins in Insane mode
 
-• Rainbow – 190 coins in Insane mode
+• Gold – 230 coins in Easy, Normal and Hard modes
 
-• Gold – 210 coins in Very Easy, Easy, Normal and Hard modes
-
-• Whisper – 180 coins in Easy or Normal or Hard mode 
+• Whisper – 200 coins in Easy or Normal or Hard mode 
   in 15min or less
 
-• Hell Spawn – 180 coins in Easy, Normal and Hard modes 
+• Hell Spawn – 200 coins in Easy, Normal and Hard modes 
   in 15min or less
-
-• Ignatius – 100 coins in Exploration mode
 
 • Barbie, Bloodforged and Frost Knight – to be found in the levels
 

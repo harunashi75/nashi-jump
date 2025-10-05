@@ -4,7 +4,7 @@ extends CharacterBody2D
 # Constantes et Variables
 # ------------------------
 const GRAVITY = 980
-const DEFAULT_MOVE_SPEED = 180
+const DEFAULT_MOVE_SPEED = 160
 const DEFAULT_JUMP_FORCE = -310
 const DECELERATION = 20
 
@@ -27,11 +27,6 @@ var current_skin := "default"
 var camera: Camera2D = null
 
 # ------------------------
-# Go Run Mode
-# ------------------------
-var is_go_run_mode = false
-
-# ------------------------
 # Références aux Nodes
 # ------------------------
 @onready var sprite = $AnimatedSprite2D
@@ -47,11 +42,6 @@ func _ready():
 	
 	var current_scene = get_tree().current_scene.scene_file_path
 	
-	if current_scene == "res://Assets/Scenes/level_run.tscn":
-		is_go_run_mode = true
-	else:
-		is_go_run_mode = false
-
 	if current_scene == "res://Assets/Scenes/level_victory.tscn":
 		GameManager.reset_lives_by_difficulty()
 		initialize_health()
@@ -95,15 +85,12 @@ func handle_input():
 	handle_jump()
 
 func handle_movement():
-	if is_go_run_mode:
-		velocity.x = 0
+	var direction = Input.get_axis("move_left", "move_right")
+	if direction:
+		velocity.x = direction * MOVE_SPEED
+		sprite.flip_h = direction < 0
 	else:
-		var direction = Input.get_axis("move_left", "move_right")
-		if direction:
-			velocity.x = direction * MOVE_SPEED
-			sprite.flip_h = direction < 0
-		else:
-			velocity.x = move_toward(velocity.x, 0, DECELERATION)
+		velocity.x = move_toward(velocity.x, 0, DECELERATION)
 
 func handle_jump():
 	if Input.is_action_just_pressed("jump") and jumps_left > 0:
@@ -239,9 +226,6 @@ func respawn():
 func load_respawn_scene():
 	print("Respawn du joueur...")
 	var current_scene = get_tree().current_scene.scene_file_path
-	if current_scene == "res://Assets/Scenes/level_run.tscn":
-		LevelManager.load_level_by_path(current_scene)
-		return
 	if current_scene == "res://Assets/Scenes/level_jump.tscn":
 		LevelManager.load_level_by_path(current_scene)
 		return

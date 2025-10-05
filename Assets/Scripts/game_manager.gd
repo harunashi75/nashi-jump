@@ -45,12 +45,6 @@ func _ready():
 		pause_menu = null
 
 # ------------------------
-# Dommages ennemis
-# ------------------------
-func get_enemy_damage(level_name: String) -> int:
-	return Constants.BASE_ENEMY_DAMAGE.get(level_name, 1)
-
-# ------------------------
 # Affichage texte
 # ------------------------
 func show_floating_text(text: String, position: Vector2, color: Color = Color.WHITE):

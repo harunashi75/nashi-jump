@@ -10,13 +10,10 @@ extends Control
 @onready var unlock_info_panel = $UnlockInfoPanel
 
 @onready var mode_popup = $ModePopup
-@onready var veryeasy_button = mode_popup.get_node("VBoxContainer/VeryEasy")
 @onready var easy_button = mode_popup.get_node("VBoxContainer/Easy")
 @onready var normal_button = mode_popup.get_node("VBoxContainer/Normal")
 @onready var hard_button = mode_popup.get_node("VBoxContainer/Hard")
 @onready var insane_button = mode_popup.get_node("VBoxContainer/Insane")
-@onready var exploration_button = mode_popup.get_node("VBoxContainer/Exploration")
-@onready var gorun_button = mode_popup.get_node("VBoxContainer/GoRun")
 
 @onready var skin_popup = $SkinPopup
 
@@ -66,13 +63,10 @@ func _connect_main_buttons():
 	quit_button.pressed.connect(_quit_game)
 
 func _connect_mode_buttons():
-	veryeasy_button.pressed.connect(func(): _start_game("veryeasy", "res://Assets/Scenes/level_1.tscn"))
 	easy_button.pressed.connect(func(): _start_game("easy", "res://Assets/Scenes/level_1.tscn"))
 	normal_button.pressed.connect(func(): _start_game("normal", "res://Assets/Scenes/level_1.tscn"))
 	hard_button.pressed.connect(func(): _start_game("hard", "res://Assets/Scenes/level_1.tscn"))
 	insane_button.pressed.connect(func(): _start_game("insane", "res://Assets/Scenes/level_1.tscn"))
-	exploration_button.pressed.connect(func(): _start_game("exploration", "res://Assets/Scenes/level_jump.tscn"))
-	gorun_button.pressed.connect(func(): _start_game("gorun", "res://Assets/Scenes/level_run.tscn"))
 
 func _init_skins():
 	for skin_name in skin_buttons.keys():
@@ -109,7 +103,7 @@ func _update_skin_buttons():
 	for skin_name in skin_buttons.keys():
 		var button = skin_popup.get_node(skin_buttons[skin_name])
 		
-		if skin_name in ["default", "thecreator", "murloc"]:
+		if skin_name in ["default", "thecreator", "murloc", "bubblegum", "ignatius"]:
 			button.disabled = false
 		else:
 			button.disabled = !SkinManager.unlocked_skins.get(skin_name, false)
