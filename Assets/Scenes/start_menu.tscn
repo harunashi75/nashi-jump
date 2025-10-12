@@ -230,23 +230,6 @@ theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "THE CREATOR"
 
-[node name="BubblegumSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("4_qd4of")
-texture_hover = ExtResource("5_ttvl8")
-texture_disabled = ExtResource("6_esus2")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/BubblegumSkin"]
-layout_mode = 0
-offset_left = 31.0
-offset_top = 7.0
-offset_right = 175.0
-offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("5_esus2")
-theme_override_font_sizes/font_size = 16
-text = "BUBBLEGUM"
-
 [node name="EmeraldSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_qd4of")
@@ -365,6 +348,23 @@ offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 16
 text = "HELL SPAWN"
+
+[node name="BubblegumSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qd4of")
+texture_hover = ExtResource("5_ttvl8")
+texture_disabled = ExtResource("6_esus2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="SkinPopup/ScrollContainer/VBoxContainer/BubblegumSkin"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 7.0
+offset_right = 175.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_esus2")
+theme_override_font_sizes/font_size = 16
+text = "BUBBLEGUM"
 
 [node name="IgnatiusSkin" type="TextureButton" parent="SkinPopup/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -551,21 +551,19 @@ theme_override_fonts/font = ExtResource("5_esus2")
 theme_override_font_sizes/font_size = 8
 text = "Skins Unlock Conditions:
 
-• Emerald – 210 coins in Easy mode
+• Emerald – 270 coins in Easy mode
 
-• Mystic – 210 coins in Normal mode
+• Mystic – 270 coins in Normal mode
 
-• Abyssal – 210 coins in Hard mode
+• Abyssal – 270 coins in Hard mode
 
-• Rainbow – 210 coins in Insane mode
+• Rainbow – 270 coins in Insane mode
 
-• Gold – 230 coins in Easy, Normal and Hard modes
+• Gold – 290 coins in Easy, Normal and Hard modes
 
-• Whisper – 200 coins in Easy or Normal or Hard mode 
-  in 15min or less
+• Whisper – 260 coins in Easy or Normal or Hard mode in 20min or less
 
-• Hell Spawn – 200 coins in Easy, Normal and Hard modes 
-  in 15min or less
+• Hell Spawn – 260 coins in Easy, Normal and Hard modes in 20min or less
 
 • Barbie, Bloodforged and Frost Knight – to be found in the levels
 
@@ -573,18 +571,20 @@ text = "Skins Unlock Conditions:
 
 • Beezzz, Blue Ember and Mossy Bear – to be found in the levels
 
-• ??? – ???"
+• ??? – ???
+
+• Bubblegum and Ignatius – to be found in the levels"
 vertical_alignment = 1
 
 [node name="GameVersion" type="Label" parent="."]
 layout_mode = 0
-offset_left = 516.0
-offset_top = 333.0
-offset_right = 628.0
-offset_bottom = 349.0
+offset_left = 414.0
+offset_top = 345.0
+offset_right = 630.0
+offset_bottom = 353.0
 theme_override_fonts/font = ExtResource("5_esus2")
-theme_override_font_sizes/font_size = 16
-text = "v0.7.99"
+theme_override_font_sizes/font_size = 8
+text = "v0.7.90 (Development Build)"
 
 [node name="UpdateName" type="Label" parent="."]
 layout_mode = 0

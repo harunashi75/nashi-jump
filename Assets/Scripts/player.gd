@@ -21,6 +21,7 @@ var spikes_overlap_count: int = 0
 var spikes_damage_timer: Timer
 
 var just_jumped = false
+var is_invulnerable = false
 var jump_anim_timer = 0.15
 var current_skin := "default"
 
@@ -155,7 +156,7 @@ func set_lives(amount: int):
 	GameManager.emit_signal("health_changed", current_health, max_health)
 
 func take_damage(amount):
-	if GameManager.godmode_enabled:
+	if GameManager.godmode_enabled or is_invulnerable:
 		return
 
 	current_health -= amount
@@ -164,35 +165,36 @@ func take_damage(amount):
 	
 	print("Vies restantes :", current_health)
 	SoundManager.play("hit")
-
+	
 	GameManager.show_floating_text("-" + str(amount), position + Vector2(0, -40), Color.RED)
+
+	start_invulnerability(1.0)
 
 	if current_health <= 0:
 		die()
 
-func die():
-	print("Player est mort")
-	set_process_input(false)
-	set_physics_process(false)
-	
-	SoundManager.play("death")
+# ------------------------
+# Invulnérabilité
+# ------------------------
+func start_invulnerability(duration: float):
+	if is_invulnerable:
+		return
 
-	var anim_name = "death_" + str(current_skin)
+	is_invulnerable = true
 
-	if $AnimatedSprite2D.sprite_frames.has_animation(anim_name):
-		$AnimatedSprite2D.play(anim_name)
+	var blink_timer = 0.1
+	var elapsed = 0.0
+	while elapsed < duration:
+		sprite.visible = not sprite.visible
+		await get_tree().create_timer(blink_timer).timeout
+		elapsed += blink_timer
 
-		var duration = $AnimatedSprite2D.sprite_frames.get_frame_count(anim_name) / float($AnimatedSprite2D.sprite_frames.get_animation_speed(anim_name))
+	sprite.visible = true
+	is_invulnerable = false
 
-		await get_tree().create_timer(duration + 0.5).timeout
-	else:
-		print("Animation de mort manquante pour le skin :", current_skin)
-		await get_tree().create_timer(0.5).timeout
-
-	respawn()
-	set_process_input(true)
-	set_physics_process(true)
-
+# ------------------------
+# Pics et Respawn
+# ------------------------
 func enter_spikes():
 	spikes_overlap_count += 1
 	if spikes_overlap_count == 1:
@@ -217,6 +219,27 @@ func reset_health():
 # ------------------------
 # Respawn
 # ------------------------
+func die():
+	print("Player est mort")
+	set_process_input(false)
+	set_physics_process(false)
+	
+	SoundManager.play("death")
+
+	var anim_name = "death_" + str(current_skin)
+
+	if $AnimatedSprite2D.sprite_frames.has_animation(anim_name):
+		$AnimatedSprite2D.play(anim_name)
+		var duration = $AnimatedSprite2D.sprite_frames.get_frame_count(anim_name) / float($AnimatedSprite2D.sprite_frames.get_animation_speed(anim_name))
+		await get_tree().create_timer(duration + 0.5).timeout
+	else:
+		print("Animation de mort manquante pour le skin :", current_skin)
+		await get_tree().create_timer(0.5).timeout
+
+	respawn()
+	set_process_input(true)
+	set_physics_process(true)
+
 func respawn():
 	GameManager.reset_lives_by_difficulty()
 	initialize_health()

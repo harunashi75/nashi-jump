@@ -30,9 +30,9 @@ const DEFAULT_COINS_BY_DIFFICULTY := {
 # Skins par défaut (verrouillés)
 # ------------------------
 const DEFAULT_UNLOCKED_SKINS := {
-	"emerald": false, "mystic": false, #"bubblegum": false,
+	"emerald": false, "mystic": false, "bubblegum": false,
 	"abyssal": false, "rainbow": false, "gold": false,
-	"whisper": false, "hell": false, #"ignatius": false,
+	"whisper": false, "hell": false, "ignatius": false,
 	"barbie": false, "bloodforged": false, "frost": false,
 	"void": false, "bee": false, "gaga": false,
 	"hidden": false, "bear": false

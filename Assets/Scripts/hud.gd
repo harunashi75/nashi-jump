@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var timer_label: Label = $TimerLabel
 @onready var coin_label: Label = $CoinLabel
+@onready var coin_label_level: Label = $CoinLevelLabel
 
 func _ready():
 	var player = get_tree().get_first_node_in_group("player")
@@ -18,11 +19,6 @@ func _on_health_changed(current, max_health):
 func update_timer() -> void:
 	timer_label.text = "Time: " + TimerManager.get_formatted_time()
 
-func update_coins_display() -> void:
-	var total_coins: int = GameManager.total_coins_in_level
-	var collected_coins: int = 0
-
-	for amount in GameManager.coins_collected.values():
-		collected_coins += amount
-
-	coin_label.text = "Coins: %d/%d" % [collected_coins, total_coins]
+func update_coins_display(total_collected: int, level_collected: int, total_coins_in_level: int) -> void:
+	coin_label.text = "Total: %d/%d" % [total_collected, 290]
+	coin_label_level.text = "Level: %d/%d" % [level_collected, total_coins_in_level]

@@ -58,6 +58,7 @@ func load_next_level() -> void:
 # Retour au menu principal
 # ------------------------
 func return_to_menu() -> void:
+	GameManager.reset_checkpoint_data()
 	_load_scene_async("res://Assets/Scenes/start_menu.tscn")
 
 # ------------------------

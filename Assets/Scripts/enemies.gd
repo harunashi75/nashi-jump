@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED = 100
+@export var SPEED = 100
 var direction = 1
 var is_attacking = false
 

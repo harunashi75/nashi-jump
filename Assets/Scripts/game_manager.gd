@@ -33,7 +33,7 @@ var player_current_health := 10
 # ------------------------
 var coins_collected := {}
 var coins_collected_by_level := {}
-var total_coins_in_level := 0
+var total_coins_in_level := 15
 
 # ------------------------
 # Initialisation
@@ -82,25 +82,31 @@ func reset_lives_by_difficulty():
 func reset_coins():
 	coins_collected.clear()
 	coins_collected_by_level.clear()
-	total_coins_in_level = 0
+	total_coins_in_level = 15
 
 func add_coin(coin_name: String, amount: int = 1):
 	coins_collected[coin_name] = coins_collected.get(coin_name, 0) + amount
-	if is_instance_valid(hud):
-		hud.update_coins_display()
-	print("Coins collectés :", coins_collected)
+	_update_hud_coins()
 
 func mark_coin_collected(level: String, id: String):
 	coins_collected_by_level[level] = coins_collected_by_level.get(level, [])
 	if id not in coins_collected_by_level[level]:
 		coins_collected_by_level[level].append(id)
 		print("Coin unique collecté :", id)
+		_update_hud_coins()
 
 		var total := 0
 		for coins in coins_collected_by_level.values():
 			total += coins.size()
 
 		SkinManager.check_unlock_skins(total, difficulty)
+
+func get_total_coins_for_level(level_name: String) -> int:
+	var levels_with_10_coins := ["Level_16", "Level_18", "Level_Hard", "Level_Void", "Level_Victory"]
+	if level_name in levels_with_10_coins:
+		return 10
+	else:
+		return 15
 
 func is_coin_already_collected(level_name: String, coin_id: String) -> bool:
 	return coins_collected_by_level.has(level_name) and coin_id in coins_collected_by_level[level_name]
@@ -111,6 +117,23 @@ func set_levels_checkpoint(path: String):
 	print("Checkpoint activé :", path)
 
 # ------------------------
+# Coins - Mise à jour HUD
+# ------------------------
+func _update_hud_coins():
+	if not is_instance_valid(hud):
+		return
+
+	var current_level: String = get_tree().current_scene.name
+	var level_coins: Array = coins_collected_by_level.get(current_level, [])
+	var level_collected: int = level_coins.size()
+
+	var total_collected: int = 0
+	for coins in coins_collected_by_level.values():
+		total_collected += coins.size()
+
+	hud.update_coins_display(total_collected, level_collected, total_coins_in_level)
+
+# ------------------------
 # Temps
 # ------------------------
 func set_completion_time(diff: String, time_in_seconds: float):
@@ -119,6 +142,11 @@ func set_completion_time(diff: String, time_in_seconds: float):
 		print("Temps mis à jour pour", diff, ":", time_in_seconds)
 		SkinManager.check_time_skins()
 		SkinManager.save_skin_data()
+
+func reset_checkpoint_data():
+	levels_checkpoint_enabled = false
+	levels_checkpoint_scene_path = "res://Assets/Scenes/level_1.tscn"
+	print("Checkpoint reset -> retour au niveau 1")
 
 # ------------------------
 # Input

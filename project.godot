@@ -11,10 +11,10 @@ config_version=5
 [application]
 
 config/name="Nashi Jump"
-config/version="0.7.99"
+config/version="0.7.90"
 run/main_scene="res://Assets/Scenes/start_menu.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="uid://8o653k0sve4j"
+config/icon="uid://dr56avv2fnyin"
 
 [autoload]
 

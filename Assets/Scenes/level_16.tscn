@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_1vr78"]
 [ext_resource type="Texture2D" uid="uid://cn0d1rq4vcffm" path="res://Assets/Sprites/Backgrounds/Dungeon Sky2.png" id="2_vctxm"]
-[ext_resource type="Texture2D" uid="uid://dju6hw5d5b04m" path="res://Assets/Sprites/world_tileset_5.png" id="3_87ek6"]
+[ext_resource type="Texture2D" uid="uid://dju6hw5d5b04m" path="res://Assets/Sprites/TileSets/world_tileset_5.png" id="3_87ek6"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="4_snhuj"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="5_ulpgb"]
 [ext_resource type="PackedScene" uid="uid://b2ery55yhbn6v" path="res://Assets/Scenes/enemy_brown.tscn" id="6_tsn8y"]
@@ -228,12 +228,15 @@ position = Vector2(80, -112)
 
 [node name="Enemy_Brown3" parent="Enemies" instance=ExtResource("6_tsn8y")]
 position = Vector2(-56, 0)
+SPEED = 90
 
 [node name="Enemy_Brown4" parent="Enemies" instance=ExtResource("6_tsn8y")]
 position = Vector2(64, -16)
+SPEED = 60
 
 [node name="Enemy_Brown5" parent="Enemies" instance=ExtResource("6_tsn8y")]
 position = Vector2(232, -48)
+SPEED = 70
 
 [node name="Block" type="Node" parent="."]
 

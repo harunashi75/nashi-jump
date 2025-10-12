@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://jb7gqeylewot"]
 
 [ext_resource type="Script" uid="uid://d0peeqr0iyupq" path="res://Assets/Scripts/spikes.gd" id="1_6sgbx"]
-[ext_resource type="Texture2D" uid="uid://2d63uvbsdj6l" path="res://Assets/Sprites/world_tileset_1.png" id="2_6sgbx"]
+[ext_resource type="Texture2D" uid="uid://2d63uvbsdj6l" path="res://Assets/Sprites/TileSets/world_tileset_1.png" id="2_6sgbx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6sgbx"]
 size = Vector2(16, 7)

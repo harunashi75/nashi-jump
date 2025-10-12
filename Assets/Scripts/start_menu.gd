@@ -103,7 +103,7 @@ func _update_skin_buttons():
 	for skin_name in skin_buttons.keys():
 		var button = skin_popup.get_node(skin_buttons[skin_name])
 		
-		if skin_name in ["default", "thecreator", "murloc", "bubblegum", "ignatius"]:
+		if skin_name in ["default", "thecreator", "murloc"]:
 			button.disabled = false
 		else:
 			button.disabled = !SkinManager.unlocked_skins.get(skin_name, false)
