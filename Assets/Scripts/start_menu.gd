@@ -29,18 +29,14 @@ var skin_buttons := {
 	"rainbow": "ScrollContainer/VBoxContainer/RainbowSkin",
 	"ignatius": "ScrollContainer/VBoxContainer/IgnatiusSkin",
 	"thecreator": "ScrollContainer/VBoxContainer/TheCreatorSkin",
-	"whisper": "ScrollContainer/VBoxContainer/WhisperSkin",
-	"barbie": "ScrollContainer/VBoxContainer/BarbieSkin",
 	"bloodforged": "ScrollContainer/VBoxContainer/BloodforgedSkin",
 	"frost": "ScrollContainer/VBoxContainer/FrostSkin",
-	"murloc": "ScrollContainer/VBoxContainer/MurlocSkin",
 	"bubblegum": "ScrollContainer/VBoxContainer/BubblegumSkin",
 	"hell": "ScrollContainer/VBoxContainer/HellSkin",
 	"void": "ScrollContainer/VBoxContainer/VoidSkin",
 	"gaga": "ScrollContainer/VBoxContainer/GagaSkin",
 	"bee": "ScrollContainer/VBoxContainer/BeeSkin",
-	"hidden": "ScrollContainer/VBoxContainer/HiddenSkin",
-	"bear": "ScrollContainer/VBoxContainer/BearSkin"
+	"hidden": "ScrollContainer/VBoxContainer/HiddenSkin"
 }
 
 # ------------------------
@@ -103,7 +99,7 @@ func _update_skin_buttons():
 	for skin_name in skin_buttons.keys():
 		var button = skin_popup.get_node(skin_buttons[skin_name])
 		
-		if skin_name in ["default", "thecreator", "murloc"]:
+		if skin_name in ["default", "thecreator"]:
 			button.disabled = false
 		else:
 			button.disabled = !SkinManager.unlocked_skins.get(skin_name, false)
@@ -112,20 +108,20 @@ func _update_skin_buttons():
 # UI Popups
 # ------------------------
 func _show_mode_popup():
-	var popup_size = Vector2(180, 120)
+	var popup_size = Vector2(140, 80)
 	var screen_size = get_viewport().get_visible_rect().size
 	var pos = Vector2(
-		screen_size.x - popup_size.x - 20,
+		screen_size.x - popup_size.x - 60,
 		(screen_size.y - popup_size.y) / 2.0
 	)
 	mode_popup.popup(Rect2(pos, popup_size))
 
 func _show_skin_popup():
-	var popup_size = Vector2(180, 120)
+	var popup_size = Vector2(140, 200)
 	var screen_size = get_viewport().get_visible_rect().size
 	var pos = Vector2(
-		screen_size.x - popup_size.x - 20,
-		(screen_size.y - popup_size.y) / 2.0
+		screen_size.x - popup_size.x - 60,
+		(screen_size.y - popup_size.y) / 1.5
 	)
 	skin_popup.popup(Rect2(pos, popup_size))
 

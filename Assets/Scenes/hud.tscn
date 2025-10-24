@@ -11,14 +11,14 @@
 script = ExtResource("1_th0pt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(559.25, 42.5)
-scale = Vector2(1.8812498, 2.2812498)
+position = Vector2(536.75, 41.5)
+scale = Vector2(2.44375, 2.2187498)
 texture = ExtResource("2_vy1te")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 543.0
+offset_left = 521.0
 offset_top = 9.0
-offset_right = 607.0
+offset_right = 585.0
 offset_bottom = 25.0
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_th0pt")
@@ -26,28 +26,28 @@ theme_override_font_sizes/font_size = 16
 text = "INFO"
 
 [node name="TimerLabel" type="Label" parent="."]
-offset_left = 502.0
+offset_left = 457.0
 offset_top = 27.0
-offset_right = 733.0
+offset_right = 688.0
 offset_bottom = 63.0
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_th0pt")
 theme_override_font_sizes/font_size = 16
 
 [node name="CoinLabel" type="Label" parent="."]
-offset_left = 502.0
+offset_left = 457.0
 offset_top = 41.0
-offset_right = 716.0
+offset_right = 671.0
 offset_bottom = 78.0
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_th0pt")
 theme_override_font_sizes/font_size = 16
 
 [node name="CoinLevelLabel" type="Label" parent="."]
-offset_left = 505.0
-offset_top = 56.0
-offset_right = 719.0
-offset_bottom = 93.0
+offset_left = 459.0
+offset_top = 55.0
+offset_right = 673.0
+offset_bottom = 92.0
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("2_th0pt")
 theme_override_font_sizes/font_size = 16

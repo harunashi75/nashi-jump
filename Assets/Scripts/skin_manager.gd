@@ -23,7 +23,6 @@ func _reset_defaults():
 	# Skins de base toujours débloqués
 	unlocked_skins["default"] = true
 	unlocked_skins["thecreator"] = true
-	unlocked_skins["murloc"] = true
 
 # ------------------------
 # Sauvegarde
@@ -51,7 +50,6 @@ func load_skin_data():
 	# Toujours débloquer les skins de base
 	unlocked_skins["default"] = true
 	unlocked_skins["thecreator"] = true
-	unlocked_skins["murloc"] = true
 
 # ------------------------
 # Vérifications & Déblocage
@@ -99,9 +97,6 @@ func check_time_skins():
 	for d in ["easy", "normal", "hard"]:
 		if time_scores.get(d, INF) <= 1200.0 and coins_collected_by_difficulty.get(d, 0) >= 260:
 			count += 1
-
-	if count >= 1 and not is_unlocked("whisper"):
-		unlock_skin("whisper")
 
 	if count == 3 and not is_unlocked("hell"):
 		unlock_skin("hell")

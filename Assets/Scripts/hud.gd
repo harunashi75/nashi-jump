@@ -20,5 +20,5 @@ func update_timer() -> void:
 	timer_label.text = "Time: " + TimerManager.get_formatted_time()
 
 func update_coins_display(total_collected: int, level_collected: int, total_coins_in_level: int) -> void:
-	coin_label.text = "Total: %d/%d" % [total_collected, 290]
-	coin_label_level.text = "Level: %d/%d" % [level_collected, total_coins_in_level]
+	coin_label.text = "Total Coins: %d/%d" % [total_collected, 290]
+	coin_label_level.text = "Level Coins: %d/%d" % [level_collected, total_coins_in_level]
