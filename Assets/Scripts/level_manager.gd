@@ -21,13 +21,11 @@ var levels := [
 	"res://Assets/Scenes/level_15.tscn",
 	"res://Assets/Scenes/level_16.tscn",
 	"res://Assets/Scenes/level_17.tscn",
-	"res://Assets/Scenes/level_18.tscn",
 	"res://Assets/Scenes/level_victory.tscn",
 	"res://Assets/Scenes/level_hard.tscn",
 	"res://Assets/Scenes/level_void.tscn",
 	"res://Assets/Scenes/level_ghostlands.tscn",
-	"res://Assets/Scenes/level_hidden.tscn",
-	"res://Assets/Scenes/level_jump.tscn"
+	"res://Assets/Scenes/level_hidden.tscn"
 ]
 
 # ------------------------
@@ -84,6 +82,7 @@ func _load_scene_async(path: String) -> void:
 
 	if error != OK:
 		printerr("Erreur lors du changement de scène :", error)
+		get_tree().get_root().set_process_input(true)
+		return
 
-	await get_tree().create_timer(0.1).timeout
-	get_tree().get_root().set_process_input(true)
+	get_tree().get_root().call_deferred("set_process_input", true)

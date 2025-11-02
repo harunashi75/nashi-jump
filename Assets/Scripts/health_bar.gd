@@ -1,8 +1,10 @@
-extends TextureProgressBar
+extends HBoxContainer
 
-func set_health(current: int, max_health: int):
-	max_value = max_health
-	value = current
+@onready var heart_icon: TextureRect = $HeartIcon
+@onready var health_label: Label = $HealthLabel
 
-	if has_node("HealthLabel"):
-		$HealthLabel.text = str(current, "/", max_health)
+func _ready():
+	update_health_display(GameManager.player_current_health)
+
+func update_health_display(health: int):
+	health_label.text = "x" + str(health)

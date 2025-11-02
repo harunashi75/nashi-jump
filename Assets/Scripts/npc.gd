@@ -25,8 +25,6 @@ func say(message: String, duration: float = 3.0) -> void:
 	current_index = 0
 	bubble_label.text = ""
 	bubble_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	bubble_label.custom_minimum_size = Vector2(150, 0)
-	#bubble.position = Vector2(0, -140)
 	bubble.visible = true
 	_type_next_char()
 

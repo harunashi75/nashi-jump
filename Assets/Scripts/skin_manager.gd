@@ -68,16 +68,30 @@ func unlock_skin(skin_name: String, pos: Vector2 = Vector2.ZERO):
 # ------------------------
 func check_unlock_skins(total: int, difficulty: String):
 	coins_collected_by_difficulty[difficulty] = max(coins_collected_by_difficulty[difficulty], total)
-	if total >= 270 and not is_unlocked(difficulty):
-		unlocked_skins[difficulty] = true
+
+	var required_coins := {
+		"easy": 650,
+		"normal": 700,
+		"hard": 750,
+		"insane": 800
+	}
+
+	if not required_coins.has(difficulty):
+		save_skin_data()
+		call_deferred("_check_global_skin_unlocks")
+		return
+
+	if total >= required_coins[difficulty] and not is_unlocked(difficulty):
 		var skin_name = Constants.DIFFICULTY_TO_SKIN_NAME.get(difficulty, difficulty)
+		unlocked_skins[difficulty] = true
 		unlocked_skins[skin_name] = true
 		_show_unlock_feedback(skin_name)
+
 	save_skin_data()
 	call_deferred("_check_global_skin_unlocks")
 
 func _check_global_skin_unlocks():
-	if _all_difficulties_have_min_coins(["easy", "normal", "hard"], 290) and not is_unlocked("gold"):
+	if _all_difficulties_have_min_coins(["easy", "normal", "hard"], 750) and not is_unlocked("gold"):
 		unlock_skin("gold")
 
 	check_time_skins()
@@ -95,7 +109,7 @@ func _all_difficulties_have_min_coins(difficulties: Array, min_coins: int) -> bo
 func check_time_skins():
 	var count = 0
 	for d in ["easy", "normal", "hard"]:
-		if time_scores.get(d, INF) <= 1200.0 and coins_collected_by_difficulty.get(d, 0) >= 260:
+		if time_scores.get(d, INF) <= 1200.0 and coins_collected_by_difficulty.get(d, 0) >= 700:
 			count += 1
 
 	if count == 3 and not is_unlocked("hell"):

@@ -7,7 +7,7 @@ var best_times: Dictionary = {
 	"easy": -1.0,
 	"normal": -1.0,
 	"hard": -1.0,
-	"fun": -1.0
+	"insane": -1.0
 }
 
 const SAVE_PATH := "user://score.save"

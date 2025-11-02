@@ -62,7 +62,7 @@ func _ready():
 	add_child(spikes_damage_timer)
 	spikes_damage_timer.timeout.connect(_on_spikes_damage)
 
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().process_frame
 	set_process_input(true)
 
 # ------------------------
@@ -224,8 +224,8 @@ func die():
 	set_process_input(false)
 	set_physics_process(false)
 	
-	SoundManager.play("death")
-
+	#SoundManager.play("death")
+	
 	var anim_name = "death_" + str(current_skin)
 
 	if $AnimatedSprite2D.sprite_frames.has_animation(anim_name):

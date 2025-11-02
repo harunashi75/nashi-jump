@@ -1,73 +1,86 @@
 [gd_scene load_steps=7 format=3 uid="uid://hbfgacy1e3rr"]
 
 [ext_resource type="Script" uid="uid://qpjwae1hpo53" path="res://Assets/Scripts/hud.gd" id="1_th0pt"]
-[ext_resource type="FontFile" uid="uid://ck2ml0wud68ix" path="res://Assets/Fonts/PublicPixel.otf" id="2_th0pt"]
-[ext_resource type="Texture2D" uid="uid://ttu2us3mvko1" path="res://Assets/Sprites/UI/UI - 49.png" id="2_vy1te"]
-[ext_resource type="Texture2D" uid="uid://chto82kuf0jwa" path="res://Assets/Sprites/UI/UI - 44.png" id="3_l5nkk"]
-[ext_resource type="Texture2D" uid="uid://dtcruhdy27nex" path="res://Assets/Sprites/UI/UI - 46.png" id="4_vy1te"]
+[ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="4_vy1te"]
+[ext_resource type="Texture2D" uid="uid://bguy8u3p3pv1w" path="res://Assets/Sprites/UI/heart_icon.png" id="5_l5nkk"]
 [ext_resource type="Script" uid="uid://bc4mnu3w6i6fv" path="res://Assets/Scripts/health_bar.gd" id="5_uttbk"]
+[ext_resource type="Texture2D" uid="uid://n6j5hjbpe5hb" path="res://Assets/Sprites/UI/coin_icon.png" id="5_vy1te"]
+[ext_resource type="Texture2D" uid="uid://cdxcdfubkgsk5" path="res://Assets/Sprites/UI/clock_icon.png" id="6_vy1te"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_th0pt")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(536.75, 41.5)
-scale = Vector2(2.44375, 2.2187498)
-texture = ExtResource("2_vy1te")
-
-[node name="Label" type="Label" parent="."]
-offset_left = 521.0
-offset_top = 9.0
-offset_right = 585.0
-offset_bottom = 25.0
-scale = Vector2(0.5, 0.5)
-theme_override_fonts/font = ExtResource("2_th0pt")
-theme_override_font_sizes/font_size = 16
-text = "INFO"
-
-[node name="TimerLabel" type="Label" parent="."]
-offset_left = 457.0
-offset_top = 27.0
-offset_right = 688.0
-offset_bottom = 63.0
-scale = Vector2(0.5, 0.5)
-theme_override_fonts/font = ExtResource("2_th0pt")
-theme_override_font_sizes/font_size = 16
-
-[node name="CoinLabel" type="Label" parent="."]
-offset_left = 457.0
-offset_top = 41.0
-offset_right = 671.0
-offset_bottom = 78.0
-scale = Vector2(0.5, 0.5)
-theme_override_fonts/font = ExtResource("2_th0pt")
-theme_override_font_sizes/font_size = 16
-
-[node name="CoinLevelLabel" type="Label" parent="."]
-offset_left = 459.0
-offset_top = 55.0
-offset_right = 673.0
-offset_bottom = 92.0
-scale = Vector2(0.5, 0.5)
-theme_override_fonts/font = ExtResource("2_th0pt")
-theme_override_font_sizes/font_size = 16
-
-[node name="HealthBar" type="TextureProgressBar" parent="."]
-offset_right = 64.0
-offset_bottom = 17.0
-scale = Vector2(4, 4)
-texture_under = ExtResource("3_l5nkk")
-texture_progress = ExtResource("4_vy1te")
+[node name="HealthDisplay" type="HBoxContainer" parent="."]
+offset_left = 11.0
+offset_top = 10.0
+offset_right = 77.0
+offset_bottom = 42.0
 script = ExtResource("5_uttbk")
 
-[node name="HealthLabel" type="Label" parent="HealthBar"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 3.0
-offset_right = 46.0
-offset_bottom = 23.0
-scale = Vector2(0.5, 0.5)
-theme_override_fonts/font = ExtResource("2_th0pt")
-theme_override_font_sizes/font_size = 8
+[node name="HeartIcon" type="TextureRect" parent="HealthDisplay"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("5_l5nkk")
+stretch_mode = 5
+
+[node name="HealthLabel" type="Label" parent="HealthDisplay"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vy1te")
+theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CoinsContainer" type="HBoxContainer" parent="."]
+offset_left = 11.0
+offset_top = 42.0
+offset_right = 51.0
+offset_bottom = 82.0
+
+[node name="icon_coin" type="TextureRect" parent="CoinsContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("5_vy1te")
+stretch_mode = 5
+
+[node name="LevelCoinsLabel" type="Label" parent="CoinsContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vy1te")
+theme_override_font_sizes/font_size = 16
+
+[node name="TotalCoinsContainer" type="HBoxContainer" parent="."]
+offset_left = 461.0
+offset_top = 42.0
+offset_right = 501.0
+offset_bottom = 82.0
+
+[node name="icon_coin_total" type="TextureRect" parent="TotalCoinsContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("5_vy1te")
+stretch_mode = 5
+
+[node name="TotalCoinsLabel" type="Label" parent="TotalCoinsContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vy1te")
+theme_override_font_sizes/font_size = 16
+
+[node name="TimerContainer" type="HBoxContainer" parent="."]
+offset_left = 461.0
+offset_top = 8.0
+offset_right = 501.0
+offset_bottom = 48.0
+
+[node name="ClockIcon" type="TextureRect" parent="TimerContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+texture = ExtResource("6_vy1te")
+stretch_mode = 5
+
+[node name="TimerLabel" type="Label" parent="TimerContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_vy1te")
+theme_override_font_sizes/font_size = 16

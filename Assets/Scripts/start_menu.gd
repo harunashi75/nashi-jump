@@ -36,7 +36,8 @@ var skin_buttons := {
 	"void": "ScrollContainer/VBoxContainer/VoidSkin",
 	"gaga": "ScrollContainer/VBoxContainer/GagaSkin",
 	"bee": "ScrollContainer/VBoxContainer/BeeSkin",
-	"hidden": "ScrollContainer/VBoxContainer/HiddenSkin"
+	"hidden": "ScrollContainer/VBoxContainer/HiddenSkin",
+	"soul": "ScrollContainer/VBoxContainer/SoulforgedSkin"
 }
 
 # ------------------------
