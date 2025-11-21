@@ -8,14 +8,14 @@ func _ready():
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		player.connect("health_changed", Callable(self, "_on_health_changed"))
-		_on_health_changed(player.current_health, player.max_health)
+		_on_health_changed(player.get_current_health())
 
 func _process(_delta: float) -> void:
 	update_timer()
 
-func _on_health_changed(current, _max_health):
+func _on_health_changed(current_health):
 	if has_node("HealthDisplay"):
-		$HealthDisplay.update_health_display(current)
+		$HealthDisplay.update_health_display(current_health)
 
 func update_timer() -> void:
 	timer_label.text = TimerManager.get_formatted_time()

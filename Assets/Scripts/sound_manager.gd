@@ -15,7 +15,7 @@ var excluded_scenes := [
 	"res://Assets/Scenes/level_hidden.tscn"
 ]
 
-@onready var background_music := preload("res://Assets/Sounds/time_for_adventure.ogg")
+@onready var background_music := preload("res://Assets/Sounds/journey_across_the_blue.ogg")
 
 var last_scene = null
 
@@ -39,10 +39,10 @@ func _ready():
 
 	sounds = {
 		"unlock": preload("res://Assets/Sounds/unlock.wav"),
-		#"death": preload("res://Assets/Sounds/death.wav"),
 		"hit": preload("res://Assets/Sounds/hit.wav"),
 		"jump": preload("res://Assets/Sounds/jump.wav"),
-		"coin": preload("res://Assets/Sounds/coin.wav")
+		"coin": preload("res://Assets/Sounds/coin.wav"),
+		"power_up": preload("res://Assets/Sounds/power_up.wav")
 	}
 
 # ------------------------------------------------------------

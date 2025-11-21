@@ -25,7 +25,9 @@ func say(message: String, duration: float = 3.0) -> void:
 	current_index = 0
 	bubble_label.text = ""
 	bubble_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	bubble.visible = true
+	
+	_show_bubble_tween()
+	
 	_type_next_char()
 
 	var timer := get_tree().create_timer(duration)
@@ -38,5 +40,20 @@ func _type_next_char() -> void:
 		var char_timer := get_tree().create_timer(typing_speed)
 		char_timer.timeout.connect(_type_next_char)
 
+func _show_bubble_tween():
+	bubble.visible = true
+	bubble.modulate.a = 0.0
+	bubble.scale = Vector2(0.8, 0.8)
+
+	var tween = create_tween()
+	tween.tween_property(bubble, "modulate:a", 1.0, 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(bubble, "scale", Vector2(1, 1), 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
 func hide_bubble() -> void:
-	bubble.visible = false
+	var tween = create_tween()
+	tween.tween_property(bubble, "modulate:a", 0.0, 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tween.tween_property(bubble, "scale", Vector2(0.8, 0.8), 0.25)
+
+	tween.finished.connect(func():
+		bubble.visible = false
+	)

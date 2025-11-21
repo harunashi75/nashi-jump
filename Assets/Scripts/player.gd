@@ -1,34 +1,46 @@
 extends CharacterBody2D
 
 # ------------------------
-# Constantes et Variables
+# Constantes de Physique
 # ------------------------
-const GRAVITY = 980
-const DEFAULT_MOVE_SPEED = 160
-const DEFAULT_JUMP_FORCE = -310
-const DECELERATION = 20
+const GRAVITY = 950
+const LOW_JUMP_GRAVITY = 1450
 
-var MOVE_SPEED = DEFAULT_MOVE_SPEED
-var JUMP_FORCE = DEFAULT_JUMP_FORCE
+const MAX_SPEED = 160
+const ACCELERATION = 1200
+const DECELERATION = 1000
+const AIR_CONTROL = 0.8
+
+const JUMP_FORCE = -260
+const COYOTE_TIME = 0.12
+const JUMP_BUFFER = 0.12
+
+# ------------------------
+# Variables dynamiques
+# ------------------------
+var jumps_left = 1
 var max_jumps = 1
-var jumps_left = 2
-
-var current_health : int
-var max_health : int
-signal health_changed(current_health, max_health)
-
-var spikes_overlap_count: int = 0
-var spikes_damage_timer: Timer
+var coyote_timer = 0.0
+var jump_buffer_timer = 0.0
 
 var just_jumped = false
-var is_invulnerable = false
 var jump_anim_timer = 0.15
-var current_skin := "default"
+var is_invulnerable = false
 
-var camera: Camera2D = null
+var is_shielded: bool = false
+var speed_multiplier: float = 1.0
+var jump_multiplier: float = 1.0
 
 # ------------------------
-# Références aux Nodes
+# Santé et skins
+# ------------------------
+var base_health: int = 1
+var bonus_health: int = 0  # 0 ou 1
+signal health_changed(current_health)
+var current_skin := "default"
+
+# ------------------------
+# Références
 # ------------------------
 @onready var sprite = $AnimatedSprite2D
 
@@ -38,65 +50,68 @@ var camera: Camera2D = null
 func _ready():
 	add_to_group("player")
 	set_process_input(false)
+
 	current_skin = SkinManager.current_skin
 	print("Skin actif :", current_skin)
-	
-	var current_scene = get_tree().current_scene.scene_file_path
-	
-	if current_scene == "res://Assets/Scenes/level_victory.tscn":
-		GameManager.reset_lives_by_difficulty()
-		initialize_health()
-	else:
-		if not GameManager.has_initialized_health:
-			initialize_health()
-		else:
-			max_health = GameManager.player_lives
-			current_health = GameManager.player_current_health
-
-	GameManager.has_initialized_health = true
-	
-	spikes_overlap_count = 0
-	spikes_damage_timer = Timer.new()
-	spikes_damage_timer.wait_time = 0.5
-	spikes_damage_timer.one_shot = false
-	add_child(spikes_damage_timer)
-	spikes_damage_timer.timeout.connect(_on_spikes_damage)
 
 	await get_tree().process_frame
 	set_process_input(true)
 
 # ------------------------
-# Physique principale
+# Boucle physique
 # ------------------------
 func _physics_process(delta):
-	apply_gravity(delta)
-	handle_input()
+	handle_gravity(delta)
+	handle_input(delta)
 	handle_animation(delta)
 	move_and_slide()
+	
+	_check_idle(delta)
 
 # ------------------------
-# Fonctions Physiques
+# Gravité & Saut
 # ------------------------
-func apply_gravity(delta):
-	if not is_on_floor():
+func handle_gravity(delta):
+	if is_on_floor():
+		coyote_timer = COYOTE_TIME
+	else:
+		coyote_timer = max(coyote_timer - delta, 0)
+
+	if velocity.y < 0 and not Input.is_action_pressed("jump"):
+		velocity.y += LOW_JUMP_GRAVITY * delta
+	else:
 		velocity.y += GRAVITY * delta
 
-func handle_input():
-	handle_movement()
-	handle_jump()
+func handle_input(delta):
+	handle_horizontal(delta)
+	handle_jump_logic(delta)
 
-func handle_movement():
+func handle_horizontal(delta):
 	var direction = Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * MOVE_SPEED
+
+	if direction != 0:
+		var accel = ACCELERATION
+		if not is_on_floor():
+			accel *= AIR_CONTROL
+		velocity.x = move_toward(velocity.x, direction * MAX_SPEED * speed_multiplier, accel * delta)
 		sprite.flip_h = direction < 0
 	else:
-		velocity.x = move_toward(velocity.x, 0, DECELERATION)
+		var decel = DECELERATION
+		if not is_on_floor():
+			decel *= AIR_CONTROL
+		velocity.x = move_toward(velocity.x, 0, decel * delta)
 
-func handle_jump():
-	if Input.is_action_just_pressed("jump") and jumps_left > 0:
-		velocity.y = JUMP_FORCE
+func handle_jump_logic(delta):
+	if Input.is_action_just_pressed("jump"):
+		jump_buffer_timer = JUMP_BUFFER
+	else:
+		jump_buffer_timer = max(jump_buffer_timer - delta, 0)
+
+	if jump_buffer_timer > 0 and (coyote_timer > 0 or jumps_left > 0):
+		velocity.y = JUMP_FORCE * jump_multiplier
 		SoundManager.play("jump")
+		
+		SkinManager.on_player_jump()
 
 		var anim = "jump" if is_on_floor() else "double_jump"
 		play_skin_anim(anim)
@@ -104,9 +119,24 @@ func handle_jump():
 		jumps_left -= 1
 		just_jumped = true
 		jump_anim_timer = 0.15
+		jump_buffer_timer = 0
+		coyote_timer = 0
 
 	if is_on_floor():
 		jumps_left = max_jumps
+
+func _check_idle(delta):
+	var is_idle = (
+		velocity.x == 0
+		and not Input.is_action_pressed("move_left")
+		and not Input.is_action_pressed("move_right")
+		and not Input.is_action_pressed("jump")
+	)
+
+	if is_idle:
+		SkinManager.add_idle_time(delta)
+	else:
+		SkinManager.reset_idle_timer()
 
 # ------------------------
 # Animation
@@ -124,7 +154,7 @@ func handle_animation(delta):
 
 	if not is_on_floor():
 		play_skin_anim("fall")
-	elif velocity.x != 0:
+	elif abs(velocity.x) > 10:
 		play_skin_anim("run")
 	else:
 		play_skin_anim("idle")
@@ -142,116 +172,125 @@ func play_skin_anim(base: String):
 			sprite.play(fallback)
 
 # ------------------------
+# Effets
+# ------------------------
+func apply_health_bonus():
+	if bonus_health == 0:
+		bonus_health = 1
+		emit_signal("health_changed", get_current_health())
+
+func apply_shield(duration: float = 6.0):
+	is_shielded = true
+	print("Shield ON")
+	_start_shield_effect(duration)
+
+	var t = get_tree().create_timer(duration)
+	await t.timeout
+
+	#is_shielded = false
+	#print("Shield OFF")
+
+func _start_shield_effect(duration: float) -> void:
+	var original_modulate = sprite.modulate
+	var yellow = Color(1, 1, 0)
+
+	var blink_time := 0.1
+	var elapsed := 0.0
+
+	while elapsed < duration:
+		sprite.modulate = yellow
+		await get_tree().create_timer(blink_time).timeout
+		
+		sprite.modulate = original_modulate
+		await get_tree().create_timer(blink_time).timeout
+		
+		elapsed += blink_time * 2
+
+	is_shielded = false
+	print("Shield OFF")
+	sprite.modulate = original_modulate
+
+func apply_speed_boost(duration: float = 3.0):
+	speed_multiplier = 1.5
+	print("Speed Boost ON")
+
+	var t = get_tree().create_timer(duration)
+	await t.timeout
+
+	speed_multiplier = 1.0
+	print("Speed Boost OFF")
+
+func apply_jump_boost(duration: float = 3.0):
+	jump_multiplier = 1.5
+	print("Jump Boost ON")
+
+	var t = get_tree().create_timer(duration)
+	await t.timeout
+
+	jump_multiplier = 1.0
+	print("Jump Boost OFF")
+
+# ------------------------
 # Santé
 # ------------------------
-func initialize_health():
-	current_health = GameManager.player_lives
-	max_health = current_health
-	emit_signal("health_changed", current_health, max_health)
+func get_current_health() -> int:
+	return base_health + bonus_health
 
-func set_lives(amount: int):
-	current_health = amount
-	max_health = amount
-	print("Nouvelles vies définies : %d" % current_health)
-	GameManager.emit_signal("health_changed", current_health, max_health)
-
-func take_damage(amount):
-	if GameManager.godmode_enabled or is_invulnerable:
+func take_damage(amount := 1):
+	if is_invulnerable or GameManager.godmode_enabled or is_shielded:
 		return
 
-	current_health -= amount
-	emit_signal("health_changed", current_health, max_health)
-	GameManager.player_current_health = current_health
+	if bonus_health > 0:
+		bonus_health = 0
+		emit_signal("health_changed", get_current_health())
+	else:
+		base_health -= amount
+		if base_health <= 0:
+			die()
+		else:
+			emit_signal("health_changed", get_current_health())
 	
-	print("Vies restantes :", current_health)
+	GameManager.no_damage_run = false
 	SoundManager.play("hit")
-	
 	GameManager.show_floating_text("-" + str(amount), position + Vector2(0, -40), Color.RED)
 
-	start_invulnerability(1.0)
-
-	if current_health <= 0:
-		die()
-
 # ------------------------
-# Invulnérabilité
-# ------------------------
-func start_invulnerability(duration: float):
-	if is_invulnerable:
-		return
-
-	is_invulnerable = true
-
-	var blink_timer = 0.1
-	var elapsed = 0.0
-	while elapsed < duration:
-		sprite.visible = not sprite.visible
-		await get_tree().create_timer(blink_timer).timeout
-		elapsed += blink_timer
-
-	sprite.visible = true
-	is_invulnerable = false
-
-# ------------------------
-# Pics et Respawn
-# ------------------------
-func enter_spikes():
-	spikes_overlap_count += 1
-	if spikes_overlap_count == 1:
-		if spikes_damage_timer != null:
-			spikes_damage_timer.start()
-			_on_spikes_damage()
-
-func exit_spikes():
-	if spikes_overlap_count > 0:
-		spikes_overlap_count -= 1
-		if spikes_overlap_count == 0:
-			if spikes_damage_timer != null:
-				spikes_damage_timer.stop()
-
-func _on_spikes_damage():
-	take_damage(1)
-
-func reset_health():
-	current_health = max_health
-	GameManager.emit_signal("health_changed", current_health, max_health)
-
-# ------------------------
-# Respawn
+# Respawn & Mort
 # ------------------------
 func die():
 	print("Player est mort")
+	SkinManager.add_death_count()
 	set_process_input(false)
 	set_physics_process(false)
-	
-	#SoundManager.play("death")
-	
+
 	var anim_name = "death_" + str(current_skin)
 
-	if $AnimatedSprite2D.sprite_frames.has_animation(anim_name):
-		$AnimatedSprite2D.play(anim_name)
-		var duration = $AnimatedSprite2D.sprite_frames.get_frame_count(anim_name) / float($AnimatedSprite2D.sprite_frames.get_animation_speed(anim_name))
-		await get_tree().create_timer(duration + 0.5).timeout
+	if sprite.sprite_frames.has_animation(anim_name):
+		sprite.play(anim_name)
+		var duration = sprite.sprite_frames.get_frame_count(anim_name) / float(sprite.sprite_frames.get_animation_speed(anim_name))
+		await get_tree().create_timer(duration + 0.4).timeout
 	else:
-		print("Animation de mort manquante pour le skin :", current_skin)
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.4).timeout
 
 	respawn()
+
 	set_process_input(true)
 	set_physics_process(true)
 
 func respawn():
-	GameManager.reset_lives_by_difficulty()
-	initialize_health()
 	set_process_input(false)
 	call_deferred("load_respawn_scene")
 
 func load_respawn_scene():
 	print("Respawn du joueur...")
-	var current_scene = get_tree().current_scene.scene_file_path
-	if current_scene == "res://Assets/Scenes/level_jump.tscn":
-		LevelManager.load_level_by_path(current_scene)
-		return
-	
 	var path = GameManager.levels_checkpoint_scene_path if GameManager.levels_checkpoint_enabled else "res://Assets/Scenes/level_1.tscn"
 	LevelManager.load_level_by_path(path)
+
+# ------------------------
+# Pics (one-shot)
+# ------------------------
+func enter_spikes():
+	take_damage(1)
+
+func exit_spikes():
+	pass

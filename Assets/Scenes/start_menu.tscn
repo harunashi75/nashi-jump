@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cxqaap5dhcl18"]
 
 [ext_resource type="Script" uid="uid://bifmrxcevriyn" path="res://Assets/Scripts/start_menu.gd" id="1_qd4of"]
-[ext_resource type="Texture2D" uid="uid://c55jxfroa6gkh" path="res://Assets/Sprites/Backgrounds/Background Start.png" id="2_ttvl8"]
+[ext_resource type="Texture2D" uid="uid://gieds7kvmobi" path="res://Assets/Sprites/Backgrounds/Plaines Night Sky2.png" id="2_18q86"]
 [ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="4_qd4of"]
 
 [node name="StartMenu" type="Control"]
@@ -20,8 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ttvl8")
-stretch_mode = 1
+texture = ExtResource("2_18q86")
 
 [node name="GameName" type="Label" parent="."]
 layout_mode = 0
@@ -36,7 +35,7 @@ text = "Nashi
 Jump"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Menu" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 222.0
 offset_top = 176.0
@@ -44,225 +43,232 @@ offset_right = 422.0
 offset_bottom = 320.0
 theme_override_constants/separation = 5
 
-[node name="Play" type="Button" parent="VBoxContainer"]
+[node name="Play" type="Button" parent="Menu"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 16
-text = "PLAY"
+text = "START GAME"
 
-[node name="Skins" type="Button" parent="VBoxContainer"]
+[node name="Skins" type="Button" parent="Menu"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 16
 text = "SKINS"
 
-[node name="UnlockInfo" type="Button" parent="VBoxContainer"]
+[node name="UnlockInfo" type="Button" parent="Menu"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 16
 text = "UNLOCKABLE"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="Menu"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 16
 text = "QUIT"
 
-[node name="ModePopup" type="PopupPanel" parent="."]
-oversampling_override = 1.0
-size = Vector2i(180, 256)
+[node name="SkinMenu" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 71.0
+offset_top = 115.0
+offset_right = 211.0
+offset_bottom = 319.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ModePopup"]
+[node name="ScrollContainer" type="ScrollContainer" parent="SkinMenu"]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 176.0
-offset_bottom = 252.0
+offset_right = 136.0
+offset_bottom = 200.0
 
-[node name="Easy" type="Button" parent="ModePopup/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "EASY"
-
-[node name="Normal" type="Button" parent="ModePopup/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "NORMAL"
-
-[node name="Hard" type="Button" parent="ModePopup/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "HARD"
-
-[node name="Insane" type="Button" parent="ModePopup/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "INSANE"
-
-[node name="SkinPopup" type="PopupPanel" parent="."]
-oversampling_override = 1.0
-size = Vector2i(228, 764)
-
-[node name="ScrollContainer" type="ScrollContainer" parent="SkinPopup"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 224.0
-offset_bottom = 760.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SkinPopup/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SkinMenu/ScrollContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 
-[node name="DefaultSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+[node name="Back" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qd4of")
+theme_override_font_sizes/font_size = 16
+text = "BACK"
+
+[node name="DefaultSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
 text = "DEFAULT"
 
-[node name="TheCreatorSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "THE CREATOR"
-
-[node name="EmeraldSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "EMERALD"
-
-[node name="MysticSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "MYSTIC"
-
-[node name="AbyssalSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+[node name="AbyssalSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
 text = "ABYSSAL"
 
-[node name="RainbowSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "RAINBOW"
-
-[node name="GoldSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "GOLD"
-
-[node name="HellSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "HELL SPAWN"
-
-[node name="BubblegumSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "BUBBLEGUM"
-
-[node name="IgnatiusSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "IGNATIUS"
-
-[node name="BloodforgedSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "BLOODFORGED"
-
-[node name="FrostSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "FROST KNIGHT"
-
-[node name="VoidSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "VOIDWALKER"
-
-[node name="BeeSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+[node name="BeeSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
 text = "BEEZZZ"
 
-[node name="GagaSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+[node name="BloodforgedSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qd4of")
+theme_override_font_sizes/font_size = 8
+text = "BLOODFORGED"
+
+[node name="GagaSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
 text = "BLUE EMBER"
 
-[node name="HiddenSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+[node name="BubblegumSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
-text = "???"
+text = "BUBBLEGUM"
 
-[node name="SoulforgedSkin" type="Button" parent="SkinPopup/ScrollContainer/VBoxContainer"]
+[node name="EmeraldSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qd4of")
+theme_override_font_sizes/font_size = 8
+text = "EMERALD"
+
+[node name="FrostSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qd4of")
+theme_override_font_sizes/font_size = 8
+text = "FROST KNIGHT"
+
+[node name="GoldSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qd4of")
+theme_override_font_sizes/font_size = 8
+text = "GOLD"
+
+[node name="HellSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qd4of")
+theme_override_font_sizes/font_size = 8
+text = "HELL SPAWN"
+
+[node name="IgnatiusSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qd4of")
+theme_override_font_sizes/font_size = 8
+text = "IGNATIUS"
+
+[node name="MysticSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qd4of")
+theme_override_font_sizes/font_size = 8
+text = "MYSTIC"
+
+[node name="RainbowSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qd4of")
+theme_override_font_sizes/font_size = 8
+text = "RAINBOW"
+
+[node name="SoulforgedSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
 text = "SOULFORGED"
 
-[node name="UnlockInfoPanel" type="PopupPanel" parent="."]
-size = Vector2i(1064, 480)
+[node name="VoidSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qd4of")
+theme_override_font_sizes/font_size = 8
+text = "VOIDWALKER"
+
+[node name="HiddenSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qd4of")
+theme_override_font_sizes/font_size = 8
+text = "???"
+
+[node name="MurlocSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_qd4of")
+theme_override_font_sizes/font_size = 8
+text = "MURLOC"
+
+[node name="UnlockInfoPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 632.0
+offset_bottom = 338.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UnlockInfoPanel"]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 1060.0
-offset_bottom = 476.0
+offset_right = 620.0
+offset_bottom = 327.0
 
-[node name="InfoTextLabel" type="Label" parent="UnlockInfoPanel/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UnlockInfoPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="InfoTextLabel" type="Label" parent="UnlockInfoPanel/MarginContainer/ScrollContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
 text = "Skins Unlock Conditions:
 
-• Emerald – 650 coins in Easy mode
+• Abyssal – Reach Victory level using the Blue Ember skin
 
-• Mystic – 700 coins in Normal mode
+• Beezzz – to be found in the levels
 
-• Abyssal – 750 coins in Hard mode
+• Bloodforged – Having an active shield 10 times
 
-• Rainbow – 800 coins in Insane mode
+• Blue Ember – Having an active jump boost 20 times
 
-• Gold – 750 coins in Easy, Normal and Hard modes
+• Bubblegum – 200 power-ups activated
 
-• Hell Spawn – 700 coins in Easy, Normal and Hard modes in 20min or less
+• Emerald – Having an active speed boost 20 times
 
-• Bubblegum, Bloodforged and Frost Knight – to be found in the levels
+• Frost Knight – Survive for 30 seconds without moving
+
+• Gold – 120 coins
+
+• Hell Spawn – Reach Victory level within 10 minutes
+
+• Ignatius – Reach Victory level 5 times without active any power-ups
+
+• Mystic – 300 cumulative jumps
+
+• Rainbow – Reach Victory level without dying
+
+• Soulforged – Die 100 times
 
 • Voidwalker – to be found in the Void
 
-• Beezzz, Blue Ember and Ignatius – to be found in the levels
-
 • ??? – ???
 
-• Soulforged – to be found in Ghostlands
 
 Levels Unlock Conditions:
 
-• The Void – 650 coins
+• The Void – 80 coins
 
-• Hard – 700 coins
+• Ghostlands – 90 coins
 
-• Ghostlands – 750 coins"
+• Firelands – 100 coins
+
+• Corrupted Bloom – 110 coins"
 vertical_alignment = 1
+
+[node name="Back" type="Button" parent="UnlockInfoPanel"]
+layout_mode = 0
+offset_left = 533.0
+offset_top = 6.0
+offset_right = 605.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("4_qd4of")
+theme_override_font_sizes/font_size = 16
+text = "BACK"
 
 [node name="GameVersion" type="Label" parent="."]
 layout_mode = 0
@@ -272,4 +278,4 @@ offset_right = 630.0
 offset_bottom = 353.0
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
-text = "v0.9.90 (Development Build)"
+text = "v1.0.90 (Development Build)"

@@ -3,17 +3,12 @@ extends Node
 var time_elapsed: float = 0.0
 var running: bool = false
 
-var best_times: Dictionary = {
-	"easy": -1.0,
-	"normal": -1.0,
-	"hard": -1.0,
-	"insane": -1.0
-}
+var best_time: float = -1.0
 
 const SAVE_PATH := "user://score.save"
 
 func _ready() -> void:
-	load_best_times()
+	load_best_time()
 
 func _process(delta: float) -> void:
 	if running:
@@ -32,31 +27,38 @@ func get_elapsed_time() -> float:
 func get_formatted_time() -> String:
 	return _format_time(time_elapsed)
 
-func save_best_times() -> void:
+# ------------------------
+# Sauvegarde / Chargement
+# ------------------------
+func save_best_time() -> void:
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file:
-		file.store_var(best_times)
+		file.store_var(best_time)
 		file.close()
 
-func load_best_times() -> void:
+func load_best_time() -> void:
 	if FileAccess.file_exists(SAVE_PATH):
 		var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
 		if file:
-			best_times = file.get_var()
+			best_time = file.get_var()
 			file.close()
 
-func get_formatted_best_time(difficulty: String) -> String:
-	var best_time: float = best_times.get(difficulty, -1.0)
+# ------------------------
+# Best time logic
+# ------------------------
+func get_formatted_best_time() -> String:
 	return _format_time(best_time)
 
-func maybe_set_best_time(difficulty: String) -> void:
+func maybe_set_best_time() -> void:
 	var current_time := time_elapsed
-	var best_time: float = best_times.get(difficulty, -1.0)
 
 	if best_time == -1.0 or current_time < best_time:
-		best_times[difficulty] = current_time
-		save_best_times()
+		best_time = current_time
+		save_best_time()
 
+# ------------------------
+# Utilitaires
+# ------------------------
 func _format_time(time: float) -> String:
 	if time < 0.0:
 		return "--:--.--"

@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var next_level_path: String = "res://Assets/Scenes/level_void.tscn"
-@export var required_coins: int = 650
+@export var required_coins: int = 0
 
 func _ready():
 	body_entered.connect(_on_body_entered)
