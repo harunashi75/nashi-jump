@@ -10,8 +10,8 @@ var sounds = {}
 
 var excluded_scenes := [
 	"res://Assets/Scenes/start_menu.tscn",
-	#"res://Assets/Scenes/level_victory.tscn",
-	"res://Assets/Scenes/level_void.tscn",
+	#"res://Assets/Scenes/level_world.tscn",
+	"res://Assets/Scenes/level_lunar_dream.tscn",
 	"res://Assets/Scenes/level_hidden.tscn"
 ]
 

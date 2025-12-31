@@ -83,7 +83,7 @@ func unlock_skin(skin_name: String, pos: Vector2 = Vector2.ZERO):
 		save_skin_data()
 
 func check_jump_skins():
-	if total_jumps >= 300 and not is_unlocked("mystic"):
+	if total_jumps >= 1000 and not is_unlocked("mystic"):
 		unlock_skin("mystic")
 		save_skin_data()
 
@@ -150,7 +150,7 @@ func add_jump_boost_use():
 	save_skin_data()
 
 func check_blue_ember():
-	if jump_boost_uses >= 20 and not is_unlocked("gaga"):
+	if jump_boost_uses >= 120 and not is_unlocked("gaga"):
 		unlock_skin("gaga")
 		save_skin_data()
 
@@ -161,7 +161,7 @@ func add_speed_boost_use():
 	save_skin_data()
 
 func check_emerald():
-	if speed_boost_uses >= 20 and not is_unlocked("emerald"):
+	if speed_boost_uses >= 100 and not is_unlocked("emerald"):
 		unlock_skin("emerald")
 		save_skin_data()
 
@@ -172,26 +172,28 @@ func add_shield_use():
 	save_skin_data()
 
 func check_bloodforged():
-	if shield_uses >= 10 and not is_unlocked("bloodforged"):
+	if shield_uses >= 100 and not is_unlocked("bloodforged"):
 		unlock_skin("bloodforged")
 		save_skin_data()
 
 func check_blue_ember_victory():
-	if current_skin == "blue_ember" and not is_unlocked("abyssal"):
+	if current_skin == "gaga" and not is_unlocked("abyssal"):
 		unlock_skin("abyssal")
 		save_skin_data()
 
-# ------------------------
-# Déblocage par pièces
-# ------------------------
 func check_unlock_skins(total_coins: int):
 	if total_coins >= 120 and not is_unlocked("gold"):
 		unlock_skin("gold")
 		save_skin_data()
 
-# ------------------------ 
-# Déblocage par temps 
-# ------------------------ 
+func set_completion_time(time_in_seconds: float) -> void:
+	var best_time: float = time_scores.get("best", INF)
+
+	if time_in_seconds < best_time:
+		time_scores["best"] = time_in_seconds
+		check_time_skins()
+		save_skin_data()
+
 func check_time_skins():
 	var best_time: float = time_scores.get("best", INF)
 

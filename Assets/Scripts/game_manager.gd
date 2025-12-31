@@ -7,11 +7,10 @@ var hud: Node = null
 var pause_menu: Control = null
 
 # ------------------------
-# Checkpoint & Temps
+# Checkpoint
 # ------------------------
 var levels_checkpoint_enabled := false
 var levels_checkpoint_scene_path := ""
-var game_start_time: int = 0
 
 # ------------------------
 # Paramètres globaux
@@ -54,7 +53,6 @@ func show_floating_text(text: String, position: Vector2, color: Color = Color.WH
 # ------------------------
 func start_game():
 	reset_coins()
-	game_start_time = Time.get_ticks_msec()
 	no_damage_run = true
 	used_powerup = false
 
@@ -100,7 +98,7 @@ func get_total_unique_coins() -> int:
 	return total
 
 func get_total_coins_for_level(level_name: String) -> int:
-	if level_name == "Level_Victory":
+	if level_name == "Level_World":
 		return 0
 	return 10
 
@@ -124,17 +122,6 @@ func _update_hud_coins():
 			hud.update_coins_display(level_collected, level_total, total_collected, total_possible_coins)
 
 # ------------------------
-# Temps
-# ------------------------
-func set_completion_time(time_in_seconds: float):
-	if not SkinManager.time_scores.has("best") or SkinManager.time_scores["best"] > time_in_seconds:
-		SkinManager.time_scores["best"] = time_in_seconds
-		print("Nouveau meilleur temps :", time_in_seconds)
-
-	SkinManager.check_time_skins()
-	SkinManager.save_skin_data()
-
-# ------------------------
 # Checkpoint
 # ------------------------
 func set_levels_checkpoint(path: String):
@@ -144,8 +131,8 @@ func set_levels_checkpoint(path: String):
 
 func reset_checkpoint_data():
 	levels_checkpoint_enabled = false
-	levels_checkpoint_scene_path = "res://Assets/Scenes/level_1.tscn"
-	print("Checkpoint reset -> retour au niveau 1")
+	levels_checkpoint_scene_path = "res://Assets/Scenes/level_world.tscn"
+	print("Checkpoint reset -> retour au niveau hub")
 
 # ------------------------
 # Input
@@ -153,8 +140,6 @@ func reset_checkpoint_data():
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
-			KEY_T:
-				LevelManager.load_level_by_path("res://Assets/Scenes/level_victory.tscn")
 			KEY_G:
 				_toggle_godmode()
 

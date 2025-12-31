@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfcpk586vpb18"
-path="res://.godot/imported/tileset_zero.png-fe6d73f335e87d97f60f8c2a6a485e97.ctex"
+uid="uid://c4h68gj3wppmx"
+path="res://.godot/imported/tileset_firelands-v2.png-76bcea6a2c7c5616fa37805fe9611700.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/TileSets/tileset_zero.png"
-dest_files=["res://.godot/imported/tileset_zero.png-fe6d73f335e87d97f60f8c2a6a485e97.ctex"]
+source_file="res://Assets/Sprites/TileSets/tileset_firelands-v2.png"
+dest_files=["res://.godot/imported/tileset_firelands-v2.png-76bcea6a2c7c5616fa37805fe9611700.ctex"]
 
 [params]
 

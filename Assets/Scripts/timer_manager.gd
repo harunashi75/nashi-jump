@@ -2,6 +2,7 @@ extends Node
 
 var time_elapsed: float = 0.0
 var running: bool = false
+var paused: bool = false
 
 var best_time: float = -1.0
 
@@ -11,16 +12,31 @@ func _ready() -> void:
 	load_best_time()
 
 func _process(delta: float) -> void:
-	if running:
+	if running and not paused:
 		time_elapsed += delta
 
+# ------------------------
+# Timer controls
+# ------------------------
 func start_timer() -> void:
 	time_elapsed = 0.0
 	running = true
+	paused = false
+
+func pause_timer() -> void:
+	paused = true
+
+func resume_timer() -> void:
+	if running:
+		paused = false
 
 func stop_timer() -> void:
 	running = false
+	paused = false
 
+# ------------------------
+# Getters
+# ------------------------
 func get_elapsed_time() -> float:
 	return time_elapsed
 
@@ -28,7 +44,18 @@ func get_formatted_time() -> String:
 	return _format_time(time_elapsed)
 
 # ------------------------
-# Sauvegarde / Chargement
+# Best time logic
+# ------------------------
+func maybe_set_best_time() -> void:
+	if best_time == -1.0 or time_elapsed < best_time:
+		best_time = time_elapsed
+		save_best_time()
+
+func get_formatted_best_time() -> String:
+	return _format_time(best_time)
+
+# ------------------------
+# Save / Load
 # ------------------------
 func save_best_time() -> void:
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -44,20 +71,7 @@ func load_best_time() -> void:
 			file.close()
 
 # ------------------------
-# Best time logic
-# ------------------------
-func get_formatted_best_time() -> String:
-	return _format_time(best_time)
-
-func maybe_set_best_time() -> void:
-	var current_time := time_elapsed
-
-	if best_time == -1.0 or current_time < best_time:
-		best_time = current_time
-		save_best_time()
-
-# ------------------------
-# Utilitaires
+# Util
 # ------------------------
 func _format_time(time: float) -> String:
 	if time < 0.0:

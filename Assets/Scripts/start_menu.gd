@@ -69,8 +69,7 @@ func _init_skins():
 # ------------------------
 func _start_game():
 	GameManager.reset_coins()
-	TimerManager.start_timer()
-	_start_game_with_scene("res://Assets/Scenes/level_1.tscn")
+	_start_game_with_scene("res://Assets/Scenes/level_world.tscn")
 
 func _start_game_with_scene(path: String):
 	get_tree().get_root().set_process_input(false)

@@ -4,6 +4,7 @@ extends Node
 # Niveaux disponibles
 # ------------------------
 var levels := [
+	"res://Assets/Scenes/level_world.tscn",
 	"res://Assets/Scenes/level_1.tscn",
 	"res://Assets/Scenes/level_2.tscn",
 	"res://Assets/Scenes/level_3.tscn",
@@ -12,10 +13,9 @@ var levels := [
 	"res://Assets/Scenes/level_6.tscn",
 	"res://Assets/Scenes/level_7.tscn",
 	"res://Assets/Scenes/level_8.tscn",
-	"res://Assets/Scenes/level_victory.tscn",
-	"res://Assets/Scenes/level_void.tscn",
 	"res://Assets/Scenes/level_ghostlands.tscn",
 	"res://Assets/Scenes/level_firelands.tscn",
+	"res://Assets/Scenes/level_lunar_dream.tscn",
 	"res://Assets/Scenes/level_corrupted_bloom.tscn",
 	"res://Assets/Scenes/level_hidden.tscn"
 ]

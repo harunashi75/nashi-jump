@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="6_sw5h8"]
 [ext_resource type="PackedScene" uid="uid://bsrmmairay61a" path="res://Assets/Scenes/brickhead_corrupted.tscn" id="7_s8ahg"]
 [ext_resource type="PackedScene" uid="uid://b2sr1dbwgya5l" path="res://Assets/Scenes/saw.tscn" id="8_2gdu6"]
-[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_level_victory.gd" id="9_wf1il"]
+[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="9_wf1il"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="10_ymjla"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s6xhh"]

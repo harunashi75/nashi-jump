@@ -11,8 +11,8 @@
 [ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="7_dfrsb"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="8_sgnlk"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="12_dudrf"]
+[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="13_ej3ih"]
 [ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="13_n350r"]
-[ext_resource type="Script" uid="uid://ls3hl01uvuvl" path="res://Assets/Scripts/tp_levels_4.gd" id="16_dfrsb"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="18_2x02o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hnmmg"]
@@ -269,7 +269,6 @@ position = Vector2(-360, -153)
 
 [node name="Enemy_Brown" parent="Enemies" instance=ExtResource("7_afiiu")]
 position = Vector2(208, 0)
-SPEED = 80
 
 [node name="Enemy_Brown2" parent="Enemies" instance=ExtResource("7_afiiu")]
 position = Vector2(104, -208)
@@ -285,7 +284,6 @@ SPEED = 60
 
 [node name="Enemy_Brown5" parent="Enemies" instance=ExtResource("7_afiiu")]
 position = Vector2(200, -320)
-SPEED = 90
 
 [node name="Block" type="Node" parent="."]
 
@@ -354,7 +352,7 @@ position = Vector2(-480, -312)
 speed = 80
 
 [node name="TP-Levels" type="Area2D" parent="."]
-script = ExtResource("16_dfrsb")
+script = ExtResource("13_ej3ih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels"]
 position = Vector2(-444, -248)

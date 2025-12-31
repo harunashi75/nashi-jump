@@ -1,16 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dyu028ixryjs2"]
+[gd_scene load_steps=14 format=3 uid="uid://dyu028ixryjs2"]
 
 [ext_resource type="Texture2D" uid="uid://pw0do1ajjttc" path="res://Assets/Sprites/Enemies/BirdSprite.png" id="1_0u3xd"]
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_ua500"]
 [ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="2_v3h7h"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gpspe"]
-atlas = ExtResource("1_0u3xd")
-region = Rect2(0, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_07un6"]
-atlas = ExtResource("1_0u3xd")
-region = Rect2(16, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v3h7h"]
 atlas = ExtResource("1_0u3xd")
@@ -46,17 +38,6 @@ region = Rect2(112, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iw25v"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gpspe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_07un6")
-}],
-"loop": false,
-"name": &"hit",
-"speed": 10.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v3h7h")
@@ -96,7 +77,7 @@ script = ExtResource("1_ua500")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_iw25v")
-animation = &"hit"
+animation = &"run"
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, -8)

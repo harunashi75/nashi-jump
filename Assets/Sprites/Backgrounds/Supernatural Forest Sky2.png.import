@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxdy8a1riuxsk"
-path="res://.godot/imported/tileset_void.png-a1c3c04dc1e04d05ed8a530ce96f9e4c.ctex"
+uid="uid://d01j3re5q0u4f"
+path="res://.godot/imported/Supernatural Forest Sky2.png-88dd1868d52680f934573acf1517e043.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/TileSets/tileset_void.png"
-dest_files=["res://.godot/imported/tileset_void.png-a1c3c04dc1e04d05ed8a530ce96f9e4c.ctex"]
+source_file="res://Assets/Sprites/Backgrounds/Supernatural Forest Sky2.png"
+dest_files=["res://.godot/imported/Supernatural Forest Sky2.png-88dd1868d52680f934573acf1517e043.ctex"]
 
 [params]
 

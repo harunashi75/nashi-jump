@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="7_mosop"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="7_wm78l"]
 [ext_resource type="PackedScene" uid="uid://8mwqb4osw62n" path="res://Assets/Scenes/enemy_green.tscn" id="8_y5qq7"]
+[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="12_mosop"]
 [ext_resource type="PackedScene" uid="uid://b2ery55yhbn6v" path="res://Assets/Scenes/enemy_brown.tscn" id="12_wm78l"]
 [ext_resource type="PackedScene" uid="uid://jb7gqeylewot" path="res://Assets/Scenes/spikes.tscn" id="12_y5qq7"]
 [ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="15_pgype"]
-[ext_resource type="Script" uid="uid://djq8uh536rl42" path="res://Assets/Scripts/tp_levels_3.gd" id="17_naf3r"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="19_wpbe8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dudrf"]
@@ -272,7 +272,6 @@ position = Vector2(-520, -153)
 
 [node name="Enemy_Brown" parent="Enemies" instance=ExtResource("12_wm78l")]
 position = Vector2(-16, 0)
-SPEED = 80
 
 [node name="Enemy_Brown2" parent="Enemies" instance=ExtResource("12_wm78l")]
 position = Vector2(136, -176)
@@ -292,7 +291,6 @@ SPEED = 40
 
 [node name="Enemy_Green2" parent="Enemies" instance=ExtResource("8_y5qq7")]
 position = Vector2(-328, -384)
-SPEED = 90
 
 [node name="Block" type="Node" parent="."]
 
@@ -437,7 +435,7 @@ position = Vector2(-512, -48)
 speed = 40
 
 [node name="TP-Levels" type="Area2D" parent="."]
-script = ExtResource("17_naf3r")
+script = ExtResource("12_mosop")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels"]
 position = Vector2(-556, -16)

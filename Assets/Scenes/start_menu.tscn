@@ -218,46 +218,35 @@ theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
 text = "Skins Unlock Conditions:
 
-• Abyssal – Reach Victory level using the Blue Ember skin
+• Abyssal – Complete all levels using the Blue Ember skin
 
 • Beezzz – to be found in the levels
 
-• Bloodforged – Having an active shield 10 times
+• Bloodforged – Having an active shield 100 times
 
-• Blue Ember – Having an active jump boost 20 times
+• Blue Ember – Having an active jump boost 120 times
 
 • Bubblegum – 200 power-ups activated
 
-• Emerald – Having an active speed boost 20 times
+• Emerald – Having an active speed boost 100 times
 
 • Frost Knight – Survive for 30 seconds without moving
 
 • Gold – 120 coins
 
-• Hell Spawn – Reach Victory level within 10 minutes
+• Hell Spawn – Complete all levels within 10 minutes
 
-• Ignatius – Reach Victory level 5 times without active any power-ups
+• Ignatius – Complete all levels 5 times without active any power-ups
 
-• Mystic – 300 cumulative jumps
+• Mystic – 1000 cumulative jumps
 
-• Rainbow – Reach Victory level without dying
+• Rainbow – Complete all levels without dying
 
 • Soulforged – Die 100 times
 
-• Voidwalker – to be found in the Void
+• Voidwalker – to be found in Lunar Dream
 
-• ??? – ???
-
-
-Levels Unlock Conditions:
-
-• The Void – 80 coins
-
-• Ghostlands – 90 coins
-
-• Firelands – 100 coins
-
-• Corrupted Bloom – 110 coins"
+• ??? – ???"
 vertical_alignment = 1
 
 [node name="Back" type="Button" parent="UnlockInfoPanel"]
@@ -272,10 +261,10 @@ text = "BACK"
 
 [node name="GameVersion" type="Label" parent="."]
 layout_mode = 0
-offset_left = 431.0
-offset_top = 345.0
-offset_right = 630.0
-offset_bottom = 353.0
+offset_left = 356.0
+offset_top = 344.0
+offset_right = 632.0
+offset_bottom = 352.0
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
-text = "v1.0.90 (Development Build)"
+text = "v0.11.90-6p123025 (Development Build)"

@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://b00ntn5qs1bne" path="res://Assets/Scenes/enemy_yellow.tscn" id="10_lyqok"]
 [ext_resource type="PackedScene" uid="uid://b2ery55yhbn6v" path="res://Assets/Scenes/enemy_brown.tscn" id="11_ap8cu"]
 [ext_resource type="Script" uid="uid://fnqdgup5gx8w" path="res://Assets/Scripts/tp_1.gd" id="12_bwmal"]
-[ext_resource type="Script" uid="uid://3t378uqbxysf" path="res://Assets/Scripts/tp_levels_2.gd" id="12_efllg"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="14_a6f8o"]
+[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="14_oqosq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efllg"]
 texture = ExtResource("5_oqosq")
@@ -262,19 +262,17 @@ SPEED = 60
 
 [node name="Enemy_Bee2" parent="Enemies" instance=ExtResource("8_1cifp")]
 position = Vector2(168, -47)
-SPEED = 110
+SPEED = 90
 
 [node name="Enemy_Bee3" parent="Enemies" instance=ExtResource("8_1cifp")]
 position = Vector2(184, -191)
-SPEED = 90
 
 [node name="Enemy_Bee4" parent="Enemies" instance=ExtResource("8_1cifp")]
 position = Vector2(40, -239)
-SPEED = 110
+SPEED = 100
 
 [node name="Enemy_Bee5" parent="Enemies" instance=ExtResource("8_1cifp")]
 position = Vector2(-232, -287)
-SPEED = 110
 
 [node name="Enemy_Bee7" parent="Enemies" instance=ExtResource("8_1cifp")]
 position = Vector2(-536, -319)
@@ -282,14 +280,14 @@ SPEED = 50
 
 [node name="Enemy_Bee9" parent="Enemies" instance=ExtResource("8_1cifp")]
 position = Vector2(-440, -223)
-SPEED = 120
+SPEED = 100
 
 [node name="Enemy_Yellow" parent="Enemies" instance=ExtResource("10_lyqok")]
 position = Vector2(184, -384)
+SPEED = 70
 
 [node name="Enemy_Brown" parent="Enemies" instance=ExtResource("11_ap8cu")]
 position = Vector2(-72, -384)
-SPEED = 90
 
 [node name="Block" type="Node" parent="."]
 
@@ -376,7 +374,7 @@ position = Vector2(-212, -8)
 shape = SubResource("RectangleShape2D_lm58p")
 
 [node name="TP-Levels" type="Area2D" parent="."]
-script = ExtResource("12_efllg")
+script = ExtResource("14_oqosq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels"]
 position = Vector2(-524, -400)

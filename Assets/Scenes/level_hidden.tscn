@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="3_mqprx"]
 [ext_resource type="Script" uid="uid://btpv0eojb66oc" path="res://Assets/Scripts/skin_hidden.gd" id="4_sp2fm"]
 [ext_resource type="Texture2D" uid="uid://dqkuqpyt0wjqb" path="res://Assets/Sprites/Characters/hidden.png" id="5_rklcn"]
-[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_level_victory.gd" id="6_rklcn"]
+[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="6_rklcn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_effd4"]
 texture = ExtResource("1_sgdty")

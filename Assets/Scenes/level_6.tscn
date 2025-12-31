@@ -10,12 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="6_nebf7"]
 [ext_resource type="Texture2D" uid="uid://b4dqle0irm8dk" path="res://Assets/Sprites/Characters/bubblegum.png" id="6_tpl1r"]
 [ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="7_per8p"]
-[ext_resource type="Script" uid="uid://cb0buwrvrpv5h" path="res://Assets/Scripts/tp_levels_6.gd" id="9_ra7wl"]
 [ext_resource type="PackedScene" uid="uid://dpj0yojkqxtnx" path="res://Assets/Scenes/enemy_bee.tscn" id="11_ilcws"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="12_5vbaw"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="12_hnmmg"]
 [ext_resource type="PackedScene" uid="uid://8mwqb4osw62n" path="res://Assets/Scenes/enemy_green.tscn" id="12_vhj5k"]
 [ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="13_bamfg"]
+[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="15_per8p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ap8cu"]
 texture = ExtResource("3_per8p")
@@ -279,14 +279,14 @@ position = Vector2(-456, -117)
 
 [node name="Enemy_Bee" parent="Enemies" instance=ExtResource("11_ilcws")]
 position = Vector2(32, -336)
-SPEED = 140
+SPEED = 100
 
 [node name="Enemy_Bee2" parent="Enemies" instance=ExtResource("11_ilcws")]
 position = Vector2(-16, -224)
 
 [node name="Enemy_Bee3" parent="Enemies" instance=ExtResource("11_ilcws")]
 position = Vector2(32, -112)
-SPEED = 110
+SPEED = 100
 
 [node name="Enemy_Bee4" parent="Enemies" instance=ExtResource("11_ilcws")]
 position = Vector2(-32, 0)
@@ -324,7 +324,7 @@ speed = 80
 position = Vector2(-248, -240)
 
 [node name="TP-Levels" type="Area2D" parent="."]
-script = ExtResource("9_ra7wl")
+script = ExtResource("15_per8p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels"]
 position = Vector2(-300, -72)

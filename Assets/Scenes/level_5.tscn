@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dqab0hkk33ipk" path="res://Assets/Scenes/platform.tscn" id="9_fs6qb"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="12_0a66y"]
 [ext_resource type="PackedScene" uid="uid://jb7gqeylewot" path="res://Assets/Scenes/spikes.tscn" id="13_xaf8f"]
-[ext_resource type="Script" uid="uid://bh5safi43jdn8" path="res://Assets/Scripts/tp_levels_5.gd" id="14_0disi"]
+[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="15_0disi"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="15_8mwaw"]
 [ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="15_fs6qb"]
 
@@ -300,11 +300,11 @@ position = Vector2(64, -112)
 
 [node name="Enemy_Blue2" parent="Enemies" instance=ExtResource("8_76uqi")]
 position = Vector2(-152, -112)
-SPEED = 130
+SPEED = 100
 
 [node name="Enemy_Blue3" parent="Enemies" instance=ExtResource("8_76uqi")]
 position = Vector2(-128, -208)
-SPEED = 80
+SPEED = 70
 
 [node name="Enemy_Blue4" parent="Enemies" instance=ExtResource("8_76uqi")]
 position = Vector2(224, -208)
@@ -441,7 +441,7 @@ position = Vector2(0, -288)
 speed = 60
 
 [node name="TP-Levels" type="Area2D" parent="."]
-script = ExtResource("14_0disi")
+script = ExtResource("15_0disi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels"]
 position = Vector2(-540, -32)

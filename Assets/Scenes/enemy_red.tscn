@@ -1,28 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dav6snuyljlmr"]
+[gd_scene load_steps=13 format=3 uid="uid://dav6snuyljlmr"]
 
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_hofvg"]
 [ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="2_r86v5"]
 [ext_resource type="Texture2D" uid="uid://w8spasy2fd5e" path="res://Assets/Sprites/Enemies/Red Slime Spritesheet.png" id="2_sibxu"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sibxu"]
-atlas = ExtResource("2_sibxu")
-region = Rect2(48, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l3u5f"]
-atlas = ExtResource("2_sibxu")
-region = Rect2(64, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qnkoa"]
-atlas = ExtResource("2_sibxu")
-region = Rect2(80, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vpdca"]
-atlas = ExtResource("2_sibxu")
-region = Rect2(96, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_25ycd"]
-atlas = ExtResource("2_sibxu")
-region = Rect2(112, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qg7l7"]
 atlas = ExtResource("2_sibxu")
@@ -54,26 +34,6 @@ region = Rect2(144, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vqtj3"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sibxu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l3u5f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qnkoa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vpdca")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_25ycd")
-}],
-"loop": false,
-"name": &"hit",
-"speed": 10.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qg7l7")
@@ -110,7 +70,7 @@ script = ExtResource("1_hofvg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_vqtj3")
-animation = &"hit"
+animation = &"run"
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, -5)

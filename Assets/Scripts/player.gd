@@ -25,7 +25,6 @@ var jump_buffer_timer = 0.0
 
 var just_jumped = false
 var jump_anim_timer = 0.15
-var is_invulnerable = false
 
 var is_shielded: bool = false
 var speed_multiplier: float = 1.0
@@ -237,7 +236,7 @@ func get_current_health() -> int:
 	return base_health + bonus_health
 
 func take_damage(amount := 1):
-	if is_invulnerable or GameManager.godmode_enabled or is_shielded:
+	if GameManager.godmode_enabled or is_shielded:
 		return
 
 	if bonus_health > 0:
@@ -252,7 +251,6 @@ func take_damage(amount := 1):
 	
 	GameManager.no_damage_run = false
 	SoundManager.play("hit")
-	GameManager.show_floating_text("-" + str(amount), position + Vector2(0, -40), Color.RED)
 
 # ------------------------
 # Respawn & Mort
@@ -283,14 +281,5 @@ func respawn():
 
 func load_respawn_scene():
 	print("Respawn du joueur...")
-	var path = GameManager.levels_checkpoint_scene_path if GameManager.levels_checkpoint_enabled else "res://Assets/Scenes/level_1.tscn"
+	var path = GameManager.levels_checkpoint_scene_path if GameManager.levels_checkpoint_enabled else "res://Assets/Scenes/level_world.tscn"
 	LevelManager.load_level_by_path(path)
-
-# ------------------------
-# Pics (one-shot)
-# ------------------------
-func enter_spikes():
-	take_damage(1)
-
-func exit_spikes():
-	pass
