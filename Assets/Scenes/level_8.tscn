@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="9_15hqy"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="10_1radv"]
 [ext_resource type="PackedScene" uid="uid://jb7gqeylewot" path="res://Assets/Scenes/spikes.tscn" id="10_80jr3"]
-[ext_resource type="Script" uid="uid://nhfepgpst0f5" path="res://Assets/Scripts/tp_final.gd" id="10_xr61l"]
+[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="10_xr61l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g0ckv"]
 texture = ExtResource("4_51asq")

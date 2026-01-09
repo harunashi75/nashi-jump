@@ -56,5 +56,6 @@ func _hide_bubble():
 	tween.tween_callback(func(): bubble.visible = false)
 
 func _deferred_load_next_level():
+	TimerManager.resume_timer()
 	GameManager.set_levels_checkpoint(next_level_path)
 	LevelManager.load_level_by_path(next_level_path)

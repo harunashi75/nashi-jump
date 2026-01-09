@@ -27,7 +27,7 @@ var used_powerup := false
 var coins_collected := {}
 var coins_collected_by_level := {}
 var total_coins_in_level := 10
-var total_possible_coins := 120
+var total_possible_coins := 130
 
 # ------------------------
 # Initialisation
@@ -57,10 +57,14 @@ func start_game():
 	used_powerup = false
 
 func toggle_pause():
-	is_game_paused = not is_game_paused
+	is_game_paused = !is_game_paused
 	get_tree().paused = is_game_paused
-	if pause_menu and pause_menu.is_inside_tree():
-		pause_menu.visible = is_game_paused
+
+	if pause_menu:
+		if is_game_paused:
+			pause_menu.show_pause_menu()
+		else:
+			pause_menu.hide_pause_menu()
 
 # ------------------------
 # Coins

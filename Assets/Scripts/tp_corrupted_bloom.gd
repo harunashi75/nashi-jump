@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var next_level_path: String = "res://Assets/Scenes/level_corrupted_bloom.tscn"
-@export var required_coins: int = 110
+@export var required_coins: int = 120
 
 @onready var bubble: Control = $Bubble
 @onready var hint_label: Label = $Bubble/HintLabel
@@ -56,5 +56,6 @@ func _hide_bubble():
 	tween.tween_callback(func(): bubble.visible = false)
 
 func _deferred_load_next_level():
+	TimerManager.resume_timer()
 	GameManager.set_levels_checkpoint(next_level_path)
 	LevelManager.load_level_by_path(next_level_path)

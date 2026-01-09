@@ -6,7 +6,7 @@ extends Control
 @onready var leave_game_button = $VBoxContainer/LeaveGame
 @onready var volume_slider = $VolumeSlider
 
-func _unhandled_input(event):
+func _input(event):
 	if event.is_action_pressed("pause_menu"):
 		get_viewport().set_input_as_handled()
 		GameManager.toggle_pause()
@@ -17,6 +17,9 @@ func _ready():
 	resume_button.pressed.connect(_on_resume_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
 	leave_game_button.pressed.connect(_on_leave_game_button_pressed)
+	
+	_connect_focus_sounds()
+	_connect_pressed_sounds()
 
 	var saved_volume = load_volume()
 	volume_slider.value = saved_volume
@@ -26,6 +29,40 @@ func _ready():
 	if is_inside_tree():
 		pause_menu.hide()
 		set_process(true)
+
+func show_pause_menu():
+	show()
+	resume_button.grab_focus()
+
+func hide_pause_menu():
+	hide()
+
+func _play_tap():
+	SoundManager.play("select")
+
+func _connect_focus_sounds():
+	var buttons := [
+		resume_button,
+		quit_button,
+		leave_game_button
+	]
+
+	for btn in buttons:
+		if btn:
+			btn.focus_entered.connect(_play_tap)
+
+func _connect_pressed_sounds():
+	var buttons := [
+		resume_button,
+		quit_button,
+		leave_game_button
+	]
+
+	for btn in buttons:
+		if btn:
+			btn.pressed.connect(func():
+				SoundManager.play("confirm")
+			)
 
 func _on_volume_changed(value):
 	AudioServer.set_bus_volume_db(0, linear_to_db(value))

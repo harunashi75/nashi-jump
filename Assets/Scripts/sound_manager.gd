@@ -10,8 +10,6 @@ var sounds = {}
 
 var excluded_scenes := [
 	"res://Assets/Scenes/start_menu.tscn",
-	#"res://Assets/Scenes/level_world.tscn",
-	"res://Assets/Scenes/level_lunar_dream.tscn",
 	"res://Assets/Scenes/level_hidden.tscn"
 ]
 
@@ -42,11 +40,13 @@ func _ready():
 		"hit": preload("res://Assets/Sounds/hit.wav"),
 		"jump": preload("res://Assets/Sounds/jump.wav"),
 		"coin": preload("res://Assets/Sounds/coin.wav"),
-		"power_up": preload("res://Assets/Sounds/power_up.wav")
+		"power_up": preload("res://Assets/Sounds/power_up.wav"),
+		"select": preload("res://Assets/Sounds/select.wav"),
+		"confirm": preload("res://Assets/Sounds/confirm.wav")
 	}
 
 # ------------------------------------------------------------
-# Gestion musique (comme dans ton ancien script music.gd)
+# Gestion musique
 # ------------------------------------------------------------
 func _process(_delta):
 	last_scene = get_tree().current_scene

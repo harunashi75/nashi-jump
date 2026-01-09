@@ -182,7 +182,7 @@ func check_blue_ember_victory():
 		save_skin_data()
 
 func check_unlock_skins(total_coins: int):
-	if total_coins >= 120 and not is_unlocked("gold"):
+	if total_coins >= 130 and not is_unlocked("gold"):
 		unlock_skin("gold")
 		save_skin_data()
 

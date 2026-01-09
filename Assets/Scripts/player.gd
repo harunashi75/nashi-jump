@@ -1,17 +1,22 @@
 extends CharacterBody2D
 
 # ------------------------
-# Constantes de Physique
+# Constantes de Physique (SMW-like)
 # ------------------------
-const GRAVITY = 950
-const LOW_JUMP_GRAVITY = 1450
+const GRAVITY = 950.0
+const LOW_GRAVITY = 575.0      # gravité réduite quand jump maintenu
+const HIGH_GRAVITY = 1450.0   # gravité quand jump relâché
 
-const MAX_SPEED = 160
-const ACCELERATION = 1200
-const DECELERATION = 1000
-const AIR_CONTROL = 0.8
+const BASE_SPEED = 160.0
+const MAX_SPEED = 185.0
 
-const JUMP_FORCE = -260
+const ACCELERATION = 1200.0
+const DECELERATION = 1000.0
+const AIR_ACCELERATION = 650.0
+
+const JUMP_FORCE = -260.0
+const RUN_JUMP_BONUS = -35.0
+
 const COYOTE_TIME = 0.12
 const JUMP_BUFFER = 0.12
 
@@ -41,7 +46,13 @@ var current_skin := "default"
 # ------------------------
 # Références
 # ------------------------
-@onready var sprite = $AnimatedSprite2D
+@onready var sprite_base: AnimatedSprite2D = $SpriteBase
+@onready var sprite_power: AnimatedSprite2D = $SpritePower
+
+var sprite: AnimatedSprite2D
+
+var current_state := "idle"   # idle / run / jump / fall
+var current_power := "none"   # none / shield / speed / jump
 
 # ------------------------
 # Initialisation
@@ -55,6 +66,20 @@ func _ready():
 
 	await get_tree().process_frame
 	set_process_input(true)
+	
+	sprite = sprite_base
+	sprite_base.visible = true
+	sprite_power.visible = false
+
+func _show_base_sprite():
+	sprite_base.visible = true
+	sprite_power.visible = false
+	sprite = sprite_base
+
+func _show_power_sprite():
+	sprite_base.visible = false
+	sprite_power.visible = true
+	sprite = sprite_power
 
 # ------------------------
 # Boucle physique
@@ -71,34 +96,64 @@ func _physics_process(delta):
 # Gravité & Saut
 # ------------------------
 func handle_gravity(delta):
+	# Coyote
 	if is_on_floor():
 		coyote_timer = COYOTE_TIME
 	else:
 		coyote_timer = max(coyote_timer - delta, 0)
 
-	if velocity.y < 0 and not Input.is_action_pressed("jump"):
-		velocity.y += LOW_JUMP_GRAVITY * delta
-	else:
-		velocity.y += GRAVITY * delta
+	# Gravité variable SMW
+	var gravity := GRAVITY
+
+	if velocity.y < 0:
+		if Input.is_action_pressed("jump"):
+			gravity = LOW_GRAVITY
+		else:
+			gravity = HIGH_GRAVITY
+
+	velocity.y += gravity * delta
 
 func handle_input(delta):
 	handle_horizontal(delta)
 	handle_jump_logic(delta)
 
 func handle_horizontal(delta):
+	const AIR_DRAG = 0.97
+
 	var direction = Input.get_axis("move_left", "move_right")
 
 	if direction != 0:
-		var accel = ACCELERATION
-		if not is_on_floor():
-			accel *= AIR_CONTROL
-		velocity.x = move_toward(velocity.x, direction * MAX_SPEED * speed_multiplier, accel * delta)
-		sprite.flip_h = direction < 0
+		var accel := ACCELERATION if is_on_floor() else AIR_ACCELERATION
+		var target_speed := BASE_SPEED * speed_multiplier
+
+		velocity.x = move_toward(
+			velocity.x,
+			direction * target_speed,
+			accel * delta
+		)
+
+		sprite_base.flip_h = direction < 0
+		sprite_power.flip_h = sprite_base.flip_h
 	else:
-		var decel = DECELERATION
-		if not is_on_floor():
-			decel *= AIR_CONTROL
-		velocity.x = move_toward(velocity.x, 0, decel * delta)
+		# friction uniquement au sol
+		if is_on_floor():
+			velocity.x = move_toward(
+				velocity.x,
+				0,
+				DECELERATION * delta
+			)
+	 
+	if not is_on_floor():
+		velocity.x *= AIR_DRAG
+	
+	# soft cap P-speed
+	var max_speed := MAX_SPEED * speed_multiplier
+	if abs(velocity.x) > max_speed:
+		velocity.x = move_toward(
+			velocity.x,
+			sign(velocity.x) * max_speed,
+			DECELERATION * delta
+		)
 
 func handle_jump_logic(delta):
 	if Input.is_action_just_pressed("jump"):
@@ -107,13 +162,20 @@ func handle_jump_logic(delta):
 		jump_buffer_timer = max(jump_buffer_timer - delta, 0)
 
 	if jump_buffer_timer > 0 and (coyote_timer > 0 or jumps_left > 0):
-		velocity.y = JUMP_FORCE * jump_multiplier
+		var final_jump := JUMP_FORCE * jump_multiplier
+
+		# Bonus de saut si vitesse élevée (SMW)
+		if abs(velocity.x) > BASE_SPEED * 0.9 * speed_multiplier:
+			final_jump += RUN_JUMP_BONUS
+
+		velocity.y = final_jump
+		velocity.x *= 0.88
+
 		SoundManager.play("jump")
-		
 		SkinManager.on_player_jump()
 
-		var anim = "jump" if is_on_floor() else "double_jump"
-		play_skin_anim(anim)
+		var anim := "jump" if is_on_floor() else "double_jump"
+		play_player_anim(anim)
 
 		jumps_left -= 1
 		just_jumped = true
@@ -143,7 +205,7 @@ func _check_idle(delta):
 func handle_animation(delta):
 	if current_skin != SkinManager.current_skin:
 		current_skin = SkinManager.current_skin
-		play_skin_anim("idle")
+		play_player_anim("idle")
 
 	if just_jumped:
 		jump_anim_timer -= delta
@@ -152,23 +214,39 @@ func handle_animation(delta):
 		return
 
 	if not is_on_floor():
-		play_skin_anim("fall")
+		play_player_anim("fall")
 	elif abs(velocity.x) > 10:
-		play_skin_anim("run")
+		play_player_anim("run")
 	else:
-		play_skin_anim("idle")
+		play_player_anim("idle")
 
-func get_skin_anim(base: String) -> String:
-	return "%s_%s" % [base, current_skin]
+func play_player_anim(state: String):
+	current_state = state
 
-func play_skin_anim(base: String):
-	var anim_name = get_skin_anim(base)
-	if sprite.sprite_frames.has_animation(anim_name):
-		sprite.play(anim_name)
+	# --- Sprite BASE (skin) ---
+	var base_anim := "%s_%s" % [state, current_skin]
+	if sprite_base.sprite_frames.has_animation(base_anim):
+		sprite_base.play(base_anim)
 	else:
-		var fallback = "%s_default" % base
-		if sprite.sprite_frames.has_animation(fallback):
-			sprite.play(fallback)
+		var fallback := "%s_default" % state
+		if sprite_base.sprite_frames.has_animation(fallback):
+			sprite_base.play(fallback)
+
+	# --- Sprite POWER (overlay) ---
+	if current_power != "none":
+		var power_anim := "%s_%s" % [state, current_power]
+		if sprite_power.sprite_frames.has_animation(power_anim):
+			sprite_power.visible = true
+			sprite_power.play(power_anim)
+		else:
+			sprite_power.visible = false
+	else:
+		sprite_power.visible = false
+
+func set_power(power: String):
+	current_power = power
+	sprite_power.visible = power != "none"
+	play_player_anim(current_state)
 
 # ------------------------
 # Effets
@@ -179,54 +257,42 @@ func apply_health_bonus():
 		emit_signal("health_changed", get_current_health())
 
 func apply_shield(duration: float = 6.0):
+	if is_shielded:
+		return
+
 	is_shielded = true
 	print("Shield ON")
-	_start_shield_effect(duration)
 
-	var t = get_tree().create_timer(duration)
-	await t.timeout
+	set_power("shield")
 
-	#is_shielded = false
-	#print("Shield OFF")
-
-func _start_shield_effect(duration: float) -> void:
-	var original_modulate = sprite.modulate
-	var yellow = Color(1, 1, 0)
-
-	var blink_time := 0.1
-	var elapsed := 0.0
-
-	while elapsed < duration:
-		sprite.modulate = yellow
-		await get_tree().create_timer(blink_time).timeout
-		
-		sprite.modulate = original_modulate
-		await get_tree().create_timer(blink_time).timeout
-		
-		elapsed += blink_time * 2
+	await get_tree().create_timer(duration).timeout
 
 	is_shielded = false
+	set_power("none")
 	print("Shield OFF")
-	sprite.modulate = original_modulate
 
 func apply_speed_boost(duration: float = 3.0):
 	speed_multiplier = 1.5
 	print("Speed Boost ON")
 
-	var t = get_tree().create_timer(duration)
-	await t.timeout
+	set_power("speed")
+
+	await get_tree().create_timer(duration).timeout
 
 	speed_multiplier = 1.0
+	set_power("none")
 	print("Speed Boost OFF")
 
 func apply_jump_boost(duration: float = 3.0):
 	jump_multiplier = 1.5
 	print("Jump Boost ON")
 
-	var t = get_tree().create_timer(duration)
-	await t.timeout
+	set_power("jump")
+
+	await get_tree().create_timer(duration).timeout
 
 	jump_multiplier = 1.0
+	set_power("none")
 	print("Jump Boost OFF")
 
 # ------------------------
@@ -258,14 +324,22 @@ func take_damage(amount := 1):
 func die():
 	print("Player est mort")
 	SkinManager.add_death_count()
+
 	set_process_input(false)
 	set_physics_process(false)
 
-	var anim_name = "death_" + str(current_skin)
+	sprite_power.visible = false
+	sprite_base.visible = true
 
-	if sprite.sprite_frames.has_animation(anim_name):
-		sprite.play(anim_name)
-		var duration = sprite.sprite_frames.get_frame_count(anim_name) / float(sprite.sprite_frames.get_animation_speed(anim_name))
+	var anim_name := "death_%s" % current_skin
+
+	if sprite_base.sprite_frames.has_animation(anim_name):
+		sprite_base.play(anim_name)
+
+		var frames := sprite_base.sprite_frames.get_frame_count(anim_name)
+		var speed := sprite_base.sprite_frames.get_animation_speed(anim_name)
+		var duration := frames / speed
+
 		await get_tree().create_timer(duration + 0.4).timeout
 	else:
 		await get_tree().create_timer(0.4).timeout

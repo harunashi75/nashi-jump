@@ -42,18 +42,24 @@ theme_override_constants/separation = 5
 
 [node name="Resume" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../../VolumeSlider")
+focus_neighbor_bottom = NodePath("../LeaveGame")
 theme_override_fonts/font = ExtResource("2_6udtp")
 theme_override_font_sizes/font_size = 16
 text = "RESUME GAME"
 
 [node name="LeaveGame" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_bottom = NodePath("../QuitButton")
 theme_override_fonts/font = ExtResource("2_6udtp")
 theme_override_font_sizes/font_size = 16
 text = "MAIN MENU"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../LeaveGame")
+focus_neighbor_bottom = NodePath("../../VolumeSlider")
 theme_override_fonts/font = ExtResource("2_6udtp")
 theme_override_font_sizes/font_size = 16
 text = "QUIT GAME"
@@ -64,5 +70,7 @@ offset_left = 209.0
 offset_top = 281.0
 offset_right = 437.0
 offset_bottom = 297.0
+focus_neighbor_top = NodePath("../VBoxContainer/QuitButton")
+focus_neighbor_bottom = NodePath("../VBoxContainer/Resume")
 max_value = 1.0
 step = 0.05
