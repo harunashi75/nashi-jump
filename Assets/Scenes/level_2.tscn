@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://veagfppep3bm"]
+[gd_scene load_steps=30 format=4 uid="uid://veagfppep3bm"]
 
 [ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_f7ha1"]
 [ext_resource type="Texture2D" uid="uid://xy6f5lqcdyuf" path="res://Assets/Sprites/Backgrounds/Honeyland Sky2.png" id="2_efllg"]
@@ -10,8 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="7_7373x"]
 [ext_resource type="PackedScene" uid="uid://dpj0yojkqxtnx" path="res://Assets/Scenes/enemy_bee.tscn" id="8_1cifp"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="9_oqosq"]
-[ext_resource type="PackedScene" uid="uid://b00ntn5qs1bne" path="res://Assets/Scenes/enemy_yellow.tscn" id="10_lyqok"]
-[ext_resource type="PackedScene" uid="uid://b2ery55yhbn6v" path="res://Assets/Scenes/enemy_brown.tscn" id="11_ap8cu"]
+[ext_resource type="PackedScene" uid="uid://b00ntn5qs1bne" path="res://Assets/Scenes/honey_slime.tscn" id="10_lyqok"]
 [ext_resource type="Script" uid="uid://fnqdgup5gx8w" path="res://Assets/Scripts/tp_1.gd" id="12_bwmal"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="14_a6f8o"]
 [ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="14_oqosq"]
@@ -282,12 +281,12 @@ SPEED = 50
 position = Vector2(-440, -223)
 SPEED = 100
 
-[node name="Enemy_Yellow" parent="Enemies" instance=ExtResource("10_lyqok")]
-position = Vector2(184, -384)
+[node name="Honey_Slime" parent="Enemies" instance=ExtResource("10_lyqok")]
+position = Vector2(-72, -384)
 SPEED = 70
 
-[node name="Enemy_Brown" parent="Enemies" instance=ExtResource("11_ap8cu")]
-position = Vector2(-72, -384)
+[node name="Honey_Slime2" parent="Enemies" instance=ExtResource("10_lyqok")]
+position = Vector2(176, -384)
 
 [node name="Block" type="Node" parent="."]
 

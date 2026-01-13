@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://dp668blccexhd"]
+
+[ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="1_3c38q"]
+[ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_tg3b5"]
+[ext_resource type="Texture2D" uid="uid://cylxvdr7qspy2" path="res://Assets/Sprites/Enemies/Moon Slime-v2.png" id="2_tg3b5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kgoa"]
+atlas = ExtResource("2_tg3b5")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhali"]
+atlas = ExtResource("2_tg3b5")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lbyd"]
+atlas = ExtResource("2_tg3b5")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgywe"]
+atlas = ExtResource("2_tg3b5")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqt0q"]
+atlas = ExtResource("2_tg3b5")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8snpe"]
+atlas = ExtResource("2_tg3b5")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2i3b"]
+atlas = ExtResource("2_tg3b5")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bsvu8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kgoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhali")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lbyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgywe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqt0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8snpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2i3b")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tg3b5"]
+size = Vector2(10, 10)
+
+[node name="Moon_Slime" type="Node2D"]
+script = ExtResource("1_tg3b5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_bsvu8")
+animation = &"run"
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(9, 0)
+collision_mask = 66
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(-9, 0)
+collision_mask = 66
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("1_3c38q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_tg3b5")

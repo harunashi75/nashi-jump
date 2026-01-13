@@ -18,11 +18,9 @@ func _collect_powerup(body):
 	SkinManager.add_powerup_count()
 	GameManager.used_powerup = true
 
-
 	var effects = [
 		"health",
 		"shield",
-		"speed",
 		"jump"
 	]
 
@@ -36,10 +34,6 @@ func _collect_powerup(body):
 		"shield":
 			body.apply_shield(6.0)
 			SkinManager.add_shield_use()
-
-		"speed":
-			body.apply_speed_boost(3.0)
-			SkinManager.add_speed_boost_use()
 
 		"jump":
 			body.apply_jump_boost(3.0)

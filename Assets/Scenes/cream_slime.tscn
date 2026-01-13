@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://b1s1hvld4qbs"]
+
+[ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_l6wfj"]
+[ext_resource type="Texture2D" uid="uid://daiylf1cm4e7y" path="res://Assets/Sprites/Enemies/Cream Slime-v2.png" id="2_f8ekg"]
+[ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="2_l6wfj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmcd7"]
+atlas = ExtResource("2_f8ekg")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86gaq"]
+atlas = ExtResource("2_f8ekg")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8c2c"]
+atlas = ExtResource("2_f8ekg")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flk8g"]
+atlas = ExtResource("2_f8ekg")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jv5a"]
+atlas = ExtResource("2_f8ekg")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qdqg"]
+atlas = ExtResource("2_f8ekg")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50axn"]
+atlas = ExtResource("2_f8ekg")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_50axn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmcd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86gaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8c2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flk8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jv5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qdqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50axn")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfre8"]
+size = Vector2(10, 10)
+
+[node name="Cream_Slime" type="Node2D"]
+script = ExtResource("1_l6wfj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_50axn")
+animation = &"run"
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(9, 0)
+collision_mask = 66
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(-9, 0)
+collision_mask = 66
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("2_l6wfj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_tfre8")

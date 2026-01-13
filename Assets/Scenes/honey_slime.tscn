@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://b00ntn5qs1bne"]
+
+[ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_gm487"]
+[ext_resource type="Texture2D" uid="uid://ctbs4uikd6y82" path="res://Assets/Sprites/Enemies/Honey Slime-v2.png" id="2_gm487"]
+[ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="3_k0218"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pv68n"]
+atlas = ExtResource("2_gm487")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0218"]
+atlas = ExtResource("2_gm487")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tls5"]
+atlas = ExtResource("2_gm487")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e84x4"]
+atlas = ExtResource("2_gm487")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n5il"]
+atlas = ExtResource("2_gm487")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcghk"]
+atlas = ExtResource("2_gm487")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l53bb"]
+atlas = ExtResource("2_gm487")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1wona"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pv68n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0218")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tls5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e84x4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n5il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcghk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l53bb")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bg86q"]
+size = Vector2(10, 10)
+
+[node name="Honey_Slime" type="Node2D"]
+script = ExtResource("1_gm487")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_1wona")
+animation = &"run"
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(9, 0)
+collision_mask = 66
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(-9, 0)
+collision_mask = 66
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(2, -8)
+collision_layer = 8
+script = ExtResource("3_k0218")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-2, 3)
+shape = SubResource("RectangleShape2D_bg86q")

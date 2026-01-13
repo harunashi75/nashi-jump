@@ -32,7 +32,6 @@ var just_jumped = false
 var jump_anim_timer = 0.15
 
 var is_shielded: bool = false
-var speed_multiplier: float = 1.0
 var jump_multiplier: float = 1.0
 
 # ------------------------
@@ -124,7 +123,7 @@ func handle_horizontal(delta):
 
 	if direction != 0:
 		var accel := ACCELERATION if is_on_floor() else AIR_ACCELERATION
-		var target_speed := BASE_SPEED * speed_multiplier
+		var target_speed := BASE_SPEED
 
 		velocity.x = move_toward(
 			velocity.x,
@@ -147,7 +146,7 @@ func handle_horizontal(delta):
 		velocity.x *= AIR_DRAG
 	
 	# soft cap P-speed
-	var max_speed := MAX_SPEED * speed_multiplier
+	var max_speed := MAX_SPEED
 	if abs(velocity.x) > max_speed:
 		velocity.x = move_toward(
 			velocity.x,
@@ -165,7 +164,7 @@ func handle_jump_logic(delta):
 		var final_jump := JUMP_FORCE * jump_multiplier
 
 		# Bonus de saut si vitesse élevée (SMW)
-		if abs(velocity.x) > BASE_SPEED * 0.9 * speed_multiplier:
+		if abs(velocity.x) > BASE_SPEED * 0.9:
 			final_jump += RUN_JUMP_BONUS
 
 		velocity.y = final_jump
@@ -271,18 +270,6 @@ func apply_shield(duration: float = 6.0):
 	set_power("none")
 	print("Shield OFF")
 
-func apply_speed_boost(duration: float = 3.0):
-	speed_multiplier = 1.5
-	print("Speed Boost ON")
-
-	set_power("speed")
-
-	await get_tree().create_timer(duration).timeout
-
-	speed_multiplier = 1.0
-	set_power("none")
-	print("Speed Boost OFF")
-
 func apply_jump_boost(duration: float = 3.0):
 	jump_multiplier = 1.5
 	print("Jump Boost ON")
@@ -323,7 +310,6 @@ func take_damage(amount := 1):
 # ------------------------
 func die():
 	print("Player est mort")
-	SkinManager.add_death_count()
 
 	set_process_input(false)
 	set_physics_process(false)

@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://c3rxnqovwslqr"]
+
+[ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_2ych3"]
+[ext_resource type="Texture2D" uid="uid://m4huxgkaeonm" path="res://Assets/Sprites/Enemies/Corrupt Slime-v2.png" id="2_2ych3"]
+[ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="3_wdd3y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgpwk"]
+atlas = ExtResource("2_2ych3")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdd3y"]
+atlas = ExtResource("2_2ych3")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llg2i"]
+atlas = ExtResource("2_2ych3")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61upm"]
+atlas = ExtResource("2_2ych3")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcnc8"]
+atlas = ExtResource("2_2ych3")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn4pf"]
+atlas = ExtResource("2_2ych3")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45vv4"]
+atlas = ExtResource("2_2ych3")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u304f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgpwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdd3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llg2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61upm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcnc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nn4pf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45vv4")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dyck"]
+size = Vector2(10, 10)
+
+[node name="Corrupt_Slime" type="Node2D"]
+script = ExtResource("1_2ych3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_u304f")
+animation = &"run"
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(9, 0)
+collision_mask = 66
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(-9, 0)
+collision_mask = 66
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+script = ExtResource("3_wdd3y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_7dyck")

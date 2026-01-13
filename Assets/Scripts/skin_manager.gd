@@ -8,11 +8,9 @@ var unlocked_skins := {}
 var time_scores := {}
 var total_jumps := 0
 var total_powerups := 0
-var total_deaths := 0
 var no_powerup_victories := 0
 var idle_time := 0.0
 var jump_boost_uses := 0
-var speed_boost_uses := 0
 var shield_uses := 0
 
 # ------------------------
@@ -27,7 +25,6 @@ func _reset_defaults():
 	time_scores.clear()
 
 	unlocked_skins["default"] = true
-	unlocked_skins["murloc"] = true
 
 # ------------------------
 # Sauvegarde
@@ -40,11 +37,9 @@ func save_skin_data():
 		"time_scores": time_scores,
 		"total_jumps": total_jumps,
 		"total_powerups": total_powerups,
-		"total_deaths": total_deaths,
 		"no_powerup_victories": no_powerup_victories,
 		"idle_time": idle_time,
 		"jump_boost_uses": jump_boost_uses,
-		"speed_boost_uses": speed_boost_uses,
 		"shield_uses": shield_uses
 	})
 	file.close()
@@ -58,17 +53,14 @@ func load_skin_data():
 		time_scores = data.get("time_scores", {})
 		total_jumps = data.get("total_jumps", 0)
 		total_powerups = data.get("total_powerups", 0)
-		total_deaths = data.get("total_deaths", 0)
 		no_powerup_victories = data.get("no_powerup_victories", 0)
 		idle_time = data.get("idle_time", 0.0)
 		jump_boost_uses = data.get("jump_boost_uses", 0)
-		speed_boost_uses = data.get("speed_boost_uses", 0)
 		shield_uses = data.get("shield_uses", 0)
 		file.close()
 
 	# Toujours débloquer les skins de base
 	unlocked_skins["default"] = true
-	unlocked_skins["murloc"] = true
 
 # ------------------------
 # Vérifications & Déblocage
@@ -109,17 +101,6 @@ func check_powerup_skin():
 		unlock_skin("bubblegum")
 		save_skin_data()
 
-func add_death_count():
-	total_deaths += 1
-	print("Deaths :", total_deaths)
-	check_death_skin()
-	save_skin_data()
-
-func check_death_skin():
-	if total_deaths >= 100 and not is_unlocked("soul"):
-		unlock_skin("soul")
-		save_skin_data()
-
 func check_ignatius_condition():
 	if not GameManager.used_powerup:
 		no_powerup_victories += 1
@@ -154,26 +135,15 @@ func check_blue_ember():
 		unlock_skin("gaga")
 		save_skin_data()
 
-func add_speed_boost_use():
-	speed_boost_uses += 1
-	print("Speed Boost utilisés :", speed_boost_uses)
-	check_emerald()
-	save_skin_data()
-
-func check_emerald():
-	if speed_boost_uses >= 100 and not is_unlocked("emerald"):
-		unlock_skin("emerald")
-		save_skin_data()
-
 func add_shield_use():
 	shield_uses += 1
 	print("Shield utilisés :", shield_uses)
-	check_bloodforged()
+	check_sproutknight()
 	save_skin_data()
 
-func check_bloodforged():
-	if shield_uses >= 100 and not is_unlocked("bloodforged"):
-		unlock_skin("bloodforged")
+func check_sproutknight():
+	if shield_uses >= 100 and not is_unlocked("emerald"):
+		unlock_skin("emerald")
 		save_skin_data()
 
 func check_blue_ember_victory():

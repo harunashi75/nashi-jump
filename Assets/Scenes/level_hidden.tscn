@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://btpv0eojb66oc" path="res://Assets/Scripts/skin_hidden.gd" id="4_sp2fm"]
 [ext_resource type="Texture2D" uid="uid://bcryqhrslms5q" path="res://Assets/Sprites/TileSets/tileset_luminescent_hollow.png" id="4_v6ktc"]
 [ext_resource type="Texture2D" uid="uid://dqkuqpyt0wjqb" path="res://Assets/Sprites/Characters/hidden.png" id="5_rklcn"]
-[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="6_rklcn"]
+[ext_resource type="Script" uid="uid://dv30snr80vcj0" path="res://Assets/Scripts/tp_levels.gd" id="7_rklcn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0lbfy"]
 texture = ExtResource("4_v6ktc")
@@ -161,7 +161,7 @@ tile_map_data = PackedByteArray("AAD+//n/AAABAAEAAAD+//r/AAABAAAAAAD6////AAABAAA
 tile_set = SubResource("TileSet_v6ktc")
 
 [node name="TP-Levels" type="Area2D" parent="."]
-script = ExtResource("6_rklcn")
+script = ExtResource("7_rklcn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels"]
 position = Vector2(180, -16)

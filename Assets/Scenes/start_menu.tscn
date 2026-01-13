@@ -121,22 +121,12 @@ text = "ABYSSAL"
 [node name="BeeSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../AbyssalSkin")
-focus_neighbor_bottom = NodePath("../BloodforgedSkin")
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
 text = "BEEZZZ"
 
-[node name="BloodforgedSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../BeeSkin")
-focus_neighbor_bottom = NodePath("../GagaSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "BLOODFORGED"
-
 [node name="GagaSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../BloodforgedSkin")
 focus_neighbor_bottom = NodePath("../BubblegumSkin")
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
@@ -193,22 +183,12 @@ text = "MYSTIC"
 [node name="RainbowSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../MysticSkin")
-focus_neighbor_bottom = NodePath("../SoulforgedSkin")
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
 text = "RAINBOW"
 
-[node name="SoulforgedSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../RainbowSkin")
-focus_neighbor_bottom = NodePath("../EmeraldSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "SOULFORGED"
-
 [node name="EmeraldSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../SoulforgedSkin")
 focus_neighbor_bottom = NodePath("../VoidSkin")
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
@@ -258,7 +238,7 @@ text = "Skins Unlock Conditions:
 
 • Beezzz – to be found in the levels
 
-• Bloodforged – Having an active shield 100 times
+• Sprout Knight – Having an active shield 100 times
 
 • Blue Ember – Having an active jump boost 120 times
 
@@ -275,10 +255,6 @@ text = "Skins Unlock Conditions:
 • Mystic – 1000 cumulative jumps
 
 • Rainbow – Complete all levels without dying
-
-• Soulforged – Die 100 times
-
-• Sprout Knight – Having an active speed boost 100 times
 
 • Voidwalker – to be found in Lunar Dream
 
@@ -303,4 +279,4 @@ offset_right = 633.0
 offset_bottom = 351.0
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
-text = "v0.12.90-8p010826 (Development Build)"
+text = "v0.12.90-2a011326 (Development Build)"

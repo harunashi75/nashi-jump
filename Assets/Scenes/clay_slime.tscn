@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://b2ery55yhbn6v"]
+
+[ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_rvxcc"]
+[ext_resource type="Texture2D" uid="uid://b3jp6jest25qy" path="res://Assets/Sprites/Enemies/Clay Slime-v2.png" id="2_rvxcc"]
+[ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="3_epn88"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjb71"]
+atlas = ExtResource("2_rvxcc")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epn88"]
+atlas = ExtResource("2_rvxcc")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g4ju"]
+atlas = ExtResource("2_rvxcc")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r45pg"]
+atlas = ExtResource("2_rvxcc")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgyov"]
+atlas = ExtResource("2_rvxcc")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxqy1"]
+atlas = ExtResource("2_rvxcc")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77us3"]
+atlas = ExtResource("2_rvxcc")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycn6v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjb71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epn88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g4ju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r45pg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgyov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxqy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77us3")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oe4y8"]
+size = Vector2(10, 10)
+
+[node name="Clay_Slime" type="Node2D"]
+script = ExtResource("1_rvxcc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_ycn6v")
+animation = &"run"
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(9, 0)
+collision_mask = 66
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(-9, 0)
+collision_mask = 66
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+script = ExtResource("3_epn88")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_oe4y8")

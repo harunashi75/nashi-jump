@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://b250b3gnklqud"]
+
+[ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="1_hruxr"]
+[ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_r5h5i"]
+[ext_resource type="Texture2D" uid="uid://ruca356hm28h" path="res://Assets/Sprites/Enemies/Sand Slime-v2.png" id="2_r5h5i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjfee"]
+atlas = ExtResource("2_r5h5i")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41ksx"]
+atlas = ExtResource("2_r5h5i")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy14k"]
+atlas = ExtResource("2_r5h5i")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ql6b"]
+atlas = ExtResource("2_r5h5i")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sg81"]
+atlas = ExtResource("2_r5h5i")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1i0c"]
+atlas = ExtResource("2_r5h5i")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwuan"]
+atlas = ExtResource("2_r5h5i")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ukbe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjfee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41ksx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gy14k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ql6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sg81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1i0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwuan")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5h5i"]
+size = Vector2(10, 10)
+
+[node name="Sand_Slime" type="Node2D"]
+script = ExtResource("1_r5h5i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_7ukbe")
+animation = &"run"
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(9, 0)
+collision_mask = 66
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(-9, 0)
+collision_mask = 66
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("1_hruxr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_r5h5i")

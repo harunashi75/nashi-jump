@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bwj01e4o3fmmy" path="res://Assets/Sprites/Backgrounds/Bloodlands Sky2.png" id="2_x1nnq"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="4_couoj"]
 [ext_resource type="Texture2D" uid="uid://ccflja0btapae" path="res://Assets/Sprites/TileSets/tileset_bloodlands-v2.png" id="4_fmkoj"]
-[ext_resource type="PackedScene" uid="uid://dav6snuyljlmr" path="res://Assets/Scenes/enemy_red.tscn" id="6_04btm"]
+[ext_resource type="PackedScene" uid="uid://dav6snuyljlmr" path="res://Assets/Scenes/blood_slime.tscn" id="6_04btm"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="8_gl0cm"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="8_sundp"]
 [ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="10_x1nnq"]
@@ -133,29 +133,29 @@ position = Vector2(-104, -409)
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy_Red" parent="Enemies" instance=ExtResource("6_04btm")]
+[node name="Blood_Slime" parent="Enemies" instance=ExtResource("6_04btm")]
 position = Vector2(192, -320)
 SPEED = 60
 
-[node name="Enemy_Red2" parent="Enemies" instance=ExtResource("6_04btm")]
+[node name="Blood_Slime2" parent="Enemies" instance=ExtResource("6_04btm")]
 position = Vector2(176, -400)
 
-[node name="Enemy_Red3" parent="Enemies" instance=ExtResource("6_04btm")]
+[node name="Blood_Slime3" parent="Enemies" instance=ExtResource("6_04btm")]
 position = Vector2(-184, -400)
 SPEED = 50
 
-[node name="Enemy_Red4" parent="Enemies" instance=ExtResource("6_04btm")]
+[node name="Blood_Slime4" parent="Enemies" instance=ExtResource("6_04btm")]
 position = Vector2(-200, -320)
 
-[node name="Enemy_Red5" parent="Enemies" instance=ExtResource("6_04btm")]
+[node name="Blood_Slime5" parent="Enemies" instance=ExtResource("6_04btm")]
 position = Vector2(-368, -96)
 SPEED = 60
 
-[node name="Enemy_Red6" parent="Enemies" instance=ExtResource("6_04btm")]
+[node name="Blood_Slime6" parent="Enemies" instance=ExtResource("6_04btm")]
 position = Vector2(-304, -208)
 SPEED = 40
 
-[node name="Enemy_Red7" parent="Enemies" instance=ExtResource("6_04btm")]
+[node name="Blood_Slime7" parent="Enemies" instance=ExtResource("6_04btm")]
 position = Vector2(-472, -304)
 SPEED = 50
 

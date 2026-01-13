@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://citc4w372r8xa" path="res://Assets/Sprites/TileSets/tileset_corrupted_bloom-v2.png" id="4_dnb7t"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="4_e1nir"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="5_6y5sb"]
-[ext_resource type="PackedScene" uid="uid://c3rxnqovwslqr" path="res://Assets/Scenes/enemy_purple.tscn" id="6_0jg5g"]
+[ext_resource type="PackedScene" uid="uid://c3rxnqovwslqr" path="res://Assets/Scenes/corrupt_slime.tscn" id="6_0jg5g"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="6_sw5h8"]
 [ext_resource type="PackedScene" uid="uid://bsrmmairay61a" path="res://Assets/Scenes/brickhead_corrupted.tscn" id="7_s8ahg"]
 [ext_resource type="PackedScene" uid="uid://b2sr1dbwgya5l" path="res://Assets/Scenes/saw.tscn" id="8_2gdu6"]
@@ -133,14 +133,14 @@ position = Vector2(-264, -281)
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy_Purple" parent="Enemies" instance=ExtResource("6_0jg5g")]
+[node name="Corrupt_Slime" parent="Enemies" instance=ExtResource("6_0jg5g")]
 position = Vector2(0, -192)
 
-[node name="Enemy_Purple2" parent="Enemies" instance=ExtResource("6_0jg5g")]
+[node name="Corrupt_Slime2" parent="Enemies" instance=ExtResource("6_0jg5g")]
 position = Vector2(-128, -192)
 SPEED = 60
 
-[node name="Enemy_Purple3" parent="Enemies" instance=ExtResource("6_0jg5g")]
+[node name="Corrupt_Slime3" parent="Enemies" instance=ExtResource("6_0jg5g")]
 position = Vector2(-224, -192)
 SPEED = 40
 

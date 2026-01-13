@@ -31,15 +31,13 @@ var skin_buttons := {
 	"abyssal": "ScrollContainer/VBoxContainer/AbyssalSkin",
 	"rainbow": "ScrollContainer/VBoxContainer/RainbowSkin",
 	"ignatius": "ScrollContainer/VBoxContainer/IgnatiusSkin",
-	"bloodforged": "ScrollContainer/VBoxContainer/BloodforgedSkin",
 	"frost": "ScrollContainer/VBoxContainer/FrostSkin",
 	"bubblegum": "ScrollContainer/VBoxContainer/BubblegumSkin",
 	"hell": "ScrollContainer/VBoxContainer/HellSkin",
 	"void": "ScrollContainer/VBoxContainer/VoidSkin",
 	"gaga": "ScrollContainer/VBoxContainer/GagaSkin",
 	"bee": "ScrollContainer/VBoxContainer/BeeSkin",
-	"hidden": "ScrollContainer/VBoxContainer/HiddenSkin",
-	"soul": "ScrollContainer/VBoxContainer/SoulforgedSkin"
+	"hidden": "ScrollContainer/VBoxContainer/HiddenSkin"
 }
 
 # ------------------------
@@ -158,7 +156,7 @@ func _update_skin_buttons():
 	for skin_name in skin_buttons.keys():
 		var button = skin_menu.get_node(skin_buttons[skin_name])
 		
-		if skin_name in ["default", "murloc"]:
+		if skin_name in ["default"]:
 			button.disabled = false
 		else:
 			button.disabled = !SkinManager.unlocked_skins.get(skin_name, false)
