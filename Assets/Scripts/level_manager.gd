@@ -4,7 +4,6 @@ extends Node
 # Niveaux disponibles
 # ------------------------
 var levels := [
-	"res://Assets/Scenes/level_world.tscn",
 	"res://Assets/Scenes/level_1.tscn",
 	"res://Assets/Scenes/level_2.tscn",
 	"res://Assets/Scenes/level_3.tscn",
@@ -13,12 +12,13 @@ var levels := [
 	"res://Assets/Scenes/level_6.tscn",
 	"res://Assets/Scenes/level_7.tscn",
 	"res://Assets/Scenes/level_8.tscn",
-	"res://Assets/Scenes/level_ghostlands.tscn",
+	"res://Assets/Scenes/level_supernatural_forest.tscn",
 	"res://Assets/Scenes/level_sunken_amber_valley.tscn",
 	"res://Assets/Scenes/level_lunar_dream.tscn",
 	"res://Assets/Scenes/level_sakura.tscn",
 	"res://Assets/Scenes/level_corrupted_bloom.tscn",
-	"res://Assets/Scenes/level_hidden.tscn"
+	"res://Assets/Scenes/level_hidden.tscn",
+	"res://Assets/Scenes/victory_scene.tscn"
 ]
 
 # ------------------------
@@ -64,18 +64,21 @@ func load_level_by_path(path: String) -> void:
 # ------------------------
 func _load_scene_async(path: String) -> void:
 	get_tree().get_root().set_process_input(false)
-	var packed_scene = load(path)
 
+	var packed_scene := load(path)
 	if packed_scene == null:
 		printerr("Scène non trouvée :", path)
 		get_tree().get_root().set_process_input(true)
 		return
 
-	var error = get_tree().change_scene_to_packed(packed_scene)
+	call_deferred("_deferred_change_scene", packed_scene)
+
+func _deferred_change_scene(packed_scene: PackedScene) -> void:
+	var error := get_tree().change_scene_to_packed(packed_scene)
 
 	if error != OK:
 		printerr("Erreur lors du changement de scène :", error)
 		get_tree().get_root().set_process_input(true)
 		return
 
-	get_tree().get_root().call_deferred("set_process_input", true)
+	get_tree().get_root().set_process_input(true)

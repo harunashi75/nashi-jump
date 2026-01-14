@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="12_5vbaw"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="12_hnmmg"]
 [ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="13_bamfg"]
+[ext_resource type="Script" uid="uid://cb0buwrvrpv5h" path="res://Assets/Scripts/tp_levels_6.gd" id="13_cxidm"]
 [ext_resource type="PackedScene" uid="uid://b1s1hvld4qbs" path="res://Assets/Scenes/cream_slime.tscn" id="13_per8p"]
-[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="15_per8p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mhnv3"]
 texture = ExtResource("5_hnmmg")
@@ -319,7 +319,7 @@ speed = 80
 position = Vector2(-248, -240)
 
 [node name="TP-Levels" type="Area2D" parent="."]
-script = ExtResource("15_per8p")
+script = ExtResource("13_cxidm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels"]
 position = Vector2(-300, -72)

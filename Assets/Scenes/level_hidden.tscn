@@ -1,13 +1,11 @@
-[gd_scene load_steps=19 format=4 uid="uid://dgik3pra4kqrw"]
+[gd_scene load_steps=12 format=4 uid="uid://dgik3pra4kqrw"]
 
 [ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_jsgvk"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="2_dxt37"]
 [ext_resource type="Texture2D" uid="uid://l507jjkl7130" path="res://Assets/Sprites/Backgrounds/Hollow Sky2.png" id="2_rklcn"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="3_mqprx"]
-[ext_resource type="Script" uid="uid://btpv0eojb66oc" path="res://Assets/Scripts/skin_hidden.gd" id="4_sp2fm"]
 [ext_resource type="Texture2D" uid="uid://bcryqhrslms5q" path="res://Assets/Sprites/TileSets/tileset_luminescent_hollow.png" id="4_v6ktc"]
-[ext_resource type="Texture2D" uid="uid://dqkuqpyt0wjqb" path="res://Assets/Sprites/Characters/hidden.png" id="5_rklcn"]
-[ext_resource type="Script" uid="uid://dv30snr80vcj0" path="res://Assets/Scripts/tp_levels.gd" id="7_rklcn"]
+[ext_resource type="Script" uid="uid://cybdaeaq3d025" path="res://Assets/Scripts/tp_supernatural_forest.gd" id="5_jsgvk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0lbfy"]
 texture = ExtResource("4_v6ktc")
@@ -55,38 +53,6 @@ texture = ExtResource("4_v6ktc")
 [sub_resource type="TileSet" id="TileSet_sssql"]
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_0lbfy")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v6ktc"]
-atlas = ExtResource("5_rklcn")
-region = Rect2(16, 72, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0lbfy"]
-atlas = ExtResource("5_rklcn")
-region = Rect2(32, 72, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sssql"]
-atlas = ExtResource("5_rklcn")
-region = Rect2(48, 72, 16, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0lbfy"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v6ktc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0lbfy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sssql")
-}],
-"loop": true,
-"name": &"default",
-"speed": 7.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sssql"]
-size = Vector2(15, 15)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rklcn"]
 texture = ExtResource("4_v6ktc")
@@ -144,24 +110,12 @@ tile_set = SubResource("TileSet_sssql")
 [node name="Player" parent="." instance=ExtResource("2_dxt37")]
 position = Vector2(-112, -64)
 
-[node name="skin_hidden" type="Area2D" parent="."]
-script = ExtResource("4_sp2fm")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="skin_hidden"]
-position = Vector2(225, -68)
-sprite_frames = SubResource("SpriteFrames_0lbfy")
-autoplay = "default"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="skin_hidden"]
-position = Vector2(224.5, -63.5)
-shape = SubResource("RectangleShape2D_sssql")
-
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD+//n/AAABAAEAAAD+//r/AAABAAAAAAD6////AAABAAAAAAD6//7/AAABAAEAAAA=")
 tile_set = SubResource("TileSet_v6ktc")
 
 [node name="TP-Levels" type="Area2D" parent="."]
-script = ExtResource("7_rklcn")
+script = ExtResource("5_jsgvk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels"]
 position = Vector2(180, -16)

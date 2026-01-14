@@ -68,53 +68,52 @@ func load_skin_data():
 func is_unlocked(skin_name: String) -> bool:
 	return unlocked_skins.get(skin_name, false)
 
-func unlock_skin(skin_name: String, pos: Vector2 = Vector2.ZERO):
-	if not is_unlocked(skin_name):
-		unlocked_skins[skin_name] = true
-		_show_unlock_feedback(skin_name, pos)
-		save_skin_data()
+func unlock_skin(skin_name: String):
+	if is_unlocked(skin_name):
+		return
+
+	unlocked_skins[skin_name] = true
+
+	# --- Track skin unlocked during this run ---
+	if not GameManager.skins_unlocked_this_run.has(skin_name):
+		GameManager.skins_unlocked_this_run.append(skin_name)
+
+	# SoundManager.play("unlock")
+	save_skin_data()
 
 func check_jump_skins():
 	if total_jumps >= 1000 and not is_unlocked("mystic"):
 		unlock_skin("mystic")
-		save_skin_data()
 
 func on_player_jump():
 	total_jumps += 1
 	print("Jumps :", total_jumps)
 	check_jump_skins()
-	save_skin_data()
 
 func check_no_damage_skin():
 	if GameManager.no_damage_run and not is_unlocked("rainbow"):
 		unlock_skin("rainbow")
-		save_skin_data()
 
 func add_powerup_count():
 	total_powerups += 1
 	print("Power-ups collectés :", total_powerups)
 	check_powerup_skin()
-	save_skin_data()
 
 func check_powerup_skin():
 	if total_powerups >= 200 and not is_unlocked("bubblegum"):
 		unlock_skin("bubblegum")
-		save_skin_data()
 
 func check_ignatius_condition():
 	if not GameManager.used_powerup:
 		no_powerup_victories += 1
 		print("No-powerup victories :", no_powerup_victories)
-		save_skin_data()
 	
 	if no_powerup_victories >= 5 and not is_unlocked("ignatius"):
 		unlock_skin("ignatius")
-		save_skin_data()
 
 func add_idle_time(delta):
 	idle_time += delta
 	check_frost_knight()
-	save_skin_data()
 
 func reset_idle_timer():
 	idle_time = 0
@@ -122,39 +121,32 @@ func reset_idle_timer():
 func check_frost_knight():
 	if idle_time >= 30.0 and not is_unlocked("frost"):
 		unlock_skin("frost")
-		save_skin_data()
 
 func add_jump_boost_use():
 	jump_boost_uses += 1
 	print("Jump Boost utilisés :", jump_boost_uses)
 	check_blue_ember()
-	save_skin_data()
 
 func check_blue_ember():
 	if jump_boost_uses >= 120 and not is_unlocked("gaga"):
 		unlock_skin("gaga")
-		save_skin_data()
 
 func add_shield_use():
 	shield_uses += 1
 	print("Shield utilisés :", shield_uses)
 	check_sproutknight()
-	save_skin_data()
 
 func check_sproutknight():
 	if shield_uses >= 100 and not is_unlocked("emerald"):
 		unlock_skin("emerald")
-		save_skin_data()
 
 func check_blue_ember_victory():
 	if current_skin == "gaga" and not is_unlocked("abyssal"):
 		unlock_skin("abyssal")
-		save_skin_data()
 
 func check_unlock_skins(total_coins: int):
 	if total_coins >= 130 and not is_unlocked("gold"):
 		unlock_skin("gold")
-		save_skin_data()
 
 func set_completion_time(time_in_seconds: float) -> void:
 	var best_time: float = time_scores.get("best", INF)
@@ -162,26 +154,9 @@ func set_completion_time(time_in_seconds: float) -> void:
 	if time_in_seconds < best_time:
 		time_scores["best"] = time_in_seconds
 		check_time_skins()
-		save_skin_data()
 
 func check_time_skins():
 	var best_time: float = time_scores.get("best", INF)
 
 	if best_time <= 600.0 and not is_unlocked("hell"):
 		unlock_skin("hell")
-		save_skin_data()
-
-# ------------------------
-# Utilitaires
-# ------------------------
-func _show_unlock_feedback(skin_name: String, pos: Vector2 = Vector2.ZERO):
-	if pos == Vector2.ZERO:
-		pos = _get_player_pos()
-	GameManager.show_floating_text("Skin unlocked : " + skin_name, pos, Color(1.0, 0.84, 0.0))
-	SoundManager.play("unlock")
-
-func _get_player_pos() -> Vector2:
-	var player = get_tree().get_first_node_in_group("player")
-	if player:
-		return player.position + Vector2(0, -80)
-	return Vector2(200, 200)

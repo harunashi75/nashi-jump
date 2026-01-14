@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="5_lvrc5"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="6_1pdj0"]
 [ext_resource type="PackedScene" uid="uid://c0gifo0wkc4rx" path="res://Assets/Scenes/ember_slime.tscn" id="7_bls7y"]
-[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="8_dijul"]
+[ext_resource type="Script" uid="uid://bxsp56x1vx7lm" path="res://Assets/Scripts/tp_lunar_dream.gd" id="8_03e7l"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="9_ivafa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qlimq"]
@@ -312,7 +312,7 @@ position = Vector2(-136, -104)
 shape = SubResource("RectangleShape2D_1s0my")
 
 [node name="TP-Levels" type="Area2D" parent="."]
-script = ExtResource("8_dijul")
+script = ExtResource("8_03e7l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels"]
 position = Vector2(-124, -232)

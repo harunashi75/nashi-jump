@@ -12,7 +12,7 @@ func _ready() -> void:
 	load_best_time()
 
 func _process(delta: float) -> void:
-	if running and not paused:
+	if running:
 		time_elapsed += delta
 
 # ------------------------
@@ -21,18 +21,9 @@ func _process(delta: float) -> void:
 func start_timer() -> void:
 	time_elapsed = 0.0
 	running = true
-	paused = false
-
-func pause_timer() -> void:
-	paused = true
-
-func resume_timer() -> void:
-	if running:
-		paused = false
 
 func stop_timer() -> void:
 	running = false
-	paused = false
 
 # ------------------------
 # Getters
@@ -42,6 +33,9 @@ func get_elapsed_time() -> float:
 
 func get_formatted_time() -> String:
 	return _format_time(time_elapsed)
+
+func format_time(time: float) -> String:
+	return _format_time(time)
 
 # ------------------------
 # Best time logic

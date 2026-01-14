@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dgd83j7up65k4" path="res://Assets/Scenes/platform_2.tscn" id="5_hw642"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="7_mosop"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="7_wm78l"]
-[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="12_mosop"]
+[ext_resource type="Script" uid="uid://djq8uh536rl42" path="res://Assets/Scripts/tp_levels_3.gd" id="11_niqf0"]
 [ext_resource type="PackedScene" uid="uid://b2ery55yhbn6v" path="res://Assets/Scenes/clay_slime.tscn" id="12_wm78l"]
 [ext_resource type="PackedScene" uid="uid://jb7gqeylewot" path="res://Assets/Scenes/spikes.tscn" id="12_y5qq7"]
 [ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="15_pgype"]
@@ -434,7 +434,7 @@ position = Vector2(-512, -48)
 speed = 40
 
 [node name="TP-Levels" type="Area2D" parent="."]
-script = ExtResource("12_mosop")
+script = ExtResource("11_niqf0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels"]
 position = Vector2(-556, -16)

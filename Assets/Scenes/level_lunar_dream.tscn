@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="7_rb6g7"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="8_r8dem"]
 [ext_resource type="PackedScene" uid="uid://dp668blccexhd" path="res://Assets/Scenes/moon_slime.tscn" id="9_dol1v"]
-[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="11_dol1v"]
+[ext_resource type="Script" uid="uid://o7cv5mwkw1jk" path="res://Assets/Scripts/tp_sakura.gd" id="11_dol1v"]
 [ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="11_m2vtl"]
 [ext_resource type="Script" uid="uid://mb5ux3odaue" path="res://Assets/Scripts/killzone.gd" id="12_slfiq"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="13_uyjy3"]

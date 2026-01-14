@@ -17,9 +17,16 @@ var levels_checkpoint_scene_path := ""
 # ------------------------
 var godmode_enabled := false
 var is_game_paused: bool = false
-var floating_text_scene := preload("res://Assets/Scenes/floating_text.tscn")
 var no_damage_run: bool = true
 var used_powerup := false
+
+const SAVE_PATH := "user://savegame.cfg"
+var current_level_path: String = ""
+
+# -------- Victory Stats --------
+var run_time: float = 0.0
+var deaths_count: int = 0
+var skins_unlocked_this_run: Array = []
 
 # ------------------------
 # Pièces
@@ -33,26 +40,16 @@ var total_possible_coins := 130
 # Initialisation
 # ------------------------
 func _ready():
+	load_coins()
 	if hud and not hud.is_inside_tree():
 		hud = null
 	if pause_menu and not pause_menu.is_inside_tree():
 		pause_menu = null
 
 # ------------------------
-# Affichage texte
-# ------------------------
-func show_floating_text(text: String, position: Vector2, color: Color = Color.WHITE):
-	var floating_text = floating_text_scene.instantiate()
-	floating_text.position = position
-	floating_text.get_node("Label").text = text
-	floating_text.get_node("Label").modulate = color
-	get_tree().current_scene.add_child(floating_text)
-
-# ------------------------
 # Démarrage & Pause
 # ------------------------
 func start_game():
-	reset_coins()
 	no_damage_run = true
 	used_powerup = false
 
@@ -65,6 +62,39 @@ func toggle_pause():
 			pause_menu.show_pause_menu()
 		else:
 			pause_menu.hide_pause_menu()
+
+func save_current_level(level_path: String) -> void:
+	current_level_path = level_path
+
+	var config := ConfigFile.new()
+	config.set_value("progress", "current_level", level_path)
+	config.save(SAVE_PATH)
+
+func load_saved_level() -> String:
+	var config := ConfigFile.new()
+
+	if config.load(SAVE_PATH) == OK:
+		var level: String = config.get_value(
+			"progress",
+			"current_level",
+			"res://Assets/Scenes/level_1.tscn"
+		)
+
+		levels_checkpoint_scene_path = level
+		levels_checkpoint_enabled = true
+		return level
+
+	levels_checkpoint_scene_path = "res://Assets/Scenes/level_1.tscn"
+	levels_checkpoint_enabled = true
+	return "res://Assets/Scenes/level_1.tscn"
+
+func reset_progress():
+	reset_coins()
+	
+	var config := ConfigFile.new()
+	config.set_value("progress", "current_level", "res://Assets/Scenes/level_1.tscn")
+	config.set_value("coins", "by_level", {})
+	config.save(SAVE_PATH)
 
 # ------------------------
 # Coins
@@ -86,11 +116,11 @@ func mark_coin_collected(level: String, id: String):
 
 	list.append(id)
 	coins_collected_by_level[level] = list
-
-	print("Coin unique collecté :", id)
-	_update_hud_coins()
+	
+	save_coins()
 
 	SkinManager.check_unlock_skins(get_total_unique_coins())
+	_update_hud_coins()
 
 func is_coin_already_collected(level_name: String, coin_id: String) -> bool:
 	return coins_collected_by_level.has(level_name) and coin_id in coins_collected_by_level[level_name]
@@ -105,6 +135,21 @@ func get_total_coins_for_level(level_name: String) -> int:
 	if level_name == "Level_World":
 		return 0
 	return 10
+
+func save_coins():
+	var config := ConfigFile.new()
+	config.load(SAVE_PATH)
+
+	config.set_value("coins", "by_level", coins_collected_by_level)
+	config.save(SAVE_PATH)
+
+func load_coins():
+	var config := ConfigFile.new()
+
+	if config.load(SAVE_PATH) != OK:
+		return
+
+	coins_collected_by_level = config.get_value("coins", "by_level", {})
 
 # ------------------------
 # HUD
@@ -135,8 +180,8 @@ func set_levels_checkpoint(path: String):
 
 func reset_checkpoint_data():
 	levels_checkpoint_enabled = false
-	levels_checkpoint_scene_path = "res://Assets/Scenes/level_world.tscn"
-	print("Checkpoint reset -> retour au niveau hub")
+	levels_checkpoint_scene_path = "res://Assets/Scenes/level_1.tscn"
+	print("Checkpoint reset -> retour au niveau 1")
 
 # ------------------------
 # Input

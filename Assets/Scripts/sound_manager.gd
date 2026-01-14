@@ -9,10 +9,11 @@ var sounds = {}
 @onready var sfx_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
 var excluded_scenes := [
-	"res://Assets/Scenes/start_menu.tscn"
+	"res://Assets/Scenes/start_menu.tscn",
+	"res://Assets/Scenes/victory_scene.tscn"
 ]
 
-@onready var background_music := preload("res://Assets/Sounds/journey_across_the_blue.ogg")
+@onready var background_music := preload("res://Assets/Sounds/time_for_adventure.mp3")
 
 var last_scene = null
 

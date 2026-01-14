@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="9_oqosq"]
 [ext_resource type="PackedScene" uid="uid://b00ntn5qs1bne" path="res://Assets/Scenes/honey_slime.tscn" id="10_lyqok"]
 [ext_resource type="Script" uid="uid://fnqdgup5gx8w" path="res://Assets/Scripts/tp_1.gd" id="12_bwmal"]
+[ext_resource type="Script" uid="uid://3t378uqbxysf" path="res://Assets/Scripts/tp_levels_2.gd" id="13_7373x"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="14_a6f8o"]
-[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="14_oqosq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyqok"]
 texture = ExtResource("5_43g7m")
@@ -373,7 +373,7 @@ position = Vector2(-212, -8)
 shape = SubResource("RectangleShape2D_lm58p")
 
 [node name="TP-Levels" type="Area2D" parent="."]
-script = ExtResource("14_oqosq")
+script = ExtResource("13_7373x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TP-Levels"]
 position = Vector2(-524, -400)

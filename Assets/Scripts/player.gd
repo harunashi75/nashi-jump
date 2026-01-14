@@ -310,6 +310,7 @@ func take_damage(amount := 1):
 # ------------------------
 func die():
 	print("Player est mort")
+	GameManager.deaths_count += 1
 
 	set_process_input(false)
 	set_physics_process(false)
@@ -341,5 +342,9 @@ func respawn():
 
 func load_respawn_scene():
 	print("Respawn du joueur...")
-	var path = GameManager.levels_checkpoint_scene_path if GameManager.levels_checkpoint_enabled else "res://Assets/Scenes/level_world.tscn"
+
+	var path := GameManager.levels_checkpoint_scene_path
+	if path == "":
+		path = GameManager.load_saved_level()
+
 	LevelManager.load_level_by_path(path)

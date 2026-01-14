@@ -46,14 +46,22 @@ theme_override_constants/separation = 5
 [node name="Play" type="Button" parent="Menu"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../NewGame")
+theme_override_fonts/font = ExtResource("4_qd4of")
+theme_override_font_sizes/font_size = 16
+text = "PLAY"
+
+[node name="NewGame" type="Button" parent="Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Play")
 focus_neighbor_bottom = NodePath("../Skins")
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 16
-text = "START GAME"
+text = "NEW GAME"
 
 [node name="Skins" type="Button" parent="Menu"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Play")
+focus_neighbor_top = NodePath("../NewGame")
 focus_neighbor_bottom = NodePath("../UnlockInfo")
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 16
@@ -96,7 +104,6 @@ layout_mode = 2
 
 [node name="Back" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../HiddenSkin")
 focus_neighbor_bottom = NodePath("../DefaultSkin")
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 16
@@ -197,18 +204,9 @@ text = "SPROUT KNIGHT"
 [node name="VoidSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../EmeraldSkin")
-focus_neighbor_bottom = NodePath("../HiddenSkin")
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
 text = "VOIDWALKER"
-
-[node name="HiddenSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../VoidSkin")
-focus_neighbor_bottom = NodePath("../Back")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "???"
 
 [node name="UnlockInfoPanel" type="Panel" parent="."]
 visible = false
@@ -246,7 +244,7 @@ text = "Skins Unlock Conditions:
 
 • Frost Knight – Survive for 30 seconds without moving
 
-• Gold – 120 coins
+• Gold – 130 coins
 
 • Hell Spawn – Complete all levels within 10 minutes
 
@@ -256,9 +254,7 @@ text = "Skins Unlock Conditions:
 
 • Rainbow – Complete all levels without dying
 
-• Voidwalker – to be found in Lunar Dream
-
-• ??? – ???"
+• Voidwalker – to be found in Lunar Dream"
 vertical_alignment = 1
 
 [node name="Back2" type="Button" parent="UnlockInfoPanel"]
@@ -279,4 +275,4 @@ offset_right = 633.0
 offset_bottom = 351.0
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
-text = "v0.12.90-2a011326 (Development Build)"
+text = "v0.13.90-3p011426 (Development Build)"

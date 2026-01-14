@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="10_2v7sf"]
 [ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="11_gn4xj"]
 [ext_resource type="Script" uid="uid://fnqdgup5gx8w" path="res://Assets/Scripts/tp_1.gd" id="12_2v7sf"]
-[ext_resource type="Script" uid="uid://bdd53jupinopr" path="res://Assets/Scripts/tp_world.gd" id="14_2v7sf"]
+[ext_resource type="Script" uid="uid://ccpu806yaiy8n" path="res://Assets/Scripts/tp_levels_1.gd" id="14_2v7sf"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="16_7gr1e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tb6r1"]

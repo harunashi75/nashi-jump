@@ -9,5 +9,5 @@ func _ready():
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		if not SkinManager.is_unlocked(skin_id):
-			SkinManager.unlock_skin(skin_id, body.position + floating_text_offset)
+			SkinManager.unlock_skin(skin_id)
 		queue_free()

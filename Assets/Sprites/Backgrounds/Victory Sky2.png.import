@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d340rryge672r"
-path="res://.godot/imported/tileset_zero-v3.png-2201904a6998315a3da4e959ca1dbf18.ctex"
+uid="uid://bpj32do8lwtwv"
+path="res://.godot/imported/Victory Sky2.png-50fa292d0f4c27a9d697a2167f6ccbc8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/TileSets/tileset_zero-v3.png"
-dest_files=["res://.godot/imported/tileset_zero-v3.png-2201904a6998315a3da4e959ca1dbf18.ctex"]
+source_file="res://Assets/Sprites/Backgrounds/Victory Sky2.png"
+dest_files=["res://.godot/imported/Victory Sky2.png-50fa292d0f4c27a9d697a2167f6ccbc8.ctex"]
 
 [params]
 

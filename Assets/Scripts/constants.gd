@@ -11,7 +11,6 @@ const SAVE_PATH := "user://skin_data.save"
 const DEFAULT_UNLOCKED_SKINS := {
 	"emerald": false, "mystic": false, "abyssal": false,
 	"rainbow": false, "gold": false, "hell": false,
-	"bubblegum": false, "ignatius": false,
-	"frost": false, "void": false, "bee": false,
-	"gaga": false, "hidden": false
+	"bubblegum": false, "ignatius": false, "gaga": false,
+	"frost": false, "void": false, "bee": false
 }

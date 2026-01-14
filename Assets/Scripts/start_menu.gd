@@ -7,6 +7,7 @@ var skin_scroll: ScrollContainer
 var skin_vbox: VBoxContainer
 
 @onready var play_button = $Menu/Play
+@onready var new_game_button = $Menu/NewGame
 @onready var skins_button = $Menu/Skins
 @onready var unlock_info_button = $Menu/UnlockInfo
 @onready var quit_button = $Menu/Quit
@@ -36,8 +37,7 @@ var skin_buttons := {
 	"hell": "ScrollContainer/VBoxContainer/HellSkin",
 	"void": "ScrollContainer/VBoxContainer/VoidSkin",
 	"gaga": "ScrollContainer/VBoxContainer/GagaSkin",
-	"bee": "ScrollContainer/VBoxContainer/BeeSkin",
-	"hidden": "ScrollContainer/VBoxContainer/HiddenSkin"
+	"bee": "ScrollContainer/VBoxContainer/BeeSkin"
 }
 
 # ------------------------
@@ -59,6 +59,7 @@ func _ready():
 
 func _set_main_menu_focus(enabled: bool):
 	play_button.focus_mode = Control.FOCUS_ALL if enabled else Control.FOCUS_NONE
+	new_game_button.focus_mode = Control.FOCUS_ALL if enabled else Control.FOCUS_NONE
 	skins_button.focus_mode = Control.FOCUS_ALL if enabled else Control.FOCUS_NONE
 	unlock_info_button.focus_mode = Control.FOCUS_ALL if enabled else Control.FOCUS_NONE
 	quit_button.focus_mode = Control.FOCUS_ALL if enabled else Control.FOCUS_NONE
@@ -68,6 +69,7 @@ func _set_main_menu_focus(enabled: bool):
 # ------------------------
 func _connect_main_buttons():
 	play_button.pressed.connect(_start_game)
+	new_game_button.pressed.connect(_start_new_game)
 	skins_button.pressed.connect(_show_skin_menu)
 	back_button.pressed.connect(_hide_skin_menu)
 	back_button.focus_entered.connect(func():
@@ -103,6 +105,7 @@ func _play_tap():
 func _connect_focus_sounds():
 	var buttons := [
 		play_button,
+		new_game_button,
 		skins_button,
 		unlock_info_button,
 		quit_button,
@@ -117,6 +120,7 @@ func _connect_focus_sounds():
 func _connect_pressed_sounds():
 	var buttons := [
 		play_button,
+		new_game_button,
 		skins_button,
 		unlock_info_button,
 		quit_button,
@@ -134,8 +138,15 @@ func _connect_pressed_sounds():
 # Game Start Logic
 # ------------------------
 func _start_game():
+	TimerManager.start_timer()
+	var level_path := GameManager.load_saved_level()
+	_start_game_with_scene(level_path)
+
+func _start_new_game():
+	GameManager.reset_progress()
 	GameManager.reset_coins()
-	_start_game_with_scene("res://Assets/Scenes/level_world.tscn")
+	TimerManager.start_timer()
+	_start_game_with_scene("res://Assets/Scenes/level_1.tscn")
 
 func _start_game_with_scene(path: String):
 	get_tree().get_root().set_process_input(false)
