@@ -1,0 +1,227 @@
+[gd_scene format=3 uid="uid://byqnkuvbwq8py"]
+
+[ext_resource type="Texture2D" uid="uid://c7ccwlcyo73ec" path="res://Assets/Sprites/Backgrounds/start_menu-v2.png" id="1_4gsa1"]
+[ext_resource type="Script" uid="uid://f6fypy67laxi" path="res://Assets/Scripts/skin_menu.gd" id="1_epek7"]
+[ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="2_epek7"]
+[ext_resource type="Texture2D" uid="uid://dxkdiujxhpgot" path="res://Assets/Sprites/UI/button_normal_back.png" id="3_d0hd5"]
+[ext_resource type="Texture2D" uid="uid://ceb7b1ochtt2p" path="res://Assets/Sprites/UI/button_pressed_back.png" id="4_he5nr"]
+[ext_resource type="Texture2D" uid="uid://d3bkg6h7hu6g7" path="res://Assets/Sprites/UI/button_focused_back.png" id="5_lc4xv"]
+[ext_resource type="Texture2D" uid="uid://dbpd3oe331ltp" path="res://Assets/Sprites/UI/button_normal_default.png" id="7_r05yg"]
+[ext_resource type="Texture2D" uid="uid://bh72g1sd46tf2" path="res://Assets/Sprites/UI/button_pressed_default.png" id="8_hkjpf"]
+[ext_resource type="Texture2D" uid="uid://dkmvldwl72c11" path="res://Assets/Sprites/UI/button_focused_default.png" id="8_n45ll"]
+[ext_resource type="Texture2D" uid="uid://dyjvbbgb4t48d" path="res://Assets/Sprites/UI/button_normal_abyssal.png" id="9_jt71v"]
+[ext_resource type="Texture2D" uid="uid://dl4o7t011enlc" path="res://Assets/Sprites/UI/button_focused_abyssal.png" id="10_dk1lv"]
+[ext_resource type="Texture2D" uid="uid://c0c52y0h3tyu6" path="res://Assets/Sprites/UI/button_normal_beezzz.png" id="11_cyrps"]
+[ext_resource type="Texture2D" uid="uid://cdqeqevqlyhp2" path="res://Assets/Sprites/UI/button_pressed_abyssal.png" id="11_jakbi"]
+[ext_resource type="Texture2D" uid="uid://br7tare7mwmj3" path="res://Assets/Sprites/UI/button_focused_beezzz.png" id="12_0x8np"]
+[ext_resource type="Texture2D" uid="uid://dfwf2t2sueolt" path="res://Assets/Sprites/UI/button_normal_blueember.png" id="12_6hug3"]
+[ext_resource type="Texture2D" uid="uid://bbhpc6kof4pxt" path="res://Assets/Sprites/UI/button_focused_blueember.png" id="13_6hug3"]
+[ext_resource type="Texture2D" uid="uid://b8ejlm0k06e3y" path="res://Assets/Sprites/UI/button_normal_frostknight.png" id="13_xch1i"]
+[ext_resource type="Texture2D" uid="uid://b5jsby5vuhk4k" path="res://Assets/Sprites/UI/button_normal_gold.png" id="14_0x8np"]
+[ext_resource type="Texture2D" uid="uid://uloryyu40mnc" path="res://Assets/Sprites/UI/button_pressed_beezzz.png" id="14_cyo6o"]
+[ext_resource type="Texture2D" uid="uid://cjfxohauwipre" path="res://Assets/Sprites/UI/button_focused_frostknight.png" id="15_xch1i"]
+[ext_resource type="Texture2D" uid="uid://bka4ye4dxielc" path="res://Assets/Sprites/UI/button_normal_hellspawn.png" id="15_yl6iq"]
+[ext_resource type="Texture2D" uid="uid://degwsoadbyubh" path="res://Assets/Sprites/UI/button_normal_ignatius.png" id="16_3h1s1"]
+[ext_resource type="Texture2D" uid="uid://dh321knhquai8" path="res://Assets/Sprites/UI/button_disabled_beezzz.png" id="16_5vcg0"]
+[ext_resource type="Texture2D" uid="uid://bd2qmcrsepmfv" path="res://Assets/Sprites/UI/button_normal_mystic.png" id="17_2r8rj"]
+[ext_resource type="Texture2D" uid="uid://b57ltlvju88ny" path="res://Assets/Sprites/UI/button_pressed_blueember.png" id="17_7yg22"]
+[ext_resource type="Texture2D" uid="uid://dk2xeja8hspff" path="res://Assets/Sprites/UI/button_normal_rainbow.png" id="18_liyg1"]
+[ext_resource type="Texture2D" uid="uid://cv6yu47dkiiuw" path="res://Assets/Sprites/UI/button_focused_gold.png" id="18_yl6iq"]
+[ext_resource type="Texture2D" uid="uid://duivcl4vm8fwg" path="res://Assets/Sprites/UI/button_normal_sproutknight.png" id="19_n0mh5"]
+[ext_resource type="Texture2D" uid="uid://b24y5at3dsovc" path="res://Assets/Sprites/UI/button_focused_hellspawn.png" id="20_3h1s1"]
+[ext_resource type="Texture2D" uid="uid://bwqu5qkuid5we" path="res://Assets/Sprites/UI/button_disabled_blueember.png" id="20_kqban"]
+[ext_resource type="Texture2D" uid="uid://casah26eco7h6" path="res://Assets/Sprites/UI/button_normal_voidwalker.png" id="20_pu5er"]
+[ext_resource type="Texture2D" uid="uid://7x08kxd4nha0" path="res://Assets/Sprites/UI/button_pressed_frostknight.png" id="20_yesat"]
+[ext_resource type="Texture2D" uid="uid://c70urqr0ite7a" path="res://Assets/Sprites/UI/button_normal_bubblegum.png" id="21_3s7qg"]
+[ext_resource type="Texture2D" uid="uid://b5by8kcn0myq0" path="res://Assets/Sprites/UI/button_focused_ignatius.png" id="22_2r8rj"]
+[ext_resource type="Texture2D" uid="uid://dfkuudeiw8mbw" path="res://Assets/Sprites/UI/button_pressed_bubblegum.png" id="22_on25k"]
+[ext_resource type="Texture2D" uid="uid://7ryqm6bioi3m" path="res://Assets/Sprites/UI/button_focused_bubblegum.png" id="23_0yo14"]
+[ext_resource type="Texture2D" uid="uid://yh2v1q81gerq" path="res://Assets/Sprites/UI/button_pressed_gold.png" id="23_el6kn"]
+[ext_resource type="Texture2D" uid="uid://dwkyr0sb3ql25" path="res://Assets/Sprites/UI/button_disabled_frostknight.png" id="24_6yg34"]
+[ext_resource type="Texture2D" uid="uid://cibidm4hghtwp" path="res://Assets/Sprites/UI/button_focused_mystic.png" id="24_liyg1"]
+[ext_resource type="Texture2D" uid="uid://c1oqa6tp7r5qn" path="res://Assets/Sprites/UI/button_pressed_hellspawn.png" id="26_4bxs0"]
+[ext_resource type="Texture2D" uid="uid://co72aoggi34bo" path="res://Assets/Sprites/UI/button_focused_rainbow.png" id="26_n0mh5"]
+[ext_resource type="Texture2D" uid="uid://b0i8x4ft6sqxp" path="res://Assets/Sprites/UI/button_disabled_gold.png" id="28_3s7qg"]
+[ext_resource type="Texture2D" uid="uid://rsw3yyrkbj3l" path="res://Assets/Sprites/UI/button_focused_sproutknight.png" id="28_pu5er"]
+[ext_resource type="Texture2D" uid="uid://bb0db1quox8xs" path="res://Assets/Sprites/UI/button_pressed_ignatius.png" id="29_5vcg0"]
+[ext_resource type="Texture2D" uid="uid://c4p0aikdypd7y" path="res://Assets/Sprites/UI/button_focused_voidwalker.png" id="30_w6rel"]
+[ext_resource type="Texture2D" uid="uid://cwvqqadesqwad" path="res://Assets/Sprites/UI/button_pressed_mystic.png" id="32_kqban"]
+[ext_resource type="Texture2D" uid="uid://bfb21v8nupu6o" path="res://Assets/Sprites/UI/button_pressed_rainbow.png" id="35_6yg34"]
+[ext_resource type="Texture2D" uid="uid://bu5q86gwpgx4s" path="res://Assets/Sprites/UI/button_disabled_ignatius.png" id="35_on25k"]
+[ext_resource type="Texture2D" uid="uid://dob6sl5jfm8l5" path="res://Assets/Sprites/UI/button_pressed_sproutknight.png" id="38_3s7qg"]
+[ext_resource type="Texture2D" uid="uid://xk6wbbsilhrv" path="res://Assets/Sprites/UI/button_pressed_voidwalker.png" id="41_on25k"]
+[ext_resource type="Texture2D" uid="uid://s6wcv0f3ngu5" path="res://Assets/Sprites/UI/button_disabled_rainbow.png" id="42_0yo14"]
+[ext_resource type="Texture2D" uid="uid://4nn172xlik4d" path="res://Assets/Sprites/UI/button_disabled_voidwalker.png" id="49_mdswq"]
+
+[node name="SkinMenu" type="Control" unique_id=2035851174]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_epek7")
+
+[node name="Background" type="TextureRect" parent="." unique_id=487485310]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4gsa1")
+
+[node name="MenuName" type="Label" parent="." unique_id=2041351484]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 35.0
+offset_right = 470.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("2_epek7")
+theme_override_font_sizes/font_size = 32
+text = "Skins Menu"
+
+[node name="Back" type="TextureButton" parent="." unique_id=406435258]
+layout_mode = 0
+offset_left = 527.0
+offset_top = 11.0
+offset_right = 623.0
+offset_bottom = 43.0
+focus_neighbor_top = NodePath("../Menu_1/VoidSkin")
+focus_neighbor_bottom = NodePath("../Menu_1/DefaultSkin")
+texture_normal = ExtResource("3_d0hd5")
+texture_pressed = ExtResource("4_he5nr")
+texture_hover = ExtResource("5_lc4xv")
+texture_focused = ExtResource("5_lc4xv")
+
+[node name="Menu_1" type="HFlowContainer" parent="." unique_id=99962791]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 104.0
+offset_right = 564.0
+offset_bottom = 337.0
+
+[node name="DefaultSkin" type="TextureButton" parent="Menu_1" unique_id=1823082445]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../Back")
+focus_neighbor_bottom = NodePath("../AbyssalSkin")
+texture_normal = ExtResource("7_r05yg")
+texture_pressed = ExtResource("8_hkjpf")
+texture_hover = ExtResource("8_n45ll")
+texture_focused = ExtResource("8_n45ll")
+
+[node name="AbyssalSkin" type="TextureButton" parent="Menu_1" unique_id=925191531]
+layout_mode = 2
+focus_neighbor_top = NodePath("../DefaultSkin")
+focus_neighbor_bottom = NodePath("../BeeSkin")
+texture_normal = ExtResource("9_jt71v")
+texture_pressed = ExtResource("11_jakbi")
+texture_hover = ExtResource("10_dk1lv")
+texture_focused = ExtResource("10_dk1lv")
+
+[node name="BeeSkin" type="TextureButton" parent="Menu_1" unique_id=565223570]
+layout_mode = 2
+focus_neighbor_top = NodePath("../AbyssalSkin")
+focus_neighbor_bottom = NodePath("../BlueEmberSkin")
+texture_normal = ExtResource("11_cyrps")
+texture_pressed = ExtResource("14_cyo6o")
+texture_hover = ExtResource("12_0x8np")
+texture_disabled = ExtResource("16_5vcg0")
+texture_focused = ExtResource("12_0x8np")
+
+[node name="BlueEmberSkin" type="TextureButton" parent="Menu_1" unique_id=898703636]
+layout_mode = 2
+focus_neighbor_top = NodePath("../BeeSkin")
+focus_neighbor_bottom = NodePath("../BubblegumSkin")
+texture_normal = ExtResource("12_6hug3")
+texture_pressed = ExtResource("17_7yg22")
+texture_hover = ExtResource("13_6hug3")
+texture_disabled = ExtResource("20_kqban")
+texture_focused = ExtResource("13_6hug3")
+
+[node name="BubblegumSkin" type="TextureButton" parent="Menu_1" unique_id=820542617]
+layout_mode = 2
+focus_neighbor_top = NodePath("../BlueEmberSkin")
+focus_neighbor_bottom = NodePath("../FrostSkin")
+texture_normal = ExtResource("21_3s7qg")
+texture_pressed = ExtResource("22_on25k")
+texture_hover = ExtResource("23_0yo14")
+texture_focused = ExtResource("23_0yo14")
+
+[node name="FrostSkin" type="TextureButton" parent="Menu_1" unique_id=1265376723]
+layout_mode = 2
+focus_neighbor_top = NodePath("../BubblegumSkin")
+focus_neighbor_bottom = NodePath("../GoldSkin")
+texture_normal = ExtResource("13_xch1i")
+texture_pressed = ExtResource("20_yesat")
+texture_hover = ExtResource("15_xch1i")
+texture_disabled = ExtResource("24_6yg34")
+texture_focused = ExtResource("15_xch1i")
+
+[node name="GoldSkin" type="TextureButton" parent="Menu_1" unique_id=1419574395]
+layout_mode = 2
+focus_neighbor_top = NodePath("../FrostSkin")
+focus_neighbor_bottom = NodePath("../HellSkin")
+texture_normal = ExtResource("14_0x8np")
+texture_pressed = ExtResource("23_el6kn")
+texture_hover = ExtResource("18_yl6iq")
+texture_disabled = ExtResource("28_3s7qg")
+texture_focused = ExtResource("18_yl6iq")
+
+[node name="HellSkin" type="TextureButton" parent="Menu_1" unique_id=692509966]
+layout_mode = 2
+focus_neighbor_top = NodePath("../GoldSkin")
+focus_neighbor_bottom = NodePath("../IgnatiusSkin")
+texture_normal = ExtResource("15_yl6iq")
+texture_pressed = ExtResource("26_4bxs0")
+texture_hover = ExtResource("20_3h1s1")
+texture_focused = ExtResource("20_3h1s1")
+
+[node name="IgnatiusSkin" type="TextureButton" parent="Menu_1" unique_id=190334409]
+layout_mode = 2
+focus_neighbor_top = NodePath("../HellSkin")
+focus_neighbor_bottom = NodePath("../MysticSkin")
+texture_normal = ExtResource("16_3h1s1")
+texture_pressed = ExtResource("29_5vcg0")
+texture_hover = ExtResource("22_2r8rj")
+texture_disabled = ExtResource("35_on25k")
+texture_focused = ExtResource("22_2r8rj")
+
+[node name="MysticSkin" type="TextureButton" parent="Menu_1" unique_id=429839505]
+layout_mode = 2
+focus_neighbor_top = NodePath("../IgnatiusSkin")
+focus_neighbor_bottom = NodePath("../RainbowSkin")
+texture_normal = ExtResource("17_2r8rj")
+texture_pressed = ExtResource("32_kqban")
+texture_hover = ExtResource("24_liyg1")
+texture_focused = ExtResource("24_liyg1")
+
+[node name="RainbowSkin" type="TextureButton" parent="Menu_1" unique_id=1029615017]
+layout_mode = 2
+focus_neighbor_top = NodePath("../MysticSkin")
+focus_neighbor_bottom = NodePath("../EmeraldSkin")
+texture_normal = ExtResource("18_liyg1")
+texture_pressed = ExtResource("35_6yg34")
+texture_hover = ExtResource("26_n0mh5")
+texture_disabled = ExtResource("42_0yo14")
+texture_focused = ExtResource("26_n0mh5")
+
+[node name="EmeraldSkin" type="TextureButton" parent="Menu_1" unique_id=1031920370]
+layout_mode = 2
+focus_neighbor_top = NodePath("../RainbowSkin")
+focus_neighbor_bottom = NodePath("../VoidSkin")
+texture_normal = ExtResource("19_n0mh5")
+texture_pressed = ExtResource("38_3s7qg")
+texture_hover = ExtResource("28_pu5er")
+texture_focused = ExtResource("28_pu5er")
+
+[node name="VoidSkin" type="TextureButton" parent="Menu_1" unique_id=643645756]
+layout_mode = 2
+focus_neighbor_top = NodePath("../EmeraldSkin")
+focus_neighbor_bottom = NodePath("../../Back")
+texture_normal = ExtResource("20_pu5er")
+texture_pressed = ExtResource("41_on25k")
+texture_hover = ExtResource("30_w6rel")
+texture_disabled = ExtResource("49_mdswq")
+texture_focused = ExtResource("30_w6rel")

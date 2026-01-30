@@ -1,8 +1,6 @@
 extends Node
 
-# ------------------------------------------------------------
-# Gestion des sons (SFX) et de la musique de fond
-# ------------------------------------------------------------
+# -------- Gestion (SFX) et music --------
 var sounds = {}
 
 @onready var music_player: AudioStreamPlayer = AudioStreamPlayer.new()
@@ -10,6 +8,7 @@ var sounds = {}
 
 var excluded_scenes := [
 	"res://Assets/Scenes/start_menu.tscn",
+	"res://Assets/Scenes/skin_menu.tscn",
 	"res://Assets/Scenes/victory_scene.tscn"
 ]
 
@@ -17,10 +16,7 @@ var excluded_scenes := [
 
 var last_scene = null
 
-# ------------------------------------------------------------
-# Initialisation
-# ------------------------------------------------------------
-
+# -------- Initialisation --------
 func _ready():
 	add_child(music_player)
 	add_child(sfx_player)
@@ -45,9 +41,7 @@ func _ready():
 		"confirm": preload("res://Assets/Sounds/confirm.wav")
 	}
 
-# ------------------------------------------------------------
-# Gestion musique
-# ------------------------------------------------------------
+# -------- Gestion music --------
 func _process(_delta):
 	last_scene = get_tree().current_scene
 	_check_music()
@@ -80,9 +74,7 @@ func _check_music():
 		if not music_player.playing:
 			music_player.play()
 
-# ------------------------------------------------------------
-# Gestion des sons SFX
-# ------------------------------------------------------------
+# -------- Gestion SFX --------
 func play(sound_name: String):
 	if sounds.has(sound_name):
 		sfx_player.stream = sounds[sound_name]

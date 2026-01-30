@@ -8,12 +8,16 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Nashi Jump"
-config/version="0.13.90"
+config/version="0.14.90"
 run/main_scene="res://Assets/Scenes/start_menu.tscn"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://dr56avv2fnyin"
 
 [autoload]
@@ -22,7 +26,6 @@ GameManager="*res://Assets/Scripts/game_manager.gd"
 LevelManager="*res://Assets/Scripts/level_manager.gd"
 TimerManager="*res://Assets/Scripts/timer_manager.gd"
 SoundManager="*res://Assets/Scripts/sound_manager.gd"
-Constants="*res://Assets/Scripts/constants.gd"
 SkinManager="*res://Assets/Scripts/skin_manager.gd"
 
 [display]
@@ -31,7 +34,6 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/mode=2
 window/stretch/mode="viewport"
-window/vsync/vsync_mode=2
 window/snap/snap_2d_transforms_to_pixel=false
 
 [input]

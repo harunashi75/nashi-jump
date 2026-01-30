@@ -2,8 +2,8 @@ extends Control
 
 @onready var pause_menu = $"."
 @onready var resume_button = $VBoxContainer/Resume
-@onready var quit_button = $VBoxContainer/QuitButton
-@onready var leave_game_button = $VBoxContainer/LeaveGame
+@onready var quit_button = $VBoxContainer/Quit
+@onready var menu_button = $VBoxContainer/Menu
 @onready var volume_slider = $VolumeSlider
 
 func _input(event):
@@ -16,7 +16,7 @@ func _ready():
 	GameManager.pause_menu = self
 	resume_button.pressed.connect(_on_resume_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
-	leave_game_button.pressed.connect(_on_leave_game_button_pressed)
+	menu_button.pressed.connect(_on_menu_button_pressed)
 	
 	_connect_focus_sounds()
 	_connect_pressed_sounds()
@@ -44,7 +44,7 @@ func _connect_focus_sounds():
 	var buttons := [
 		resume_button,
 		quit_button,
-		leave_game_button
+		menu_button
 	]
 
 	for btn in buttons:
@@ -55,7 +55,7 @@ func _connect_pressed_sounds():
 	var buttons := [
 		resume_button,
 		quit_button,
-		leave_game_button
+		menu_button
 	]
 
 	for btn in buttons:
@@ -88,9 +88,11 @@ func _on_resume_button_pressed():
 	GameManager.toggle_pause()
 
 func _on_quit_button_pressed():
+	TimerManager.save_current_progress()
 	get_tree().quit()
 
-func _on_leave_game_button_pressed():
+func _on_menu_button_pressed():
+	TimerManager.save_current_progress()
 	GameManager.is_game_paused = false
 	get_tree().paused = false
 	set_process_input(false)

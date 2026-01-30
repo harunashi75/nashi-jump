@@ -13,10 +13,8 @@ func _on_body_entered(body):
 
 	GameManager.save_current_level("res://Assets/Scenes/level_1.tscn")
 
-	SkinManager.set_completion_time(GameManager.run_time)
-	SkinManager.check_no_damage_skin()
-	SkinManager.check_ignatius_condition()
-	SkinManager.check_blue_ember_victory()
+	# --- Stats finales ---
+	SkinManager.check_endgame_unlocks()
 
 	# --- Transition Victory ---
 	LevelManager.load_level_by_path("res://Assets/Scenes/victory_scene.tscn")

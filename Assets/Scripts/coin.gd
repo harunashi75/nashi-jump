@@ -32,8 +32,10 @@ func _on_body_entered(body: Node):
 
 func _collect_coin():
 	SoundManager.play("coin")
-	GameManager.add_coin(coin_name, value)
-	GameManager.mark_coin_collected(get_tree().current_scene.name, name)
+	GameManager.mark_coin_collected(
+		get_tree().current_scene.name,
+		name
+	)
 
 	hide()
 	await get_tree().create_timer(0.2).timeout

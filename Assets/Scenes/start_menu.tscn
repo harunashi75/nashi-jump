@@ -1,10 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxqaap5dhcl18"]
+[gd_scene format=3 uid="uid://cxqaap5dhcl18"]
 
 [ext_resource type="Script" uid="uid://bifmrxcevriyn" path="res://Assets/Scripts/start_menu.gd" id="1_qd4of"]
 [ext_resource type="Texture2D" uid="uid://c7ccwlcyo73ec" path="res://Assets/Sprites/Backgrounds/start_menu-v2.png" id="2_18q86"]
 [ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="4_qd4of"]
+[ext_resource type="Texture2D" uid="uid://c15nw420kjdr" path="res://Assets/Sprites/UI/button_normal_continue.png" id="4_ttvl8"]
+[ext_resource type="Texture2D" uid="uid://dfjogbposkv8q" path="res://Assets/Sprites/UI/button_pressed_continue.png" id="5_530e5"]
+[ext_resource type="Texture2D" uid="uid://dkulsi76ci183" path="res://Assets/Sprites/UI/button_normal_skins.png" id="5_esus2"]
+[ext_resource type="Texture2D" uid="uid://rd17jm7i8we8" path="res://Assets/Sprites/UI/button_focused_continue.png" id="5_nnfbk"]
+[ext_resource type="Texture2D" uid="uid://fouh8gx3pkcn" path="res://Assets/Sprites/UI/button_focused_skins.png" id="6_nnfbk"]
+[ext_resource type="Texture2D" uid="uid://cnp3odywrlvbn" path="res://Assets/Sprites/UI/button_disabled_continue.png" id="7_74b67"]
+[ext_resource type="Texture2D" uid="uid://qhu010ddidr4" path="res://Assets/Sprites/UI/button_normal_newgame.png" id="7_qys5k"]
+[ext_resource type="Texture2D" uid="uid://bejvy8jsdup8b" path="res://Assets/Sprites/UI/button_pressed_newgame.png" id="8_24w05"]
+[ext_resource type="Texture2D" uid="uid://57uqgsj8jas6" path="res://Assets/Sprites/UI/button_pressed_skins.png" id="8_qyvmy"]
+[ext_resource type="Texture2D" uid="uid://dht4u52c00m1q" path="res://Assets/Sprites/UI/button_focused_newgame.png" id="9_mtmal"]
+[ext_resource type="Texture2D" uid="uid://bvabuy7neygt" path="res://Assets/Sprites/UI/button_normal_quit.png" id="13_sypf7"]
+[ext_resource type="Texture2D" uid="uid://dggehwfk7tpak" path="res://Assets/Sprites/UI/button_pressed_quit.png" id="14_74b67"]
+[ext_resource type="Texture2D" uid="uid://qu1vfkppcqgi" path="res://Assets/Sprites/UI/button_focused_quit.png" id="15_0gtgq"]
 
-[node name="StartMenu" type="Control"]
+[node name="StartMenu" type="Control" unique_id=833026664]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qd4of")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=339621023]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,11 +35,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_18q86")
 
-[node name="GameName" type="Label" parent="."]
+[node name="GameName" type="Label" parent="." unique_id=1019919080]
 layout_mode = 0
-offset_left = 165.0
+offset_left = 160.0
 offset_top = 30.0
-offset_right = 485.0
+offset_right = 480.0
 offset_bottom = 161.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_qd4of")
@@ -35,239 +48,44 @@ text = "Nashi
 Jump"
 horizontal_alignment = 1
 
-[node name="Menu" type="VBoxContainer" parent="."]
+[node name="Menu" type="VBoxContainer" parent="." unique_id=2077800267]
 layout_mode = 0
-offset_left = 222.0
-offset_top = 176.0
-offset_right = 422.0
-offset_bottom = 320.0
+offset_left = 272.0
+offset_top = 170.0
+offset_right = 368.0
+offset_bottom = 326.0
 theme_override_constants/separation = 5
 
-[node name="Play" type="Button" parent="Menu"]
+[node name="Play" type="TextureButton" parent="Menu" unique_id=17546522]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Quit")
-focus_neighbor_bottom = NodePath("../NewGame")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 16
-text = "PLAY"
+texture_normal = ExtResource("4_ttvl8")
+texture_pressed = ExtResource("5_530e5")
+texture_hover = ExtResource("5_nnfbk")
+texture_disabled = ExtResource("7_74b67")
+texture_focused = ExtResource("5_nnfbk")
 
-[node name="NewGame" type="Button" parent="Menu"]
+[node name="NewGame" type="TextureButton" parent="Menu" unique_id=1862378906]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Play")
-focus_neighbor_bottom = NodePath("../Skins")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 16
-text = "NEW GAME"
+texture_normal = ExtResource("7_qys5k")
+texture_pressed = ExtResource("8_24w05")
+texture_hover = ExtResource("9_mtmal")
+texture_focused = ExtResource("9_mtmal")
 
-[node name="Skins" type="Button" parent="Menu"]
+[node name="Skins" type="TextureButton" parent="Menu" unique_id=720034064]
 layout_mode = 2
-focus_neighbor_top = NodePath("../NewGame")
-focus_neighbor_bottom = NodePath("../UnlockInfo")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 16
-text = "SKINS"
+texture_normal = ExtResource("5_esus2")
+texture_pressed = ExtResource("8_qyvmy")
+texture_hover = ExtResource("6_nnfbk")
+texture_focused = ExtResource("6_nnfbk")
 
-[node name="UnlockInfo" type="Button" parent="Menu"]
+[node name="Quit" type="TextureButton" parent="Menu" unique_id=2124419615]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Skins")
-focus_neighbor_bottom = NodePath("../Quit")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 16
-text = "UNLOCKABLE"
+texture_normal = ExtResource("13_sypf7")
+texture_pressed = ExtResource("14_74b67")
+texture_hover = ExtResource("15_0gtgq")
+texture_focused = ExtResource("15_0gtgq")
 
-[node name="Quit" type="Button" parent="Menu"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../UnlockInfo")
-focus_neighbor_bottom = NodePath("../Play")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 16
-text = "QUIT"
-
-[node name="SkinMenu" type="Panel" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 71.0
-offset_top = 115.0
-offset_right = 211.0
-offset_bottom = 319.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="SkinMenu"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 136.0
-offset_bottom = 200.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SkinMenu/ScrollContainer"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-
-[node name="Back" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_bottom = NodePath("../DefaultSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 16
-text = "BACK"
-
-[node name="DefaultSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../Back")
-focus_neighbor_bottom = NodePath("../AbyssalSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "DEFAULT"
-
-[node name="AbyssalSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../DefaultSkin")
-focus_neighbor_bottom = NodePath("../BeeSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "ABYSSAL"
-
-[node name="BeeSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../AbyssalSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "BEEZZZ"
-
-[node name="GagaSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_bottom = NodePath("../BubblegumSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "BLUE EMBER"
-
-[node name="BubblegumSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../GagaSkin")
-focus_neighbor_bottom = NodePath("../FrostSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "BUBBLEGUM"
-
-[node name="FrostSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../BubblegumSkin")
-focus_neighbor_bottom = NodePath("../GoldSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "FROST KNIGHT"
-
-[node name="GoldSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../FrostSkin")
-focus_neighbor_bottom = NodePath("../HellSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "GOLD"
-
-[node name="HellSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../GoldSkin")
-focus_neighbor_bottom = NodePath("../IgnatiusSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "HELL SPAWN"
-
-[node name="IgnatiusSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../HellSkin")
-focus_neighbor_bottom = NodePath("../MysticSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "IGNATIUS"
-
-[node name="MysticSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../IgnatiusSkin")
-focus_neighbor_bottom = NodePath("../RainbowSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "MYSTIC"
-
-[node name="RainbowSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../MysticSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "RAINBOW"
-
-[node name="EmeraldSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_bottom = NodePath("../VoidSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "SPROUT KNIGHT"
-
-[node name="VoidSkin" type="Button" parent="SkinMenu/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../EmeraldSkin")
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "VOIDWALKER"
-
-[node name="UnlockInfoPanel" type="Panel" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 8.0
-offset_top = 7.0
-offset_right = 632.0
-offset_bottom = 338.0
-
-[node name="MarginContainer" type="MarginContainer" parent="UnlockInfoPanel"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 620.0
-offset_bottom = 327.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="UnlockInfoPanel/MarginContainer"]
-layout_mode = 2
-
-[node name="InfoTextLabel" type="Label" parent="UnlockInfoPanel/MarginContainer/ScrollContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 8
-text = "Skins Unlock Conditions:
-
-• Abyssal – Complete all levels using the Blue Ember skin
-
-• Beezzz – to be found in the levels
-
-• Sprout Knight – Having an active shield 100 times
-
-• Blue Ember – Having an active jump boost 120 times
-
-• Bubblegum – 200 power-ups activated
-
-• Frost Knight – Survive for 30 seconds without moving
-
-• Gold – 130 coins
-
-• Hell Spawn – Complete all levels within 10 minutes
-
-• Ignatius – Complete all levels 5 times without active any power-ups
-
-• Mystic – 1000 cumulative jumps
-
-• Rainbow – Complete all levels without dying
-
-• Voidwalker – to be found in Lunar Dream"
-vertical_alignment = 1
-
-[node name="Back2" type="Button" parent="UnlockInfoPanel"]
-layout_mode = 0
-offset_left = 533.0
-offset_top = 6.0
-offset_right = 605.0
-offset_bottom = 30.0
-theme_override_fonts/font = ExtResource("4_qd4of")
-theme_override_font_sizes/font_size = 16
-text = "BACK"
-
-[node name="GameVersion" type="Label" parent="."]
+[node name="GameVersion" type="Label" parent="." unique_id=1802803789]
 layout_mode = 0
 offset_left = 349.0
 offset_top = 343.0
@@ -275,4 +93,4 @@ offset_right = 633.0
 offset_bottom = 351.0
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
-text = "v0.13.90-3p011426 (Development Build)"
+text = "v0.14.90-1p013026 (Development Build)"

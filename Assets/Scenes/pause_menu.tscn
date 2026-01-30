@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1r068wojs3es"]
+[gd_scene format=3 uid="uid://b1r068wojs3es"]
 
 [ext_resource type="Script" uid="uid://c2jpp32mckrhm" path="res://Assets/Scripts/pause_menu.gd" id="1_jbhf4"]
 [ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="2_6udtp"]
+[ext_resource type="Texture2D" uid="uid://bvabuy7neygt" path="res://Assets/Sprites/UI/button_normal_quit.png" id="3_48c7y"]
+[ext_resource type="Texture2D" uid="uid://ckiui6v5fmypq" path="res://Assets/Sprites/UI/button_normal_resume.png" id="3_hdkeg"]
+[ext_resource type="Texture2D" uid="uid://dggehwfk7tpak" path="res://Assets/Sprites/UI/button_pressed_quit.png" id="4_d7po0"]
+[ext_resource type="Texture2D" uid="uid://cw1a1b4ggor75" path="res://Assets/Sprites/UI/button_pressed_resume.png" id="4_taxb1"]
+[ext_resource type="Texture2D" uid="uid://bghb1bqjabecj" path="res://Assets/Sprites/UI/button_focused_resume.png" id="5_h54ie"]
+[ext_resource type="Texture2D" uid="uid://qu1vfkppcqgi" path="res://Assets/Sprites/UI/button_focused_quit.png" id="5_tgy2g"]
+[ext_resource type="Texture2D" uid="uid://co2171nx8k0ws" path="res://Assets/Sprites/UI/button_normal_menu.png" id="6_3l3h0"]
+[ext_resource type="Texture2D" uid="uid://4vushwob80t5" path="res://Assets/Sprites/UI/button_pressed_menu.png" id="7_uynk4"]
+[ext_resource type="Texture2D" uid="uid://cif30pg8wbvps" path="res://Assets/Sprites/UI/button_focused_menu.png" id="8_55hg2"]
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" unique_id=367387332]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -13,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jbhf4")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=108956466]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,56 +30,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PauseText" type="Label" parent="."]
+[node name="PauseText" type="Label" parent="." unique_id=1638145608]
 layout_mode = 0
-offset_left = 245.0
-offset_top = 98.0
-offset_right = 405.0
-offset_bottom = 130.0
+offset_left = 160.0
+offset_top = 65.0
+offset_right = 480.0
+offset_bottom = 129.0
 theme_override_fonts/font = ExtResource("2_6udtp")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 text = "PAUSE"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=212655310]
 layout_mode = 0
-offset_left = 216.0
-offset_top = 154.0
-offset_right = 431.0
-offset_bottom = 267.0
+offset_left = 272.0
+offset_top = 148.0
+offset_right = 368.0
+offset_bottom = 266.0
 theme_override_constants/separation = 5
 
-[node name="Resume" type="Button" parent="VBoxContainer"]
+[node name="Resume" type="TextureButton" parent="VBoxContainer" unique_id=1682770326]
 layout_mode = 2
-focus_neighbor_top = NodePath("../../VolumeSlider")
-focus_neighbor_bottom = NodePath("../LeaveGame")
-theme_override_fonts/font = ExtResource("2_6udtp")
-theme_override_font_sizes/font_size = 16
-text = "RESUME GAME"
+texture_normal = ExtResource("3_hdkeg")
+texture_pressed = ExtResource("4_taxb1")
+texture_hover = ExtResource("5_h54ie")
+texture_focused = ExtResource("5_h54ie")
 
-[node name="LeaveGame" type="Button" parent="VBoxContainer"]
+[node name="Menu" type="TextureButton" parent="VBoxContainer" unique_id=926847473]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Resume")
-focus_neighbor_bottom = NodePath("../QuitButton")
-theme_override_fonts/font = ExtResource("2_6udtp")
-theme_override_font_sizes/font_size = 16
-text = "MAIN MENU"
+texture_normal = ExtResource("6_3l3h0")
+texture_pressed = ExtResource("7_uynk4")
+texture_hover = ExtResource("8_55hg2")
+texture_focused = ExtResource("8_55hg2")
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="TextureButton" parent="VBoxContainer" unique_id=320710191]
 layout_mode = 2
-focus_neighbor_top = NodePath("../LeaveGame")
-focus_neighbor_bottom = NodePath("../../VolumeSlider")
-theme_override_fonts/font = ExtResource("2_6udtp")
-theme_override_font_sizes/font_size = 16
-text = "QUIT GAME"
+texture_normal = ExtResource("3_48c7y")
+texture_pressed = ExtResource("4_d7po0")
+texture_hover = ExtResource("5_tgy2g")
+texture_focused = ExtResource("5_tgy2g")
 
-[node name="VolumeSlider" type="HSlider" parent="."]
+[node name="VolumeSlider" type="HSlider" parent="." unique_id=1251133322]
 layout_mode = 0
-offset_left = 209.0
-offset_top = 281.0
-offset_right = 437.0
-offset_bottom = 297.0
-focus_neighbor_top = NodePath("../VBoxContainer/QuitButton")
-focus_neighbor_bottom = NodePath("../VBoxContainer/Resume")
+offset_left = 206.0
+offset_top = 280.0
+offset_right = 434.0
+offset_bottom = 296.0
 max_value = 1.0
 step = 0.05
