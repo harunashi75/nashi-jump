@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://hbfgacy1e3rr"]
+[gd_scene format=3 uid="uid://hbfgacy1e3rr"]
 
 [ext_resource type="Script" uid="uid://qpjwae1hpo53" path="res://Assets/Scripts/hud.gd" id="1_th0pt"]
 [ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="4_vy1te"]
@@ -7,23 +7,23 @@
 [ext_resource type="Texture2D" uid="uid://n6j5hjbpe5hb" path="res://Assets/Sprites/UI/coin_icon.png" id="5_vy1te"]
 [ext_resource type="Texture2D" uid="uid://cdxcdfubkgsk5" path="res://Assets/Sprites/UI/clock_icon.png" id="6_vy1te"]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=155803078]
 script = ExtResource("1_th0pt")
 
-[node name="HealthDisplay" type="HBoxContainer" parent="."]
+[node name="HealthDisplay" type="HBoxContainer" parent="." unique_id=1031046592]
 offset_left = 11.0
 offset_top = 10.0
 offset_right = 77.0
 offset_bottom = 42.0
 script = ExtResource("5_uttbk")
 
-[node name="HeartIcon" type="TextureRect" parent="HealthDisplay"]
+[node name="HeartIcon" type="TextureRect" parent="HealthDisplay" unique_id=124317019]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("5_l5nkk")
 stretch_mode = 5
 
-[node name="HealthLabel" type="Label" parent="HealthDisplay"]
+[node name="HealthLabel" type="Label" parent="HealthDisplay" unique_id=1170414126]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_vy1te")
@@ -31,55 +31,37 @@ theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CoinsContainer" type="HBoxContainer" parent="."]
+[node name="TotalCoinsContainer" type="HBoxContainer" parent="." unique_id=1763205335]
 offset_left = 11.0
 offset_top = 42.0
 offset_right = 51.0
 offset_bottom = 82.0
 
-[node name="icon_coin" type="TextureRect" parent="CoinsContainer"]
+[node name="icon_coin_total" type="TextureRect" parent="TotalCoinsContainer" unique_id=12225579]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 texture = ExtResource("5_vy1te")
 stretch_mode = 5
 
-[node name="LevelCoinsLabel" type="Label" parent="CoinsContainer"]
+[node name="TotalCoinsLabel" type="Label" parent="TotalCoinsContainer" unique_id=468605700]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_vy1te")
 theme_override_font_sizes/font_size = 16
 
-[node name="TotalCoinsContainer" type="HBoxContainer" parent="."]
-offset_left = 461.0
-offset_top = 42.0
-offset_right = 501.0
-offset_bottom = 82.0
-
-[node name="icon_coin_total" type="TextureRect" parent="TotalCoinsContainer"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-texture = ExtResource("5_vy1te")
-stretch_mode = 5
-
-[node name="TotalCoinsLabel" type="Label" parent="TotalCoinsContainer"]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_vy1te")
-theme_override_font_sizes/font_size = 16
-
-[node name="TimerContainer" type="HBoxContainer" parent="."]
+[node name="TimerContainer" type="HBoxContainer" parent="." unique_id=1955557732]
 offset_left = 461.0
 offset_top = 8.0
 offset_right = 501.0
 offset_bottom = 48.0
 
-[node name="ClockIcon" type="TextureRect" parent="TimerContainer"]
+[node name="ClockIcon" type="TextureRect" parent="TimerContainer" unique_id=1497997888]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 texture = ExtResource("6_vy1te")
 stretch_mode = 5
 
-[node name="TimerLabel" type="Label" parent="TimerContainer"]
+[node name="TimerLabel" type="Label" parent="TimerContainer" unique_id=1062741616]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_vy1te")

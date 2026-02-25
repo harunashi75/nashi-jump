@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2ery55yhbn6v"]
+[gd_scene format=3 uid="uid://b2ery55yhbn6v"]
 
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_rvxcc"]
 [ext_resource type="Texture2D" uid="uid://b3jp6jest25qy" path="res://Assets/Sprites/Enemies/Clay Slime-v2.png" id="2_rvxcc"]
@@ -64,28 +64,28 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oe4y8"]
 size = Vector2(10, 10)
 
-[node name="Clay_Slime" type="Node2D"]
+[node name="Clay_Slime" type="Node2D" unique_id=1282169167]
 script = ExtResource("1_rvxcc")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1143025096]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_ycn6v")
 animation = &"run"
 
-[node name="RayCastRight" type="RayCast2D" parent="."]
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1274594434]
 position = Vector2(0, -5)
 target_position = Vector2(9, 0)
 collision_mask = 66
 
-[node name="RayCastLeft" type="RayCast2D" parent="."]
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1690312852]
 position = Vector2(0, -5)
 target_position = Vector2(-9, 0)
 collision_mask = 66
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=12375002]
 collision_layer = 8
 script = ExtResource("3_epn88")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1091253295]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_oe4y8")

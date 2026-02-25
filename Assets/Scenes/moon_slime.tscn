@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dp668blccexhd"]
+[gd_scene format=3 uid="uid://dp668blccexhd"]
 
 [ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="1_3c38q"]
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_tg3b5"]
@@ -64,28 +64,28 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tg3b5"]
 size = Vector2(10, 10)
 
-[node name="Moon_Slime" type="Node2D"]
+[node name="Moon_Slime" type="Node2D" unique_id=105628383]
 script = ExtResource("1_tg3b5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=599058514]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_bsvu8")
 animation = &"run"
 
-[node name="RayCastRight" type="RayCast2D" parent="."]
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1762114506]
 position = Vector2(0, -5)
 target_position = Vector2(9, 0)
 collision_mask = 66
 
-[node name="RayCastLeft" type="RayCast2D" parent="."]
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=2125215613]
 position = Vector2(0, -5)
 target_position = Vector2(-9, 0)
 collision_mask = 66
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1717305369]
 collision_layer = 2
 script = ExtResource("1_3c38q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=235078179]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_tg3b5")

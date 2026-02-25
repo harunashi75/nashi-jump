@@ -1,17 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://dboplhpsngyos"]
+[gd_scene format=3 uid="uid://dboplhpsngyos"]
 
 [ext_resource type="Script" uid="uid://kht5vgm0o0lp" path="res://Assets/Scripts/victory_scene.gd" id="1_iuq5i"]
 [ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="2_iuq5i"]
 [ext_resource type="Texture2D" uid="uid://c7ccwlcyo73ec" path="res://Assets/Sprites/Backgrounds/start_menu-v2.png" id="2_n7cjf"]
+[ext_resource type="Texture2D" uid="uid://co2171nx8k0ws" path="res://Assets/Sprites/UI/button_normal_menu.png" id="4_mpi07"]
+[ext_resource type="Texture2D" uid="uid://bxkdm222tstoh" path="res://Assets/Sprites/UI/button_normal_restart.png" id="4_sajsb"]
+[ext_resource type="Texture2D" uid="uid://dgov43mawuti8" path="res://Assets/Sprites/UI/button_pressed_restart.png" id="5_eikd6"]
+[ext_resource type="Texture2D" uid="uid://4vushwob80t5" path="res://Assets/Sprites/UI/button_pressed_menu.png" id="5_jy8cm"]
+[ext_resource type="Texture2D" uid="uid://dhg7duwp85uql" path="res://Assets/Sprites/UI/button_focused_restart.png" id="6_apq8n"]
+[ext_resource type="Texture2D" uid="uid://cif30pg8wbvps" path="res://Assets/Sprites/UI/button_focused_menu.png" id="6_xhw7m"]
+[ext_resource type="Texture2D" uid="uid://bvabuy7neygt" path="res://Assets/Sprites/UI/button_normal_quit.png" id="7_sajsb"]
+[ext_resource type="Texture2D" uid="uid://dggehwfk7tpak" path="res://Assets/Sprites/UI/button_pressed_quit.png" id="8_eikd6"]
+[ext_resource type="Texture2D" uid="uid://qu1vfkppcqgi" path="res://Assets/Sprites/UI/button_focused_quit.png" id="9_apq8n"]
 
-[node name="Victory_Scene" type="Control"]
+[node name="Victory_Scene" type="Control" unique_id=1758972329]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_iuq5i")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1708422182]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,13 +31,13 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_n7cjf")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=4451996]
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
 color = Color(1, 0.8509804, 0.4, 0.05882353)
 
-[node name="TextVictory" type="Label" parent="."]
+[node name="TextVictory" type="Label" parent="." unique_id=1166642088]
 layout_mode = 0
 offset_left = 88.0
 offset_top = 78.0
@@ -40,14 +49,14 @@ theme_override_fonts/font = ExtResource("2_iuq5i")
 theme_override_font_sizes/font_size = 64
 text = "VICTORY!"
 
-[node name="Stats" type="Panel" parent="."]
+[node name="Stats" type="Panel" parent="." unique_id=1410298575]
 layout_mode = 0
-offset_left = 143.0
+offset_left = 173.0
 offset_top = 156.0
-offset_right = 305.0
+offset_right = 335.0
 offset_bottom = 311.0
 
-[node name="Time" type="Label" parent="Stats"]
+[node name="Time" type="Label" parent="Stats" unique_id=1789804108]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
@@ -56,7 +65,7 @@ offset_bottom = 18.0
 theme_override_fonts/font = ExtResource("2_iuq5i")
 theme_override_font_sizes/font_size = 8
 
-[node name="Deaths" type="Label" parent="Stats"]
+[node name="Deaths" type="Label" parent="Stats" unique_id=997767074]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 30.0
@@ -65,7 +74,7 @@ offset_bottom = 38.0
 theme_override_fonts/font = ExtResource("2_iuq5i")
 theme_override_font_sizes/font_size = 8
 
-[node name="Coins" type="Label" parent="Stats"]
+[node name="Coins" type="Label" parent="Stats" unique_id=1597612653]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 50.0
@@ -74,7 +83,7 @@ offset_bottom = 58.0
 theme_override_fonts/font = ExtResource("2_iuq5i")
 theme_override_font_sizes/font_size = 8
 
-[node name="Skins" type="Label" parent="Stats"]
+[node name="Skins" type="Label" parent="Stats" unique_id=1813820135]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 70.0
@@ -83,34 +92,31 @@ offset_bottom = 78.0
 theme_override_fonts/font = ExtResource("2_iuq5i")
 theme_override_font_sizes/font_size = 8
 
-[node name="Buttons" type="VBoxContainer" parent="."]
+[node name="Buttons" type="VBoxContainer" parent="." unique_id=229707069]
 layout_mode = 0
-offset_left = 323.0
+offset_left = 360.0
 offset_top = 161.0
-offset_right = 495.0
-offset_bottom = 268.0
+offset_right = 456.0
+offset_bottom = 278.0
 theme_override_constants/separation = 5
 
-[node name="Restart" type="Button" parent="Buttons"]
+[node name="Restart" type="TextureButton" parent="Buttons" unique_id=854337303]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Quit")
-focus_neighbor_bottom = NodePath("../MainMenu")
-theme_override_fonts/font = ExtResource("2_iuq5i")
-theme_override_font_sizes/font_size = 16
-text = "RESTART"
+texture_normal = ExtResource("4_sajsb")
+texture_pressed = ExtResource("5_eikd6")
+texture_hover = ExtResource("6_apq8n")
+texture_focused = ExtResource("6_apq8n")
 
-[node name="MainMenu" type="Button" parent="Buttons"]
+[node name="MainMenu" type="TextureButton" parent="Buttons" unique_id=249505851]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Restart")
-focus_neighbor_bottom = NodePath("../Quit")
-theme_override_fonts/font = ExtResource("2_iuq5i")
-theme_override_font_sizes/font_size = 16
-text = "MAIN MENU"
+texture_normal = ExtResource("4_mpi07")
+texture_pressed = ExtResource("5_jy8cm")
+texture_hover = ExtResource("6_xhw7m")
+texture_focused = ExtResource("6_xhw7m")
 
-[node name="Quit" type="Button" parent="Buttons"]
+[node name="Quit" type="TextureButton" parent="Buttons" unique_id=364840430]
 layout_mode = 2
-focus_neighbor_top = NodePath("../MainMenu")
-focus_neighbor_bottom = NodePath("../Restart")
-theme_override_fonts/font = ExtResource("2_iuq5i")
-theme_override_font_sizes/font_size = 16
-text = "QUIT"
+texture_normal = ExtResource("7_sajsb")
+texture_pressed = ExtResource("8_eikd6")
+texture_hover = ExtResource("9_apq8n")
+texture_focused = ExtResource("9_apq8n")

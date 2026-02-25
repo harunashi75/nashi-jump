@@ -27,7 +27,19 @@ func _ready():
 
 func _restart():
 	GameManager.reset_progress()
+	
+	TimerManager.time_elapsed = 0.0 
+	TimerManager.running = false
+	TimerManager.save_current_progress()
+	TimerManager.start_timer()
+	
 	LevelManager.load_level_by_path("res://Assets/Scenes/level_1.tscn")
 
 func _menu():
+	GameManager.reset_progress()
+	
+	TimerManager.time_elapsed = 0.0 
+	TimerManager.running = false
+	TimerManager.save_current_progress()
+	
 	LevelManager.return_to_menu()

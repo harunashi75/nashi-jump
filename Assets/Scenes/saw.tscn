@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2sr1dbwgya5l"]
+[gd_scene format=3 uid="uid://b2sr1dbwgya5l"]
 
 [ext_resource type="Script" uid="uid://bgpt66jvi8fqn" path="res://Assets/Scripts/saw.gd" id="1_mw7kg"]
 [ext_resource type="Texture2D" uid="uid://phogfhd6h8ss" path="res://Assets/Sprites/Traps/Circular Saw.png" id="2_o63if"]
@@ -78,24 +78,24 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_o63if"]
 radius = 7.0
 
-[node name="Saw" type="Node2D"]
+[node name="Saw" type="Node2D" unique_id=1193317342]
 script = ExtResource("1_mw7kg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=224520832]
 sprite_frames = SubResource("SpriteFrames_44sjo")
 animation = &"run"
 
-[node name="RayCastRight" type="RayCast2D" parent="."]
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=646855005]
 target_position = Vector2(8, 0)
 collision_mask = 2
 
-[node name="RayCastLeft" type="RayCast2D" parent="."]
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1659961246]
 target_position = Vector2(-8, 0)
 collision_mask = 2
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=2036631200]
 collision_layer = 8
 script = ExtResource("3_o63if")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1844177376]
 shape = SubResource("CircleShape2D_o63if")

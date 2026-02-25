@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfdakx4luhi5i"]
+[gd_scene format=3 uid="uid://dfdakx4luhi5i"]
 
 [ext_resource type="Script" uid="uid://rj8bo7ewwsmm" path="res://Assets/Scripts/brickhead.gd" id="1_m3y4a"]
 [ext_resource type="Texture2D" uid="uid://xh8b5s3nf4v7" path="res://Assets/Sprites/Traps/brickhead_base.png" id="2_n5n5y"]
@@ -99,24 +99,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8b5ru"]
 size = Vector2(32, 32)
 
-[node name="Brickhead" type="Node2D"]
+[node name="Brickhead" type="Node2D" unique_id=1598222168]
 script = ExtResource("1_m3y4a")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1181176017]
 sprite_frames = SubResource("SpriteFrames_8b5ru")
 animation = &"idle"
 
-[node name="RayCastUp" type="RayCast2D" parent="."]
+[node name="RayCastUp" type="RayCast2D" parent="." unique_id=2099684391]
 target_position = Vector2(0, -16)
 collision_mask = 66
 
-[node name="RayCastDown" type="RayCast2D" parent="."]
+[node name="RayCastDown" type="RayCast2D" parent="." unique_id=1828967228]
 target_position = Vector2(0, 16)
 collision_mask = 66
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1238203349]
 collision_layer = 8
 script = ExtResource("3_n5n5y")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1489554675]
 shape = SubResource("RectangleShape2D_8b5ru")

@@ -1,8 +1,6 @@
 extends Node
 
-# ------------------------
-# Niveaux disponibles
-# ------------------------
+# -------- Niveaux disponibles --------
 var levels := [
 	"res://Assets/Scenes/level_1.tscn",
 	"res://Assets/Scenes/level_2.tscn",
@@ -12,56 +10,40 @@ var levels := [
 	"res://Assets/Scenes/level_6.tscn",
 	"res://Assets/Scenes/level_7.tscn",
 	"res://Assets/Scenes/level_8.tscn",
-	"res://Assets/Scenes/level_supernatural_forest.tscn",
 	"res://Assets/Scenes/level_sunken_amber_valley.tscn",
 	"res://Assets/Scenes/level_lunar_dream.tscn",
 	"res://Assets/Scenes/level_sakura.tscn",
 	"res://Assets/Scenes/level_corrupted_bloom.tscn",
-	"res://Assets/Scenes/level_hidden.tscn",
 	"res://Assets/Scenes/victory_scene.tscn"
 ]
 
-# ------------------------
-# Données du niveau courant
-# ------------------------
+# -------- Données du niveau courant --------
 var current_level := 0
 
-# ------------------------
-# Chargement de niveau par index
-# ------------------------
+# -------- Chargement de niveau par index --------
 func load_level(index: int) -> void:
 	if index >= 0 and index < levels.size():
 		current_level = index
 		_load_scene_async(levels[index])
 
-# ------------------------
-# Relancer le niveau courant
-# ------------------------
+# -------- Relancer le niveau courant --------
 func restart_level() -> void:
 	load_level(current_level)
 
-# ------------------------
-# Charger le prochain niveau
-# ------------------------
+# -------- Charger le prochain niveau --------
 func load_next_level() -> void:
 	load_level(current_level + 1)
 
-# ------------------------
-# Retour au menu principal
-# ------------------------
+# -------- Retour au menu principal --------
 func return_to_menu() -> void:
 	GameManager.reset_checkpoint_data()
 	_load_scene_async("res://Assets/Scenes/start_menu.tscn")
 
-# ------------------------
-# Charger un niveau via son chemin
-# ------------------------
+# -------- Charger un niveau via son chemin --------
 func load_level_by_path(path: String) -> void:
 	_load_scene_async(path)
 
-# ------------------------
-# Chargement différé de la scène
-# ------------------------
+# -------- Chargement différé de la scène --------
 func _load_scene_async(path: String) -> void:
 	get_tree().get_root().set_process_input(false)
 

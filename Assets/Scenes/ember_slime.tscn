@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c0gifo0wkc4rx"]
+[gd_scene format=3 uid="uid://c0gifo0wkc4rx"]
 
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_teqvs"]
 [ext_resource type="Texture2D" uid="uid://ussxdhe1qu0v" path="res://Assets/Sprites/Enemies/Sunken Amber Slime-v2.png" id="2_7hbut"]
@@ -64,28 +64,28 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yoqe"]
 size = Vector2(10, 10)
 
-[node name="Ember_Slime" type="Node2D"]
+[node name="Ember_Slime" type="Node2D" unique_id=1616298963]
 script = ExtResource("1_teqvs")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1069983833]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_a5ofo")
 animation = &"run"
 
-[node name="RayCastRight" type="RayCast2D" parent="."]
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1132398654]
 position = Vector2(0, -5)
 target_position = Vector2(9, 0)
 collision_mask = 66
 
-[node name="RayCastLeft" type="RayCast2D" parent="."]
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1934605143]
 position = Vector2(0, -5)
 target_position = Vector2(-9, 0)
 collision_mask = 66
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=976060047]
 collision_layer = 2
 script = ExtResource("2_teqvs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1436982012]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_2yoqe")

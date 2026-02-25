@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ci65yl5l1dety"]
+[gd_scene format=3 uid="uid://ci65yl5l1dety"]
 
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_380q2"]
 [ext_resource type="Texture2D" uid="uid://cd76x1gajc0of" path="res://Assets/Sprites/Enemies/Blossom Slime-v2.png" id="2_380q2"]
@@ -64,28 +64,28 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fi5u3"]
 size = Vector2(10, 10)
 
-[node name="Blossom_Slime" type="Node2D"]
+[node name="Blossom_Slime" type="Node2D" unique_id=119052609]
 script = ExtResource("1_380q2")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1627385191]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_stabw")
 animation = &"run"
 
-[node name="RayCastRight" type="RayCast2D" parent="."]
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=401801484]
 position = Vector2(0, -5)
 target_position = Vector2(9, 0)
 collision_mask = 66
 
-[node name="RayCastLeft" type="RayCast2D" parent="."]
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1690381206]
 position = Vector2(0, -5)
 target_position = Vector2(-9, 0)
 collision_mask = 66
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1860208212]
 collision_layer = 2
 script = ExtResource("3_7xupe")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1671312679]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_fi5u3")

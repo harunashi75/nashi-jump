@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 @onready var timer_label: Label = $TimerContainer/TimerLabel
-@onready var level_coins_label = $CoinsContainer/LevelCoinsLabel
 @onready var total_coins_label = $TotalCoinsContainer/TotalCoinsLabel
 
 func _ready():
@@ -20,6 +19,5 @@ func _on_health_changed(current_health):
 func update_timer() -> void:
 	timer_label.text = TimerManager.get_formatted_time()
 
-func update_coins_display(level_collected: int, level_total: int, total_collected: int, total_possible: int):
-	level_coins_label.text = "%02d/%d" % [level_collected, level_total]
-	total_coins_label.text = "%03d/%d" % [total_collected, total_possible]
+func update_coins_display(total_collected: int):
+	total_coins_label.text = "%03d" % [total_collected]

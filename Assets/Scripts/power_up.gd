@@ -15,13 +15,9 @@ func _on_body_entered(body):
 
 func _collect_powerup(body):
 	SoundManager.play("power_up")
-	SkinManager.add_powerup_count()
-	GameManager.used_powerup = true
 
 	var effects = [
-		"health",
-		"shield",
-		"jump"
+		"health"
 	]
 
 	var chosen = effects[randi() % effects.size()]
@@ -30,14 +26,6 @@ func _collect_powerup(body):
 	match chosen:
 		"health":
 			body.apply_health_bonus()
-
-		"shield":
-			body.apply_shield(6.0)
-			SkinManager.add_shield_use()
-
-		"jump":
-			body.apply_jump_boost(3.0)
-			SkinManager.add_jump_boost_use()
 
 	_hide_powerup()
 
