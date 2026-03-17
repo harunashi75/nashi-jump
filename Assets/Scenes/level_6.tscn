@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bghc74s488oot" path="res://Assets/Sprites/UI/speech_bubble2.png" id="6_hnmmg"]
 [ext_resource type="Texture2D" uid="uid://b4dqle0irm8dk" path="res://Assets/Sprites/Characters/bubblegum.png" id="6_tpl1r"]
 [ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="7_per8p"]
+[ext_resource type="PackedScene" uid="uid://msxq7pdwuqdf" path="res://Assets/Scenes/gloop.tscn" id="8_tpl1r"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="9_cxidm"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="12_5vbaw"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="12_hnmmg"]
@@ -195,6 +196,9 @@ scale = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_per8p")
 theme_override_font_sizes/font_size = 8
+
+[node name="Gloop" parent="." unique_id=377098013 instance=ExtResource("8_tpl1r")]
+position = Vector2(248, -16)
 
 [node name="Player" parent="." unique_id=856431524 instance=ExtResource("4_0a66y")]
 position = Vector2(224, -16)

@@ -8,10 +8,23 @@ extends Camera2D
 
 var target_pos: Vector2
 var current_v_shift := 0.0
+var shake_intensity = 0.0
+var shake_timer = 0.0
 
 func _ready():
 	target_pos = global_position
 	top_level = true
+
+func _process(delta):
+	if shake_timer > 0:
+		shake_timer -= delta
+		offset = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * shake_intensity
+	else:
+		offset = Vector2.ZERO
+
+func shake(duration: float, intensity: float):
+	shake_timer = duration
+	shake_intensity = intensity
 
 func _physics_process(delta):
 	if not player: return

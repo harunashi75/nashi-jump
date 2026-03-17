@@ -1,35 +1,35 @@
 [gd_scene format=3 uid="uid://c3rxnqovwslqr"]
 
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_2ych3"]
-[ext_resource type="Texture2D" uid="uid://m4huxgkaeonm" path="res://Assets/Sprites/Enemies/Corrupt Slime-v2.png" id="2_2ych3"]
-[ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="3_wdd3y"]
+[ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="2_pgpwk"]
+[ext_resource type="Texture2D" uid="uid://dxpuxv6hdudyp" path="res://Assets/Sprites/Enemies/Corrupt Slime-v3.png" id="3_2ych3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pgpwk"]
-atlas = ExtResource("2_2ych3")
+atlas = ExtResource("3_2ych3")
 region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wdd3y"]
-atlas = ExtResource("2_2ych3")
+atlas = ExtResource("3_2ych3")
 region = Rect2(64, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_llg2i"]
-atlas = ExtResource("2_2ych3")
+atlas = ExtResource("3_2ych3")
 region = Rect2(80, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_61upm"]
-atlas = ExtResource("2_2ych3")
+atlas = ExtResource("3_2ych3")
 region = Rect2(96, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcnc8"]
-atlas = ExtResource("2_2ych3")
+atlas = ExtResource("3_2ych3")
 region = Rect2(112, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nn4pf"]
-atlas = ExtResource("2_2ych3")
+atlas = ExtResource("3_2ych3")
 region = Rect2(128, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_45vv4"]
-atlas = ExtResource("2_2ych3")
+atlas = ExtResource("3_2ych3")
 region = Rect2(144, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u304f"]
@@ -64,8 +64,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dyck"]
 size = Vector2(10, 10)
 
-[node name="Corrupt_Slime" type="Node2D" unique_id=397798934]
+[node name="Corrupt_Slime" type="Node2D" unique_id=397798934 groups=["enemy"]]
 script = ExtResource("1_2ych3")
+coin_scene = ExtResource("2_pgpwk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=952475828]
 position = Vector2(0, -8)
@@ -84,7 +85,6 @@ collision_mask = 66
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1655414700]
 collision_layer = 8
-script = ExtResource("3_wdd3y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=555316018]
 position = Vector2(0, -5)

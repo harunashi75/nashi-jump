@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://dg0ma1xjhaido"]
+
+[ext_resource type="Script" uid="uid://bd647ysem0t03" path="res://Assets/Scripts/king_slime.gd" id="1_0pxuj"]
+[ext_resource type="Texture2D" uid="uid://tboy3w7nxpuo" path="res://Assets/Sprites/Enemies/Meadow Slime-v2.png" id="1_bllup"]
+[ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="2_p82t2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pxuj"]
+atlas = ExtResource("1_bllup")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p82t2"]
+atlas = ExtResource("1_bllup")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owiyb"]
+atlas = ExtResource("1_bllup")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6tge"]
+atlas = ExtResource("1_bllup")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnd4e"]
+atlas = ExtResource("1_bllup")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3otlc"]
+atlas = ExtResource("1_bllup")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7tco"]
+atlas = ExtResource("1_bllup")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dhg7x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pxuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p82t2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owiyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6tge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnd4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3otlc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7tco")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p82t2"]
+radius = 17.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_owiyb"]
+radius = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p82t2"]
+size = Vector2(194.17188, 100)
+
+[node name="King_Slime" type="CharacterBody2D" unique_id=1500854796]
+collision_layer = 8
+collision_mask = 66
+script = ExtResource("1_0pxuj")
+coin_scene = ExtResource("2_p82t2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=540358311]
+position = Vector2(0, -32)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_dhg7x")
+animation = &"run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1346228109]
+position = Vector2(0, -17)
+shape = SubResource("CircleShape2D_p82t2")
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1670571952]
+position = Vector2(0, -21.999998)
+target_position = Vector2(33, -1.9073486e-06)
+collision_mask = 66
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1286571460]
+position = Vector2(0, -21.999998)
+target_position = Vector2(-33, -1.9073486e-06)
+collision_mask = 66
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=762866082]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1985667037]
+position = Vector2(0, -24)
+shape = SubResource("CircleShape2D_owiyb")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=750094537]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1291872854]
+position = Vector2(0, -50)
+shape = SubResource("RectangleShape2D_p82t2")

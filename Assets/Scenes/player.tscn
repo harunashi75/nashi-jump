@@ -3325,5 +3325,5 @@ zoom = Vector2(2, 2)
 process_callback = 0
 limit_enabled = false
 position_smoothing_enabled = true
-position_smoothing_speed = 80.0
+position_smoothing_speed = 20.0
 script = ExtResource("16_tcr7l")

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://htlq6sihthom"]
 
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_xf0fw"]
+[ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="2_rs3t6"]
 [ext_resource type="Texture2D" uid="uid://dp8baj8i6g675" path="res://Assets/Sprites/Enemies/Ice Slime-v2.png" id="2_xf0fw"]
-[ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="3_2aua4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rs3t6"]
 atlas = ExtResource("2_xf0fw")
@@ -66,6 +66,7 @@ size = Vector2(10, 10)
 
 [node name="Ice_Slime" type="Node2D" unique_id=1578568048]
 script = ExtResource("1_xf0fw")
+coin_scene = ExtResource("2_rs3t6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1146793160]
 position = Vector2(0, -8)
@@ -84,7 +85,6 @@ collision_mask = 66
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=39025570]
 collision_layer = 8
-script = ExtResource("3_2aua4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=659941841]
 position = Vector2(0, -5)

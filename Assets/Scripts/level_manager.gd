@@ -13,7 +13,9 @@ var levels := [
 	"res://Assets/Scenes/level_sunken_amber_valley.tscn",
 	"res://Assets/Scenes/level_lunar_dream.tscn",
 	"res://Assets/Scenes/level_sakura.tscn",
+	"res://Assets/Scenes/level_candy_carnival.tscn",
 	"res://Assets/Scenes/level_corrupted_bloom.tscn",
+	"res://Assets/Scenes/level_boss.tscn",
 	"res://Assets/Scenes/victory_scene.tscn"
 ]
 

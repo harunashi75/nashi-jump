@@ -14,10 +14,7 @@ func _ready():
 
 	time_label.text = "Time: " + TimerManager.format_time(GameManager.run_time)
 	deaths_label.text = "Deaths: " + str(GameManager.deaths_count)
-	coins_label.text = "Coins: %d / %d" % [
-		GameManager.get_total_unique_coins(),
-		GameManager.total_possible_coins
-	]
+	coins_label.text = "Coins: " + str(GameManager.get_total_unique_coins())
 
 	skins_label.text = "Skins unlocked: " + str(GameManager.skins_unlocked_this_run.size())
 

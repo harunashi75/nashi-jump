@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_htddy"]
 [ext_resource type="Texture2D" uid="uid://dod80p08m1gyv" path="res://Assets/Sprites/Enemies/Spirit Slime-v2.png" id="2_1gili"]
-[ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="2_htddy"]
+[ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="2_htddy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qu66"]
 atlas = ExtResource("2_1gili")
@@ -66,6 +66,7 @@ size = Vector2(10, 10)
 
 [node name="Spirit_Slime" type="Node2D" unique_id=1835905258]
 script = ExtResource("1_htddy")
+coin_scene = ExtResource("2_htddy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=206638397]
 position = Vector2(0, -8)
@@ -84,7 +85,6 @@ collision_mask = 66
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1095327921]
 collision_layer = 2
-script = ExtResource("2_htddy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1197305365]
 position = Vector2(0, -5)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m4huxgkaeonm"
-path="res://.godot/imported/Corrupt Slime-v2.png-107d8c7942ea1dbbddc9b36a00c3fd05.ctex"
+uid="uid://btrj1ykl8d7qt"
+path="res://.godot/imported/Final Boss-v1.png-5f06d40a94b002924f1428840f8a1555.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Enemies/Corrupt Slime-v2.png"
-dest_files=["res://.godot/imported/Corrupt Slime-v2.png-107d8c7942ea1dbbddc9b36a00c3fd05.ctex"]
+source_file="res://Assets/Sprites/Enemies/Final Boss-v1.png"
+dest_files=["res://.godot/imported/Final Boss-v1.png-5f06d40a94b002924f1428840f8a1555.ctex"]
 
 [params]
 

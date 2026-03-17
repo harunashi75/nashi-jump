@@ -26,6 +26,7 @@ func _open_skin_menu():
 
 func _start_game():
 	TimerManager.load_current_progress()
+	GameManager.load_boss_progress()
 	TimerManager.resume_timer()
 	var level_path := GameManager.load_saved_level()
 	LevelManager.load_level_by_path(level_path)

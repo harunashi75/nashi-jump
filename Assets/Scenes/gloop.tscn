@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://msxq7pdwuqdf"]
+
+[ext_resource type="Script" uid="uid://ch7eo8d70p0as" path="res://Assets/Scripts/gloop.gd" id="1_34bx2"]
+[ext_resource type="Texture2D" uid="uid://cg0j87ny1868h" path="res://Assets/Sprites/Enemies/Gloop Slime-v1.png" id="2_6xh02"]
+[ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="3_6xh02"]
+[ext_resource type="Texture2D" uid="uid://bghc74s488oot" path="res://Assets/Sprites/UI/speech_bubble2.png" id="3_gwebf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwebf"]
+atlas = ExtResource("2_6xh02")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukxdn"]
+atlas = ExtResource("2_6xh02")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkgew"]
+atlas = ExtResource("2_6xh02")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qyuk"]
+atlas = ExtResource("2_6xh02")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bg3uv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwebf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukxdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkgew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qyuk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nal38"]
+radius = 4.0
+
+[node name="Gloop" type="CharacterBody2D" unique_id=377098013 groups=["gloop"]]
+collision_layer = 512
+collision_mask = 34
+script = ExtResource("1_34bx2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1820564531]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_bg3uv")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1680544591]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_nal38")
+
+[node name="DialogueBubble" type="NinePatchRect" parent="." unique_id=88527719]
+offset_left = -39.0
+offset_top = -49.0
+offset_right = 25.0
+offset_bottom = -7.0
+texture = ExtResource("3_gwebf")
+
+[node name="DialogueLabel" type="Label" parent="DialogueBubble" unique_id=1662792739]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 86.0
+offset_bottom = 37.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6xh02")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DialogueTimer" type="Timer" parent="." unique_id=1098843209]
+one_shot = true
+
+[connection signal="timeout" from="DialogueTimer" to="." method="_on_dialogue_timer_timeout"]

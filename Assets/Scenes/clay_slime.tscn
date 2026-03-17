@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_rvxcc"]
 [ext_resource type="Texture2D" uid="uid://b3jp6jest25qy" path="res://Assets/Sprites/Enemies/Clay Slime-v2.png" id="2_rvxcc"]
-[ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="3_epn88"]
+[ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="2_wjb71"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wjb71"]
 atlas = ExtResource("2_rvxcc")
@@ -66,6 +66,7 @@ size = Vector2(10, 10)
 
 [node name="Clay_Slime" type="Node2D" unique_id=1282169167]
 script = ExtResource("1_rvxcc")
+coin_scene = ExtResource("2_wjb71")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1143025096]
 position = Vector2(0, -8)
@@ -84,7 +85,6 @@ collision_mask = 66
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=12375002]
 collision_layer = 8
-script = ExtResource("3_epn88")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1091253295]
 position = Vector2(0, -5)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dp668blccexhd"]
 
-[ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="1_3c38q"]
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_tg3b5"]
+[ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="2_4kgoa"]
 [ext_resource type="Texture2D" uid="uid://cylxvdr7qspy2" path="res://Assets/Sprites/Enemies/Moon Slime-v2.png" id="2_tg3b5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kgoa"]
@@ -66,6 +66,7 @@ size = Vector2(10, 10)
 
 [node name="Moon_Slime" type="Node2D" unique_id=105628383]
 script = ExtResource("1_tg3b5")
+coin_scene = ExtResource("2_4kgoa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=599058514]
 position = Vector2(0, -8)
@@ -84,7 +85,6 @@ collision_mask = 66
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1717305369]
 collision_layer = 2
-script = ExtResource("1_3c38q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=235078179]
 position = Vector2(0, -5)

@@ -13,6 +13,7 @@ var excluded_scenes := [
 ]
 
 @onready var background_music := preload("res://Assets/Sounds/time_for_adventure.mp3")
+@onready var boss_music := preload("res://Assets/Sounds/ive_got_your_back.ogg")
 
 var last_scene = null
 
@@ -32,7 +33,7 @@ func _ready():
 	sfx_player.volume_db = 0
 
 	sounds = {
-		"unlock": preload("res://Assets/Sounds/unlock.wav"),
+		"stomp": preload("res://Assets/Sounds/stomp.wav"),
 		"hit": preload("res://Assets/Sounds/hit.wav"),
 		"jump": preload("res://Assets/Sounds/jump.wav"),
 		"coin": preload("res://Assets/Sounds/coin.wav"),
@@ -70,14 +71,32 @@ func _check_music():
 	if scene_path in excluded_scenes:
 		if music_player.playing:
 			music_player.stop()
+	
+	var target_music: AudioStream
+	if scene_path == "res://Assets/Scenes/level_boss.tscn":
+		target_music = boss_music
 	else:
-		if not music_player.playing:
-			music_player.play()
+		target_music = background_music
+
+	if music_player.stream != target_music:
+		music_player.stop()
+		music_player.stream = target_music
+		if target_music is AudioStream:
+			target_music.loop = true 
+		music_player.play()
+	elif not music_player.playing:
+		music_player.play()
 
 # -------- Gestion SFX --------
 func play(sound_name: String):
 	if sounds.has(sound_name):
-		sfx_player.stream = sounds[sound_name]
-		sfx_player.play()
+		var temp_player = AudioStreamPlayer.new()
+		add_child(temp_player)
+		
+		temp_player.stream = sounds[sound_name]
+		temp_player.volume_db = 0
+		temp_player.play()
+		
+		temp_player.finished.connect(func(): temp_player.queue_free())
 	else:
 		push_warning("Sound not found: " + sound_name)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_teqvs"]
 [ext_resource type="Texture2D" uid="uid://ussxdhe1qu0v" path="res://Assets/Sprites/Enemies/Sunken Amber Slime-v2.png" id="2_7hbut"]
-[ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="2_teqvs"]
+[ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="2_teqvs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3y75"]
 atlas = ExtResource("2_7hbut")
@@ -66,6 +66,7 @@ size = Vector2(10, 10)
 
 [node name="Ember_Slime" type="Node2D" unique_id=1616298963]
 script = ExtResource("1_teqvs")
+coin_scene = ExtResource("2_teqvs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1069983833]
 position = Vector2(0, -8)
@@ -84,7 +85,6 @@ collision_mask = 66
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=976060047]
 collision_layer = 2
-script = ExtResource("2_teqvs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1436982012]
 position = Vector2(0, -5)

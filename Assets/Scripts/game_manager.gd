@@ -24,6 +24,7 @@ var current_level_path: String = ""
 var run_time: float = 0.0
 var deaths_count: int = 0
 var skins_unlocked_this_run: Array = []
+var king_slime_defeated := false
 
 # -------- Coins --------
 
@@ -34,6 +35,7 @@ var total_possible_coins := 330
 
 func _ready():
 	load_coins()
+	load_boss_progress()
 	if hud and not hud.is_inside_tree():
 		hud = null
 	if pause_menu and not pause_menu.is_inside_tree():
@@ -80,6 +82,20 @@ func load_saved_level() -> String:
 	levels_checkpoint_scene_path = "res://Assets/Scenes/level_1.tscn"
 	levels_checkpoint_enabled = true
 	return "res://Assets/Scenes/level_1.tscn"
+
+func save_boss_progress():
+	var config := ConfigFile.new()
+	config.load(SAVE_PATH)
+
+	config.set_value("boss", "king_slime_defeated", king_slime_defeated)
+	config.save(SAVE_PATH)
+
+func load_boss_progress():
+	var config := ConfigFile.new()
+	if config.load(SAVE_PATH) != OK:
+		return
+
+	king_slime_defeated = config.get_value("boss", "king_slime_defeated", false)
 
 func reset_progress():
 	reset_coins()

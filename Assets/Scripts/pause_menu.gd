@@ -89,10 +89,12 @@ func _on_resume_button_pressed():
 
 func _on_quit_button_pressed():
 	TimerManager.save_current_progress()
+	GameManager.save_boss_progress()
 	get_tree().quit()
 
 func _on_menu_button_pressed():
 	TimerManager.save_current_progress()
+	GameManager.save_boss_progress()
 	GameManager.is_game_paused = false
 	get_tree().paused = false
 	set_process_input(false)

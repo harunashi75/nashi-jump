@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rpos307roc5o"
-path="res://.godot/imported/Bee.png-f625099e89b44161da4efd58d27f6a87.ctex"
+uid="uid://b31xr51vk1ypv"
+path="res://.godot/imported/Candy Carnival Sky2.png-3f8c96ae01f153dc8cce0cc6c4fcbd33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Enemies/Bee.png"
-dest_files=["res://.godot/imported/Bee.png-f625099e89b44161da4efd58d27f6a87.ctex"]
+source_file="res://Assets/Sprites/Backgrounds/Candy Carnival Sky2.png"
+dest_files=["res://.godot/imported/Candy Carnival Sky2.png-3f8c96ae01f153dc8cce0cc6c4fcbd33.ctex"]
 
 [params]
 

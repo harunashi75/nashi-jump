@@ -29,7 +29,8 @@ var jump_buffer_timer = 0.0
 # -------- Santé et skins --------
 
 var base_health: int = 1
-var bonus_health: int = 0
+var permanent_health_bonus: int = 0
+var temporary_health_bonus: int = 0
 signal health_changed(current_health)
 var current_skin := "default"
 
@@ -55,6 +56,9 @@ var did_double_jump := false
 func _ready():
 	add_to_group("player")
 	set_process_input(false)
+	
+	if GameManager.king_slime_defeated:
+		permanent_health_bonus = 1
 
 	current_skin = SkinManager.current_skin
 	print("Skin actif :", current_skin)
@@ -141,6 +145,9 @@ func _do_jump(is_air_jump := false):
 	did_double_jump = is_air_jump
 	SoundManager.play("jump")
 
+func bounce():
+	velocity.y = JUMP_FORCE * 0.7 # Un rebond un peu plus faible qu'un saut normal
+
 func update_state():
 	if state == PlayerState.DEATH:
 		return
@@ -190,30 +197,41 @@ func play_player_anim(anim_name: String):
 # -------- Effets --------
 
 func apply_health_bonus():
-	if bonus_health == 0:
-		bonus_health = 1
-		emit_signal("health_changed", get_current_health())
+	if GameManager.king_slime_defeated and permanent_health_bonus < 1:
+		permanent_health_bonus = 1
+		print("Vie permanente restaurée !")
+	
+	elif temporary_health_bonus < 1:
+		temporary_health_bonus = 1
+		print("Bonus temporaire ajouté !")
+	
+	emit_signal("health_changed", get_current_health())
+
+func apply_permanent_health_bonus():
+	permanent_health_bonus += 1
+	emit_signal("health_changed", get_current_health())
 
 # -------- Santé --------
 
 func get_current_health() -> int:
-	return base_health + bonus_health
+	return base_health + permanent_health_bonus + temporary_health_bonus
 
 func take_damage(amount := 1):
 	if GameManager.godmode_enabled:
 		return
 
-	if bonus_health > 0:
-		bonus_health = 0
-		emit_signal("health_changed", get_current_health())
+	if temporary_health_bonus > 0:
+		temporary_health_bonus = 0
+	elif permanent_health_bonus > 0:
+		permanent_health_bonus = 0
 	else:
 		base_health -= amount
-		if base_health <= 0:
-			die()
-		else:
-			emit_signal("health_changed", get_current_health())
-
+		
+	emit_signal("health_changed", get_current_health())
 	SoundManager.play("hit")
+	
+	if base_health <= 0:
+		die()
 
 # -------- Respawn & Mort --------
 

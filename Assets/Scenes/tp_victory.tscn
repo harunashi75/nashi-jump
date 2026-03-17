@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dw57ed1nx5nng"]
+
+[ext_resource type="Texture2D" uid="uid://1oykfrjj2fwj" path="res://Assets/Sprites/TileSets/tileset_victory-v2.png" id="1_4lg6a"]
+[ext_resource type="Script" uid="uid://nhfepgpst0f5" path="res://Assets/Scripts/tp_victory.gd" id="1_rrukc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rrukc"]
+radius = 2.0
+height = 32.0
+
+[node name="TP_Victory" type="Area2D" unique_id=1343276172]
+script = ExtResource("1_rrukc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=412488959]
+position = Vector2(0, -16)
+texture = ExtResource("1_4lg6a")
+region_enabled = true
+region_rect = Rect2(50, 80, 12, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=239407785]
+position = Vector2(-4, -16)
+shape = SubResource("CapsuleShape2D_rrukc")

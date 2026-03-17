@@ -87,10 +87,10 @@ texture_focused = ExtResource("15_0gtgq")
 
 [node name="GameVersion" type="Label" parent="." unique_id=1802803789]
 layout_mode = 0
-offset_left = 349.0
+offset_left = 544.0
 offset_top = 343.0
 offset_right = 633.0
 offset_bottom = 351.0
 theme_override_fonts/font = ExtResource("4_qd4of")
 theme_override_font_sizes/font_size = 8
-text = "v0.14.90-12p022526 (Development Build)"
+text = "v0.14.9-dev"
