@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://ergcwgvwinbr"]
+
+[ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_uo8gy"]
+[ext_resource type="Texture2D" uid="uid://cun5txr0f6uec" path="res://Assets/Sprites/Enemies/Sand Slime Tempest-v1.png" id="2_2m72g"]
+[ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="2_xf8x0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf8x0"]
+atlas = ExtResource("2_2m72g")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyy4x"]
+atlas = ExtResource("2_2m72g")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxmdc"]
+atlas = ExtResource("2_2m72g")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a3mv"]
+atlas = ExtResource("2_2m72g")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbq12"]
+atlas = ExtResource("2_2m72g")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xg0wm"]
+atlas = ExtResource("2_2m72g")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e28h"]
+atlas = ExtResource("2_2m72g")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2m72g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf8x0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyy4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxmdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a3mv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbq12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xg0wm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e28h")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xf8x0"]
+size = Vector2(10, 10)
+
+[node name="SandSlimeTempest" type="Node2D" unique_id=1165990888]
+script = ExtResource("1_uo8gy")
+coin_scene = ExtResource("2_xf8x0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1239161241]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_2m72g")
+animation = &"run"
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1154302886]
+position = Vector2(0, -5)
+target_position = Vector2(9, 0)
+collision_mask = 66
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=96746343]
+position = Vector2(0, -5)
+target_position = Vector2(-9, 0)
+collision_mask = 66
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1888515229]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1363687724]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_xf8x0")

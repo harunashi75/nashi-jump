@@ -11,7 +11,7 @@ func _on_body_entered(body):
 	TimerManager.stop_timer()
 	GameManager.run_time = TimerManager.get_elapsed_time()
 
-	GameManager.save_current_level("res://Assets/Scenes/level_1.tscn")
+	GameManager.save_current_level("res://Assets/Scenes/level_plains.tscn")
 
 	# --- Stats finales ---
 	SkinManager.check_endgame_unlocks()

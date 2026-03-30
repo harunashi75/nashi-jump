@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://byqnkuvbwq8py"]
 
-[ext_resource type="Texture2D" uid="uid://c7ccwlcyo73ec" path="res://Assets/Sprites/Backgrounds/start_menu-v2.png" id="1_4gsa1"]
 [ext_resource type="Script" uid="uid://f6fypy67laxi" path="res://Assets/Scripts/skin_menu.gd" id="1_epek7"]
+[ext_resource type="Texture2D" uid="uid://q2penmysy6vx" path="res://Assets/Sprites/Backgrounds/Start Menu-v3.png" id="2_3s7qg"]
 [ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="2_epek7"]
 [ext_resource type="Texture2D" uid="uid://dxkdiujxhpgot" path="res://Assets/Sprites/UI/button_normal_back.png" id="3_d0hd5"]
 [ext_resource type="Texture2D" uid="uid://ceb7b1ochtt2p" path="res://Assets/Sprites/UI/button_pressed_back.png" id="4_he5nr"]
@@ -70,7 +70,7 @@ anchor_bottom = 1.0
 offset_left = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_4gsa1")
+texture = ExtResource("2_3s7qg")
 
 [node name="MenuName" type="Label" parent="." unique_id=2041351484]
 layout_mode = 0

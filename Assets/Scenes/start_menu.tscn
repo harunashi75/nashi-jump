@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cxqaap5dhcl18"]
 
 [ext_resource type="Script" uid="uid://bifmrxcevriyn" path="res://Assets/Scripts/start_menu.gd" id="1_qd4of"]
-[ext_resource type="Texture2D" uid="uid://c7ccwlcyo73ec" path="res://Assets/Sprites/Backgrounds/start_menu-v2.png" id="2_18q86"]
+[ext_resource type="Texture2D" uid="uid://q2penmysy6vx" path="res://Assets/Sprites/Backgrounds/Start Menu-v3.png" id="2_24w05"]
 [ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="4_qd4of"]
 [ext_resource type="Texture2D" uid="uid://c15nw420kjdr" path="res://Assets/Sprites/UI/button_normal_continue.png" id="4_ttvl8"]
 [ext_resource type="Texture2D" uid="uid://dfjogbposkv8q" path="res://Assets/Sprites/UI/button_pressed_continue.png" id="5_530e5"]
@@ -33,7 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_18q86")
+texture = ExtResource("2_24w05")
 
 [node name="GameName" type="Label" parent="." unique_id=1019919080]
 layout_mode = 0

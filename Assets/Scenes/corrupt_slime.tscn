@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_2ych3"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="2_pgpwk"]
-[ext_resource type="Texture2D" uid="uid://dxpuxv6hdudyp" path="res://Assets/Sprites/Enemies/Corrupt Slime-v3.png" id="3_2ych3"]
+[ext_resource type="Texture2D" uid="uid://dyv836d520x61" path="res://Assets/Sprites/Enemies/Corrupted Blossom Slime-v1.png" id="3_2ych3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pgpwk"]
 atlas = ExtResource("3_2ych3")

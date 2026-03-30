@@ -72,16 +72,16 @@ func load_saved_level() -> String:
 		var level: String = config.get_value(
 			"progress",
 			"current_level",
-			"res://Assets/Scenes/level_1.tscn"
+			"res://Assets/Scenes/level_plains.tscn"
 		)
 
 		levels_checkpoint_scene_path = level
 		levels_checkpoint_enabled = true
 		return level
 
-	levels_checkpoint_scene_path = "res://Assets/Scenes/level_1.tscn"
+	levels_checkpoint_scene_path = "res://Assets/Scenes/level_plains.tscn"
 	levels_checkpoint_enabled = true
-	return "res://Assets/Scenes/level_1.tscn"
+	return "res://Assets/Scenes/level_plains.tscn"
 
 func save_boss_progress():
 	var config := ConfigFile.new()
@@ -102,7 +102,7 @@ func reset_progress():
 	skins_unlocked_this_run.clear()
 	
 	var config := ConfigFile.new()
-	config.set_value("progress", "current_level", "res://Assets/Scenes/level_1.tscn")
+	config.set_value("progress", "current_level", "res://Assets/Scenes/level_plains.tscn")
 	config.set_value("coins", "by_level", {})
 	config.save(SAVE_PATH)
 
@@ -169,7 +169,7 @@ func set_levels_checkpoint(path: String):
 
 func reset_checkpoint_data():
 	levels_checkpoint_enabled = false
-	levels_checkpoint_scene_path = "res://Assets/Scenes/level_1.tscn"
+	levels_checkpoint_scene_path = "res://Assets/Scenes/level_plains.tscn"
 
 # -------- Input --------
 

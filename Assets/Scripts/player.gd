@@ -146,7 +146,7 @@ func _do_jump(is_air_jump := false):
 	SoundManager.play("jump")
 
 func bounce():
-	velocity.y = JUMP_FORCE * 0.7 # Un rebond un peu plus faible qu'un saut normal
+	velocity.y = JUMP_FORCE * 0.7
 
 func update_state():
 	if state == PlayerState.DEATH:

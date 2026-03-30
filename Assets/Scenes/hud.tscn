@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://hbfgacy1e3rr"]
 
 [ext_resource type="Script" uid="uid://qpjwae1hpo53" path="res://Assets/Scripts/hud.gd" id="1_th0pt"]
+[ext_resource type="Texture2D" uid="uid://dm5242l1rofgq" path="res://Assets/Sprites/heart_icon.png" id="3_vy1te"]
 [ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="4_vy1te"]
-[ext_resource type="Texture2D" uid="uid://bguy8u3p3pv1w" path="res://Assets/Sprites/UI/heart_icon.png" id="5_l5nkk"]
 [ext_resource type="Script" uid="uid://bc4mnu3w6i6fv" path="res://Assets/Scripts/health_bar.gd" id="5_uttbk"]
 [ext_resource type="Texture2D" uid="uid://n6j5hjbpe5hb" path="res://Assets/Sprites/UI/coin_icon.png" id="5_vy1te"]
 [ext_resource type="Texture2D" uid="uid://cdxcdfubkgsk5" path="res://Assets/Sprites/UI/clock_icon.png" id="6_vy1te"]
@@ -17,10 +17,10 @@ offset_right = 77.0
 offset_bottom = 42.0
 script = ExtResource("5_uttbk")
 
-[node name="HeartIcon" type="TextureRect" parent="HealthDisplay" unique_id=124317019]
-custom_minimum_size = Vector2(32, 32)
+[node name="HeartIcon" type="TextureRect" parent="HealthDisplay" unique_id=783686477]
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-texture = ExtResource("5_l5nkk")
+texture = ExtResource("3_vy1te")
 stretch_mode = 5
 
 [node name="HealthLabel" type="Label" parent="HealthDisplay" unique_id=1170414126]

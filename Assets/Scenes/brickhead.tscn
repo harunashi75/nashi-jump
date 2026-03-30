@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dfdakx4luhi5i"]
 
 [ext_resource type="Script" uid="uid://rj8bo7ewwsmm" path="res://Assets/Scripts/brickhead.gd" id="1_m3y4a"]
-[ext_resource type="Texture2D" uid="uid://xh8b5s3nf4v7" path="res://Assets/Sprites/Traps/brickhead_base.png" id="2_n5n5y"]
+[ext_resource type="Texture2D" uid="uid://xh8b5s3nf4v7" path="res://Assets/Sprites/Traps/brickhead.png" id="2_n5n5y"]
 [ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="3_n5n5y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8b5ru"]

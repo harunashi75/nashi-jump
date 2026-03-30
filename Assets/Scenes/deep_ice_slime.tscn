@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://htlq6sihthom"]
+
+[ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_nxse0"]
+[ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="2_f3rbr"]
+[ext_resource type="Texture2D" uid="uid://c0a71ni4q528v" path="res://Assets/Sprites/Enemies/Deep Ice Slime-v1.png" id="3_nxse0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3rbr"]
+atlas = ExtResource("3_nxse0")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4c32"]
+atlas = ExtResource("3_nxse0")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsorb"]
+atlas = ExtResource("3_nxse0")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egm5h"]
+atlas = ExtResource("3_nxse0")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdh5r"]
+atlas = ExtResource("3_nxse0")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eva5t"]
+atlas = ExtResource("3_nxse0")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22w2g"]
+atlas = ExtResource("3_nxse0")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fga1l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3rbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4c32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsorb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egm5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdh5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eva5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22w2g")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2opob"]
+size = Vector2(10, 10)
+
+[node name="DeepIceSlime" type="Node2D" unique_id=1578568048]
+script = ExtResource("1_nxse0")
+coin_scene = ExtResource("2_f3rbr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1146793160]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_fga1l")
+animation = &"run"
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1454917681]
+position = Vector2(0, -5)
+target_position = Vector2(9, 0)
+collision_mask = 66
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=534415237]
+position = Vector2(0, -5)
+target_position = Vector2(-9, 0)
+collision_mask = 66
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=39025570]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=659941841]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_2opob")

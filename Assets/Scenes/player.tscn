@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cqhyru20srfm8" path="res://Assets/Sprites/Characters/void-v2.png" id="15_yrbh7"]
 [ext_resource type="Texture2D" uid="uid://t0vgdlohgx00" path="res://Assets/Sprites/Characters/rainbow.png" id="16_aq5fl"]
 [ext_resource type="Script" uid="uid://b30kv2x3q5d1b" path="res://Assets/Scripts/camera_2d.gd" id="16_tcr7l"]
+[ext_resource type="Texture2D" uid="uid://d37gkuyc37ojx" path="res://Assets/Sprites/Characters/Mystique2.0-1.png.png" id="16_yrbh7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rgkdp"]
 atlas = ExtResource("2_qnw5g")
@@ -662,19 +663,19 @@ atlas = ExtResource("14_aq5fl")
 region = Rect2(48, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qnw5g"]
-atlas = ExtResource("12_qnw5g")
+atlas = ExtResource("16_yrbh7")
 region = Rect2(0, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h88yk"]
-atlas = ExtResource("12_qnw5g")
+atlas = ExtResource("16_yrbh7")
 region = Rect2(16, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7paa"]
-atlas = ExtResource("12_qnw5g")
+atlas = ExtResource("16_yrbh7")
 region = Rect2(32, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3rua"]
-atlas = ExtResource("12_qnw5g")
+atlas = ExtResource("16_yrbh7")
 region = Rect2(48, 0, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vqski"]

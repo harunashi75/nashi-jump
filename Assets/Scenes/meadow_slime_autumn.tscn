@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://bheqkg1mur0ek"]
+
+[ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_d1h7i"]
+[ext_resource type="Texture2D" uid="uid://np0lu52hgylg" path="res://Assets/Sprites/Enemies/Meadow Slime Autumn-v1.png" id="1_gjvv1"]
+[ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="2_o000w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1h7i"]
+atlas = ExtResource("1_gjvv1")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o000w"]
+atlas = ExtResource("1_gjvv1")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te5ve"]
+atlas = ExtResource("1_gjvv1")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x66r3"]
+atlas = ExtResource("1_gjvv1")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftuj2"]
+atlas = ExtResource("1_gjvv1")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_woopc"]
+atlas = ExtResource("1_gjvv1")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drfqx"]
+atlas = ExtResource("1_gjvv1")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v185w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1h7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o000w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te5ve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x66r3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftuj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_woopc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drfqx")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjvv1"]
+size = Vector2(10, 10)
+
+[node name="Meadow_Slime_Autumn" type="Node2D" unique_id=1358636351]
+script = ExtResource("1_d1h7i")
+coin_scene = ExtResource("2_o000w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1875937067]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_v185w")
+animation = &"run"
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=426853292]
+position = Vector2(0, -5)
+target_position = Vector2(9, 0)
+collision_mask = 66
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=348137848]
+position = Vector2(0, -5)
+target_position = Vector2(-9, 0)
+collision_mask = 66
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=745113574]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1078873257]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_gjvv1")

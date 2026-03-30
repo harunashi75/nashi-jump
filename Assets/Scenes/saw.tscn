@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2sr1dbwgya5l"]
 
 [ext_resource type="Script" uid="uid://bgpt66jvi8fqn" path="res://Assets/Scripts/saw.gd" id="1_mw7kg"]
-[ext_resource type="Texture2D" uid="uid://phogfhd6h8ss" path="res://Assets/Sprites/Traps/Circular Saw.png" id="2_o63if"]
+[ext_resource type="Texture2D" uid="uid://phogfhd6h8ss" path="res://Assets/Sprites/Traps/saw.png" id="2_o63if"]
 [ext_resource type="Script" uid="uid://cjlujerqj7e5g" path="res://Assets/Scripts/hitbox.gd" id="3_o63if"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rjtsw"]

@@ -72,10 +72,16 @@ func _hide_bubble():
 	bubble.visible = false
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("jump") and is_talking:
+		dialogue_timer.stop()
+		play_next_line(2.0)
+	
 	if player:
 		var offset_x = 25 if !player.sprite.flip_h else -25
 		var target_pos = player.global_position + Vector2(offset_x, -25)
+		
 		global_position = global_position.lerp(target_pos, follow_speed * delta)
+		
 		global_position.y += sin(Time.get_ticks_msec() * 0.005) * 0.5
 		
 		sprite.flip_h = !player.sprite.flip_h

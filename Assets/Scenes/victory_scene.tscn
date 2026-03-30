@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kht5vgm0o0lp" path="res://Assets/Scripts/victory_scene.gd" id="1_iuq5i"]
 [ext_resource type="FontFile" uid="uid://dytvhjhk2wso4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="2_iuq5i"]
-[ext_resource type="Texture2D" uid="uid://c7ccwlcyo73ec" path="res://Assets/Sprites/Backgrounds/start_menu-v2.png" id="2_n7cjf"]
+[ext_resource type="Texture2D" uid="uid://q2penmysy6vx" path="res://Assets/Sprites/Backgrounds/Start Menu-v3.png" id="2_sajsb"]
 [ext_resource type="Texture2D" uid="uid://co2171nx8k0ws" path="res://Assets/Sprites/UI/button_normal_menu.png" id="4_mpi07"]
 [ext_resource type="Texture2D" uid="uid://bxkdm222tstoh" path="res://Assets/Sprites/UI/button_normal_restart.png" id="4_sajsb"]
 [ext_resource type="Texture2D" uid="uid://dgov43mawuti8" path="res://Assets/Sprites/UI/button_pressed_restart.png" id="5_eikd6"]
@@ -29,7 +29,7 @@ offset_right = 600.0
 offset_bottom = 320.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_n7cjf")
+texture = ExtResource("2_sajsb")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=4451996]
 layout_mode = 0

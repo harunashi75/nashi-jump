@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://baotldylvc72v"]
+
+[ext_resource type="Script" uid="uid://ct0x4rppk8r62" path="res://Assets/Scripts/final_boss.gd" id="1_y22f7"]
+[ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="2_dfrk7"]
+[ext_resource type="PackedScene" uid="uid://c3rxnqovwslqr" path="res://Assets/Scenes/corrupt_slime.tscn" id="3_rkwes"]
+[ext_resource type="PackedScene" uid="uid://dw57ed1nx5nng" path="res://Assets/Scenes/tp_victory.tscn" id="4_dg1hx"]
+[ext_resource type="Texture2D" uid="uid://beq213silaqft" path="res://Assets/Sprites/Enemies/Bloom Entity Slime2-v1.png" id="5_y22f7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfrk7"]
+atlas = ExtResource("5_y22f7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkwes"]
+atlas = ExtResource("5_y22f7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg1hx"]
+atlas = ExtResource("5_y22f7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64jih"]
+atlas = ExtResource("5_y22f7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f35q6"]
+atlas = ExtResource("5_y22f7")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2cxi"]
+atlas = ExtResource("5_y22f7")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq2ef"]
+atlas = ExtResource("5_y22f7")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlh5o"]
+atlas = ExtResource("5_y22f7")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcpc2"]
+atlas = ExtResource("5_y22f7")
+region = Rect2(224, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2p5d"]
+atlas = ExtResource("5_y22f7")
+region = Rect2(256, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkh2x"]
+atlas = ExtResource("5_y22f7")
+region = Rect2(288, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6g3gd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfrk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkwes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg1hx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64jih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f35q6")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2cxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eq2ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlh5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcpc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2p5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkh2x")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6k8bn"]
+radius = 24.020824
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ryimh"]
+radius = 29.017237
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u01e0"]
+size = Vector2(169.08594, 96)
+
+[node name="BloomEntityBoss" type="CharacterBody2D" unique_id=1655334218]
+collision_layer = 8
+collision_mask = 66
+script = ExtResource("1_y22f7")
+coin_scene = ExtResource("2_dfrk7")
+slime_scene = ExtResource("3_rkwes")
+victory_tp_scene = ExtResource("4_dg1hx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1783983368]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_6g3gd")
+animation = &"run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1656362955]
+position = Vector2(0, -24)
+shape = SubResource("CircleShape2D_6k8bn")
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=215219633]
+position = Vector2(0, -21.999998)
+target_position = Vector2(33, -1.9073486e-06)
+collision_mask = 66
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1645069003]
+position = Vector2(0, -21.999998)
+target_position = Vector2(-33, -1.9073486e-06)
+collision_mask = 66
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=921240511]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1510408979]
+position = Vector2(0, -29)
+shape = SubResource("CircleShape2D_ryimh")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1512922432]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1749332580]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_u01e0")
+
+[node name="InvincibilityTimer" type="Timer" parent="." unique_id=223490044]
+wait_time = 0.5
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1274953745]

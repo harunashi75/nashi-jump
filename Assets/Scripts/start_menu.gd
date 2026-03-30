@@ -36,7 +36,7 @@ func _start_new_game():
 	GameManager.reset_coins()
 	TimerManager.start_timer()
 	TimerManager.save_current_progress()
-	LevelManager.load_level_by_path("res://Assets/Scenes/level_1.tscn")
+	LevelManager.load_level_by_path("res://Assets/Scenes/level_plains.tscn")
 
 func _quit_game():
 	TimerManager.save_current_progress()
