@@ -66,7 +66,7 @@ size = Vector2(16, 16)
 radius = 2.0
 height = 32.0
 
-[node name="Level_Frozen_Peaks" type="Node" unique_id=954581658]
+[node name="level_frozen_peaks" type="Node" unique_id=954581658]
 script = ExtResource("1_0jncm")
 
 [node name="Sky" type="TextureRect" parent="." unique_id=2099775434]

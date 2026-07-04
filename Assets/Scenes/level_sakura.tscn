@@ -107,7 +107,7 @@ size = Vector2(2, 12)
 radius = 2.0
 height = 32.0
 
-[node name="Level_Sakura" type="Node" unique_id=48346472]
+[node name="LevelSakura" type="Node" unique_id=48346472]
 script = ExtResource("1_rhv5k")
 
 [node name="Sky" type="TextureRect" parent="." unique_id=700408243]

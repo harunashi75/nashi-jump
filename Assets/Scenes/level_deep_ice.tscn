@@ -124,7 +124,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fs6qb")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 7.0
 }]
@@ -174,7 +174,7 @@ size = Vector2(16, 16)
 radius = 2.0
 height = 32.0
 
-[node name="Level_Deep_Ice" type="Node" unique_id=1884254390]
+[node name="level_deep_ice" type="Node" unique_id=1884254390]
 script = ExtResource("1_t4dml")
 
 [node name="Sky" type="TextureRect" parent="." unique_id=958924170]

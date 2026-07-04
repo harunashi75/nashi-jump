@@ -15,9 +15,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Nashi Jump"
-config/version="0.14.9"
+config/version="0.16.9"
 run/main_scene="res://Assets/Scenes/start_menu.tscn"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="uid://dr56avv2fnyin"
 
 [autoload]

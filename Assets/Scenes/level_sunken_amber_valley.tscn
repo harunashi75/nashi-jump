@@ -83,7 +83,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bls7y")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 7.0
 }]
@@ -133,7 +133,7 @@ size = Vector2(16, 16)
 radius = 2.0
 height = 16.0
 
-[node name="Level_Sunken_Amber_Valley" type="Node" unique_id=130217515]
+[node name="LevelSunkenAmberValley" type="Node" unique_id=130217515]
 script = ExtResource("1_03e7l")
 
 [node name="Sky" type="TextureRect" parent="." unique_id=1101960289]

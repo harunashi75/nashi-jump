@@ -29,7 +29,6 @@ var jump_buffer_timer = 0.0
 # -------- Santé et skins --------
 
 var base_health: int = 1
-var permanent_health_bonus: int = 0
 var temporary_health_bonus: int = 0
 signal health_changed(current_health)
 var current_skin := "default"
@@ -57,9 +56,6 @@ func _ready():
 	add_to_group("player")
 	set_process_input(false)
 	
-	if GameManager.king_slime_defeated:
-		permanent_health_bonus = 1
-
 	current_skin = SkinManager.current_skin
 	print("Skin actif :", current_skin)
 
@@ -88,9 +84,15 @@ func apply_gravity(delta):
 
 func handle_movement(delta):
 	var direction := Input.get_axis("move_left", "move_right")
+	var current_acceleration = ACCELERATION
+	var current_deceleration = DECELERATION
+	
+	if GameManager.is_current_level_ice():
+			current_acceleration = ACCELERATION * 0.3
+			current_deceleration = DECELERATION * 0.15
 
 	if direction != 0:
-		var accel := ACCELERATION if is_on_floor() else AIR_ACCELERATION
+		var accel: float = current_acceleration if is_on_floor() else AIR_ACCELERATION
 		velocity.x = move_toward(
 			velocity.x,
 			direction * BASE_SPEED,
@@ -100,7 +102,7 @@ func handle_movement(delta):
 		sprite.flip_h = direction < 0
 	else:
 		if is_on_floor():
-			velocity.x = move_toward(velocity.x, 0, DECELERATION * delta)
+			velocity.x = move_toward(velocity.x, 0, current_deceleration * delta)
 
 	if not is_on_floor():
 		velocity.x *= 0.97
@@ -197,24 +199,16 @@ func play_player_anim(anim_name: String):
 # -------- Effets --------
 
 func apply_health_bonus():
-	if GameManager.king_slime_defeated and permanent_health_bonus < 1:
-		permanent_health_bonus = 1
-		print("Vie permanente restaurée !")
-	
-	elif temporary_health_bonus < 1:
+	if temporary_health_bonus < 1:
 		temporary_health_bonus = 1
-		print("Bonus temporaire ajouté !")
+		print("Temporary bonus added!")
 	
-	emit_signal("health_changed", get_current_health())
-
-func apply_permanent_health_bonus():
-	permanent_health_bonus += 1
 	emit_signal("health_changed", get_current_health())
 
 # -------- Santé --------
 
 func get_current_health() -> int:
-	return base_health + permanent_health_bonus + temporary_health_bonus
+	return base_health + temporary_health_bonus
 
 func take_damage(amount := 1):
 	if GameManager.godmode_enabled:
@@ -222,8 +216,6 @@ func take_damage(amount := 1):
 
 	if temporary_health_bonus > 0:
 		temporary_health_bonus = 0
-	elif permanent_health_bonus > 0:
-		permanent_health_bonus = 0
 	else:
 		base_health -= amount
 		

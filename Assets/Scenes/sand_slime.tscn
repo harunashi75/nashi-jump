@@ -56,7 +56,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wwuan")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run",
 "speed": 10.0
 }]
@@ -64,7 +64,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5h5i"]
 size = Vector2(10, 10)
 
-[node name="Sand_Slime" type="Node2D" unique_id=355861053]
+[node name="SandSlime" type="Node2D" unique_id=355861053]
 script = ExtResource("1_r5h5i")
 coin_scene = ExtResource("2_rjfee")
 

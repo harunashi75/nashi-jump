@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dgd83j7up65k4" path="res://Assets/Scenes/platform_2.tscn" id="5_kehrp"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="6_avvkd"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="7_goll8"]
-[ext_resource type="PackedScene" uid="uid://ergcwgvwinbr" path="res://Assets/Scenes/sand_slime_tempest.tscn" id="8_6r20u"]
+[ext_resource type="PackedScene" uid="uid://ergcwgvwinbr" path="res://Assets/Scenes/sand_tempest_slime.tscn" id="8_6r20u"]
 [ext_resource type="PackedScene" uid="uid://jb7gqeylewot" path="res://Assets/Scenes/spikes.tscn" id="9_gh605"]
 [ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="10_lalqg"]
 [ext_resource type="Script" uid="uid://c67m6a32rfs27" path="res://Assets/Scripts/teleport.gd" id="11_6r20u"]
@@ -195,7 +195,7 @@ size = Vector2(16, 16)
 radius = 2.0
 height = 32.0
 
-[node name="Level_Desert_Tempest" type="Node" unique_id=698416109]
+[node name="LevelDesertTempest" type="Node" unique_id=698416109]
 script = ExtResource("1_6r20u")
 
 [node name="Sky" type="TextureRect" parent="." unique_id=1034490700]
@@ -282,7 +282,7 @@ position = Vector2(264, -148)
 position = Vector2(88, -200)
 
 [node name="Coin15" parent="Coins" unique_id=73897848 instance=ExtResource("6_avvkd")]
-position = Vector2(216, -248)
+position = Vector2(232, -248)
 
 [node name="Coin16" parent="Coins" unique_id=1058515431 instance=ExtResource("6_avvkd")]
 position = Vector2(200, -344)

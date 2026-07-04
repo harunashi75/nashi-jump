@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://vwbv7aa6bms" path="res://Assets/Sprites/coin.png" id="1_8dedi"]
 [ext_resource type="Script" uid="uid://bgmj14jugfpqk" path="res://Assets/Scripts/coin.gd" id="1_tpxyo"]
-[ext_resource type="AudioStream" uid="uid://d1xnfv5vtjgd2" path="res://Assets/Sounds/coin.wav" id="2_50666"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_50666"]
 atlas = ExtResource("1_8dedi")
@@ -114,7 +113,3 @@ shape = SubResource("CircleShape2D_70nrk")
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=454793966]
 target_position = Vector2(0, 12)
 collision_mask = 2
-
-[node name="PickupSound" type="AudioStreamPlayer2D" parent="." unique_id=1448400831]
-stream = ExtResource("2_50666")
-bus = &"SFX"

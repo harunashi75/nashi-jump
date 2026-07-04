@@ -3,18 +3,18 @@ extends Node
 # -------- Niveaux disponibles --------
 var levels := [
 	"res://Assets/Scenes/level_plains.tscn",
+	"res://Assets/Scenes/level_plains_bloom.tscn",
 	"res://Assets/Scenes/level_plains_autumn.tscn",
-	"res://Assets/Scenes/level_plains_nuit.tscn",
 	"res://Assets/Scenes/level_desert.tscn",
 	"res://Assets/Scenes/level_sunken_amber_valley.tscn",
 	"res://Assets/Scenes/level_desert_tempest.tscn",
 	"res://Assets/Scenes/level_frozen_peaks.tscn",
 	"res://Assets/Scenes/level_deep_ice.tscn",
-	"res://Assets/Scenes/level_lunar_ice.tscn",
+	"res://Assets/Scenes/level_crystal_glacier.tscn",
 	"res://Assets/Scenes/level_sakura.tscn",
 	"res://Assets/Scenes/level_sakura_dream.tscn",
-	"res://Assets/Scenes/level_corrupted_sakura.tscn",
-	"res://Assets/Scenes/level_boss.tscn",
+	"res://Assets/Scenes/level_sakura_nightmare.tscn",
+	"res://Assets/Scenes/level_nightmare_boss.tscn",
 	"res://Assets/Scenes/victory_scene.tscn"
 ]
 

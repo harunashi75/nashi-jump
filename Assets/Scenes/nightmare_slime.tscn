@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://c3rxnqovwslqr"]
+
+[ext_resource type="Script" uid="uid://de6lhiujqg7ul" path="res://Assets/Scripts/enemies.gd" id="1_2ych3"]
+[ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="2_pgpwk"]
+[ext_resource type="Texture2D" uid="uid://cdocd16xgi3ym" path="res://Assets/Sprites/Enemies/Nightmare Slime-v1.png" id="3_s7rrg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jd6n"]
+atlas = ExtResource("3_s7rrg")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfj88"]
+atlas = ExtResource("3_s7rrg")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ut34c"]
+atlas = ExtResource("3_s7rrg")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27ygv"]
+atlas = ExtResource("3_s7rrg")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ip1b"]
+atlas = ExtResource("3_s7rrg")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j574m"]
+atlas = ExtResource("3_s7rrg")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oguci"]
+atlas = ExtResource("3_s7rrg")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u304f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jd6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfj88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ut34c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27ygv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ip1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j574m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oguci")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dyck"]
+size = Vector2(10, 10)
+
+[node name="NightmareSlime" type="Node2D" unique_id=397798934 groups=["enemy"]]
+script = ExtResource("1_2ych3")
+coin_scene = ExtResource("2_pgpwk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=952475828]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_u304f")
+animation = &"run"
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=729475145]
+position = Vector2(0, -5)
+target_position = Vector2(9, 0)
+collision_mask = 66
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1913697311]
+position = Vector2(0, -5)
+target_position = Vector2(-9, 0)
+collision_mask = 66
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1655414700]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=555316018]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_7dyck")

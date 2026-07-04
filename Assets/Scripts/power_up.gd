@@ -16,16 +16,7 @@ func _on_body_entered(body):
 func _collect_powerup(body):
 	SoundManager.play("power_up")
 
-	var effects = [
-		"health"
-	]
-
-	var chosen = effects[randi() % effects.size()]
-	print("Power-up obtenu :", chosen)
-
-	match chosen:
-		"health":
-			body.apply_health_bonus()
+	body.apply_health_bonus()
 
 	_hide_powerup()
 

@@ -117,7 +117,7 @@ size = Vector2(16, 16)
 radius = 2.0
 height = 16.0
 
-[node name="Level_Desert" type="Node" unique_id=310087437]
+[node name="LevelDesert" type="Node" unique_id=310087437]
 script = ExtResource("1_208mh")
 
 [node name="Sky" type="TextureRect" parent="." unique_id=1169249292]

@@ -12,6 +12,13 @@ var excluded_scenes := [
 	"res://Assets/Scenes/victory_scene.tscn"
 ]
 
+var boss_scenes := [
+	"res://Assets/Scenes/level_bloom_entity.tscn",
+	"res://Assets/Scenes/level_king_slime.tscn",
+	"res://Assets/Scenes/level_dune_tyrant.tscn",
+	"res://Assets/Scenes/level_frozen_core.tscn"
+]
+
 @onready var background_music := preload("res://Assets/Sounds/time_for_adventure.mp3")
 @onready var boss_music := preload("res://Assets/Sounds/ive_got_your_back.ogg")
 
@@ -71,9 +78,10 @@ func _check_music():
 	if scene_path in excluded_scenes:
 		if music_player.playing:
 			music_player.stop()
+		return
 	
 	var target_music: AudioStream
-	if scene_path == "res://Assets/Scenes/level_boss.tscn":
+	if scene_path in boss_scenes:
 		target_music = boss_music
 	else:
 		target_music = background_music

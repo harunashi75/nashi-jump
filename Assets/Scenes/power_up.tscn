@@ -48,7 +48,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_udcdc")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 10.0
 }]
@@ -56,7 +56,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_yq5qo"]
 radius = 7.0
 
-[node name="Power_UP" type="Area2D" unique_id=438348509]
+[node name="PowerUP" type="Area2D" unique_id=438348509]
 script = ExtResource("1_gfbhr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1410067537]
