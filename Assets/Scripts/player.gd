@@ -57,7 +57,6 @@ func _ready():
 	set_process_input(false)
 	
 	current_skin = SkinManager.current_skin
-	print("Skin actif :", current_skin)
 
 	await get_tree().process_frame
 	set_process_input(true)
@@ -201,7 +200,6 @@ func play_player_anim(anim_name: String):
 func apply_health_bonus():
 	if temporary_health_bonus < 1:
 		temporary_health_bonus = 1
-		print("Temporary bonus added!")
 	
 	emit_signal("health_changed", get_current_health())
 

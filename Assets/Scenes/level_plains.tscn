@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="10_o0h1k"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="11_thbic"]
 [ext_resource type="PackedScene" uid="uid://8mwqb4osw62n" path="res://Assets/Scenes/meadow_slime.tscn" id="12_lgwrd"]
-[ext_resource type="Script" uid="uid://c67m6a32rfs27" path="res://Assets/Scripts/teleport.gd" id="14_e72db"]
+[ext_resource type="Script" uid="uid://c67m6a32rfs27" path="res://Assets/Scripts/level_portal.gd" id="14_e72db"]
 [ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="14_xacef"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="16_dnign"]
 

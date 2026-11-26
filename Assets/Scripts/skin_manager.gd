@@ -78,7 +78,6 @@ func unlock_skin(skin: String):
 	if not skin in GameManager.skins_unlocked_this_run:
 		GameManager.skins_unlocked_this_run.append(skin)
 		
-	print("Skin débloqué : ", skin)
 
 func check_endgame_unlocks():
 	# GOLD

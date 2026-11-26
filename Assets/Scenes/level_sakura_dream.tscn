@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="9_1a83j"]
 [ext_resource type="PackedScene" uid="uid://dp668blccexhd" path="res://Assets/Scenes/crystal_slime.tscn" id="10_fsgaa"]
 [ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="11_6ko3n"]
-[ext_resource type="Script" uid="uid://c67m6a32rfs27" path="res://Assets/Scripts/teleport.gd" id="11_gp4u5"]
+[ext_resource type="Script" uid="uid://c67m6a32rfs27" path="res://Assets/Scripts/level_portal.gd" id="11_gp4u5"]
 [ext_resource type="Script" uid="uid://mb5ux3odaue" path="res://Assets/Scripts/killzone.gd" id="13_ovapy"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="14_q1q5l"]
 

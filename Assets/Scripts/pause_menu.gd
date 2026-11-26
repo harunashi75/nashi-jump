@@ -12,7 +12,6 @@ func _input(event):
 		GameManager.toggle_pause()
 
 func _ready():
-	print("PauseMenu visible:", pause_menu.visible)
 	GameManager.pause_menu = self
 	resume_button.pressed.connect(_on_resume_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)

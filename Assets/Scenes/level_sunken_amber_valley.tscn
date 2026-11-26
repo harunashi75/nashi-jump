@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c0gifo0wkc4rx" path="res://Assets/Scenes/amber_slime.tscn" id="7_bls7y"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="7_jhnx5"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="9_ivafa"]
-[ext_resource type="Script" uid="uid://c67m6a32rfs27" path="res://Assets/Scripts/teleport.gd" id="10_jhnx5"]
+[ext_resource type="Script" uid="uid://c67m6a32rfs27" path="res://Assets/Scripts/level_portal.gd" id="10_jhnx5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qlimq"]
 texture = ExtResource("3_jhnx5")

@@ -62,7 +62,7 @@ func _ready():
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 
 # ========================
-# STATE MACHINE
+# MACHINE D'ÉTATS
 # ========================
 
 func set_state(new_state: State) -> void:
@@ -133,7 +133,7 @@ func _handle_wall_collision() -> void:
 			apply_camera_shake(0.2, 4.0)
 
 # ========================
-# ATTACKS
+# ATTAQUES
 # ========================
 
 # Phase 2 : alterne patrouille normale / toupie
@@ -163,7 +163,7 @@ func _push_player() -> void:
 			body.velocity.y = SLAM_PLAYER_LAUNCH
 
 # ========================
-# PLAYER DETECTION
+# DÉTECTION DU JOUEUR
 # ========================
 
 func _on_player_enter(body):
@@ -175,7 +175,7 @@ func _on_player_exit(body):
 		player_in_range = false
 
 # ========================
-# DAMAGE
+# DÉGÂTS
 # ========================
 
 func _on_body_entered(body):
@@ -231,7 +231,7 @@ func _on_inv_timer_timeout() -> void:
 	is_invincible = false
 
 # ========================
-# PHASES
+# PHASES DE COMBAT
 # ========================
 
 func _update_phase() -> void:
@@ -245,7 +245,7 @@ func _update_phase() -> void:
 		attack_timer.start(randf_range(SPIN_TOGGLE_MIN, SPIN_TOGGLE_MAX))
 
 # ========================
-# DEATH & LOOT
+# MORT ET BUTIN
 # ========================
 
 func die() -> void:

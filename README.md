@@ -43,7 +43,7 @@ Assets/
 - **Un niveau** : créer la scène `level_xxx.tscn`, puis ajouter une ligne dans `LevelManager.LEVEL_DEFS` (fichier, monde, `"ice": true` si glissant). La musique et la physique suivent automatiquement.
 - **Une pièce** : instancier `coin.tscn` dans le niveau. Le total pour le skin *gold* est recalculé depuis les scènes.
 - **Un skin secret** : instancier un `Area2D` avec `skin_pickup.gd` et renseigner `skin_id` ; déclarer le skin dans `SkinManager.unlocked_skins`.
-- **Un portail** : `level_portal.gd` mène au niveau suivant (`next_level_path`), `teleport.gd` téléporte dans le même niveau.
+- **Un portail** : `level_portal.gd` mène au niveau suivant (`next_level_path`), `in_level_teleport.gd` téléporte dans le même niveau.
 
 ## Sauvegardes
 

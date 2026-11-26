@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cqpct43d0qycr" path="res://Assets/Sprites/Characters/beezzz-v3.png" id="6_q0e5m"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="8_vs3m7"]
 [ext_resource type="PackedScene" uid="uid://bheqkg1mur0ek" path="res://Assets/Scenes/autumn_slime.tscn" id="9_6tghu"]
-[ext_resource type="Script" uid="uid://c67m6a32rfs27" path="res://Assets/Scripts/teleport.gd" id="9_i8kgt"]
+[ext_resource type="Script" uid="uid://c67m6a32rfs27" path="res://Assets/Scripts/level_portal.gd" id="9_i8kgt"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="9_vmiqh"]
-[ext_resource type="Script" uid="uid://fnqdgup5gx8w" path="res://Assets/Scripts/level_portal.gd" id="10_16u4c"]
+[ext_resource type="Script" uid="uid://fnqdgup5gx8w" path="res://Assets/Scripts/in_level_teleport.gd" id="10_16u4c"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="10_uh3rv"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="14_fq6h1"]
 

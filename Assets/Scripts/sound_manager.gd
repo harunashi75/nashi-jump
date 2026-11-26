@@ -99,4 +99,4 @@ func play(sound_name: String):
 		
 		temp_player.finished.connect(func(): temp_player.queue_free())
 	else:
-		push_warning("Sound not found: " + sound_name)
+		push_warning("Son introuvable : " + sound_name)

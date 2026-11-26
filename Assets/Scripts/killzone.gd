@@ -5,6 +5,5 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		print("Joueur est tombé dans la KillZone")
 		body.get_current_health()
 		body.respawn()

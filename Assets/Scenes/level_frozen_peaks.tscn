@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dmn0met35qgss" path="res://Assets/Scenes/frozen_slime.tscn" id="7_7vfh2"]
 [ext_resource type="PackedScene" uid="uid://dfdakx4luhi5i" path="res://Assets/Scenes/brickhead.tscn" id="8_yvjot"]
 [ext_resource type="PackedScene" uid="uid://jb7gqeylewot" path="res://Assets/Scenes/spikes.tscn" id="9_kckhg"]
-[ext_resource type="Script" uid="uid://c67m6a32rfs27" path="res://Assets/Scripts/teleport.gd" id="10_0jncm"]
+[ext_resource type="Script" uid="uid://c67m6a32rfs27" path="res://Assets/Scripts/level_portal.gd" id="10_0jncm"]
 [ext_resource type="PackedScene" uid="uid://b1r068wojs3es" path="res://Assets/Scenes/pause_menu.tscn" id="11_b3bhh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x6yf8"]

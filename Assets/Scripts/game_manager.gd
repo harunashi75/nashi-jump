@@ -206,7 +206,6 @@ func _update_hud_coins():
 func set_levels_checkpoint(path: String):
 	levels_checkpoint_enabled = true
 	levels_checkpoint_scene_path = path
-	print("Checkpoint activé :", path)
 
 func reset_checkpoint_data():
 	levels_checkpoint_enabled = false
