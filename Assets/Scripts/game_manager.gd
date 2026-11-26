@@ -19,14 +19,6 @@ var no_damage_run: bool = true
 const SAVE_PATH := "user://savegame.cfg"
 var current_level_path: String = ""
 
-# -------- Biomes Spéciaux / Glace --------
-
-var ice_levels := [
-	"level_frozen_peaks",
-	"level_deep_ice",
-	"level_crystal_glacier"
-]
-
 # -------- Victory Stats --------
 
 var run_time: float = 0.0
@@ -65,7 +57,7 @@ func toggle_pause():
 func is_current_level_ice() -> bool:
 	var current_scene = get_tree().current_scene
 	if current_scene:
-		return current_scene.name in ice_levels
+		return LevelManager.is_ice_level(current_scene.scene_file_path)
 	return false
 
 func save_current_level(level_path: String) -> void:

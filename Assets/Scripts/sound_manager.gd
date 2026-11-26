@@ -12,41 +12,14 @@ var excluded_scenes := [
 	"res://Assets/Scenes/victory_scene.tscn"
 ]
 
-var world1_scenes := [
-	"res://Assets/Scenes/level_plains.tscn",
-	"res://Assets/Scenes/level_plains_bloom.tscn",
-	"res://Assets/Scenes/level_plains_autumn.tscn"
-]
-
-var world2_scenes := [
-	"res://Assets/Scenes/level_desert.tscn",
-	"res://Assets/Scenes/level_sunken_amber_valley.tscn",
-	"res://Assets/Scenes/level_desert_tempest.tscn"
-]
-
-var world3_scenes := [
-	"res://Assets/Scenes/level_frozen_peaks.tscn",
-	"res://Assets/Scenes/level_deep_ice.tscn",
-	"res://Assets/Scenes/level_crystal_glacier.tscn"
-]
-
-var world4_scenes := [
-	"res://Assets/Scenes/level_sakura.tscn",
-	"res://Assets/Scenes/level_sakura_dream.tscn",
-	"res://Assets/Scenes/level_sakura_nightmare.tscn"
-]
-
-var boss_scenes := [
-	"res://Assets/Scenes/level_nightmare_boss.tscn"
-]
-
-@onready var music_w1 := preload("res://Assets/Sounds/Grasslands Theme.mp3")
-@onready var music_w2 := preload("res://Assets/Sounds/Desert Theme.mp3")
-@onready var music_w3 := preload("res://Assets/Sounds/Iceland Theme.mp3") 
-@onready var music_w4 := preload("res://Assets/Sounds/Mushroom Theme.mp3")
-@onready var boss_music := preload("res://Assets/Sounds/Boss Theme.mp3")
-
-var last_scene = null
+# Musique par monde (index = LevelManager.get_world)
+@onready var world_music := {
+	1: preload("res://Assets/Sounds/Grasslands Theme.mp3"),
+	2: preload("res://Assets/Sounds/Desert Theme.mp3"),
+	3: preload("res://Assets/Sounds/Iceland Theme.mp3"),
+	4: preload("res://Assets/Sounds/Mushroom Theme.mp3"),
+	LevelManager.BOSS_WORLD: preload("res://Assets/Sounds/Boss Theme.mp3"),
+}
 
 # -------- Initialisation --------
 func _ready():
@@ -69,10 +42,13 @@ func _ready():
 		"confirm": preload("res://Assets/Sounds/confirm.wav")
 	}
 
-# -------- Gestion music --------
-func _process(_delta):
-	last_scene = get_tree().current_scene
+	# La musique ne change qu'au changement de scène (plus de test à chaque frame)
+	get_tree().scene_changed.connect(_check_music)
+	# La scène initiale n'émet pas de signal : on attend qu'elle soit prête
+	await get_tree().process_frame
 	_check_music()
+
+# -------- Gestion music --------
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
@@ -97,21 +73,10 @@ func _check_music():
 			music_player.stop()
 		return
 	
-	var target_music: AudioStream = null
-	
-	if scene_path in boss_scenes:
-		target_music = boss_music
-	elif scene_path in world1_scenes:
-		target_music = music_w1
-	elif scene_path in world2_scenes:
-		target_music = music_w2
-	elif scene_path in world3_scenes:
-		target_music = music_w3
-	elif scene_path in world4_scenes:
-		target_music = music_w4
-	
-	if target_music == null:
-		target_music = music_w1
+	# Scène inconnue : musique du monde 1 par défaut
+	var target_music: AudioStream = world_music.get(
+		LevelManager.get_world(scene_path), world_music[1]
+	)
 	
 	if music_player.stream != target_music:
 		music_player.stop()
