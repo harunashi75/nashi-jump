@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://chrppt8rr7t14"]
 
-[ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_xg6ay"]
+[ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/level_setup.gd" id="1_xg6ay"]
 [ext_resource type="Texture2D" uid="uid://5bv28chxnf08" path="res://Assets/Sprites/Backgrounds/Plaines Bloom Sky2.png" id="2_0iujr"]
 [ext_resource type="Texture2D" uid="uid://cr140qt2l8ww1" path="res://Assets/Sprites/TileSets/tileset_plaines_bloom-v1.png" id="3_8j5bv"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="4_51xj4"]

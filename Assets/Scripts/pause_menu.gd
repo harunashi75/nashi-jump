@@ -1,6 +1,5 @@
 extends Control
 
-@onready var pause_menu = $"."
 @onready var resume_button = $VBoxContainer/Resume
 @onready var quit_button = $VBoxContainer/Quit
 @onready var menu_button = $VBoxContainer/Menu
@@ -25,11 +24,14 @@ func _ready():
 	_on_volume_changed(saved_volume)
 	volume_slider.value_changed.connect(_on_volume_changed)
 
-	if is_inside_tree():
-		pause_menu.hide()
-		set_process(true)
+	volume_slider.drag_ended.connect(func(_changed): save_volume(volume_slider.value))
+
+	get_viewport().size_changed.connect(_center)
+	_center()
+	hide()
 
 func show_pause_menu():
+	_center()
 	show()
 	resume_button.grab_focus()
 
@@ -65,7 +67,9 @@ func _connect_pressed_sounds():
 
 func _on_volume_changed(value):
 	AudioServer.set_bus_volume_db(0, linear_to_db(value))
-	save_volume(value)
+	# Au clavier/manette il n'y a pas de drag : on sauvegarde si le slider n'est pas glissé
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		save_volume(value)
 
 func save_volume(value):
 	var config = ConfigFile.new()
@@ -78,10 +82,8 @@ func load_volume():
 		return config.get_value("audio", "volume", 1.0)
 	return 1.0
 
-func _process(_delta):
-	if is_inside_tree():
-		var viewport_size = get_viewport_rect().size
-		position = (viewport_size - size) / 2
+func _center():
+	position = (get_viewport_rect().size - size) / 2
 
 func _on_resume_button_pressed():
 	GameManager.toggle_pause()

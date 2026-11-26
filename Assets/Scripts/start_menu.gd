@@ -28,12 +28,12 @@ func _start_game():
 	GameManager.load_run_stats()
 	TimerManager.load_current_progress()
 	TimerManager.resume_timer()
-	var level_path := GameManager.load_saved_level()
+	var level_path := GameManager.get_saved_level()
+	GameManager.set_levels_checkpoint(level_path)
 	LevelManager.load_level_by_path(level_path)
 
 func _start_new_game():
 	GameManager.reset_progress()
-	GameManager.reset_coins()
 	TimerManager.start_timer()
 	TimerManager.save_current_progress()
 	LevelManager.load_level_by_path("res://Assets/Scenes/level_plains.tscn")

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://i5j6i036aw2m"]
 
-[ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_r0qov"]
+[ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/level_setup.gd" id="1_r0qov"]
 [ext_resource type="Texture2D" uid="uid://82r3sgm3f0qs" path="res://Assets/Sprites/Backgrounds/Sakura Nightmare Sky2.png" id="2_xqg4h"]
 [ext_resource type="Texture2D" uid="uid://djynxmprhk3ti" path="res://Assets/Sprites/TileSets/tileset_sakura_nightmare-v1.png" id="3_5hpiu"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="4_vdca3"]

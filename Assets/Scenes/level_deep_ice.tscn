@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bfyspnwx6i5k5"]
 
-[ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_t4dml"]
+[ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/level_setup.gd" id="1_t4dml"]
 [ext_resource type="Texture2D" uid="uid://cq4no1wn7rjdn" path="res://Assets/Sprites/Backgrounds/Deep Ice Sky2.png" id="2_jh3rl"]
 [ext_resource type="Texture2D" uid="uid://boirmhcmd4ayu" path="res://Assets/Sprites/TileSets/tileset_deep_ice-v1.png" id="3_x4ekt"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="4_xpfac"]

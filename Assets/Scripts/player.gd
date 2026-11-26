@@ -37,8 +37,6 @@ var current_skin := "default"
 
 @onready var sprite: AnimatedSprite2D = $Sprite
 
-var current_state := "idle"
-
 enum PlayerState {
 	IDLE,
 	RUN,
@@ -54,12 +52,7 @@ var did_double_jump := false
 
 func _ready():
 	add_to_group("player")
-	set_process_input(false)
-	
 	current_skin = SkinManager.current_skin
-
-	await get_tree().process_frame
-	set_process_input(true)
 
 # -------- Boucle physique --------
 
@@ -81,12 +74,20 @@ func apply_gravity(delta):
 
 	velocity.y += gravity * delta
 
+# Résultat mis en cache : le niveau ne change pas pendant la vie du joueur
+var _ice_level := -1
+
+func _is_ice_level() -> bool:
+	if _ice_level == -1:
+		_ice_level = 1 if GameManager.is_current_level_ice() else 0
+	return _ice_level == 1
+
 func handle_movement(delta):
 	var direction := Input.get_axis("move_left", "move_right")
 	var current_acceleration = ACCELERATION
 	var current_deceleration = DECELERATION
 	
-	if GameManager.is_current_level_ice():
+	if _is_ice_level():
 			current_acceleration = ACCELERATION * 0.3
 			current_deceleration = DECELERATION * 0.15
 
@@ -234,23 +235,31 @@ func die(instant := false):
 	GameManager.no_damage_run = false
 
 	set_physics_process(false)
-	set_process_input(false)
 
 	GameManager.save_run_stats()
 
 	if not instant:
 		play_player_anim("death")
-		await sprite.animation_finished
+		await _wait_death_animation()
 
 	respawn()
 
+# Attend la fin de l'animation de mort (délai fixe si elle est en boucle ou absente)
+func _wait_death_animation() -> void:
+	var frames := sprite.sprite_frames
+	if frames and frames.has_animation(sprite.animation) \
+			and not frames.get_animation_loop(sprite.animation) \
+			and sprite.animation.begins_with("death"):
+		await sprite.animation_finished
+	else:
+		await get_tree().create_timer(0.6).timeout
+
 func respawn():
-	set_process_input(false)
 	call_deferred("load_respawn_scene")
 
 func load_respawn_scene():
 	var path := GameManager.levels_checkpoint_scene_path
 	if path == "":
-		path = GameManager.load_saved_level()
+		path = GameManager.get_saved_level()
 
 	LevelManager.load_level_by_path(path)

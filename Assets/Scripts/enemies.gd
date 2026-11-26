@@ -3,6 +3,9 @@ extends Node2D
 @export var SPEED := 80
 @export var coin_scene: PackedScene
 
+# Écart vertical max entre joueur et ennemi pour compter comme un saut sur la tête
+const STOMP_TOLERANCE := 24.0
+
 var direction := 1
 var is_dead := false
 
@@ -41,9 +44,8 @@ func _on_body_entered(body):
 
 		var player_falling: bool = player.velocity.y > 0
 		var vertical_diff: float = player.global_position.y - global_position.y
-		var stomp_tolerance := 24.0
 
-		if player_falling and vertical_diff < stomp_tolerance:
+		if player_falling and vertical_diff < STOMP_TOLERANCE:
 			stomped(player)
 		else:
 			player.take_damage(1)
@@ -76,7 +78,6 @@ func die():
 		return
 
 	is_dead = true
-	SPEED = 0
 
 	hitbox.set_deferred("monitoring", false)
 

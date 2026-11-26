@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bvgif31x4jwds"]
 
-[ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_6r20u"]
+[ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/level_setup.gd" id="1_6r20u"]
 [ext_resource type="Texture2D" uid="uid://c6gup74ttpmbp" path="res://Assets/Sprites/Backgrounds/Desert Tempest Sky2.png" id="2_6r20u"]
 [ext_resource type="Texture2D" uid="uid://bqniv7b1ed070" path="res://Assets/Sprites/TileSets/tileset_desert_tempest-v1.png" id="4_6ftu2"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="4_r5nme"]

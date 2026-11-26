@@ -10,7 +10,7 @@ func _ready():
 
 	if player:
 		update_health_display(player.get_current_health())
-		player.connect("health_changed", Callable(self, "_on_health_changed"))
+		player.health_changed.connect(_on_health_changed)
 
 func _on_health_changed(new_health):
 	update_health_display(new_health)

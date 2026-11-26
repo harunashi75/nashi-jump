@@ -12,6 +12,7 @@ var collected: bool = false
 var velocity: Vector2 = Vector2.ZERO
 var fall_gravity: float = 900.0
 var is_dropped: bool = false
+var is_enemy_drop: bool = false  # pièce lâchée (ennemi/boss) : non sauvegardée par niveau
 var bounce_damping: float = 0.5
 
 func _ready():
@@ -56,10 +57,11 @@ func _initialize_coin():
 		return
 
 	sprite.play("default")
-	connect("body_entered", Callable(self, "_on_body_entered"))
+	body_entered.connect(_on_body_entered)
 
 func launch(direction: float):
 	is_dropped = true
+	is_enemy_drop = true
 
 	velocity.x = direction * randf_range(80, 120)
 	velocity.y = -220
@@ -75,10 +77,10 @@ func _on_body_entered(body: Node):
 
 func _collect_coin():
 	SoundManager.play("coin")
-	GameManager.mark_coin_collected(
-		get_tree().current_scene.name,
-		name
-	)
+	if is_enemy_drop:
+		GameManager.add_dropped_coin()
+	else:
+		GameManager.mark_coin_collected(get_tree().current_scene.name, name)
 
 	hide()
 	await get_tree().create_timer(0.2).timeout

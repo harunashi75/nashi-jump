@@ -30,6 +30,7 @@ var skins_unlocked_this_run: Array = []
 const COIN_SCENE_PATH := "res://Assets/Scenes/coin.tscn"
 
 var coins_collected_by_level := {}
+var dropped_coins_collected := 0  # pièces lâchées par les ennemis/boss (simple compteur)
 # niveau (nom du nœud racine) -> noms des pièces placées ; calculé à la demande
 var _placed_coins_cache := {}
 
@@ -75,7 +76,8 @@ func save_current_level(level_path: String) -> void:
 	config.set_value("progress", "current_level", level_path)
 	config.save(SAVE_PATH)
 
-func load_saved_level() -> String:
+# Chemin du dernier niveau sauvegardé (sans effet de bord)
+func get_saved_level() -> String:
 	var config := ConfigFile.new()
 
 	if config.load(SAVE_PATH) == OK:
@@ -85,12 +87,8 @@ func load_saved_level() -> String:
 			"res://Assets/Scenes/level_plains.tscn"
 		)
 
-		levels_checkpoint_scene_path = level
-		levels_checkpoint_enabled = true
 		return level
 
-	levels_checkpoint_scene_path = "res://Assets/Scenes/level_plains.tscn"
-	levels_checkpoint_enabled = true
 	return "res://Assets/Scenes/level_plains.tscn"
 
 func reset_progress():
@@ -100,6 +98,7 @@ func reset_progress():
 	var config := ConfigFile.new()
 	config.set_value("progress", "current_level", "res://Assets/Scenes/level_plains.tscn")
 	config.set_value("coins", "by_level", {})
+	config.set_value("coins", "dropped", 0)
 	config.set_value("run", "deaths", 0)
 	config.set_value("run", "no_damage", true)
 	config.save(SAVE_PATH)
@@ -133,6 +132,12 @@ func load_run_stats():
 
 func reset_coins():
 	coins_collected_by_level.clear()
+	dropped_coins_collected = 0
+
+func add_dropped_coin():
+	dropped_coins_collected += 1
+	save_coins()
+	_update_hud_coins()
 
 func mark_coin_collected(level: String, id: String):
 	var list: Array = coins_collected_by_level.get(level, [])
@@ -150,8 +155,9 @@ func is_coin_already_collected(level_name: String, coin_id: String) -> bool:
 	return coins_collected_by_level.has(level_name) \
 	and coin_id in coins_collected_by_level[level_name]
 
+# Total affiché (HUD, victoire) : pièces posées + pièces lâchées
 func get_total_unique_coins() -> int:
-	var total := 0
+	var total := dropped_coins_collected
 	for coins in coins_collected_by_level.values():
 		total += coins.size()
 	return total
@@ -161,6 +167,7 @@ func save_coins():
 	config.load(SAVE_PATH)
 
 	config.set_value("coins", "by_level", coins_collected_by_level)
+	config.set_value("coins", "dropped", dropped_coins_collected)
 	config.save(SAVE_PATH)
 
 func load_coins():
@@ -170,6 +177,7 @@ func load_coins():
 		return
 
 	coins_collected_by_level = config.get_value("coins", "by_level", {})
+	dropped_coins_collected = int(config.get_value("coins", "dropped", 0))
 
 # Pièces posées dans les niveaux (hors pièces lâchées par les ennemis/boss),
 # lues dans les scènes elles-mêmes : plus aucun total à maintenir à la main.
@@ -244,10 +252,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	# Godmode : uniquement dans l'éditeur / builds de debug
 	if not OS.is_debug_build():
 		return
-	if event is InputEventKey and event.pressed and not event.echo:
-		match event.keycode:
-			KEY_G:
-				_toggle_godmode()
+	if event.is_action_pressed("godmode"):
+		_toggle_godmode()
 
 func _toggle_godmode() -> void:
 	godmode_enabled = !godmode_enabled

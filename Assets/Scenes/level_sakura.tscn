@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://b70wuhmo10g32"]
 
 [ext_resource type="Texture2D" uid="uid://syo1r4grgrk2" path="res://Assets/Sprites/Backgrounds/Sakura Sky2.png" id="1_0xesd"]
-[ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_rhv5k"]
+[ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/level_setup.gd" id="1_rhv5k"]
 [ext_resource type="Texture2D" uid="uid://bbvxjgrejewpl" path="res://Assets/Sprites/TileSets/tileset_sakura.png" id="2_xrmrt"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="3_l87de"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="5_77mw5"]

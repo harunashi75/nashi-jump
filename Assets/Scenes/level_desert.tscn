@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://be8pjm3cs2wvs"]
 
-[ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_208mh"]
+[ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/level_setup.gd" id="1_208mh"]
 [ext_resource type="Texture2D" uid="uid://3ruor4rbh0dt" path="res://Assets/Sprites/Backgrounds/Desert Day Sky2.png" id="2_4nr57"]
 [ext_resource type="Texture2D" uid="uid://o2a82n4v5dst" path="res://Assets/Sprites/TileSets/tileset_desert-v2.png" id="3_psvmx"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="4_8xohh"]

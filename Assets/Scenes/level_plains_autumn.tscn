@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://veagfppep3bm"]
 
-[ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_ck1sw"]
+[ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/level_setup.gd" id="1_ck1sw"]
 [ext_resource type="Texture2D" uid="uid://bney7f4k7u2nc" path="res://Assets/Sprites/Backgrounds/Plains Autumn Sky2.png" id="2_i8kgt"]
 [ext_resource type="Texture2D" uid="uid://p7ymyv7gbngy" path="res://Assets/Sprites/TileSets/tileset_plaines_autumn-v1.png" id="4_olm6n"]
 [ext_resource type="Script" uid="uid://cj0isj60faqua" path="res://Assets/Scripts/skin_pickup.gd" id="5_ck1sw"]

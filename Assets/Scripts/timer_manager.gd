@@ -2,11 +2,11 @@ extends Node
 
 var time_elapsed: float = 0.0
 var running: bool = false
-var paused: bool = false
 
 var best_time: float = -1.0
 
 const SAVE_PATH := "user://score.save"
+const CURRENT_PATH := "user://current_timer.save"
 
 func _ready() -> void:
 	load_best_time()
@@ -66,14 +66,14 @@ func load_best_time() -> void:
 				best_time = float(value)
 
 func save_current_progress() -> void:
-	var file := FileAccess.open("user://current_timer.save", FileAccess.WRITE)
+	var file := FileAccess.open(CURRENT_PATH, FileAccess.WRITE)
 	if file:
 		file.store_var(time_elapsed)
 		file.close()
 
 func load_current_progress() -> void:
-	if FileAccess.file_exists("user://current_timer.save"):
-		var file := FileAccess.open("user://current_timer.save", FileAccess.READ)
+	if FileAccess.file_exists(CURRENT_PATH):
+		var file := FileAccess.open(CURRENT_PATH, FileAccess.READ)
 		if file:
 			time_elapsed = file.get_var()
 			file.close()
@@ -85,7 +85,7 @@ func load_current_progress() -> void:
 func _format_time(time: float) -> String:
 	if time < 0.0:
 		return "--:--.--"
-	var minutes: int = floor(time / 60)
+	var minutes := int(time / 60)
 	var seconds := int(time) % 60
 	var milliseconds := int((time - int(time)) * 100)
 	return "%02d:%02d.%02d" % [minutes, seconds, milliseconds]
