@@ -1,7 +1,5 @@
 extends Node
 
-const SAVE_PATH := "user://skin_data.save"
-
 var current_skin := "default"
 
 var unlocked_skins := {
@@ -32,36 +30,14 @@ func _ready():
 # -------- SAVE / LOAD --------
 
 func save_data():
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	if file == null:
-		push_warning("Impossible d'écrire la sauvegarde des skins : %s" % error_string(FileAccess.get_open_error()))
-		return
-	file.store_var({
-		"current_skin": current_skin,
-		"unlocked_skins": unlocked_skins
-	})
-	file.close()
+	SaveManager.set_value("skins", "current", current_skin, false)
+	SaveManager.set_value("skins", "unlocked", unlocked_skins, false)
+	SaveManager.save()
 
 func load_data():
-	if not FileAccess.file_exists(SAVE_PATH):
-		return
-
-	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
-	if file == null:
-		push_warning("Impossible de lire la sauvegarde des skins : %s" % error_string(FileAccess.get_open_error()))
-		return
-	var data = file.get_var()
-	file.close()
-
-	# Fichier corrompu ou format inattendu : on garde les valeurs par défaut
-	if typeof(data) != TYPE_DICTIONARY:
-		push_warning("Sauvegarde des skins invalide, valeurs par défaut conservées.")
-		return
-
-	current_skin = str(data.get("current_skin", "default"))
-	var saved = data.get("unlocked_skins", {})
-	if typeof(saved) == TYPE_DICTIONARY:
-		unlocked_skins.merge(saved, true)
+	current_skin = SaveManager.get_value("skins", "current", "default")
+	var saved: Dictionary = SaveManager.get_value("skins", "unlocked", {})
+	unlocked_skins.merge(saved, true)
 
 # -------- API SIMPLE --------
 

@@ -32,6 +32,7 @@ Assets/
 
 | Nom | Rôle |
 |---|---|
+| `SaveManager` | Sauvegarde unique versionnée (lecture/écriture typée, migration des anciens fichiers) |
 | `LevelManager` | **Source unique des niveaux** (`LEVEL_DEFS` : ordre, monde, glace), changement de scène |
 | `GameManager` | Pause, sauvegarde de progression, pièces, checkpoint, godmode (debug) |
 | `TimerManager` | Chrono de la partie et meilleur temps |
@@ -47,4 +48,6 @@ Assets/
 
 ## Sauvegardes
 
-Fichiers dans `user://` : `savegame.cfg` (niveau, pièces), `skin_data.save` (skins), `score.save` (meilleur temps).
+Tout est dans un seul fichier versionné, `user://save.cfg`, géré par l'autoload `SaveManager` (sections `progress`, `coins`, `run`, `skins`, `timer`, `audio`). L'écriture est atomique (fichier temporaire puis renommage) et les valeurs de type inattendu sont ignorées au profit des valeurs par défaut.
+
+Au premier lancement, les anciens fichiers (`savegame.cfg`, `skin_data.save`, `score.save`, `current_timer.save`, `settings.cfg`) sont importés automatiquement ; ils ne sont pas supprimés. Pour changer le format, augmenter `SAVE_VERSION` et ajouter un cas dans `SaveManager._upgrade()`.

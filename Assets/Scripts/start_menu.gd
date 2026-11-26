@@ -6,7 +6,7 @@ extends Control
 @onready var quit_button = $Menu/Quit
 
 func _ready():
-	if not FileAccess.file_exists("user://savegame.cfg"):
+	if not SaveManager.has_progress():
 		play_button.disabled = true
 		play_button.focus_mode = Control.FOCUS_NONE
 		new_game_button.grab_focus()

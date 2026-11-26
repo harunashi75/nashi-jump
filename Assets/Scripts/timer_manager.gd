@@ -5,9 +5,6 @@ var running: bool = false
 
 var best_time: float = -1.0
 
-const SAVE_PATH := "user://score.save"
-const CURRENT_PATH := "user://current_timer.save"
-
 func _ready() -> void:
 	load_best_time()
 
@@ -51,34 +48,16 @@ func get_formatted_best_time() -> String:
 # -------- Save / Load --------
 
 func save_best_time() -> void:
-	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
-	if file:
-		file.store_var(best_time)
-		file.close()
+	SaveManager.set_value("timer", "best", best_time)
 
 func load_best_time() -> void:
-	if FileAccess.file_exists(SAVE_PATH):
-		var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
-		if file:
-			var value = file.get_var()
-			file.close()
-			if typeof(value) == TYPE_FLOAT or typeof(value) == TYPE_INT:
-				best_time = float(value)
+	best_time = SaveManager.get_value("timer", "best", -1.0)
 
 func save_current_progress() -> void:
-	var file := FileAccess.open(CURRENT_PATH, FileAccess.WRITE)
-	if file:
-		file.store_var(time_elapsed)
-		file.close()
+	SaveManager.set_value("timer", "elapsed", time_elapsed)
 
 func load_current_progress() -> void:
-	if FileAccess.file_exists(CURRENT_PATH):
-		var file := FileAccess.open(CURRENT_PATH, FileAccess.READ)
-		if file:
-			time_elapsed = file.get_var()
-			file.close()
-	else:
-		time_elapsed = 0.0
+	time_elapsed = SaveManager.get_value("timer", "elapsed", 0.0)
 
 # -------- Util --------
 

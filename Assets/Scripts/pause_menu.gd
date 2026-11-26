@@ -71,16 +71,11 @@ func _on_volume_changed(value):
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		save_volume(value)
 
-func save_volume(value):
-	var config = ConfigFile.new()
-	config.set_value("audio", "volume", value)
-	config.save("user://settings.cfg")
+func save_volume(value: float) -> void:
+	SaveManager.set_value("audio", "volume", value)
 
-func load_volume():
-	var config = ConfigFile.new()
-	if config.load("user://settings.cfg") == OK:
-		return config.get_value("audio", "volume", 1.0)
-	return 1.0
+func load_volume() -> float:
+	return SaveManager.get_value("audio", "volume", 1.0)
 
 func _center():
 	position = (get_viewport_rect().size - size) / 2

@@ -22,6 +22,7 @@ config/icon="uid://dr56avv2fnyin"
 
 [autoload]
 
+SaveManager="*res://Assets/Scripts/save_manager.gd"
 GameManager="*res://Assets/Scripts/game_manager.gd"
 LevelManager="*res://Assets/Scripts/level_manager.gd"
 TimerManager="*res://Assets/Scripts/timer_manager.gd"

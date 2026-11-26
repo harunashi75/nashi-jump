@@ -16,7 +16,7 @@ var godmode_enabled := false
 var is_game_paused: bool = false
 var no_damage_run: bool = true
 
-const SAVE_PATH := "user://savegame.cfg"
+const DEFAULT_LEVEL := "res://Assets/Scenes/level_plains.tscn"
 var current_level_path: String = ""
 
 # -------- Victory Stats --------
@@ -66,42 +66,24 @@ func is_current_level_ice() -> bool:
 
 func save_current_level(level_path: String) -> void:
 	current_level_path = level_path
-	
-	TimerManager.save_current_progress()
 
-	var config := ConfigFile.new()
-	if FileAccess.file_exists(SAVE_PATH):
-		config.load(SAVE_PATH)
-		
-	config.set_value("progress", "current_level", level_path)
-	config.save(SAVE_PATH)
+	TimerManager.save_current_progress()
+	SaveManager.set_value("progress", "current_level", level_path)
 
 # Chemin du dernier niveau sauvegardé (sans effet de bord)
 func get_saved_level() -> String:
-	var config := ConfigFile.new()
-
-	if config.load(SAVE_PATH) == OK:
-		var level: String = config.get_value(
-			"progress",
-			"current_level",
-			"res://Assets/Scenes/level_plains.tscn"
-		)
-
-		return level
-
-	return "res://Assets/Scenes/level_plains.tscn"
+	return SaveManager.get_value("progress", "current_level", DEFAULT_LEVEL)
 
 func reset_progress():
 	reset_coins()
 	reset_run_stats()
 
-	var config := ConfigFile.new()
-	config.set_value("progress", "current_level", "res://Assets/Scenes/level_plains.tscn")
-	config.set_value("coins", "by_level", {})
-	config.set_value("coins", "dropped", 0)
-	config.set_value("run", "deaths", 0)
-	config.set_value("run", "no_damage", true)
-	config.save(SAVE_PATH)
+	SaveManager.set_value("progress", "current_level", DEFAULT_LEVEL, false)
+	SaveManager.set_value("coins", "by_level", {}, false)
+	SaveManager.set_value("coins", "dropped", 0, false)
+	SaveManager.set_value("run", "deaths", 0, false)
+	SaveManager.set_value("run", "no_damage", true, false)
+	SaveManager.save()
 
 # -------- Stats de la run en cours --------
 
@@ -113,20 +95,13 @@ func reset_run_stats():
 
 # Persiste morts et "sans dégât" pour que « Continuer » reprenne la même run
 func save_run_stats():
-	var config := ConfigFile.new()
-	config.load(SAVE_PATH)
-	config.set_value("run", "deaths", deaths_count)
-	config.set_value("run", "no_damage", no_damage_run)
-	config.save(SAVE_PATH)
+	SaveManager.set_value("run", "deaths", deaths_count, false)
+	SaveManager.set_value("run", "no_damage", no_damage_run, false)
+	SaveManager.save()
 
 func load_run_stats():
-	var config := ConfigFile.new()
-	if config.load(SAVE_PATH) != OK:
-		reset_run_stats()
-		return
-
-	deaths_count = int(config.get_value("run", "deaths", 0))
-	no_damage_run = bool(config.get_value("run", "no_damage", true))
+	deaths_count = SaveManager.get_value("run", "deaths", 0)
+	no_damage_run = SaveManager.get_value("run", "no_damage", true)
 
 # -------- Coins --------
 
@@ -163,21 +138,13 @@ func get_total_unique_coins() -> int:
 	return total
 
 func save_coins():
-	var config := ConfigFile.new()
-	config.load(SAVE_PATH)
-
-	config.set_value("coins", "by_level", coins_collected_by_level)
-	config.set_value("coins", "dropped", dropped_coins_collected)
-	config.save(SAVE_PATH)
+	SaveManager.set_value("coins", "by_level", coins_collected_by_level, false)
+	SaveManager.set_value("coins", "dropped", dropped_coins_collected, false)
+	SaveManager.save()
 
 func load_coins():
-	var config := ConfigFile.new()
-
-	if config.load(SAVE_PATH) != OK:
-		return
-
-	coins_collected_by_level = config.get_value("coins", "by_level", {})
-	dropped_coins_collected = int(config.get_value("coins", "dropped", 0))
+	coins_collected_by_level = SaveManager.get_value("coins", "by_level", {})
+	dropped_coins_collected = SaveManager.get_value("coins", "dropped", 0)
 
 # Pièces posées dans les niveaux (hors pièces lâchées par les ennemis/boss),
 # lues dans les scènes elles-mêmes : plus aucun total à maintenir à la main.
