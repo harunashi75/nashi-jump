@@ -149,15 +149,15 @@ shape = SubResource("RectangleShape2D_nbh4u")
 
 [node name="Saw" parent="Traps" unique_id=340685382 instance=ExtResource("7_6bkg2")]
 position = Vector2(-264, -8)
-SPEED = 200
+speed = 200.0
 
 [node name="Saw2" parent="Traps" unique_id=512628697 instance=ExtResource("7_6bkg2")]
 position = Vector2(-264, -200)
-SPEED = 200
+speed = 200.0
 
 [node name="Saw3" parent="Traps" unique_id=2073702484 instance=ExtResource("7_6bkg2")]
 position = Vector2(-40, -264)
-SPEED = 80
+speed = 80.0
 
 [node name="Brickhead" parent="Traps" unique_id=1598222168 instance=ExtResource("8_c4wb3")]
 position = Vector2(96, -64)
