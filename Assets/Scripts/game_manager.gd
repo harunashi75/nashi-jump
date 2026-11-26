@@ -27,8 +27,11 @@ var skins_unlocked_this_run: Array = []
 
 # -------- Coins --------
 
+const COIN_SCENE_PATH := "res://Assets/Scenes/coin.tscn"
+
 var coins_collected_by_level := {}
-var total_possible_coins := 330
+# niveau (nom du nœud racine) -> noms des pièces placées ; calculé à la demande
+var _placed_coins_cache := {}
 
 # -------- Initialisation --------
 
@@ -140,6 +143,51 @@ func load_coins():
 		return
 
 	coins_collected_by_level = config.get_value("coins", "by_level", {})
+
+# Pièces posées dans les niveaux (hors pièces lâchées par les ennemis/boss),
+# lues dans les scènes elles-mêmes : plus aucun total à maintenir à la main.
+func get_placed_coins() -> Dictionary:
+	if not _placed_coins_cache.is_empty():
+		return _placed_coins_cache
+
+	for path in LevelManager.levels:
+		var packed := load(path) as PackedScene
+		if packed == null:
+			continue
+
+		var state := packed.get_state()
+		var names := []
+		for i in state.get_node_count():
+			var instance := state.get_node_instance(i)
+			if instance and instance.resource_path == COIN_SCENE_PATH:
+				var coin_name := str(state.get_node_name(i))
+				if not coin_name in names:
+					names.append(coin_name)
+
+		if not names.is_empty():
+			_placed_coins_cache[str(state.get_node_name(0))] = names
+
+	return _placed_coins_cache
+
+func get_total_possible_coins() -> int:
+	var total := 0
+	for names in get_placed_coins().values():
+		total += names.size()
+	return total
+
+# Nombre de pièces posées déjà ramassées (les pièces lâchées ne comptent pas)
+func get_collected_placed_coins() -> int:
+	var total := 0
+	var placed := get_placed_coins()
+	for level in coins_collected_by_level:
+		for coin_id in coins_collected_by_level[level]:
+			if level in placed and coin_id in placed[level]:
+				total += 1
+	return total
+
+func has_all_coins() -> bool:
+	var needed := get_total_possible_coins()
+	return needed > 0 and get_collected_placed_coins() >= needed
 
 # -------- HUD --------
 

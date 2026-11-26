@@ -82,7 +82,7 @@ func unlock_skin(skin: String):
 
 func check_endgame_unlocks():
 	# GOLD
-	if GameManager.get_total_unique_coins() >= 330 and not is_unlocked("gold"):
+	if GameManager.has_all_coins() and not is_unlocked("gold"):
 		unlock_skin("gold")
 
 	# IGNATIUS

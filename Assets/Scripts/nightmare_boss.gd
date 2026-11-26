@@ -1,26 +1,47 @@
 extends CharacterBody2D
 
+# Boss en deux phases, piloté par une machine d'états explicite :
+#   RUN  : patrouille (vitesse normale)
+#   SLAM : saut + impact au sol (phase 1 uniquement, quand le joueur est à portée)
+#   SPIN : patrouille rapide en toupie (phase 2, alterne avec RUN via AttackTimer)
+#   DEAD : mort, plus aucune logique
+
 @export var coin_scene: PackedScene
 @export var health: int = 15
 @export var victory_tp_scene: PackedScene
 
+# -------- Réglages --------
+
 const RUN_SPEED := 75
 const SPIN_SPEED := 200
+const GRAVITY := 900.0
 
+const PHASE2_HEALTH := 7          # santé à partir de laquelle la phase 2 démarre
+const ANGRY_HEALTH := 7           # en dessous : secousse de caméra sur les murs
+
+const SLAM_COOLDOWN := 4.0
+const SLAM_JUMP_VELOCITY := -350.0
+const SLAM_PLAYER_LAUNCH := -300.0
+const STOMP_TOLERANCE := 128.0    # écart vertical max pour compter comme un saut sur la tête
+
+const SPIN_TOGGLE_MIN := 3.0
+const SPIN_TOGGLE_MAX := 4.0
+
+const COIN_DROP_COUNT := 10
+const VICTORY_TP_POSITION := Vector2(-136, -48)
+
+# -------- État --------
+
+enum State { RUN, SLAM, SPIN, DEAD }
+
+var state: State = State.RUN
+var phase := 1
 var direction := 1
 var speed := RUN_SPEED
-var is_dead := false
-var is_invincible := false
-var gravity := 900.0
-var initial_position : Vector2
-var max_health : int
-var phase := 1
 
+var is_invincible := false
 var player_in_range := false
-var slam_cooldown := 4.0
 var slam_timer := 0.0
-var is_jumping := false
-var is_spinning := false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var raycast_right: RayCast2D = $RayCastRight
@@ -31,9 +52,6 @@ var is_spinning := false
 @onready var attack_timer: Timer = $AttackTimer
 
 func _ready():
-	initial_position = global_position
-	max_health = health
-	
 	sprite.play("run")
 
 	hitbox.body_entered.connect(_on_body_entered)
@@ -44,74 +62,105 @@ func _ready():
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 
 # ========================
-# PHYSICS
+# STATE MACHINE
 # ========================
 
-func _physics_process(delta):
-	if is_dead:
+func set_state(new_state: State) -> void:
+	if state == State.DEAD or new_state == state:
 		return
 
-	handle_slam(delta)
-	apply_gravity(delta)
-	handle_movement()
-	handle_wall_collision()
+	state = new_state
+
+	match state:
+		State.RUN:
+			speed = RUN_SPEED
+			sprite.play("run")
+		State.SPIN:
+			speed = SPIN_SPEED
+			sprite.play("spin")
+		State.SLAM:
+			slam_timer = SLAM_COOLDOWN
+			velocity.y = SLAM_JUMP_VELOCITY
+			apply_camera_shake(0.2, 3.0)
+			SoundManager.play("jump")
+		State.DEAD:
+			pass
+
+func _physics_process(delta):
+	if state == State.DEAD:
+		return
+
+	_update_state(delta)
+	_apply_gravity(delta)
+	_apply_movement()
+	_handle_wall_collision()
 
 	move_and_slide()
 
-	if is_jumping and is_on_floor():
-		land_slam()
+	if state == State.SLAM and is_on_floor():
+		_land_slam()
 
-# ========================
-# LOGIC
-# ========================
-
-func handle_slam(delta):
-	if player_in_range and not is_jumping and phase == 1:
+# Transitions déclenchées par la logique (les autres viennent des timers)
+func _update_state(delta: float) -> void:
+	if state == State.RUN and phase == 1 and player_in_range:
 		slam_timer -= delta
 		if slam_timer <= 0:
-			start_slam()
+			set_state(State.SLAM)
 
-func apply_gravity(delta):
+func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
-		velocity.y += gravity * delta 
+		velocity.y += GRAVITY * delta
 
-func handle_movement():
-	if is_on_floor() and not is_jumping:
-		velocity.x = direction * speed
-	elif not is_jumping:
-		velocity.x = move_toward(velocity.x, 0, 10)
+func _apply_movement() -> void:
+	if state != State.SLAM:
+		if is_on_floor():
+			velocity.x = direction * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, 10)
 
 	sprite.flip_h = (direction > 0)
 
-func handle_wall_collision():
-	var hitting_wall = is_on_wall()
-	var near_wall = (direction == 1 and raycast_right.is_colliding()) or (direction == -1 and raycast_left.is_colliding())
+func _handle_wall_collision() -> void:
+	var hitting_wall := is_on_wall()
+	var near_wall := (direction == 1 and raycast_right.is_colliding()) \
+		or (direction == -1 and raycast_left.is_colliding())
 
 	if hitting_wall or near_wall:
 		direction *= -1
-		position.x += direction * 2 
-		
-		if health < 7:
+		position.x += direction * 2
+
+		if health < ANGRY_HEALTH:
 			apply_camera_shake(0.2, 4.0)
 
 # ========================
-# ATTACK SYSTEM
+# ATTACKS
 # ========================
 
-func _on_attack_timer_timeout():
-	if phase < 2 or is_dead:
+# Phase 2 : alterne patrouille normale / toupie
+func _on_attack_timer_timeout() -> void:
+	if phase < 2 or state == State.DEAD:
 		return
 
-	is_spinning = !is_spinning
+	match state:
+		State.RUN:
+			set_state(State.SPIN)
+		State.SPIN:
+			set_state(State.RUN)
 
-	if is_spinning:
-		speed = SPIN_SPEED
-		sprite.play("spin")
-	else:
-		speed = RUN_SPEED
-		sprite.play("run")
+	attack_timer.start(randf_range(SPIN_TOGGLE_MIN, SPIN_TOGGLE_MAX))
 
-	attack_timer.start(randf_range(3.0, 4.0))
+func _land_slam() -> void:
+	velocity = Vector2.ZERO
+	set_state(State.RUN)
+
+	apply_camera_shake(0.4, 6.0)
+	_push_player()
+	SoundManager.play("stomp")
+
+func _push_player() -> void:
+	for body in hitbox.get_overlapping_bodies():
+		if body.is_in_group("player") and body.has_method("bounce"):
+			body.velocity.y = SLAM_PLAYER_LAUNCH
 
 # ========================
 # PLAYER DETECTION
@@ -126,37 +175,11 @@ func _on_player_exit(body):
 		player_in_range = false
 
 # ========================
-# SLAM
-# ========================
-
-func start_slam():
-	is_jumping = true
-	velocity.y = -350
-	slam_timer = slam_cooldown
-
-	apply_camera_shake(0.2, 3.0)
-	SoundManager.play("jump")
-
-func land_slam():
-	is_jumping = false
-	velocity = Vector2.ZERO
-
-	apply_camera_shake(0.4, 6.0)
-	push_player()
-
-	SoundManager.play("stomp")
-
-func push_player():
-	for body in hitbox.get_overlapping_bodies():
-		if body.is_in_group("player") and body.has_method("bounce"):
-			body.velocity.y = -300
-
-# ========================
-# DAMAGE SYSTEM
+# DAMAGE
 # ========================
 
 func _on_body_entered(body):
-	if is_dead:
+	if state == State.DEAD:
 		return
 
 	if body.is_in_group("player"):
@@ -164,29 +187,29 @@ func _on_body_entered(body):
 		if player == null:
 			return
 
-		var player_falling = player.velocity.y > 0
-		var vertical_diff = player.global_position.y - global_position.y
+		var player_falling := player.velocity.y > 0
+		var vertical_diff := player.global_position.y - global_position.y
 
-		if player_falling and vertical_diff < 128:
+		if player_falling and vertical_diff < STOMP_TOLERANCE:
 			stomped(player)
 		else:
 			player.take_damage(1)
 
 func stomped(player):
-	if is_dead or is_invincible:
+	if state == State.DEAD or is_invincible:
 		return
-	
+
 	take_damage(1, player)
-	
-	if player.has_method("bounce"): 
-			player.bounce()
+
+	if player.has_method("bounce"):
+		player.bounce()
 
 func take_damage(amount: int, player):
-	if is_invincible or is_dead:
+	if is_invincible or state == State.DEAD:
 		return
 
 	health -= amount
-	update_phase()
+	_update_phase()
 
 	if health <= 0:
 		die()
@@ -204,31 +227,32 @@ func take_damage(amount: int, player):
 
 	SoundManager.play("stomp")
 
-func _on_inv_timer_timeout():
+func _on_inv_timer_timeout() -> void:
 	is_invincible = false
 
 # ========================
-# PHASE SYSTEM
+# PHASES
 # ========================
 
-func update_phase():
-	if health <= 7 and phase == 1:
+func _update_phase() -> void:
+	if health <= PHASE2_HEALTH and phase == 1:
 		phase = 2
 
-		speed = RUN_SPEED
-		sprite.play("run")
+		# Un slam en cours se termine normalement (retour en RUN à l'atterrissage)
+		if state != State.SLAM:
+			set_state(State.RUN)
 
-		attack_timer.start(randf_range(3.0, 4.0))
+		attack_timer.start(randf_range(SPIN_TOGGLE_MIN, SPIN_TOGGLE_MAX))
 
 # ========================
-# DEATH
+# DEATH & LOOT
 # ========================
 
-func die():
-	if is_dead:
+func die() -> void:
+	if state == State.DEAD:
 		return
-		
-	is_dead = true
+
+	set_state(State.DEAD)
 	set_physics_process(false)
 
 	visible = false
@@ -238,22 +262,18 @@ func die():
 	hitbox.set_deferred("monitoring", false)
 	hitbox.set_deferred("monitorable", false)
 
-	drop_coin()
-	spawn_victory_tp()
+	_drop_coins()
+	_spawn_victory_tp()
 
-# ========================
-# SPAWNS
-# ========================
-
-func drop_coin():
+func _drop_coins() -> void:
 	if coin_scene == null:
 		return
 
-	for i in range(10):
+	for i in range(COIN_DROP_COUNT):
 		var coin = coin_scene.instantiate()
 		coin.name = "boss_coin_" + str(Time.get_ticks_msec()) + "_" + str(i)
 
-		var offset = Vector2(randf_range(-30, 30), randf_range(-10, 10))
+		var offset := Vector2(randf_range(-30, 30), randf_range(-10, 10))
 
 		if owner:
 			owner.call_deferred("add_child", coin)
@@ -263,12 +283,12 @@ func drop_coin():
 		if coin.has_method("launch"):
 			coin.launch(-1 if randf() < 0.5 else 1)
 
-func spawn_victory_tp():
+func _spawn_victory_tp() -> void:
 	if victory_tp_scene == null:
 		return
 
 	var tp = victory_tp_scene.instantiate()
-	tp.global_position = Vector2(-136, -48)
+	tp.global_position = VICTORY_TP_POSITION
 
 	if owner:
 		owner.call_deferred("add_child", tp)
@@ -281,7 +301,7 @@ func spawn_victory_tp():
 # FX
 # ========================
 
-func apply_camera_shake(duration: float, intensity: float):
+func apply_camera_shake(duration: float, intensity: float) -> void:
 	var camera = get_viewport().get_camera_2d()
 	if camera and camera.has_method("shake"):
 		camera.shake(duration, intensity)
