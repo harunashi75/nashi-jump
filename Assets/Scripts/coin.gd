@@ -15,10 +15,10 @@ var is_dropped: bool = false
 var is_enemy_drop: bool = false  # pièce lâchée (ennemi/boss) : non sauvegardée par niveau
 var bounce_damping: float = 0.5
 
-func _ready():
+func _ready() -> void:
 	_initialize_coin()
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if not is_dropped:
 		return
 
@@ -26,14 +26,14 @@ func _physics_process(delta):
 	velocity.y += fall_gravity * delta
 
 	# --- déplacement ---
-	var next_pos = position + velocity * delta
+	var next_pos: Vector2 = position + velocity * delta
 
 	# --- vérification collisions murs latéraux ---
-	var space = get_world_2d().direct_space_state
-	var query = PhysicsRayQueryParameters2D.create(position, Vector2(next_pos.x, position.y))
+	var space: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
+	var query: PhysicsRayQueryParameters2D = PhysicsRayQueryParameters2D.create(position, Vector2(next_pos.x, position.y))
 	query.exclude = [self.get_rid()]
 	query.collision_mask = 2
-	var collision = space.intersect_ray(query)
+	var collision: Dictionary = space.intersect_ray(query)
 	if collision:
 		velocity.x = -velocity.x * bounce_damping
 		next_pos.x = position.x + velocity.x * delta
@@ -48,9 +48,9 @@ func _physics_process(delta):
 			velocity.y = 0
 			is_dropped = false
 
-func _initialize_coin():
-	var level_name = get_tree().current_scene.name
-	var coin_id = name
+func _initialize_coin() -> void:
+	var level_name: String = get_tree().current_scene.name
+	var coin_id: String = name
 
 	if GameManager.is_coin_already_collected(level_name, coin_id):
 		queue_free()
@@ -59,14 +59,14 @@ func _initialize_coin():
 	sprite.play("default")
 	body_entered.connect(_on_body_entered)
 
-func launch(direction: float):
+func launch(direction: float) -> void:
 	is_dropped = true
 	is_enemy_drop = true
 
 	velocity.x = direction * randf_range(80, 120)
 	velocity.y = -220
 
-func _on_body_entered(body: Node):
+func _on_body_entered(body: Node) -> void:
 	if collected:
 		return
 	if not body.is_in_group("player"):
@@ -75,7 +75,7 @@ func _on_body_entered(body: Node):
 	collected = true
 	_collect_coin()
 
-func _collect_coin():
+func _collect_coin() -> void:
 	SoundManager.play("coin")
 	if is_enemy_drop:
 		GameManager.add_dropped_coin()

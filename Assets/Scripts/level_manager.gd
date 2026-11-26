@@ -25,7 +25,7 @@ const LEVEL_DEFS := [
 ]
 
 # Ordre de progression (chemins), dérivé de LEVEL_DEFS
-var levels: Array = LEVEL_DEFS.map(func(d): return SCENES + d["file"] + ".tscn")
+var levels: Array = LEVEL_DEFS.map(func(d: Dictionary) -> String: return SCENES + d["file"] + ".tscn")
 
 # -------- Infos par niveau --------
 func _find_def(scene_path: String) -> Dictionary:

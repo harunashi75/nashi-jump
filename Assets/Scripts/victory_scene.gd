@@ -1,15 +1,15 @@
 extends Control
 
-@onready var time_label = $Stats/Time
-@onready var deaths_label = $Stats/Deaths
-@onready var coins_label = $Stats/Coins
-@onready var skins_label = $Stats/Skins
+@onready var time_label: Label = $Stats/Time
+@onready var deaths_label: Label = $Stats/Deaths
+@onready var coins_label: Label = $Stats/Coins
+@onready var skins_label: Label = $Stats/Skins
 
-@onready var restart_button = $Buttons/Restart
-@onready var menu_button = $Buttons/MainMenu
-@onready var quit_button = $Buttons/Quit
+@onready var restart_button: TextureButton = $Buttons/Restart
+@onready var menu_button: TextureButton = $Buttons/MainMenu
+@onready var quit_button: TextureButton = $Buttons/Quit
 
-func _ready():
+func _ready() -> void:
 	restart_button.grab_focus()
 
 	time_label.text = "Time: %s  (Best: %s)" % [
@@ -29,7 +29,7 @@ func _ready():
 	menu_button.pressed.connect(_menu)
 	quit_button.pressed.connect(get_tree().quit)
 
-func _restart():
+func _restart() -> void:
 	GameManager.reset_progress()
 	GameManager.reset_checkpoint_data()
 	
@@ -40,7 +40,7 @@ func _restart():
 	
 	LevelManager.load_level_by_path("res://Assets/Scenes/level_plains.tscn")
 
-func _menu():
+func _menu() -> void:
 	GameManager.reset_progress()
 	
 	TimerManager.time_elapsed = 0.0

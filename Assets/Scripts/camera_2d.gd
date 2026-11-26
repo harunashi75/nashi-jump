@@ -8,25 +8,25 @@ extends Camera2D
 
 var target_pos: Vector2
 var current_v_shift := 0.0
-var shake_intensity = 0.0
-var shake_timer = 0.0
+var shake_intensity: float = 0.0
+var shake_timer: float = 0.0
 
-func _ready():
+func _ready() -> void:
 	target_pos = global_position
 	top_level = true
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if shake_timer > 0:
 		shake_timer -= delta
 		offset = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * shake_intensity
 	else:
 		offset = Vector2.ZERO
 
-func shake(duration: float, intensity: float):
+func shake(duration: float, intensity: float) -> void:
 	shake_timer = duration
 	shake_intensity = intensity
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if not player: return
 
 	if player.velocity.y > 50: 
@@ -36,18 +36,18 @@ func _physics_process(delta):
 	else:
 		current_v_shift = lerp(current_v_shift, 0.0, 1.0 * delta)
 
-	var player_pos = player.global_position
+	var player_pos: Vector2 = player.global_position
 	player_pos.y += current_v_shift
 	
-	var diff = player_pos - target_pos
-	var move_target = target_pos
+	var diff: Vector2 = player_pos - target_pos
+	var move_target: Vector2 = target_pos
 
 	if abs(diff.x) > deadzone.x:
 		move_target.x = player_pos.x - (deadzone.x * sign(diff.x))
 	if abs(diff.y) > deadzone.y:
 		move_target.y = player_pos.y - (deadzone.y * sign(diff.y))
 
-	var weight = clamp(follow_speed * delta, 0.0, 1.0)
+	var weight: float = clamp(follow_speed * delta, 0.0, 1.0)
 	target_pos = target_pos.lerp(move_target, weight)
 
 	global_position = target_pos

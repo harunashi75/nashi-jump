@@ -18,7 +18,7 @@ var direction := 1
 var ray_positive: RayCast2D
 var ray_negative: RayCast2D
 
-func _ready():
+func _ready() -> void:
 	direction = start_direction
 
 	if axis == Axis.HORIZONTAL:

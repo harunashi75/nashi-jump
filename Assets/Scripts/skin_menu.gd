@@ -1,6 +1,6 @@
 extends Control
 
-@onready var back_button = $Back
+@onready var back_button: TextureButton = $Back
 
 @onready var skin_buttons := {
 	"default": $Menu_1/DefaultSkin,
@@ -18,7 +18,7 @@ extends Control
 	"void": $Menu_1/VoidSkin
 }
 
-func _ready():
+func _ready() -> void:
 	back_button.pressed.connect(_go_back)
 
 	for skin_name in skin_buttons:
@@ -31,12 +31,12 @@ func _ready():
 	_update_skin_buttons()
 	back_button.grab_focus()
 
-func _select_skin(skin_name: String):
+func _select_skin(skin_name: String) -> void:
 	SkinManager.current_skin = skin_name
 	SkinManager.save_data()
 	SoundManager.play("confirm")
 
-func _update_skin_buttons():
+func _update_skin_buttons() -> void:
 	for skin_name in skin_buttons:
 		var button: BaseButton = skin_buttons[skin_name]
 		var unlocked: bool = skin_name == "default" or SkinManager.is_unlocked(skin_name)
@@ -44,6 +44,6 @@ func _update_skin_buttons():
 		button.disabled = !unlocked
 		button.focus_mode = Control.FOCUS_ALL if unlocked else Control.FOCUS_NONE
 
-func _go_back():
+func _go_back() -> void:
 	SoundManager.play("confirm")
 	LevelManager.return_to_menu()

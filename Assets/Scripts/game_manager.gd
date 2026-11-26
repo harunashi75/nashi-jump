@@ -36,7 +36,7 @@ var _placed_coins_cache := {}
 
 # -------- Initialisation --------
 
-func _ready():
+func _ready() -> void:
 	load_coins()
 	if hud and not hud.is_inside_tree():
 		hud = null
@@ -45,10 +45,10 @@ func _ready():
 
 # -------- Démarrage & Pause --------
 
-func start_game():
+func start_game() -> void:
 	reset_run_stats()
 
-func toggle_pause():
+func toggle_pause() -> void:
 	is_game_paused = !is_game_paused
 	get_tree().paused = is_game_paused
 
@@ -59,7 +59,7 @@ func toggle_pause():
 			pause_menu.hide_pause_menu()
 
 func is_current_level_ice() -> bool:
-	var current_scene = get_tree().current_scene
+	var current_scene: Node = get_tree().current_scene
 	if current_scene:
 		return LevelManager.is_ice_level(current_scene.scene_file_path)
 	return false
@@ -74,7 +74,7 @@ func save_current_level(level_path: String) -> void:
 func get_saved_level() -> String:
 	return SaveManager.get_value("progress", "current_level", DEFAULT_LEVEL)
 
-func reset_progress():
+func reset_progress() -> void:
 	reset_coins()
 	reset_run_stats()
 
@@ -87,34 +87,34 @@ func reset_progress():
 
 # -------- Stats de la run en cours --------
 
-func reset_run_stats():
+func reset_run_stats() -> void:
 	run_time = 0.0
 	deaths_count = 0
 	no_damage_run = true
 	skins_unlocked_this_run.clear()
 
 # Persiste morts et "sans dégât" pour que « Continuer » reprenne la même run
-func save_run_stats():
+func save_run_stats() -> void:
 	SaveManager.set_value("run", "deaths", deaths_count, false)
 	SaveManager.set_value("run", "no_damage", no_damage_run, false)
 	SaveManager.save()
 
-func load_run_stats():
+func load_run_stats() -> void:
 	deaths_count = SaveManager.get_value("run", "deaths", 0)
 	no_damage_run = SaveManager.get_value("run", "no_damage", true)
 
 # -------- Coins --------
 
-func reset_coins():
+func reset_coins() -> void:
 	coins_collected_by_level.clear()
 	dropped_coins_collected = 0
 
-func add_dropped_coin():
+func add_dropped_coin() -> void:
 	dropped_coins_collected += 1
 	save_coins()
 	_update_hud_coins()
 
-func mark_coin_collected(level: String, id: String):
+func mark_coin_collected(level: String, id: String) -> void:
 	var list: Array = coins_collected_by_level.get(level, [])
 
 	if id in list:
@@ -137,12 +137,12 @@ func get_total_unique_coins() -> int:
 		total += coins.size()
 	return total
 
-func save_coins():
+func save_coins() -> void:
 	SaveManager.set_value("coins", "by_level", coins_collected_by_level, false)
 	SaveManager.set_value("coins", "dropped", dropped_coins_collected, false)
 	SaveManager.save()
 
-func load_coins():
+func load_coins() -> void:
 	coins_collected_by_level = SaveManager.get_value("coins", "by_level", {})
 	dropped_coins_collected = SaveManager.get_value("coins", "dropped", 0)
 
@@ -193,7 +193,7 @@ func has_all_coins() -> bool:
 
 # -------- HUD --------
 
-func _update_hud_coins():
+func _update_hud_coins() -> void:
 	if not hud or not hud.is_inside_tree():
 		return
 
@@ -205,11 +205,11 @@ func _update_hud_coins():
 
 # -------- Checkpoint --------
 
-func set_levels_checkpoint(path: String):
+func set_levels_checkpoint(path: String) -> void:
 	levels_checkpoint_enabled = true
 	levels_checkpoint_scene_path = path
 
-func reset_checkpoint_data():
+func reset_checkpoint_data() -> void:
 	levels_checkpoint_enabled = false
 	levels_checkpoint_scene_path = "res://Assets/Scenes/level_plains.tscn"
 

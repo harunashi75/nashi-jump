@@ -1,7 +1,7 @@
 extends Node
 
-func _ready():
-	var hud = preload("res://Assets/Scenes/hud.tscn").instantiate()
+func _ready() -> void:
+	var hud: Node = preload("res://Assets/Scenes/hud.tscn").instantiate()
 	add_child(hud)
 	GameManager.hud = hud
 

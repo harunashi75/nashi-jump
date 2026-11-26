@@ -1,11 +1,11 @@
 extends Control
 
-@onready var play_button = $Menu/Play
-@onready var new_game_button = $Menu/NewGame
-@onready var skins_button = $Menu/Skins
-@onready var quit_button = $Menu/Quit
+@onready var play_button: TextureButton = $Menu/Play
+@onready var new_game_button: TextureButton = $Menu/NewGame
+@onready var skins_button: TextureButton = $Menu/Skins
+@onready var quit_button: TextureButton = $Menu/Quit
 
-func _ready():
+func _ready() -> void:
 	if not SaveManager.has_progress():
 		play_button.disabled = true
 		play_button.focus_mode = Control.FOCUS_NONE
@@ -20,11 +20,11 @@ func _ready():
 	skins_button.pressed.connect(_open_skin_menu)
 	quit_button.pressed.connect(_quit_game)
 
-func _open_skin_menu():
+func _open_skin_menu() -> void:
 	SoundManager.play("confirm")
 	get_tree().change_scene_to_file("res://Assets/Scenes/skin_menu.tscn")
 
-func _start_game():
+func _start_game() -> void:
 	GameManager.load_run_stats()
 	TimerManager.load_current_progress()
 	TimerManager.resume_timer()
@@ -32,12 +32,12 @@ func _start_game():
 	GameManager.set_levels_checkpoint(level_path)
 	LevelManager.load_level_by_path(level_path)
 
-func _start_new_game():
+func _start_new_game() -> void:
 	GameManager.reset_progress()
 	TimerManager.start_timer()
 	TimerManager.save_current_progress()
 	LevelManager.load_level_by_path("res://Assets/Scenes/level_plains.tscn")
 
-func _quit_game():
+func _quit_game() -> void:
 	TimerManager.save_current_progress()
 	get_tree().quit()

@@ -4,10 +4,10 @@ extends Area2D
 @export var skin_id: String = ""
 @export var floating_text_offset: Vector2 = Vector2(0, -40)
 
-func _ready():
+func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
-func _on_body_entered(body):
+func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
 

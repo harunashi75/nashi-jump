@@ -18,7 +18,7 @@ func start_timer() -> void:
 	time_elapsed = 0.0
 	running = true
 
-func resume_timer():
+func resume_timer() -> void:
 	running = true
 
 func stop_timer() -> void:

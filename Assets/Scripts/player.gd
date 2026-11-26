@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 # -------- Constantes de Physique (SMW-like) --------
@@ -21,10 +22,10 @@ const JUMP_BUFFER = 0.12
 
 # -------- Variables dynamiques --------
 
-var jumps_left = 1
-var max_jumps = 1
-var coyote_timer = 0.0
-var jump_buffer_timer = 0.0
+var jumps_left: int = 1
+var max_jumps: int = 1
+var coyote_timer: float = 0.0
+var jump_buffer_timer: float = 0.0
 
 # -------- Santé et skins --------
 
@@ -50,13 +51,13 @@ var did_double_jump := false
 
 # -------- Initialisation --------
 
-func _ready():
+func _ready() -> void:
 	add_to_group("player")
 	current_skin = SkinManager.current_skin
 
 # -------- Boucle physique --------
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	handle_jump(delta)
 	apply_gravity(delta)
 	handle_movement(delta)
@@ -66,7 +67,7 @@ func _physics_process(delta):
 
 # -------- Gravité & Saut --------
 
-func apply_gravity(delta):
+func apply_gravity(delta: float) -> void:
 	var gravity := GRAVITY
 
 	if velocity.y < 0:
@@ -82,10 +83,10 @@ func _is_ice_level() -> bool:
 		_ice_level = 1 if GameManager.is_current_level_ice() else 0
 	return _ice_level == 1
 
-func handle_movement(delta):
+func handle_movement(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
-	var current_acceleration = ACCELERATION
-	var current_deceleration = DECELERATION
+	var current_acceleration: float = ACCELERATION
+	var current_deceleration: float = DECELERATION
 	
 	if _is_ice_level():
 			current_acceleration = ACCELERATION * 0.3
@@ -109,7 +110,7 @@ func handle_movement(delta):
 
 	velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
 
-func handle_jump(delta):
+func handle_jump(delta: float) -> void:
 	# --- Jump buffer ---
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer = JUMP_BUFFER
@@ -138,7 +139,7 @@ func handle_jump(delta):
 			_do_jump(true)
 			jump_buffer_timer = 0
 
-func _do_jump(is_air_jump := false):
+func _do_jump(is_air_jump: bool = false) -> void:
 	var jump_force := JUMP_FORCE
 	if abs(velocity.x) > BASE_SPEED * 0.9:
 		jump_force += RUN_JUMP_BONUS
@@ -147,10 +148,10 @@ func _do_jump(is_air_jump := false):
 	did_double_jump = is_air_jump
 	SoundManager.play("jump")
 
-func bounce():
+func bounce() -> void:
 	velocity.y = JUMP_FORCE * 0.7
 
-func update_state():
+func update_state() -> void:
 	if state == PlayerState.DEATH:
 		return
 	
@@ -166,7 +167,7 @@ func update_state():
 
 # -------- Animation --------
 
-func update_animation():
+func update_animation() -> void:
 	var anim := ""
 
 	match state:
@@ -183,7 +184,7 @@ func update_animation():
 
 	play_player_anim(anim)
 
-func play_player_anim(anim_name: String):
+func play_player_anim(anim_name: String) -> void:
 	if sprite.animation == "%s_%s" % [anim_name, current_skin]:
 		return
 
@@ -198,7 +199,7 @@ func play_player_anim(anim_name: String):
 
 # -------- Effets --------
 
-func apply_health_bonus():
+func apply_health_bonus() -> void:
 	if temporary_health_bonus < 1:
 		temporary_health_bonus = 1
 	
@@ -209,7 +210,7 @@ func apply_health_bonus():
 func get_current_health() -> int:
 	return base_health + temporary_health_bonus
 
-func take_damage(amount := 1):
+func take_damage(amount: int = 1) -> void:
 	if GameManager.godmode_enabled:
 		return
 
@@ -226,7 +227,7 @@ func take_damage(amount := 1):
 
 # -------- Respawn & Mort --------
 
-func die(instant := false):
+func die(instant: bool = false) -> void:
 	if state == PlayerState.DEATH:
 		return
 
@@ -254,10 +255,10 @@ func _wait_death_animation() -> void:
 	else:
 		await get_tree().create_timer(0.6).timeout
 
-func respawn():
+func respawn() -> void:
 	call_deferred("load_respawn_scene")
 
-func load_respawn_scene():
+func load_respawn_scene() -> void:
 	var path := GameManager.levels_checkpoint_scene_path
 	if path == "":
 		path = GameManager.get_saved_level()

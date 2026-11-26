@@ -14,11 +14,11 @@ var is_dead := false
 @onready var raycast_left: RayCast2D = $RayCastLeft
 @onready var hitbox: Area2D = $Hitbox
 
-func _ready():
+func _ready() -> void:
 	sprite.play("run")
 	hitbox.body_entered.connect(_on_body_entered)
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if is_dead:
 		return
 
@@ -32,7 +32,7 @@ func _process(delta):
 	position.x += direction * SPEED * delta
 	sprite.flip_h = direction > 0
 
-func _on_body_entered(body):
+func _on_body_entered(body: Node2D) -> void:
 	if is_dead:
 		return
 
@@ -50,7 +50,7 @@ func _on_body_entered(body):
 		else:
 			player.take_damage(1)
 
-func stomped(player):
+func stomped(player: CharacterBody2D) -> void:
 	die()
 
 	if player.has_method("bounce"):
@@ -58,22 +58,22 @@ func stomped(player):
 
 	SoundManager.play("stomp")
 
-func drop_coin():
+func drop_coin() -> void:
 	if coin_scene == null:
 		return
 
-	var coin = coin_scene.instantiate()
+	var coin: Node2D = coin_scene.instantiate()
 	coin.name = "enemy_coin_" + str(Time.get_ticks_msec())
 
 	get_tree().current_scene.call_deferred("add_child", coin)
 
 	coin.global_position = global_position + Vector2(0, -20)
 
-	var dir = -1 if randf() < 0.5 else 1
+	var dir: int = -1 if randf() < 0.5 else 1
 	if coin.has_method("launch"):
 		coin.launch(dir)
 
-func die():
+func die() -> void:
 	if is_dead:
 		return
 

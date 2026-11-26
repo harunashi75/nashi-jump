@@ -1,7 +1,7 @@
 extends Node
 
 # -------- Gestion (SFX) et music --------
-var sounds = {}
+var sounds: Dictionary = {}
 
 @onready var music_player: AudioStreamPlayer = AudioStreamPlayer.new()
 @onready var sfx_player: AudioStreamPlayer = AudioStreamPlayer.new()
@@ -22,7 +22,7 @@ var excluded_scenes := [
 }
 
 # -------- Initialisation --------
-func _ready():
+func _ready() -> void:
 	# Les sons du menu pause doivent jouer même quand l'arbre est en pause
 	# (la musique continue aussi pendant la pause)
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -54,7 +54,7 @@ func _ready():
 
 # -------- Gestion music --------
 
-func _notification(what):
+func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		if music_player.playing:
 			music_player.stop()
@@ -66,12 +66,12 @@ func _notification(what):
 		if is_instance_valid(sfx_player):
 			sfx_player.queue_free()
 
-func _check_music():
-	var current_scene = get_tree().current_scene
+func _check_music() -> void:
+	var current_scene: Node = get_tree().current_scene
 	if not current_scene:
 		return
 
-	var scene_path = current_scene.scene_file_path
+	var scene_path: String = current_scene.scene_file_path
 	if scene_path in excluded_scenes:
 		if music_player.playing:
 			music_player.stop()
@@ -92,9 +92,9 @@ func _check_music():
 		music_player.play()
 
 # -------- Gestion SFX --------
-func play(sound_name: String):
+func play(sound_name: String) -> void:
 	if sounds.has(sound_name):
-		var temp_player = AudioStreamPlayer.new()
+		var temp_player := AudioStreamPlayer.new()
 		add_child(temp_player)
 		
 		temp_player.stream = sounds[sound_name]

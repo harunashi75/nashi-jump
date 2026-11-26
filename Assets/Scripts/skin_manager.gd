@@ -24,17 +24,17 @@ var unlocked_skins := {
 	"blueember": false
 }
 
-func _ready():
+func _ready() -> void:
 	load_data()
 
 # -------- SAVE / LOAD --------
 
-func save_data():
+func save_data() -> void:
 	SaveManager.set_value("skins", "current", current_skin, false)
 	SaveManager.set_value("skins", "unlocked", unlocked_skins, false)
 	SaveManager.save()
 
-func load_data():
+func load_data() -> void:
 	current_skin = SaveManager.get_value("skins", "current", "default")
 	var saved: Dictionary = SaveManager.get_value("skins", "unlocked", {})
 	unlocked_skins.merge(saved, true)
@@ -44,7 +44,7 @@ func load_data():
 func is_unlocked(skin: String) -> bool:
 	return unlocked_skins.get(skin, false)
 
-func unlock_skin(skin: String):
+func unlock_skin(skin: String) -> void:
 	if is_unlocked(skin):
 		return
 
@@ -55,7 +55,7 @@ func unlock_skin(skin: String):
 		GameManager.skins_unlocked_this_run.append(skin)
 		
 
-func check_endgame_unlocks():
+func check_endgame_unlocks() -> void:
 	# GOLD
 	if GameManager.has_all_coins() and not is_unlocked("gold"):
 		unlock_skin("gold")

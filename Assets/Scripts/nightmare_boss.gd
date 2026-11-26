@@ -51,7 +51,7 @@ var slam_timer := 0.0
 @onready var inv_timer: Timer = $InvincibilityTimer
 @onready var attack_timer: Timer = $AttackTimer
 
-func _ready():
+func _ready() -> void:
 	sprite.play("run")
 
 	hitbox.body_entered.connect(_on_body_entered)
@@ -86,7 +86,7 @@ func set_state(new_state: State) -> void:
 		State.DEAD:
 			pass
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if state == State.DEAD:
 		return
 
@@ -166,11 +166,11 @@ func _push_player() -> void:
 # DÉTECTION DU JOUEUR
 # ========================
 
-func _on_player_enter(body):
+func _on_player_enter(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = true
 
-func _on_player_exit(body):
+func _on_player_exit(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = false
 
@@ -178,7 +178,7 @@ func _on_player_exit(body):
 # DÉGÂTS
 # ========================
 
-func _on_body_entered(body):
+func _on_body_entered(body: Node2D) -> void:
 	if state == State.DEAD:
 		return
 
@@ -195,7 +195,7 @@ func _on_body_entered(body):
 		else:
 			player.take_damage(1)
 
-func stomped(player):
+func stomped(player: CharacterBody2D) -> void:
 	if state == State.DEAD or is_invincible:
 		return
 
@@ -204,7 +204,7 @@ func stomped(player):
 	if player.has_method("bounce"):
 		player.bounce()
 
-func take_damage(amount: int, player):
+func take_damage(amount: int, player: CharacterBody2D) -> void:
 	if is_invincible or state == State.DEAD:
 		return
 
@@ -218,7 +218,7 @@ func take_damage(amount: int, player):
 	is_invincible = true
 	inv_timer.start()
 
-	var tween = create_tween()
+	var tween: Tween = create_tween()
 	tween.tween_property(sprite, "modulate", Color.RED, 0.1)
 	tween.tween_property(sprite, "modulate", Color.WHITE, 0.1)
 
@@ -270,7 +270,7 @@ func _drop_coins() -> void:
 		return
 
 	for i in range(COIN_DROP_COUNT):
-		var coin = coin_scene.instantiate()
+		var coin: Node2D = coin_scene.instantiate()
 		coin.name = "boss_coin_" + str(Time.get_ticks_msec()) + "_" + str(i)
 
 		var offset := Vector2(randf_range(-30, 30), randf_range(-10, 10))
@@ -287,14 +287,14 @@ func _spawn_victory_tp() -> void:
 	if victory_tp_scene == null:
 		return
 
-	var tp = victory_tp_scene.instantiate()
+	var tp: Node2D = victory_tp_scene.instantiate()
 	tp.global_position = VICTORY_TP_POSITION
 
 	if owner:
 		owner.call_deferred("add_child", tp)
 
 	tp.scale = Vector2.ZERO
-	var tween = tp.create_tween()
+	var tween: Tween = tp.create_tween()
 	tween.tween_property(tp, "scale", Vector2.ONE, 0.3)
 
 # ========================
@@ -302,6 +302,6 @@ func _spawn_victory_tp() -> void:
 # ========================
 
 func apply_camera_shake(duration: float, intensity: float) -> void:
-	var camera = get_viewport().get_camera_2d()
+	var camera: Camera2D = get_viewport().get_camera_2d()
 	if camera and camera.has_method("shake"):
 		camera.shake(duration, intensity)
