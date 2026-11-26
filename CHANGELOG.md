@@ -10,6 +10,12 @@ Les versions antérieures à 0.16.9 sont uniquement dans l'historique git.
 - Typage statique GDScript sur toutes les fonctions et variables ; `class_name Player`.
 - `export_presets.cfg` est désormais versionné (aucun secret dedans).
 
+### Modifié
+- Bouclage des 5 musiques réglé à l'import (`loop=true`) au lieu d'être forcé dans le code ; relance automatique en filet de sécurité.
+
+### Supprimé
+- 3 fichiers audio inutilisés (`ive_got_your_back.ogg`, `journey_across_the_blue.ogg`, `time_for_adventure.mp3`, environ 6,8 Mo) et le `sfx_player` inutilisé du `SoundManager`.
+
 ## [0.17.0] - 2026-11-26
 
 ### Ajouté

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Mushroom Theme.mp3-e130700e8e5eae8ab8f06351a5
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

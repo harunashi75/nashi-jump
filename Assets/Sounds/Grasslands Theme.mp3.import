@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Grasslands Theme.mp3-93f23cb00e8f6a3b689a5e18
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

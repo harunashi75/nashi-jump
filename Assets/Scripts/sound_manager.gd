@@ -4,7 +4,6 @@ extends Node
 var sounds: Dictionary = {}
 
 @onready var music_player: AudioStreamPlayer = AudioStreamPlayer.new()
-@onready var sfx_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
 var excluded_scenes := [
 	"res://Assets/Scenes/start_menu.tscn",
@@ -28,13 +27,13 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	add_child(music_player)
-	add_child(sfx_player)
+
+	# Le bouclage est réglé à l'import (loop=true) ; ceci sert de filet de sécurité
+	music_player.finished.connect(music_player.play)
 
 	music_player.autoplay = false
 	music_player.volume_db = -5
 	
-	sfx_player.autoplay = false
-	sfx_player.volume_db = 0
 
 	sounds = {
 		"stomp": preload("res://Assets/Sounds/stomp.wav"),
@@ -63,8 +62,6 @@ func _notification(what: int) -> void:
 		
 		if is_instance_valid(music_player):
 			music_player.queue_free()
-		if is_instance_valid(sfx_player):
-			sfx_player.queue_free()
 
 func _check_music() -> void:
 	var current_scene: Node = get_tree().current_scene
@@ -85,8 +82,6 @@ func _check_music() -> void:
 	if music_player.stream != target_music:
 		music_player.stop()
 		music_player.stream = target_music
-		if target_music is AudioStream:
-			target_music.loop = true 
 		music_player.play()
 	elif not music_player.playing:
 		music_player.play()
