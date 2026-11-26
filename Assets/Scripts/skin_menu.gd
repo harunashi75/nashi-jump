@@ -33,6 +33,7 @@ func _ready():
 
 func _select_skin(skin_name: String):
 	SkinManager.current_skin = skin_name
+	SkinManager.save_data()
 	SoundManager.play("confirm")
 
 func _update_skin_buttons():

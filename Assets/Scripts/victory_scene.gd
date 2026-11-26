@@ -12,11 +12,18 @@ extends Control
 func _ready():
 	restart_button.grab_focus()
 
-	time_label.text = "Time: " + TimerManager.format_time(GameManager.run_time)
+	time_label.text = "Time: %s  (Best: %s)" % [
+		TimerManager.format_time(GameManager.run_time),
+		TimerManager.get_formatted_best_time()
+	]
 	deaths_label.text = "Deaths: " + str(GameManager.deaths_count)
 	coins_label.text = "Coins: " + str(GameManager.get_total_unique_coins())
 
 	skins_label.text = "Skins unlocked: " + str(GameManager.skins_unlocked_this_run.size())
+
+	# La run est terminée : la prochaine (« Continuer » compris) repart de zéro
+	GameManager.reset_run_stats()
+	GameManager.save_run_stats()
 
 	restart_button.pressed.connect(_restart)
 	menu_button.pressed.connect(_menu)

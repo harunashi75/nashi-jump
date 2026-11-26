@@ -25,6 +25,7 @@ func _open_skin_menu():
 	get_tree().change_scene_to_file("res://Assets/Scenes/skin_menu.tscn")
 
 func _start_game():
+	GameManager.load_run_stats()
 	TimerManager.load_current_progress()
 	TimerManager.resume_timer()
 	var level_path := GameManager.load_saved_level()

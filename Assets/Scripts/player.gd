@@ -225,7 +225,7 @@ func take_damage(amount := 1):
 
 # -------- Respawn & Mort --------
 
-func die():
+func die(instant := false):
 	if state == PlayerState.DEATH:
 		return
 
@@ -236,9 +236,12 @@ func die():
 	set_physics_process(false)
 	set_process_input(false)
 
-	play_player_anim("death")
+	GameManager.save_run_stats()
 
-	await sprite.animation_finished
+	if not instant:
+		play_player_anim("death")
+		await sprite.animation_finished
+
 	respawn()
 
 func respawn():

@@ -60,8 +60,10 @@ func load_best_time() -> void:
 	if FileAccess.file_exists(SAVE_PATH):
 		var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
 		if file:
-			best_time = file.get_var()
+			var value = file.get_var()
 			file.close()
+			if typeof(value) == TYPE_FLOAT or typeof(value) == TYPE_INT:
+				best_time = float(value)
 
 func save_current_progress() -> void:
 	var file := FileAccess.open("user://current_timer.save", FileAccess.WRITE)

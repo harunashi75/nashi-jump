@@ -15,6 +15,7 @@ func _deferred_load_next_level():
 		return
 
 	GameManager.save_current_level(next_level_path)
+	GameManager.save_run_stats()
 	GameManager.set_levels_checkpoint(next_level_path)
 	
 	LevelManager.load_level_by_path(next_level_path)

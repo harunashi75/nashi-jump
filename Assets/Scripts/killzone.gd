@@ -5,5 +5,5 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		body.get_current_health()
-		body.respawn()
+		# Passe par die() pour compter la mort (stats, skin rainbow), sans animation
+		body.die(true)

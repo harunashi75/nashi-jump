@@ -45,7 +45,7 @@ func _ready():
 # -------- Démarrage & Pause --------
 
 func start_game():
-	no_damage_run = true
+	reset_run_stats()
 
 func toggle_pause():
 	is_game_paused = !is_game_paused
@@ -95,12 +95,39 @@ func load_saved_level() -> String:
 
 func reset_progress():
 	reset_coins()
-	skins_unlocked_this_run.clear()
-	
+	reset_run_stats()
+
 	var config := ConfigFile.new()
 	config.set_value("progress", "current_level", "res://Assets/Scenes/level_plains.tscn")
 	config.set_value("coins", "by_level", {})
+	config.set_value("run", "deaths", 0)
+	config.set_value("run", "no_damage", true)
 	config.save(SAVE_PATH)
+
+# -------- Stats de la run en cours --------
+
+func reset_run_stats():
+	run_time = 0.0
+	deaths_count = 0
+	no_damage_run = true
+	skins_unlocked_this_run.clear()
+
+# Persiste morts et "sans dégât" pour que « Continuer » reprenne la même run
+func save_run_stats():
+	var config := ConfigFile.new()
+	config.load(SAVE_PATH)
+	config.set_value("run", "deaths", deaths_count)
+	config.set_value("run", "no_damage", no_damage_run)
+	config.save(SAVE_PATH)
+
+func load_run_stats():
+	var config := ConfigFile.new()
+	if config.load(SAVE_PATH) != OK:
+		reset_run_stats()
+		return
+
+	deaths_count = int(config.get_value("run", "deaths", 0))
+	no_damage_run = bool(config.get_value("run", "no_damage", true))
 
 # -------- Coins --------
 
