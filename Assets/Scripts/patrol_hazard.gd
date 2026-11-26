@@ -30,13 +30,13 @@ func _ready():
 
 	sprite.play(animation)
 
-func _process(delta):
+func _process(delta: float) -> void:
 	if ray_positive.is_colliding():
 		direction = -1
 	elif ray_negative.is_colliding():
 		direction = 1
 
-	var step := direction * speed * delta
+	var step: float = direction * speed * delta
 	if axis == Axis.HORIZONTAL:
 		position.x += step
 	else:
