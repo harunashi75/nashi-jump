@@ -23,6 +23,10 @@ var excluded_scenes := [
 
 # -------- Initialisation --------
 func _ready():
+	# Les sons du menu pause doivent jouer même quand l'arbre est en pause
+	# (la musique continue aussi pendant la pause)
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 	add_child(music_player)
 	add_child(sfx_player)
 
