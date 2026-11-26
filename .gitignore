@@ -4,7 +4,8 @@
 # Godot-specific ignores
 .import/
 export.cfg
-export_presets.cfg
+# export_presets.cfg est versionné (chemins relatifs, aucun secret).
+# Si un jour des clés de signature / mots de passe y sont ajoutés, le remettre ici.
 
 # Imported translations (automatically generated from CSV files)
 *.translation

@@ -8,7 +8,7 @@ Platformer 2D réalisé avec **Godot 4.7** (Forward Plus). Traversez 13 niveaux 
 2. Ouvrir `project.godot` avec l'éditeur.
 3. Lancer avec F5 (scène principale : `start_menu.tscn`).
 
-Des presets d'export (Windows, Linux) existent localement dans `export_presets.cfg`. Ce fichier est ignoré par git : pensez à le sauvegarder.
+Les presets d'export (Windows, Linux) sont versionnés dans `export_presets.cfg`. Les exécutables sont générés dans `../Documents/Nashi-Jump_windows/` et `../Documents/Nashi-Jump_linux/` (hors du dépôt). Ne jamais y mettre de clé de signature ou de mot de passe.
 
 ## Contrôles
 
