@@ -167,7 +167,7 @@ func _on_body_entered(body):
 		var player_falling = player.velocity.y > 0
 		var vertical_diff = player.global_position.y - global_position.y
 
-		if player_falling and vertical_diff < 100:
+		if player_falling and vertical_diff < 128:
 			stomped(player)
 		else:
 			player.take_damage(1)

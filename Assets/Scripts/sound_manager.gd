@@ -12,15 +12,39 @@ var excluded_scenes := [
 	"res://Assets/Scenes/victory_scene.tscn"
 ]
 
-var boss_scenes := [
-	"res://Assets/Scenes/level_bloom_entity.tscn",
-	"res://Assets/Scenes/level_king_slime.tscn",
-	"res://Assets/Scenes/level_dune_tyrant.tscn",
-	"res://Assets/Scenes/level_frozen_core.tscn"
+var world1_scenes := [
+	"res://Assets/Scenes/level_plains.tscn",
+	"res://Assets/Scenes/level_plains_bloom.tscn",
+	"res://Assets/Scenes/level_plains_autumn.tscn"
 ]
 
-@onready var background_music := preload("res://Assets/Sounds/time_for_adventure.mp3")
-@onready var boss_music := preload("res://Assets/Sounds/ive_got_your_back.ogg")
+var world2_scenes := [
+	"res://Assets/Scenes/level_desert.tscn",
+	"res://Assets/Scenes/level_sunken_amber_valley.tscn",
+	"res://Assets/Scenes/level_desert_tempest.tscn"
+]
+
+var world3_scenes := [
+	"res://Assets/Scenes/level_frozen_peaks.tscn",
+	"res://Assets/Scenes/level_deep_ice.tscn",
+	"res://Assets/Scenes/level_crystal_glacier.tscn"
+]
+
+var world4_scenes := [
+	"res://Assets/Scenes/level_sakura.tscn",
+	"res://Assets/Scenes/level_sakura_dream.tscn",
+	"res://Assets/Scenes/level_sakura_nightmare.tscn"
+]
+
+var boss_scenes := [
+	"res://Assets/Scenes/level_nightmare_boss.tscn"
+]
+
+@onready var music_w1 := preload("res://Assets/Sounds/Grasslands Theme.mp3")
+@onready var music_w2 := preload("res://Assets/Sounds/Desert Theme.mp3")
+@onready var music_w3 := preload("res://Assets/Sounds/Iceland Theme.mp3") 
+@onready var music_w4 := preload("res://Assets/Sounds/Mushroom Theme.mp3")
+@onready var boss_music := preload("res://Assets/Sounds/Boss Theme.mp3")
 
 var last_scene = null
 
@@ -30,12 +54,8 @@ func _ready():
 	add_child(sfx_player)
 
 	music_player.autoplay = false
-	music_player.stream = background_music
 	music_player.volume_db = -5
 	
-	if background_music is AudioStream:
-		background_music.loop = true
-
 	sfx_player.autoplay = false
 	sfx_player.volume_db = 0
 
@@ -65,9 +85,6 @@ func _notification(what):
 			music_player.queue_free()
 		if is_instance_valid(sfx_player):
 			sfx_player.queue_free()
-		
-		if background_music:
-			background_music = null
 
 func _check_music():
 	var current_scene = get_tree().current_scene
@@ -80,12 +97,22 @@ func _check_music():
 			music_player.stop()
 		return
 	
-	var target_music: AudioStream
+	var target_music: AudioStream = null
+	
 	if scene_path in boss_scenes:
 		target_music = boss_music
-	else:
-		target_music = background_music
-
+	elif scene_path in world1_scenes:
+		target_music = music_w1
+	elif scene_path in world2_scenes:
+		target_music = music_w2
+	elif scene_path in world3_scenes:
+		target_music = music_w3
+	elif scene_path in world4_scenes:
+		target_music = music_w4
+	
+	if target_music == null:
+		target_music = music_w1
+	
 	if music_player.stream != target_music:
 		music_player.stop()
 		music_player.stream = target_music

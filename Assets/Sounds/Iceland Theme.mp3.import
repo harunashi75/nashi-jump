@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0cv02picepiy"
+path="res://.godot/imported/Iceland Theme.mp3-c227b4c46f9b5c1e61459a1d1fa51f24.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Iceland Theme.mp3"
+dest_files=["res://.godot/imported/Iceland Theme.mp3-c227b4c46f9b5c1e61459a1d1fa51f24.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cndr48hgjlnuu"
-path="res://.godot/imported/King Slime-v1.png-0c942d675d566c5d6bc4d03c751ee1ae.ctex"
+uid="uid://dpnrubrm7qlbh"
+path="res://.godot/imported/Nightmare Boss-v1.png-c8e703b644ce34f1f0a5b8738e8f48c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Enemies/King Slime-v1.png"
-dest_files=["res://.godot/imported/King Slime-v1.png-0c942d675d566c5d6bc4d03c751ee1ae.ctex"]
+source_file="res://Assets/Sprites/Enemies/Nightmare Boss-v1.png"
+dest_files=["res://.godot/imported/Nightmare Boss-v1.png-c8e703b644ce34f1f0a5b8738e8f48c0.ctex"]
 
 [params]
 

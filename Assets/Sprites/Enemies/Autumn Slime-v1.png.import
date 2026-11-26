@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpnrubrm7qlbh"
-path="res://.godot/imported/Night Entity Slime2-v1.png-c6bb2a9c0ba26a1bc70f794882ee2648.ctex"
+uid="uid://np0lu52hgylg"
+path="res://.godot/imported/Autumn Slime-v1.png-f8654abb58db76ab70fbd443d11d5cfd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Enemies/Night Entity Slime2-v1.png"
-dest_files=["res://.godot/imported/Night Entity Slime2-v1.png-c6bb2a9c0ba26a1bc70f794882ee2648.ctex"]
+source_file="res://Assets/Sprites/Enemies/Autumn Slime-v1.png"
+dest_files=["res://.godot/imported/Autumn Slime-v1.png-f8654abb58db76ab70fbd443d11d5cfd.ctex"]
 
 [params]
 

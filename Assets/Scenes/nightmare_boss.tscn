@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ct0x4rppk8r62" path="res://Assets/Scripts/nightmare_boss.gd" id="1_doggu"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="2_onmgq"]
 [ext_resource type="PackedScene" uid="uid://dw57ed1nx5nng" path="res://Assets/Scenes/tp_victory.tscn" id="3_rqh4d"]
-[ext_resource type="Texture2D" uid="uid://dpnrubrm7qlbh" path="res://Assets/Sprites/Enemies/Night Entity Slime2-v1.png" id="4_y3lcf"]
+[ext_resource type="Texture2D" uid="uid://dpnrubrm7qlbh" path="res://Assets/Sprites/Enemies/Nightmare Boss-v1.png" id="4_y3lcf"]
 [ext_resource type="Texture2D" uid="uid://cdocd16xgi3ym" path="res://Assets/Sprites/Enemies/Nightmare Slime-v1.png" id="5_nqb1e"]
 [ext_resource type="Texture2D" uid="uid://b2n7yhpwm14l1" path="res://Assets/Sprites/Enemies/Spin Attack Slime-v1.png" id="6_pbcca"]
 

@@ -41,7 +41,7 @@ func _on_body_entered(body):
 
 		var player_falling: bool = player.velocity.y > 0
 		var vertical_diff: float = player.global_position.y - global_position.y
-		var stomp_tolerance := 16.0
+		var stomp_tolerance := 24.0
 
 		if player_falling and vertical_diff < stomp_tolerance:
 			stomped(player)
