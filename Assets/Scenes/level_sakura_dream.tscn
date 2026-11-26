@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://carxotetuvyh5" path="res://Assets/Sprites/Backgrounds/Sakura Dream Sky2.png" id="2_gp4u5"]
 [ext_resource type="Texture2D" uid="uid://blg8xdgannway" path="res://Assets/Sprites/TileSets/tileset_sakura_dream-v1.png" id="4_8iuwc"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="5_6307y"]
-[ext_resource type="Script" uid="uid://wb5i45q68syr" path="res://Assets/Scripts/skin_void.gd" id="6_hqwii"]
+[ext_resource type="Script" uid="uid://cj0isj60faqua" path="res://Assets/Scripts/skin_pickup.gd" id="6_hqwii"]
 [ext_resource type="Texture2D" uid="uid://cqhyru20srfm8" path="res://Assets/Sprites/Characters/void-v2.png" id="7_obqbc"]
 [ext_resource type="PackedScene" uid="uid://2ug3fs7ea8c6" path="res://Assets/Scenes/coin.tscn" id="8_nsyco"]
 [ext_resource type="PackedScene" uid="uid://bqlsmrymu65p8" path="res://Assets/Scenes/power_up.tscn" id="9_1a83j"]
@@ -127,6 +127,7 @@ position = Vector2(240, 32)
 
 [node name="skin_v" type="Area2D" parent="." unique_id=1191437894]
 script = ExtResource("6_hqwii")
+skin_id = "void"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="skin_v" unique_id=1806592050]
 position = Vector2(-104, -494)

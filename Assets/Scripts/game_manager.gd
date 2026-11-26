@@ -175,6 +175,9 @@ func reset_checkpoint_data():
 # -------- Input --------
 
 func _unhandled_input(event: InputEvent) -> void:
+	# Godmode : uniquement dans l'éditeur / builds de debug
+	if not OS.is_debug_build():
+		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.keycode:
 			KEY_G:

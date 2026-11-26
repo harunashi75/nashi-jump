@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dyetq5gpiwaek" path="res://Assets/Scripts/levels.gd" id="1_ck1sw"]
 [ext_resource type="Texture2D" uid="uid://bney7f4k7u2nc" path="res://Assets/Sprites/Backgrounds/Plains Autumn Sky2.png" id="2_i8kgt"]
 [ext_resource type="Texture2D" uid="uid://p7ymyv7gbngy" path="res://Assets/Sprites/TileSets/tileset_plaines_autumn-v1.png" id="4_olm6n"]
-[ext_resource type="Script" uid="uid://cj0isj60faqua" path="res://Assets/Scripts/skin_bee.gd" id="5_ck1sw"]
+[ext_resource type="Script" uid="uid://cj0isj60faqua" path="res://Assets/Scripts/skin_pickup.gd" id="5_ck1sw"]
 [ext_resource type="Texture2D" uid="uid://cqpct43d0qycr" path="res://Assets/Sprites/Characters/beezzz-v3.png" id="6_q0e5m"]
 [ext_resource type="PackedScene" uid="uid://dycr6wuf1dp2k" path="res://Assets/Scenes/player.tscn" id="8_vs3m7"]
 [ext_resource type="PackedScene" uid="uid://bheqkg1mur0ek" path="res://Assets/Scenes/autumn_slime.tscn" id="9_6tghu"]
@@ -161,6 +161,7 @@ position = Vector2(-23, 0)
 
 [node name="skin_bee" type="Area2D" parent="." unique_id=1520332411]
 script = ExtResource("5_ck1sw")
+skin_id = "bee"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="skin_bee" unique_id=1424473873]
 position = Vector2(202, 2)

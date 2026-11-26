@@ -33,6 +33,9 @@ func _ready():
 
 func save_data():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if file == null:
+		push_warning("Impossible d'écrire la sauvegarde des skins : %s" % error_string(FileAccess.get_open_error()))
+		return
 	file.store_var({
 		"current_skin": current_skin,
 		"unlocked_skins": unlocked_skins
@@ -44,11 +47,21 @@ func load_data():
 		return
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+	if file == null:
+		push_warning("Impossible de lire la sauvegarde des skins : %s" % error_string(FileAccess.get_open_error()))
+		return
 	var data = file.get_var()
 	file.close()
 
-	current_skin = data.get("current_skin", "default")
-	unlocked_skins.merge(data.get("unlocked_skins", {}), true)
+	# Fichier corrompu ou format inattendu : on garde les valeurs par défaut
+	if typeof(data) != TYPE_DICTIONARY:
+		push_warning("Sauvegarde des skins invalide, valeurs par défaut conservées.")
+		return
+
+	current_skin = str(data.get("current_skin", "default"))
+	var saved = data.get("unlocked_skins", {})
+	if typeof(saved) == TYPE_DICTIONARY:
+		unlocked_skins.merge(saved, true)
 
 # -------- API SIMPLE --------
 
